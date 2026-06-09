@@ -1,0 +1,7 @@
+ultralytics
+torch
+torchvision
+opencv-python-headless
+pdf2image
+pillow
+numpy
