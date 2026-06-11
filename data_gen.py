@@ -474,38 +474,6 @@ class SyntheticDataGenerator:
         ground_truth_db = {}
         
         import concurrent.futures
-        
-        # Helper function for multiprocessing
-        def process_page(task):
-            idx, bg_path, split_name, pdf_idx, page_in_pdf, y_dir = task
-            page_img, labels = self.generate_full_page(bg_path, num_annotations=15)
-            width, height = page_img.size
-            
-            img_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.png"
-            img_path = os.path.join(y_dir, "images", split_name, img_name)
-            page_img.save(img_path)
-            
-            label_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.txt"
-            label_path = os.path.join(y_dir, "labels", split_name, label_name)
-            
-            absolute_gt = []
-            with open(label_path, "w", encoding="utf-8") as f:
-                for class_idx, pts in labels:
-                    pts_str = " ".join([f"{p:.6f}" for p in pts])
-                    f.write(f"{class_idx} {pts_str}\n")
-                    
-                    abs_corners = [
-                        [pts[0] * width, pts[1] * height],
-                        [pts[2] * width, pts[3] * height],
-                        [pts[4] * width, pts[5] * height],
-                        [pts[6] * width, pts[7] * height]
-                    ]
-                    absolute_gt.append({
-                        "class": class_idx,
-                        "corners": abs_corners
-                    })
-                    
-            return img_name, absolute_gt, pdf_idx, page_in_pdf, img_path
             
         pdf_pages_map = {}
         
@@ -513,7 +481,7 @@ class SyntheticDataGenerator:
         max_workers = os.cpu_count() or 4
         print(f"🚀 Launching {max_workers} parallel workers...")
         with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
-            futures = {executor.submit(process_page, task): task for task in tasks}
+            futures = {executor.submit(process_page_worker, task): task for task in tasks}
             for future in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Pages"):
                 img_name, absolute_gt, pdf_idx, page_in_pdf, img_path = future.result()
                 ground_truth_db[img_name] = absolute_gt
@@ -550,6 +518,40 @@ names:
             f.write(data_yaml_content)
             
         print("YOLO dataset generation complete!")
+
+# Top-level function to avoid multiprocessing pickling issues
+def process_page_worker(task):
+    idx, bg_path, split_name, pdf_idx, page_in_pdf, y_dir = task
+    # Initialize local generator
+    generator = SyntheticDataGenerator()
+    page_img, labels = generator.generate_full_page(bg_path, num_annotations=15)
+    width, height = page_img.size
+    
+    img_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.png"
+    img_path = os.path.join(y_dir, "images", split_name, img_name)
+    page_img.save(img_path)
+    
+    label_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.txt"
+    label_path = os.path.join(y_dir, "labels", split_name, label_name)
+    
+    absolute_gt = []
+    with open(label_path, "w", encoding="utf-8") as f:
+        for class_idx, pts in labels:
+            pts_str = " ".join([f"{p:.6f}" for p in pts])
+            f.write(f"{class_idx} {pts_str}\n")
+            
+            abs_corners = [
+                [pts[0] * width, pts[1] * height],
+                [pts[2] * width, pts[3] * height],
+                [pts[4] * width, pts[5] * height],
+                [pts[6] * width, pts[7] * height]
+            ]
+            absolute_gt.append({
+                "class": class_idx,
+                "corners": abs_corners
+            })
+            
+    return img_name, absolute_gt, pdf_idx, page_in_pdf, img_path
 
 if __name__ == "__main__":
     generator = SyntheticDataGenerator()
