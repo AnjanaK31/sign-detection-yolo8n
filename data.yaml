@@ -1,4 +1,4 @@
-path: D:\Cogentic\sign-detection-yolo8n\dataset_yolo
+path: D:\Internship\OCR_PDF\sign-detection-yolo8n\dataset_yolo
 train: images/train
 val: images/val
 test: images/test

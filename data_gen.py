@@ -4,6 +4,7 @@ import math
 import numpy as np
 import cv2
 from PIL import Image, ImageDraw, ImageFont
+from tqdm import tqdm
 
 # 21 classes matching requirements
 CLASSES = [
@@ -392,32 +393,13 @@ class SyntheticDataGenerator:
             if not placed:
                 continue
                 
-            if tpl["has_leader"]:
-                target_x = cx + random.randint(-150, 150)
-                target_y = cy + random.randint(-150, 150)
-                target_x = max(margin + 50, min(width - margin - 50, target_x))
-                target_y = max(margin + 50, min(height - margin - 220, target_y))
-                
-                draw.line((cx, cy, target_x, target_y), fill=(50, 50, 50), width=2)
-                arrow_angle = math.degrees(math.atan2(cy - target_y, target_x - cx))
-                arrow_pts = self.draw_arrowhead(draw, target_x, target_y, 20, arrow_angle, color=(0, 0, 0))
-                
-                norm_pts = []
-                for px, py in arrow_pts:
-                    norm_pts.append(px / width)
-                    norm_pts.append(py / height)
-                if len(norm_pts) == 6:
-                    norm_pts.append(norm_pts[-2])
-                    norm_pts.append(norm_pts[-2])
-                labels.append((0, norm_pts))
-                
             current_x = -total_w / 2
             for idx, c in enumerate(chars):
                 w_c = char_widths[idx]
                 h_c = char_heights[idx]
                 
                 ccx = cx + (current_x + w_c / 2) * cos_a
-                ccy = cy + (current_x + w_c / 2) * sin_a
+                ccy = cy - (current_x + w_c / 2) * sin_a
                 
                 if c != " ":
                     canvas_size = int(max(w_c, h_c) * 2)
@@ -439,14 +421,16 @@ class SyntheticDataGenerator:
                     paste_y = int(ccy - rh / 2)
                     page_img.paste(rotated_char, (paste_x, paste_y), mask=rotated_char)
                     
-                    obb_pts = self.get_rotated_obb(ccx, ccy, w_c, h_c, line_angle)
-                    norm_pts = []
-                    for px, py in obb_pts:
-                        norm_pts.append(px / width)
-                        norm_pts.append(py / height)
-                    labels.append((0, norm_pts))
-                    
                 current_x += w_c
+                
+            # Generate a single bounding box for the entire expression
+            # The expression is centered at cx, cy, with size total_w x max_h
+            expr_obb_pts = self.get_rotated_obb(cx, cy, total_w, max_h, line_angle)
+            norm_pts = []
+            for px, py in expr_obb_pts:
+                norm_pts.append(px / width)
+                norm_pts.append(py / height)
+            labels.append((0, norm_pts))
                 
         preprocessed_page = self.apply_adaptive_threshold(page_img)
         return preprocessed_page, labels
@@ -460,49 +444,75 @@ class SyntheticDataGenerator:
         os.makedirs(pdf_dir, exist_ok=True)
         
         splits = {
-            "train": (0, 60),
-            "val": (60, 75),
-            "test": (75, 80)
+            "train": (0, 4000),
+            "val": (4000, 4800),
+            "test": (4800, 5000)
         }
         
         for name, (start, end) in splits.items():
             os.makedirs(os.path.join(yolo_dir, "images", name), exist_ok=True)
             os.makedirs(os.path.join(yolo_dir, "labels", name), exist_ok=True)
             
-        all_pages = []
         backgrounds = [os.path.join(bg_dir, f"bg_{i}.png") for i in range(10)]
+        ground_truth_db = {}
+        current_pdf_pages = []
         
-        for page_idx in range(80):
-            bg_path = backgrounds[page_idx % len(backgrounds)]
+        print("Generating YOLO OBB dataset & Compiling PDFs...")
+        for idx in tqdm(range(5000), desc="Generating & Compiling", unit="page"):
+            bg_path = backgrounds[idx % len(backgrounds)]
             page_img, labels = self.generate_full_page(bg_path, num_annotations=15)
-            all_pages.append((page_img, labels))
-            if (page_idx + 1) % 20 == 0 or page_idx == 0:
-                print(f"Generated page {page_idx + 1}/80")
+            width, height = page_img.size
+            
+            # Determine split
+            if idx < splits["train"][1]:
+                split_name = "train"
+            elif idx < splits["val"][1]:
+                split_name = "val"
+            else:
+                split_name = "test"
                 
-        for split_name, (start, end) in splits.items():
-            print(f"Saving splits for: {split_name}...")
-            for idx in range(start, end):
-                page_img, labels = all_pages[idx]
+            pdf_idx = idx // 5
+            page_in_pdf = (idx % 5) + 1
+            
+            # Save YOLO image
+            img_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.png"
+            img_path = os.path.join(yolo_dir, "images", split_name, img_name)
+            page_img.save(img_path)
+            
+            # Save YOLO label
+            label_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.txt"
+            label_path = os.path.join(yolo_dir, "labels", split_name, label_name)
+            
+            absolute_gt = []
+            with open(label_path, "w", encoding="utf-8") as f:
+                for class_idx, pts in labels:
+                    pts_str = " ".join([f"{p:.6f}" for p in pts])
+                    f.write(f"{class_idx} {pts_str}\n")
+                    
+                    abs_corners = [
+                        [pts[0] * width, pts[1] * height],
+                        [pts[2] * width, pts[3] * height],
+                        [pts[4] * width, pts[5] * height],
+                        [pts[6] * width, pts[7] * height]
+                    ]
+                    absolute_gt.append({
+                        "class": class_idx,
+                        "corners": abs_corners
+                    })
+            
+            ground_truth_db[img_name] = absolute_gt
+            
+            # PDF Compilation logic
+            current_pdf_pages.append(page_img)
+            if len(current_pdf_pages) == 5:
+                pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
+                current_pdf_pages[0].save(pdf_path, save_all=True, append_images=current_pdf_pages[1:], format="PDF")
+                current_pdf_pages = []
                 
-                img_name = f"page_{idx}.png"
-                img_path = os.path.join(yolo_dir, "images", split_name, img_name)
-                page_img.save(img_path)
-                
-                label_name = f"page_{idx}.txt"
-                label_path = os.path.join(yolo_dir, "labels", split_name, label_name)
-                
-                with open(label_path, "w", encoding="utf-8") as f:
-                    for class_idx, pts in labels:
-                        pts_str = " ".join([f"{p:.6f}" for p in pts])
-                        f.write(f"{class_idx} {pts_str}\n")
-                        
-        print("Compiling sample 3-page PDFs...")
-        for pdf_idx in range(5):
-            p1 = all_pages[pdf_idx * 3][0]
-            p2 = all_pages[pdf_idx * 3 + 1][0]
-            p3 = all_pages[pdf_idx * 3 + 2][0]
-            pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
-            p1.save(pdf_path, save_all=True, append_images=[p2, p3], format="PDF")
+        # Save GT JSON database
+        import json
+        with open(os.path.join(yolo_dir, "ground_truth.json"), "w") as f:
+            json.dump(ground_truth_db, f, indent=2)
             
         data_yaml_content = f"""path: {os.path.abspath(yolo_dir)}
 train: images/train

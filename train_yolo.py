@@ -1,36 +1,41 @@
-import os
-import torch
-import argparse
 from ultralytics import YOLO
+import torch
 
-def train_yolo_obb(epochs=1, imgsz=1280, batch_size=2):
-    """Initializes and trains a YOLOv8n-OBB model on the synthetic equation dataset."""
-    print("Initializing YOLOv8n-OBB model...")
-    # Load a pre-trained YOLOv8n-OBB model. It will auto-download the weights if not present.
+def main():
+    gpu_count = torch.cuda.device_count()
+    
+    if gpu_count > 1:
+        # Create a string like "0,1" for multiple GPUs
+        device = ",".join([str(i) for i in range(gpu_count)])
+        print(f"🔥 MASSIVE COMPUTE DETECTED: Found {gpu_count} GPUs! Activating Multi-GPU Distributed Training on devices: {device}")
+        batch_size = 32 # 46GB VRAM per GPU can handle a massive batch size!
+    elif gpu_count == 1:
+        device = "0"
+        print(f"✅ GPU detected: {torch.cuda.get_device_name(0)}")
+        batch_size = 16
+    else:
+        device = "cpu"
+        print("⚠️ No GPU detected. Training will fall back to CPU and may be very slow.")
+        batch_size = 8
+
+    print(f"Starting YOLO training with batch size {batch_size}...")
+
+    # Load the pretrained YOLOv8n-OBB model
     model = YOLO("yolov8n-obb.pt")
-    
-    device = "0" if torch.cuda.is_available() else "cpu"
-    print(f"Training YOLOv8n-OBB on device: {device} with imgsz={imgsz}")
-    
+
     # Train the model
-    # We set workers=0 on Windows to prevent potential multiprocessing/dataloader errors.
     model.train(
         data="data.yaml",
-        epochs=epochs,
-        imgsz=imgsz,
+        epochs=100,
+        imgsz=1280,
         batch=batch_size,
+        name="trained_on_1000_pdfs",
         device=device,
-        workers=0,
-        project="yolo_obb_project",
-        name="symbol_obb_train"
+        project="runs/obb"
     )
-    print("YOLOv8n-OBB training finished successfully!")
+    
+    print("\n🎉 Training complete! The best model weights are saved in:")
+    print("runs/obb/trained_on_1000_pdfs/weights/best.pt")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Train YOLOv8-OBB Model")
-    parser.add_argument("--epochs", type=int, default=1, help="Number of training epochs")
-    parser.add_argument("--imgsz", type=int, default=1280, help="Input image size")
-    parser.add_argument("--batch", type=int, default=2, help="Batch size")
-    args = parser.parse_args()
-    
-    train_yolo_obb(epochs=args.epochs, imgsz=args.imgsz, batch_size=args.batch)
+    main()
