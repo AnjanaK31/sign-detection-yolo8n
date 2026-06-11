@@ -454,16 +454,12 @@ class SyntheticDataGenerator:
             os.makedirs(os.path.join(yolo_dir, "labels", name), exist_ok=True)
             
         backgrounds = [os.path.join(bg_dir, f"bg_{i}.png") for i in range(10)]
-        ground_truth_db = {}
-        current_pdf_pages = []
         
-        print("Generating YOLO OBB dataset & Compiling PDFs...")
-        for idx in tqdm(range(5000), desc="Generating & Compiling", unit="page"):
+        print("Generating YOLO OBB dataset with Multiprocessing...")
+        
+        tasks = []
+        for idx in range(5000):
             bg_path = backgrounds[idx % len(backgrounds)]
-            page_img, labels = self.generate_full_page(bg_path, num_annotations=15)
-            width, height = page_img.size
-            
-            # Determine split
             if idx < splits["train"][1]:
                 split_name = "train"
             elif idx < splits["val"][1]:
@@ -473,15 +469,24 @@ class SyntheticDataGenerator:
                 
             pdf_idx = idx // 5
             page_in_pdf = (idx % 5) + 1
+            tasks.append((idx, bg_path, split_name, pdf_idx, page_in_pdf, yolo_dir))
             
-            # Save YOLO image
+        ground_truth_db = {}
+        
+        import concurrent.futures
+        
+        # Helper function for multiprocessing
+        def process_page(task):
+            idx, bg_path, split_name, pdf_idx, page_in_pdf, y_dir = task
+            page_img, labels = self.generate_full_page(bg_path, num_annotations=15)
+            width, height = page_img.size
+            
             img_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.png"
-            img_path = os.path.join(yolo_dir, "images", split_name, img_name)
+            img_path = os.path.join(y_dir, "images", split_name, img_name)
             page_img.save(img_path)
             
-            # Save YOLO label
             label_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.txt"
-            label_path = os.path.join(yolo_dir, "labels", split_name, label_name)
+            label_path = os.path.join(y_dir, "labels", split_name, label_name)
             
             absolute_gt = []
             with open(label_path, "w", encoding="utf-8") as f:
@@ -499,20 +504,39 @@ class SyntheticDataGenerator:
                         "class": class_idx,
                         "corners": abs_corners
                     })
+                    
+            return img_name, absolute_gt, pdf_idx, page_in_pdf, img_path
             
-            ground_truth_db[img_name] = absolute_gt
-            
-            # PDF Compilation logic
-            current_pdf_pages.append(page_img)
-            if len(current_pdf_pages) == 5:
-                pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
-                current_pdf_pages[0].save(pdf_path, save_all=True, append_images=current_pdf_pages[1:], format="PDF")
-                current_pdf_pages = []
+        pdf_pages_map = {}
+        
+        # Run multiprocessing pool
+        max_workers = os.cpu_count() or 4
+        print(f"🚀 Launching {max_workers} parallel workers...")
+        with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+            futures = {executor.submit(process_page, task): task for task in tasks}
+            for future in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Pages"):
+                img_name, absolute_gt, pdf_idx, page_in_pdf, img_path = future.result()
+                ground_truth_db[img_name] = absolute_gt
+                
+                if pdf_idx not in pdf_pages_map:
+                    pdf_pages_map[pdf_idx] = {}
+                pdf_pages_map[pdf_idx][page_in_pdf] = img_path
                 
         # Save GT JSON database
         import json
         with open(os.path.join(yolo_dir, "ground_truth.json"), "w") as f:
             json.dump(ground_truth_db, f, indent=2)
+            
+        print("Compiling sample 5-page PDFs...")
+        for pdf_idx in tqdm(range(1000), desc="Compiling PDFs", unit="pdf"):
+            if len(pdf_pages_map.get(pdf_idx, {})) == 5:
+                p1 = Image.open(pdf_pages_map[pdf_idx][1])
+                p2 = Image.open(pdf_pages_map[pdf_idx][2])
+                p3 = Image.open(pdf_pages_map[pdf_idx][3])
+                p4 = Image.open(pdf_pages_map[pdf_idx][4])
+                p5 = Image.open(pdf_pages_map[pdf_idx][5])
+                pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
+                p1.save(pdf_path, save_all=True, append_images=[p2, p3, p4, p5], format="PDF")
             
         data_yaml_content = f"""path: {os.path.abspath(yolo_dir)}
 train: images/train
