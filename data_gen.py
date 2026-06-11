@@ -293,6 +293,10 @@ class SyntheticDataGenerator:
 
     def generate_classifier_dataset(self, output_dir="dataset_classifier", train_count=150, val_count=40):
         """Generates synthetic character/symbol crops for training the MobileNetV3 model."""
+        if os.path.exists(os.path.join(output_dir, "train", "0")) and len(os.listdir(os.path.join(output_dir, "train", "0"))) > 0:
+            print("Classifier dataset already exists! Skipping generation.")
+            return
+            
         print(f"Generating classifier dataset ({train_count} train / {val_count} val samples per class)...")
         
         for name in ["train", "val"]:
@@ -438,9 +442,10 @@ class SyntheticDataGenerator:
     def save_dataset(self, pdf_dir="pdfs", yolo_dir="dataset_yolo"):
         """Compiles the full YOLO dataset (images and OBB labels) and PDFs."""
         bg_dir = "temp_backgrounds"
-        self.generate_backgrounds(bg_dir, count=10)
+        if not os.path.exists(bg_dir):
+            self.generate_backgrounds(bg_dir, count=10)
         
-        print("Generating YOLO OBB dataset...")
+        print("Checking YOLO OBB dataset status...")
         os.makedirs(pdf_dir, exist_ok=True)
         
         splits = {
@@ -449,9 +454,29 @@ class SyntheticDataGenerator:
             "test": (4800, 5000)
         }
         
-        for name, (start, end) in splits.items():
-            os.makedirs(os.path.join(yolo_dir, "images", name), exist_ok=True)
-            os.makedirs(os.path.join(yolo_dir, "labels", name), exist_ok=True)
+        import concurrent.futures
+        import json
+        
+        gt_path = os.path.join(yolo_dir, "ground_truth.json")
+        pdf_pages_map = {}
+        
+        if os.path.exists(gt_path):
+            print("✅ YOLO dataset images already exist! Skipping image generation...")
+            for split_name in splits.keys():
+                split_dir = os.path.join(yolo_dir, "images", split_name)
+                if not os.path.exists(split_dir): continue
+                for img_name in os.listdir(split_dir):
+                    if img_name.endswith(".png"):
+                        parts = img_name.replace(".png", "").split("_")
+                        pdf_idx = int(parts[1])
+                        page_in_pdf = int(parts[3])
+                        if pdf_idx not in pdf_pages_map:
+                            pdf_pages_map[pdf_idx] = {}
+                        pdf_pages_map[pdf_idx][page_in_pdf] = os.path.join(split_dir, img_name)
+        else:
+            for name, (start, end) in splits.items():
+                os.makedirs(os.path.join(yolo_dir, "images", name), exist_ok=True)
+                os.makedirs(os.path.join(yolo_dir, "labels", name), exist_ok=True)
             
         backgrounds = [os.path.join(bg_dir, f"bg_{i}.png") for i in range(10)]
         
@@ -479,32 +504,38 @@ class SyntheticDataGenerator:
         
         # Run multiprocessing pool
         max_workers = os.cpu_count() or 4
-        print(f"🚀 Launching {max_workers} parallel workers...")
-        with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
-            futures = {executor.submit(process_page_worker, task): task for task in tasks}
-            for future in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Pages"):
-                img_name, absolute_gt, pdf_idx, page_in_pdf, img_path = future.result()
-                ground_truth_db[img_name] = absolute_gt
+            print("🚀 Launching parallel workers for Image Generation...")
+            with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+                futures = {executor.submit(process_page_worker, task): task for task in tasks}
+                for future in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Pages"):
+                    img_name, absolute_gt, pdf_idx, page_in_pdf, img_path = future.result()
+                    ground_truth_db[img_name] = absolute_gt
+                    
+                    if pdf_idx not in pdf_pages_map:
+                        pdf_pages_map[pdf_idx] = {}
+                    pdf_pages_map[pdf_idx][page_in_pdf] = img_path
+                    
+            # Save GT JSON database
+            with open(gt_path, "w") as f:
+                json.dump(ground_truth_db, f, indent=2)
                 
-                if pdf_idx not in pdf_pages_map:
-                    pdf_pages_map[pdf_idx] = {}
-                pdf_pages_map[pdf_idx][page_in_pdf] = img_path
+        print("Compiling sample 5-page PDFs with Multiprocessing...")
+        pdf_tasks = []
+        for pdf_idx in range(1000):
+            # Check if PDF already exists
+            pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
+            if not os.path.exists(pdf_path) and len(pdf_pages_map.get(pdf_idx, {})) == 5:
+                pdf_tasks.append((pdf_idx, pdf_pages_map[pdf_idx], pdf_dir))
                 
-        # Save GT JSON database
-        import json
-        with open(os.path.join(yolo_dir, "ground_truth.json"), "w") as f:
-            json.dump(ground_truth_db, f, indent=2)
-            
-        print("Compiling sample 5-page PDFs...")
-        for pdf_idx in tqdm(range(1000), desc="Compiling PDFs", unit="pdf"):
-            if len(pdf_pages_map.get(pdf_idx, {})) == 5:
-                p1 = Image.open(pdf_pages_map[pdf_idx][1])
-                p2 = Image.open(pdf_pages_map[pdf_idx][2])
-                p3 = Image.open(pdf_pages_map[pdf_idx][3])
-                p4 = Image.open(pdf_pages_map[pdf_idx][4])
-                p5 = Image.open(pdf_pages_map[pdf_idx][5])
-                pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
-                p1.save(pdf_path, save_all=True, append_images=[p2, p3, p4, p5], format="PDF")
+        if len(pdf_tasks) > 0:
+            max_workers = os.cpu_count() or 4
+            print(f"🚀 Launching {max_workers} parallel workers for PDF Compilation...")
+            with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+                futures = {executor.submit(compile_pdf_worker, task): task for task in pdf_tasks}
+                for future in tqdm(concurrent.futures.as_completed(futures), total=len(pdf_tasks), desc="Compiling PDFs"):
+                    pass
+        else:
+            print("✅ All PDFs already compiled!")
             
         data_yaml_content = f"""path: {os.path.abspath(yolo_dir)}
 train: images/train
@@ -552,6 +583,18 @@ def process_page_worker(task):
             })
             
     return img_name, absolute_gt, pdf_idx, page_in_pdf, img_path
+
+# Top-level function for multiprocessing PDF compilation
+def compile_pdf_worker(task):
+    pdf_idx, pages_map, pdf_dir = task
+    p1 = Image.open(pages_map[1])
+    p2 = Image.open(pages_map[2])
+    p3 = Image.open(pages_map[3])
+    p4 = Image.open(pages_map[4])
+    p5 = Image.open(pages_map[5])
+    pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
+    p1.save(pdf_path, save_all=True, append_images=[p2, p3, p4, p5], format="PDF")
+    return pdf_idx
 
 if __name__ == "__main__":
     generator = SyntheticDataGenerator()
