@@ -3,3 +3,6 @@ dataset_yolo/
 pdfs/
 temp_backgrounds/
 runs/
+dataset_classifier/
+debug_crops/
+yolo_obb_project/
