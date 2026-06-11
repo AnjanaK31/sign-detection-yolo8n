@@ -504,20 +504,20 @@ class SyntheticDataGenerator:
         
         # Run multiprocessing pool
         max_workers = os.cpu_count() or 4
-            print("🚀 Launching parallel workers for Image Generation...")
-            with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
-                futures = {executor.submit(process_page_worker, task): task for task in tasks}
-                for future in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Pages"):
-                    img_name, absolute_gt, pdf_idx, page_in_pdf, img_path = future.result()
-                    ground_truth_db[img_name] = absolute_gt
-                    
-                    if pdf_idx not in pdf_pages_map:
-                        pdf_pages_map[pdf_idx] = {}
-                    pdf_pages_map[pdf_idx][page_in_pdf] = img_path
-                    
-            # Save GT JSON database
-            with open(gt_path, "w") as f:
-                json.dump(ground_truth_db, f, indent=2)
+        print("🚀 Launching parallel workers for Image Generation...")
+        with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+            futures = {executor.submit(process_page_worker, task): task for task in tasks}
+            for future in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Pages"):
+                img_name, absolute_gt, pdf_idx, page_in_pdf, img_path = future.result()
+                ground_truth_db[img_name] = absolute_gt
+                
+                if pdf_idx not in pdf_pages_map:
+                    pdf_pages_map[pdf_idx] = {}
+                pdf_pages_map[pdf_idx][page_in_pdf] = img_path
+                
+        # Save GT JSON database
+        with open(gt_path, "w") as f:
+            json.dump(ground_truth_db, f, indent=2)
                 
         print("Compiling sample 5-page PDFs with Multiprocessing...")
         pdf_tasks = []
