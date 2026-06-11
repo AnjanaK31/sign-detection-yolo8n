@@ -3,19 +3,20 @@ import torch
 
 def main():
     gpu_count = torch.cuda.device_count()
+    is_available = torch.cuda.is_available()
     
-    if gpu_count > 1:
+    if is_available and gpu_count > 1:
         # Create a string like "0,1" for multiple GPUs
         device = ",".join([str(i) for i in range(gpu_count)])
         print(f"🔥 MASSIVE COMPUTE DETECTED: Found {gpu_count} GPUs! Activating Multi-GPU Distributed Training on devices: {device}")
         batch_size = 32 # 46GB VRAM per GPU can handle a massive batch size!
-    elif gpu_count == 1:
+    elif is_available and gpu_count == 1:
         device = "0"
         print(f"✅ GPU detected: {torch.cuda.get_device_name(0)}")
         batch_size = 16
     else:
         device = "cpu"
-        print("⚠️ No GPU detected. Training will fall back to CPU and may be very slow.")
+        print("⚠️ No GPU detected (or CUDA drivers mismatched). Training will fall back to CPU and may be very slow.")
         batch_size = 8
 
     print(f"Starting YOLO training with batch size {batch_size}...")
