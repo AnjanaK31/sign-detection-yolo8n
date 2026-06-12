@@ -316,19 +316,27 @@ class SyntheticDataGenerator:
             print("Classifier dataset already exists! Skipping generation.")
             return
             
-        print(f"Generating classifier dataset ({train_count} train / {val_count} val samples per class)...")
+        print(f"Generating classifier dataset ({train_count} train / {val_count} val samples per class) with Multiprocessing...")
         
         for name in ["train", "val"]:
             for c in CLASSES:
                 os.makedirs(os.path.join(output_dir, name, c), exist_ok=True)
                 
+        # Build tasks
+        tasks = []
         for c in CLASSES:
             for i in range(train_count):
-                img = self.generate_single_char_image(c)
-                img.save(os.path.join(output_dir, "train", c, f"img_{i}.png"))
+                tasks.append((c, "train", i, output_dir))
             for i in range(val_count):
-                img = self.generate_single_char_image(c)
-                img.save(os.path.join(output_dir, "val", c, f"img_{i}.png"))
+                tasks.append((c, "val", i, output_dir))
+                
+        import concurrent.futures
+        max_workers = os.cpu_count() or 4
+        print(f"[*] Launching parallel workers for Classifier crops on {max_workers} cores...")
+        with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+            futures = [executor.submit(process_classifier_crop_worker, task) for task in tasks]
+            for _ in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Crops"):
+                pass
                 
         print("Classifier dataset generation complete!")
 
@@ -522,7 +530,7 @@ class SyntheticDataGenerator:
         
         # Run multiprocessing pool
         max_workers = os.cpu_count() or 4
-        print("🚀 Launching parallel workers for Image Generation...")
+        print("[*] Launching parallel workers for Image Generation...")
         with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
             futures = {executor.submit(process_page_worker, task): task for task in tasks}
             for future in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Pages"):
@@ -547,7 +555,7 @@ class SyntheticDataGenerator:
                 
         if len(pdf_tasks) > 0:
             max_workers = os.cpu_count() or 4
-            print(f"🚀 Launching {max_workers} parallel workers for PDF Compilation...")
+            print(f"[*] Launching {max_workers} parallel workers for PDF Compilation...")
             with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
                 futures = {executor.submit(compile_pdf_worker, task): task for task in pdf_tasks}
                 for future in tqdm(concurrent.futures.as_completed(futures), total=len(pdf_tasks), desc="Compiling PDFs"):
@@ -614,7 +622,52 @@ def compile_pdf_worker(task):
     p1.save(pdf_path, save_all=True, append_images=[p2, p3, p4, p5], format="PDF")
     return pdf_idx
 
-if __name__ == "__main__":
+# Top-level function for multiprocessing classifier crop generation
+def process_classifier_crop_worker(task):
+    class_name, split_name, idx, output_dir = task
+    # Initialize local generator
     generator = SyntheticDataGenerator()
-    generator.generate_classifier_dataset()
+    img = generator.generate_single_char_image(class_name)
+    img_path = os.path.join(output_dir, split_name, class_name, f"img_{idx}.png")
+    img.save(img_path)
+
+if __name__ == "__main__":
+    import argparse
+    import shutil
+    
+    parser = argparse.ArgumentParser(description="Synthetic Blueprint Dataset Generator")
+    parser.add_argument("--force-classifier", action="store_true", help="Delete and regenerate the classifier dataset from scratch")
+    parser.add_argument("--force-yolo", action="store_true", help="Delete and regenerate the YOLO OBB dataset from scratch")
+    parser.add_argument("--train-count", type=int, default=150, help="Number of training images per class for classifier")
+    parser.add_argument("--val-count", type=int, default=40, help="Number of validation images per class for classifier")
+    args = parser.parse_args()
+    
+    # Handle force clean-up if requested
+    if args.force_classifier:
+        print("Cleaning up old classifier dataset...")
+        if os.path.exists("dataset_classifier"):
+            try:
+                shutil.rmtree("dataset_classifier")
+            except Exception as e:
+                print(f"Error removing dataset_classifier: {e}")
+            
+    if args.force_yolo:
+        print("Cleaning up old YOLO dataset, PDFs, and background cache...")
+        folders_to_clean = ["dataset_yolo", "pdfs", "temp_backgrounds"]
+        for folder in folders_to_clean:
+            if os.path.exists(folder):
+                try:
+                    shutil.rmtree(folder)
+                except Exception as e:
+                    print(f"Error removing {folder}: {e}")
+                    
+        # Remove data.yaml if exists to ensure complete clean start
+        if os.path.exists("data.yaml"):
+            try:
+                os.remove("data.yaml")
+            except Exception as e:
+                print(f"Error removing data.yaml: {e}")
+                
+    generator = SyntheticDataGenerator()
+    generator.generate_classifier_dataset(train_count=args.train_count, val_count=args.val_count)
     generator.save_dataset()
