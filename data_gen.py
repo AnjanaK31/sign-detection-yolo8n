@@ -236,6 +236,26 @@ class SyntheticDataGenerator:
         draw.polygon(world_pts, fill=color)
         return world_pts
 
+    def _draw_single_symbol_at(self, draw, c_name, cx, cy, font_size, color=(0, 0, 0, 255)):
+        if c_name == 'arrow':
+            arrow_size = int(font_size * 0.8)
+            self.draw_arrowhead(draw, cx, cy, arrow_size, 0, color=color[:3])
+        elif c_name in ['perpendicular', 'parallel', 'circularity', 'diameter', 'true_position', 'plus_minus']:
+            symbol_size = int(font_size * 0.9)
+            thickness = max(2, symbol_size // 12)
+            draw_symbol_geometrically(draw, c_name, cx, cy, symbol_size, color=color, thickness=thickness)
+        else:
+            char_str = CLASS_TO_CHAR.get(c_name, c_name)
+            font = self.get_font(font_size)
+            try:
+                left, top, right, bottom = font.getbbox(char_str)
+                w = right - left
+                h = bottom - top
+            except AttributeError:
+                w = font_size // 2
+                h = font_size
+            draw.text((cx - w // 2, cy - h // 2), char_str, font=font, fill=color)
+
     def generate_single_char_image(self, class_name, img_size=64):
         """Generates a preprocessed 64x64 crop of a single class for classifier training."""
         img = Image.new("RGBA", (img_size * 2, img_size * 2), (255, 255, 255, 0))
@@ -260,29 +280,28 @@ class SyntheticDataGenerator:
         angle = random.uniform(-15, 15) if class_name != 'arrow' else random.uniform(0, 360)
         ccx, ccy = img_size, img_size
         
-        if class_name == 'arrow':
-            arrow_size = random.randint(24, 36)
-            self.draw_arrowhead(draw, ccx, ccy, arrow_size, angle, color=(0, 0, 0))
-        elif class_name in ['perpendicular', 'parallel', 'circularity', 'diameter', 'true_position', 'plus_minus']:
-            symbol_size = random.randint(28, 40)
-            thickness = max(2, symbol_size // 12)
-            draw_symbol_geometrically(draw, class_name, ccx, ccy, symbol_size, color=(0, 0, 0, 255), thickness=thickness)
-            img = img.rotate(angle, expand=False, resample=Image.BICUBIC)
-        else:
-            char_str = CLASS_TO_CHAR[class_name]
-            font_size = random.randint(28, 42)
-            font = self.get_font(font_size)
+        # Font size for target and flanking characters
+        font_size = random.randint(28, 42)
+        
+        # Draw target character at center
+        self._draw_single_symbol_at(draw, class_name, ccx, ccy, font_size)
+        
+        # With 80% probability, draw flanking context characters to left/right
+        if random.random() < 0.8:
+            spacing = random.randint(int(font_size * 0.75), int(font_size * 0.95))
             
-            try:
-                left, top, right, bottom = font.getbbox(char_str)
-                w = right - left
-                h = bottom - top
-            except AttributeError:
-                w = font_size // 2
-                h = font_size
+            # Left neighbor
+            if random.random() < 0.75:
+                left_char = random.choice(CLASSES)
+                self._draw_single_symbol_at(draw, left_char, ccx - spacing, ccy, font_size)
                 
-            draw.text((ccx - w // 2, ccy - h // 2), char_str, font=font, fill=(0, 0, 0, 255))
-            img = img.rotate(angle, expand=False, resample=Image.BICUBIC)
+            # Right neighbor
+            if random.random() < 0.75:
+                right_char = random.choice(CLASSES)
+                self._draw_single_symbol_at(draw, right_char, ccx + spacing, ccy, font_size)
+                
+        # Rotate the entire expression together
+        img = img.rotate(angle, expand=False, resample=Image.BICUBIC)
             
         final_img = Image.new("RGB", (img_size, img_size), (255, 255, 255))
         offset_x = random.randint(-4, 4)
@@ -425,16 +444,15 @@ class SyntheticDataGenerator:
                     paste_y = int(ccy - rh / 2)
                     page_img.paste(rotated_char, (paste_x, paste_y), mask=rotated_char)
                     
+                    # Generate a bounding box for this individual character
+                    char_obb_pts = self.get_rotated_obb(ccx, ccy, w_c, h_c, line_angle)
+                    norm_pts = []
+                    for px, py in char_obb_pts:
+                        norm_pts.append(px / width)
+                        norm_pts.append(py / height)
+                    labels.append((0, norm_pts))
+                    
                 current_x += w_c
-                
-            # Generate a single bounding box for the entire expression
-            # The expression is centered at cx, cy, with size total_w x max_h
-            expr_obb_pts = self.get_rotated_obb(cx, cy, total_w, max_h, line_angle)
-            norm_pts = []
-            for px, py in expr_obb_pts:
-                norm_pts.append(px / width)
-                norm_pts.append(py / height)
-            labels.append((0, norm_pts))
                 
         preprocessed_page = self.apply_adaptive_threshold(page_img)
         return preprocessed_page, labels

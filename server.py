@@ -36,7 +36,9 @@ classifier = None
 def get_models():
     global yolo_model, classifier
     if yolo_model is None:
-        yolo_path = "runs/obb/yolo_obb_project/symbol_obb_train-2/weights/best.pt"
+        yolo_path = "runs/obb/runs/obb/trained_on_1000_pdfs-2/weights/best.pt"
+        if not os.path.exists(yolo_path):
+            yolo_path = "runs/obb/yolo_obb_project/symbol_obb_train-2/weights/best.pt"
         if not os.path.exists(yolo_path):
             yolo_path = "runs/obb/yolo_obb_project/symbol_obb_train/weights/best.pt"
         yolo_model = load_yolo_model(yolo_path)

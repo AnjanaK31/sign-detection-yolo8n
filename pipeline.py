@@ -213,9 +213,18 @@ def run_pipeline(input_path, yolo_path, classifier_path, output_dir, conf_thresh
     print(f"Total symbols detected and recognized: {total_dets}")
 
 if __name__ == "__main__":
+    # Dynamically find the best trained YOLO model path
+    default_yolo = "runs/obb/runs/obb/trained_on_1000_pdfs-2/weights/best.pt"
+    if not os.path.exists(default_yolo):
+        default_yolo = "runs/obb/yolo_obb_project/symbol_obb_train-2/weights/best.pt"
+    if not os.path.exists(default_yolo):
+        default_yolo = "runs/obb/yolo_obb_project/symbol_obb_train/weights/best.pt"
+    if not os.path.exists(default_yolo):
+        default_yolo = "yolo_obb_project/symbol_obb_train/weights/best.pt"
+
     parser = argparse.ArgumentParser(description="Orchestrator Pipeline for Blueprint Symbol Recognition")
     parser.add_argument("--input", required=True, help="Path to input image or PDF file")
-    parser.add_argument("--yolo", default="yolo_obb_project/symbol_obb_train/weights/best.pt", help="Path to trained YOLOv8-OBB model (.pt)")
+    parser.add_argument("--yolo", default=default_yolo, help="Path to trained YOLOv8-OBB model (.pt)")
     parser.add_argument("--classifier", default="classifier_best.pt", help="Path to trained MobileNetV3 classifier model (.pt)")
     parser.add_argument("--output", default="output_pipeline", help="Directory to save annotated outputs and JSON")
     parser.add_argument("--conf", type=float, default=0.25, help="Confidence threshold for YOLOv8 detection")
