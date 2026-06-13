@@ -563,7 +563,7 @@ class SyntheticDataGenerator:
         else:
             print("✅ All PDFs already compiled!")
             
-        data_yaml_content = f"""path: {os.path.abspath(yolo_dir)}
+        data_yaml_content = f"""path: {yolo_dir}
 train: images/train
 val: images/val
 test: images/test
