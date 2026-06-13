@@ -9,11 +9,11 @@ def main():
         # Create a string like "0,1" for multiple GPUs
         device = ",".join([str(i) for i in range(gpu_count)])
         print(f"🔥 MASSIVE COMPUTE DETECTED: Found {gpu_count} GPUs! Activating Multi-GPU Distributed Training on devices: {device}")
-        batch_size = 32 # 46GB VRAM per GPU can handle a massive batch size!
+        batch_size = 128 # Respectable batch size for dual 46GB VRAM GPUs!
     elif is_available and gpu_count == 1:
         device = "0"
         print(f"✅ GPU detected: {torch.cuda.get_device_name(0)}")
-        batch_size = 16
+        batch_size = 32
     else:
         device = "cpu"
         print("⚠️ No GPU detected (or CUDA drivers mismatched). Training will fall back to CPU and may be very slow.")
@@ -27,7 +27,7 @@ def main():
     # Train the model
     model.train(
         data="data.yaml",
-        epochs=3,
+        epochs=100,
         imgsz=1280,
         batch=batch_size,
         name="trained_on_chars_1000_pdfs",
