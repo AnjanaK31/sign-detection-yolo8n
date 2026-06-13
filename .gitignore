@@ -5,3 +5,9 @@ temp_backgrounds/
 dataset_classifier/
 debug_crops/
 yolo_obb_project/
+debug_crops_cleaned_pipeline/
+output_pipeline/
+debug_crops_cleaned/
+output_cleaned_pipeline/
+runs/obb/runs/obb/trained_on_1000_pdfs/train_batch1.jpg
+output_pipeline/

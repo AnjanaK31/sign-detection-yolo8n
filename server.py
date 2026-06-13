@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFont
 from shapely.geometry import Polygon
 
 # Import existing pipeline components
-from pipeline import load_yolo_model, preprocess_image
+from pipeline import load_yolo_model, preprocess_image, group_characters_into_expressions
 from rectifier import rectify_crop
 from classifier import SymbolClassifier, CLASSES
 from pipeline import CLASS_TO_CHAR
@@ -28,6 +28,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+def startup_event():
+    print("Loading models during startup...")
+    get_models()
+    print("Models loaded successfully!")
 
 # Global models (loaded on startup or first request)
 yolo_model = None
@@ -44,7 +50,10 @@ def get_models():
         yolo_model = load_yolo_model(yolo_path)
     if classifier is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        classifier = SymbolClassifier(model_path="classifier_best.pt", device=device)
+        clf_path = "classifier_best_bigdatset.pt"
+        if not os.path.exists(clf_path):
+            clf_path = "classifier_best.pt"
+        classifier = SymbolClassifier(model_path=clf_path, device=device)
     return yolo_model, classifier
 
 def pil_to_base64(img: Image.Image, format="PNG") -> str:
@@ -123,13 +132,45 @@ async def websocket_process(websocket: WebSocket):
                 xyxyxyxy = result.obb.xyxyxyxy.cpu().numpy()
                 yolo_confs = result.obb.conf.cpu().numpy()
                 
+                temp_chars = []
+                for idx in range(len(xywhr)):
+                    cx, cy, w, h, r = xywhr[idx]
+                    corners = xyxyxyxy[idx]
+                    yolo_conf = yolo_confs[idx]
+                    angle_deg = math.degrees(r)
+                    
+                    crop_pil = rectify_crop(
+                        preprocessed_img,
+                        bbox_metrics={'cx': cx, 'cy': cy, 'w': w, 'h': h, 'angle': angle_deg},
+                        buffer_percent=0.08
+                    )
+                    
+                    # Predict single character
+                    class_name, char_conf = cls_model.predict(crop_pil)
+                    char_display = CLASS_TO_CHAR.get(class_name, class_name)
+                    char_crop_b64 = pil_to_base64(crop_pil)
+                    
+                    temp_chars.append({
+                        "yolo_conf": float(yolo_conf),
+                        "pred_char": char_display,
+                        "class_confidence": float(char_conf),
+                        "rotation_degrees": float(angle_deg),
+                        "center": [float(cx), float(cy)],
+                        "size": [float(w), float(h)],
+                        "corners": corners.tolist(),
+                        "char_crop_b64": char_crop_b64
+                    })
+                
+                # Group characters into expressions
+                page_detections = group_characters_into_expressions(temp_chars)
+                
                 # Send YOLO bounding boxes to UI
                 boxes_data = []
-                for idx in range(len(xywhr)):
+                for idx, expr in enumerate(page_detections):
                     boxes_data.append({
                         "id": idx,
-                        "corners": xyxyxyxy[idx].tolist(),
-                        "conf": float(yolo_confs[idx])
+                        "corners": expr["corners"],
+                        "conf": expr["yolo_conf"]
                     })
                 
                 await websocket.send_json({
@@ -141,39 +182,36 @@ async def websocket_process(websocket: WebSocket):
                 if not skip_animations:
                     await asyncio.sleep(1.0) # Let UI draw boxes
                 
-                # Process each crop
-                for idx in range(len(xywhr)):
-                    cx, cy, w, h, r = xywhr[idx]
-                    corners = xyxyxyxy[idx]
-                    angle_deg = math.degrees(r)
+                # Process each crop (which are now grouped expressions)
+                for idx, expr in enumerate(page_detections):
+                    corners = expr["corners"]
                     
-                    crop_pil = rectify_crop(
+                    # Rectify the full expression region to get a clean visual crop of the expression
+                    expr_crop_pil = rectify_crop(
                         preprocessed_img,
-                        bbox_metrics={'cx': cx, 'cy': cy, 'w': w, 'h': h, 'angle': angle_deg},
+                        pts=np.array(corners, dtype=np.float32),
                         buffer_percent=0.08
                     )
+                    expr_crop_b64 = pil_to_base64(expr_crop_pil)
                     
-                    class_name, class_conf = cls_model.predict(crop_pil)
-                    
-                    char_display = CLASS_TO_CHAR.get(class_name, class_name)
                     det = {
                         "id": idx,
-                        "yolo_conf": float(yolo_confs[idx]),
-                        "pred_class": class_name,
-                        "pred_char": char_display,
-                        "class_confidence": float(class_conf),
-                        "rotation_degrees": float(angle_deg),
-                        "center": [float(cx), float(cy)],
-                        "size": [float(w), float(h)],
-                        "corners": corners.tolist()
+                        "yolo_conf": expr["yolo_conf"],
+                        "pred_class": expr["pred_class"],
+                        "pred_char": expr["pred_char"],
+                        "class_confidence": expr["class_confidence"],
+                        "rotation_degrees": expr["rotation_degrees"],
+                        "center": expr["center"],
+                        "size": expr["size"],
+                        "corners": corners,
+                        "char_details": expr["char_details"]
                     }
-                    page_detections.append(det)
                     
                     await websocket.send_json({
                         "step": "crop_processed",
                         "page_num": i + 1,
                         "detection": det,
-                        "crop_image": pil_to_base64(crop_pil) if not skip_animations else None
+                        "crop_image": expr_crop_b64
                     })
                     
                     if not skip_animations:

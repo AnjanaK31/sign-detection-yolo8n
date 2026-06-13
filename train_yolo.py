@@ -27,16 +27,16 @@ def main():
     # Train the model
     model.train(
         data="data.yaml",
-        epochs=100,
+        epochs=3,
         imgsz=1280,
         batch=batch_size,
-        name="trained_on_1000_pdfs",
+        name="trained_on_chars_1000_pdfs",
         device=device,
         project="runs/obb"
     )
     
     print("\n🎉 Training complete! The best model weights are saved in:")
-    print("runs/obb/trained_on_1000_pdfs/weights/best.pt")
+    print("runs/obb/trained_on_chars_1000_pdfs/weights/best.pt")
 
 if __name__ == "__main__":
     main()

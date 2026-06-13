@@ -22,9 +22,8 @@ pip install tqdm ultralytics opencv-python Pillow numpy torch torchvision
 
 # 3. Check if Dataset Exists and Compile PDFs
 echo "🔍 Verifying Dataset and PDFs..."
-# data_gen.py is smart and will instantly skip images it has already generated,
-# and will compile any missing PDFs!
-python data_gen.py
+# Force regenerating the YOLO OBB dataset with --force-yolo
+python data_gen.py --force-yolo
 
 # 4. Start YOLO Multi-GPU Training
 echo "🧠 Starting YOLO Training Script..."

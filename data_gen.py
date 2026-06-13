@@ -377,7 +377,7 @@ class SyntheticDataGenerator:
             font_size = random.randint(28, 40)
             font = self.get_font(font_size)
             
-            line_angle = random.choice([0, 90, 180, 270]) + random.uniform(-10, 10)
+            line_angle = random.choice([0, 90, 180, 270]) + random.uniform(-5, 5)
             rad = math.radians(line_angle)
             cos_a = math.cos(rad)
             sin_a = math.sin(rad)
