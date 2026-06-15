@@ -1,4 +1,5 @@
 import os
+import random
 import torch
 import torch.nn as nn
 import torchvision.models as models
@@ -52,13 +53,81 @@ CLASSES = [
 IDX_TO_CLASS = {i: c for i, c in enumerate(CLASSES)}
 CLASS_TO_IDX = {c: i for i, c in enumerate(CLASSES)}
 
-# Preprocessing transforms for MobileNetV3 inference/training
-def get_transforms(img_size=64):
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Custom transforms
+# ─────────────────────────────────────────────────────────────────────────────
+
+class AddGaussianNoise:
+    """Adds zero-mean Gaussian noise to a tensor (applied after ToTensor)."""
+    def __init__(self, std_range=(0.01, 0.08)):
+        self.std_range = std_range
+
+    def __call__(self, tensor):
+        std = random.uniform(*self.std_range)
+        return (tensor + torch.randn_like(tensor) * std).clamp(0.0, 1.0)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}(std_range={self.std_range})"
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Preprocessing transforms
+# ─────────────────────────────────────────────────────────────────────────────
+
+def get_train_transforms(img_size=64):
+    """
+    Online augmentation transforms used ONLY during training.
+    Each epoch every image gets a freshly randomised augmentation:
+      - Random rotation  ±15°   (handles YOLO rectification imprecision)
+      - Random affine shear/translate  (simulates OBB angle error)
+      - GaussianBlur   (simulates real pipeline crops being slightly soft)
+      - ColorJitter brightness/contrast  (simulates paper quality variation)
+      - Gaussian noise  (simulates scan/PDF compression artifacts)
+      - RandomErasing  (simulates small ink blobs or line-removal leftovers)
+    """
+    return transforms.Compose([
+        transforms.Resize((img_size, img_size)),
+        transforms.RandomRotation(degrees=15),
+        transforms.RandomAffine(
+            degrees=0,
+            translate=(0.06, 0.06),
+            shear=(-8, 8)
+        ),
+        transforms.ColorJitter(brightness=0.35, contrast=0.35),
+        transforms.GaussianBlur(kernel_size=3, sigma=(0.1, 1.5)),
+        transforms.ToTensor(),
+        AddGaussianNoise(std_range=(0.01, 0.06)),
+        transforms.RandomErasing(
+            p=0.25,
+            scale=(0.01, 0.06),
+            ratio=(0.3, 3.0),
+            value=1.0    # erase with white (background colour)
+        ),
+        transforms.Normalize(
+            mean=[0.485, 0.456, 0.406],
+            std=[0.229, 0.224, 0.225]
+        ),
+    ])
+
+
+def get_val_transforms(img_size=64):
+    """
+    Clean transforms for validation and inference — no randomness.
+    """
     return transforms.Compose([
         transforms.Resize((img_size, img_size)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        transforms.Normalize(
+            mean=[0.485, 0.456, 0.406],
+            std=[0.229, 0.224, 0.225]
+        ),
     ])
+
+
+def get_transforms(img_size=64):
+    """Backwards-compatible alias — returns val (clean) transforms."""
+    return get_val_transforms(img_size)
 
 def get_mobilenet_v3_small(num_classes):
     """Returns a MobileNetV3-Small model with pretrained weights for rapid transfer learning."""
@@ -95,10 +164,11 @@ class SymbolClassifier:
                 
         self.model.to(self.device)
         self.model.eval()
-        self.transform = get_transforms(self.img_size)
+        self.transform = get_val_transforms(self.img_size)  # always use clean transforms for inference
         
     def predict(self, crop_image, target_percent=0.6):
-        """Runs inference on a cropped PIL image. Pads and scales the image to match the training dataset scale."""
+        """Runs inference on a cropped PIL image. Pads and scales the image to match the training dataset scale.
+        Evaluates the crop at 3 canonical orientations (0, 90, 270 degrees) to handle orientation ambiguities."""
         # Ensure RGB
         if isinstance(crop_image, Image.Image):
             img = crop_image.convert("RGB")
@@ -106,35 +176,51 @@ class SymbolClassifier:
             # Assume numpy array
             img = Image.fromarray(crop_image).convert("RGB")
             
-        w, h = img.size
-        max_dim = max(w, h, 1)
+        rotations = [0, 90, 270]
+        batch_tensors = []
         
-        # Scale the character so its max dimension is target_percent of self.img_size
-        scale = (self.img_size * target_percent) / max_dim
-        new_w = max(1, int(round(w * scale)))
-        new_h = max(1, int(round(h * scale)))
-        
-        # Resize using BICUBIC interpolation
-        resized_img = img.resize((new_w, new_h), Image.BICUBIC)
-        
-        # Create a new white canvas and paste the resized image in the center
-        canvas = Image.new("RGB", (self.img_size, self.img_size), (255, 255, 255))
-        paste_x = (self.img_size - new_w) // 2
-        paste_y = (self.img_size - new_h) // 2
-        canvas.paste(resized_img, (paste_x, paste_y))
-        
-        # Transform and convert to batch tensor
-        tensor = self.transform(canvas).unsqueeze(0).to(self.device)
+        for rot in rotations:
+            if rot == 0:
+                rot_img = img
+            else:
+                rot_img = img.rotate(rot, expand=True)
+                
+            w, h = rot_img.size
+            max_dim = max(w, h, 1)
+            
+            # Scale the character so its max dimension is target_percent of self.img_size
+            scale = (self.img_size * target_percent) / max_dim
+            new_w = max(1, int(round(w * scale)))
+            new_h = max(1, int(round(h * scale)))
+            
+            # Resize using BICUBIC interpolation
+            resized_img = rot_img.resize((new_w, new_h), Image.BICUBIC)
+            
+            # Create a new white canvas and paste the resized image in the center
+            canvas = Image.new("RGB", (self.img_size, self.img_size), (255, 255, 255))
+            paste_x = (self.img_size - new_w) // 2
+            paste_y = (self.img_size - new_h) // 2
+            canvas.paste(resized_img, (paste_x, paste_y))
+            
+            tensor = self.transform(canvas)
+            batch_tensors.append(tensor)
+            
+        # Stack all tensors into a single batch and move to device
+        batch_tensor = torch.stack(batch_tensors).to(self.device)
         
         with torch.no_grad():
-            outputs = self.model(tensor)
+            outputs = self.model(batch_tensor)
             probabilities = torch.softmax(outputs, dim=1)
-            conf, pred_idx = torch.max(probabilities, dim=1)
+            # Find the max probability for each of the 3 rotations
+            conf_vals, class_idxs = torch.max(probabilities, dim=1)
             
-        class_idx = pred_idx.item()
-        confidence = conf.item()
-        class_name = IDX_TO_CLASS[class_idx]
-        
+            # Find the rotation that yields the highest confidence overall
+            best_rot_idx = torch.argmax(conf_vals).item()
+            
+            confidence = conf_vals[best_rot_idx].item()
+            class_idx = class_idxs[best_rot_idx].item()
+            class_name = IDX_TO_CLASS[class_idx]
+            
         return class_name, confidence
 
     def _segment_characters(self, crop_image):

@@ -4,7 +4,6 @@ import math
 import numpy as np
 import cv2
 from PIL import Image, ImageDraw, ImageFont
-from tqdm import tqdm
 
 # 21 classes matching requirements
 CLASSES = [
@@ -236,26 +235,6 @@ class SyntheticDataGenerator:
         draw.polygon(world_pts, fill=color)
         return world_pts
 
-    def _draw_single_symbol_at(self, draw, c_name, cx, cy, font_size, color=(0, 0, 0, 255)):
-        if c_name == 'arrow':
-            arrow_size = int(font_size * 0.8)
-            self.draw_arrowhead(draw, cx, cy, arrow_size, 0, color=color[:3])
-        elif c_name in ['perpendicular', 'parallel', 'circularity', 'diameter', 'true_position', 'plus_minus']:
-            symbol_size = int(font_size * 0.9)
-            thickness = max(2, symbol_size // 12)
-            draw_symbol_geometrically(draw, c_name, cx, cy, symbol_size, color=color, thickness=thickness)
-        else:
-            char_str = CLASS_TO_CHAR.get(c_name, c_name)
-            font = self.get_font(font_size)
-            try:
-                left, top, right, bottom = font.getbbox(char_str)
-                w = right - left
-                h = bottom - top
-            except AttributeError:
-                w = font_size // 2
-                h = font_size
-            draw.text((cx - w // 2, cy - h // 2), char_str, font=font, fill=color)
-
     def generate_single_char_image(self, class_name, img_size=64):
         """Generates a preprocessed 64x64 crop of a single class for classifier training."""
         img = Image.new("RGBA", (img_size * 2, img_size * 2), (255, 255, 255, 0))
@@ -280,28 +259,29 @@ class SyntheticDataGenerator:
         angle = random.uniform(-15, 15) if class_name != 'arrow' else random.uniform(0, 360)
         ccx, ccy = img_size, img_size
         
-        # Font size for target and flanking characters
-        font_size = random.randint(28, 42)
-        
-        # Draw target character at center
-        self._draw_single_symbol_at(draw, class_name, ccx, ccy, font_size)
-        
-        # With 80% probability, draw flanking context characters to left/right
-        if random.random() < 0.8:
-            spacing = random.randint(int(font_size * 0.75), int(font_size * 0.95))
+        if class_name == 'arrow':
+            arrow_size = random.randint(24, 36)
+            self.draw_arrowhead(draw, ccx, ccy, arrow_size, angle, color=(0, 0, 0))
+        elif class_name in ['perpendicular', 'parallel', 'circularity', 'diameter', 'true_position', 'plus_minus']:
+            symbol_size = random.randint(28, 40)
+            thickness = max(2, symbol_size // 12)
+            draw_symbol_geometrically(draw, class_name, ccx, ccy, symbol_size, color=(0, 0, 0, 255), thickness=thickness)
+            img = img.rotate(angle, expand=False, resample=Image.BICUBIC)
+        else:
+            char_str = CLASS_TO_CHAR[class_name]
+            font_size = random.randint(28, 42)
+            font = self.get_font(font_size)
             
-            # Left neighbor
-            if random.random() < 0.75:
-                left_char = random.choice(CLASSES)
-                self._draw_single_symbol_at(draw, left_char, ccx - spacing, ccy, font_size)
+            try:
+                left, top, right, bottom = font.getbbox(char_str)
+                w = right - left
+                h = bottom - top
+            except AttributeError:
+                w = font_size // 2
+                h = font_size
                 
-            # Right neighbor
-            if random.random() < 0.75:
-                right_char = random.choice(CLASSES)
-                self._draw_single_symbol_at(draw, right_char, ccx + spacing, ccy, font_size)
-                
-        # Rotate the entire expression together
-        img = img.rotate(angle, expand=False, resample=Image.BICUBIC)
+            draw.text((ccx - w // 2, ccy - h // 2), char_str, font=font, fill=(0, 0, 0, 255))
+            img = img.rotate(angle, expand=False, resample=Image.BICUBIC)
             
         final_img = Image.new("RGB", (img_size, img_size), (255, 255, 255))
         offset_x = random.randint(-4, 4)
@@ -312,31 +292,19 @@ class SyntheticDataGenerator:
 
     def generate_classifier_dataset(self, output_dir="dataset_classifier", train_count=150, val_count=40):
         """Generates synthetic character/symbol crops for training the MobileNetV3 model."""
-        if os.path.exists(os.path.join(output_dir, "train", "0")) and len(os.listdir(os.path.join(output_dir, "train", "0"))) > 0:
-            print("Classifier dataset already exists! Skipping generation.")
-            return
-            
-        print(f"Generating classifier dataset ({train_count} train / {val_count} val samples per class) with Multiprocessing...")
+        print(f"Generating classifier dataset ({train_count} train / {val_count} val samples per class)...")
         
         for name in ["train", "val"]:
             for c in CLASSES:
                 os.makedirs(os.path.join(output_dir, name, c), exist_ok=True)
                 
-        # Build tasks
-        tasks = []
         for c in CLASSES:
             for i in range(train_count):
-                tasks.append((c, "train", i, output_dir))
+                img = self.generate_single_char_image(c)
+                img.save(os.path.join(output_dir, "train", c, f"img_{i}.png"))
             for i in range(val_count):
-                tasks.append((c, "val", i, output_dir))
-                
-        import concurrent.futures
-        max_workers = os.cpu_count() or 4
-        print(f"[*] Launching parallel workers for Classifier crops on {max_workers} cores...")
-        with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
-            futures = [executor.submit(process_classifier_crop_worker, task) for task in tasks]
-            for _ in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Crops"):
-                pass
+                img = self.generate_single_char_image(c)
+                img.save(os.path.join(output_dir, "val", c, f"img_{i}.png"))
                 
         print("Classifier dataset generation complete!")
 
@@ -374,14 +342,17 @@ class SyntheticDataGenerator:
             tpl = random.choice(templates)()
             chars = tpl["chars"]
             
-            font_size = random.randint(28, 40)
+            # Draw individual characters along a baseline (slightly larger for better YOLO-OBB detection)
+            font_size = random.randint(32, 46)
             font = self.get_font(font_size)
             
-            line_angle = random.choice([0, 90, 180, 270]) + random.uniform(-5, 5)
+            # Determine line baseline rotation
+            line_angle = random.choice([0, 90, 180, 270]) + random.uniform(-10, 10)
             rad = math.radians(line_angle)
             cos_a = math.cos(rad)
             sin_a = math.sin(rad)
             
+            # Measure dimensions
             char_widths = []
             char_heights = []
             for c in chars:
@@ -392,23 +363,26 @@ class SyntheticDataGenerator:
                     char_str = CLASS_TO_CHAR[c]
                     try:
                         left, top, right, bottom = font.getbbox(char_str)
-                        char_widths.append(max(right - left, 10))
-                        char_heights.append(max(bottom - top, 20))
+                        char_widths.append(max(right - left, 12))
+                        char_heights.append(max(bottom - top, 24))
                     except AttributeError:
                         char_widths.append(font_size // 2)
                         char_heights.append(font_size)
                 else:
+                    # geometric or other custom symbols
                     char_widths.append(font_size)
                     char_heights.append(font_size)
                     
             total_w = sum(char_widths)
             max_h = max(char_heights)
             
+            # Find collision-free place for the expression block
             placed = False
             for _ in range(50):
                 cx = random.randint(min_x, max_x)
                 cy = random.randint(min_y, max_y)
                 
+                # Check rough axis-aligned bounding box to prevent overlap
                 r_diag = max(total_w, max_h)
                 xmin, xmax = cx - r_diag, cx + r_diag
                 ymin, ymax = cy - r_diag, cy + r_diag
@@ -424,15 +398,41 @@ class SyntheticDataGenerator:
             if not placed:
                 continue
                 
+            # If has leader line, draw a leader line pointing to the center, ending with an arrowhead
+            if tpl["has_leader"]:
+                target_x = cx + random.randint(-150, 150)
+                target_y = cy + random.randint(-150, 150)
+                target_x = max(margin + 50, min(width - margin - 50, target_x))
+                target_y = max(margin + 50, min(height - margin - 220, target_y))
+                
+                # Draw leader line
+                draw.line((cx, cy, target_x, target_y), fill=(50, 50, 50), width=2)
+                # Draw arrowhead at the end (pointing in the direction of the line)
+                arrow_angle = math.degrees(math.atan2(cy - target_y, target_x - cx))
+                arrow_pts = self.draw_arrowhead(draw, target_x, target_y, 22, arrow_angle, color=(0, 0, 0))
+                
+                # Save arrowhead OBB
+                norm_pts = []
+                for px, py in arrow_pts:
+                    norm_pts.append(px / width)
+                    norm_pts.append(py / height)
+                if len(norm_pts) == 6:
+                    norm_pts.append(norm_pts[-2])
+                    norm_pts.append(norm_pts[-2])
+                labels.append((0, norm_pts))
+                
+            # Draw individual characters
             current_x = -total_w / 2
             for idx, c in enumerate(chars):
                 w_c = char_widths[idx]
                 h_c = char_heights[idx]
                 
+                # Center of this character along the baseline
                 ccx = cx + (current_x + w_c / 2) * cos_a
-                ccy = cy - (current_x + w_c / 2) * sin_a
+                ccy = cy + (current_x + w_c / 2) * sin_a
                 
                 if c != " ":
+                    # Create transparent double-size canvas for drawing character
                     canvas_size = int(max(w_c, h_c) * 2)
                     char_canvas = Image.new("RGBA", (canvas_size, canvas_size), (255, 255, 255, 0))
                     char_draw = ImageDraw.Draw(char_canvas)
@@ -445,17 +445,24 @@ class SyntheticDataGenerator:
                         thickness = max(2, symbol_size // 12)
                         draw_symbol_geometrically(char_draw, c, canvas_size // 2, canvas_size // 2, symbol_size, color=(0, 0, 0, 255), thickness=thickness)
                         
+                    # Rotate the character canvas
                     rotated_char = char_canvas.rotate(line_angle, expand=True, resample=Image.BICUBIC)
                     rw, rh = rotated_char.size
                     
+                    # Compute the OBB for this character (with a 2-pixel padding mask)
+                    obb_pts = self.get_rotated_obb(ccx, ccy, w_c + 4, h_c + 4, line_angle)
+                    
+                    # Draw a white background polygon to clear grid lines under the character
+                    draw.polygon([(float(pt[0]), float(pt[1])) for pt in obb_pts], fill=(255, 255, 255))
+                    
+                    # Paste rotated character canvas centered at (ccx, ccy)
                     paste_x = int(ccx - rw / 2)
                     paste_y = int(ccy - rh / 2)
                     page_img.paste(rotated_char, (paste_x, paste_y), mask=rotated_char)
                     
-                    # Generate a bounding box for this individual character
-                    char_obb_pts = self.get_rotated_obb(ccx, ccy, w_c, h_c, line_angle)
+                    # Add OBB coordinates to label
                     norm_pts = []
-                    for px, py in char_obb_pts:
+                    for px, py in obb_pts:
                         norm_pts.append(px / width)
                         norm_pts.append(py / height)
                     labels.append((0, norm_pts))
@@ -468,102 +475,57 @@ class SyntheticDataGenerator:
     def save_dataset(self, pdf_dir="pdfs", yolo_dir="dataset_yolo"):
         """Compiles the full YOLO dataset (images and OBB labels) and PDFs."""
         bg_dir = "temp_backgrounds"
-        if not os.path.exists(bg_dir):
-            self.generate_backgrounds(bg_dir, count=10)
+        self.generate_backgrounds(bg_dir, count=10)
         
-        print("Checking YOLO OBB dataset status...")
+        print("Generating YOLO OBB dataset...")
         os.makedirs(pdf_dir, exist_ok=True)
         
         splits = {
-            "train": (0, 4000),
-            "val": (4000, 4800),
-            "test": (4800, 5000)
+            "train": (0, 60),
+            "val": (60, 75),
+            "test": (75, 80)
         }
         
-        import concurrent.futures
-        import json
-        
-        gt_path = os.path.join(yolo_dir, "ground_truth.json")
-        pdf_pages_map = {}
-        
-        if os.path.exists(gt_path):
-            print("✅ YOLO dataset images already exist! Skipping image generation...")
-            for split_name in splits.keys():
-                split_dir = os.path.join(yolo_dir, "images", split_name)
-                if not os.path.exists(split_dir): continue
-                for img_name in os.listdir(split_dir):
-                    if img_name.endswith(".png"):
-                        parts = img_name.replace(".png", "").split("_")
-                        pdf_idx = int(parts[1])
-                        page_in_pdf = int(parts[3])
-                        if pdf_idx not in pdf_pages_map:
-                            pdf_pages_map[pdf_idx] = {}
-                        pdf_pages_map[pdf_idx][page_in_pdf] = os.path.join(split_dir, img_name)
-        else:
-            for name, (start, end) in splits.items():
-                os.makedirs(os.path.join(yolo_dir, "images", name), exist_ok=True)
-                os.makedirs(os.path.join(yolo_dir, "labels", name), exist_ok=True)
+        for name, (start, end) in splits.items():
+            os.makedirs(os.path.join(yolo_dir, "images", name), exist_ok=True)
+            os.makedirs(os.path.join(yolo_dir, "labels", name), exist_ok=True)
             
+        all_pages = []
         backgrounds = [os.path.join(bg_dir, f"bg_{i}.png") for i in range(10)]
         
-        print("Generating YOLO OBB dataset with Multiprocessing...")
-        
-        tasks = []
-        for idx in range(5000):
-            bg_path = backgrounds[idx % len(backgrounds)]
-            if idx < splits["train"][1]:
-                split_name = "train"
-            elif idx < splits["val"][1]:
-                split_name = "val"
-            else:
-                split_name = "test"
+        for page_idx in range(80):
+            bg_path = backgrounds[page_idx % len(backgrounds)]
+            page_img, labels = self.generate_full_page(bg_path, num_annotations=15)
+            all_pages.append((page_img, labels))
+            if (page_idx + 1) % 20 == 0 or page_idx == 0:
+                print(f"Generated page {page_idx + 1}/80")
                 
-            pdf_idx = idx // 5
-            page_in_pdf = (idx % 5) + 1
-            tasks.append((idx, bg_path, split_name, pdf_idx, page_in_pdf, yolo_dir))
-            
-        ground_truth_db = {}
-        
-        import concurrent.futures
-            
-        pdf_pages_map = {}
-        
-        # Run multiprocessing pool
-        max_workers = os.cpu_count() or 4
-        print("[*] Launching parallel workers for Image Generation...")
-        with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
-            futures = {executor.submit(process_page_worker, task): task for task in tasks}
-            for future in tqdm(concurrent.futures.as_completed(futures), total=len(tasks), desc="Generating Pages"):
-                img_name, absolute_gt, pdf_idx, page_in_pdf, img_path = future.result()
-                ground_truth_db[img_name] = absolute_gt
+        for split_name, (start, end) in splits.items():
+            print(f"Saving splits for: {split_name}...")
+            for idx in range(start, end):
+                page_img, labels = all_pages[idx]
                 
-                if pdf_idx not in pdf_pages_map:
-                    pdf_pages_map[pdf_idx] = {}
-                pdf_pages_map[pdf_idx][page_in_pdf] = img_path
+                img_name = f"page_{idx}.png"
+                img_path = os.path.join(yolo_dir, "images", split_name, img_name)
+                page_img.save(img_path)
                 
-        # Save GT JSON database
-        with open(gt_path, "w") as f:
-            json.dump(ground_truth_db, f, indent=2)
+                label_name = f"page_{idx}.txt"
+                label_path = os.path.join(yolo_dir, "labels", split_name, label_name)
                 
-        print("Compiling sample 5-page PDFs with Multiprocessing...")
-        pdf_tasks = []
-        for pdf_idx in range(1000):
-            # Check if PDF already exists
+                with open(label_path, "w", encoding="utf-8") as f:
+                    for class_idx, pts in labels:
+                        pts_str = " ".join([f"{p:.6f}" for p in pts])
+                        f.write(f"{class_idx} {pts_str}\n")
+                        
+        print("Compiling sample 3-page PDFs...")
+        for pdf_idx in range(5):
+            p1 = all_pages[pdf_idx * 3][0]
+            p2 = all_pages[pdf_idx * 3 + 1][0]
+            p3 = all_pages[pdf_idx * 3 + 2][0]
             pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
-            if not os.path.exists(pdf_path) and len(pdf_pages_map.get(pdf_idx, {})) == 5:
-                pdf_tasks.append((pdf_idx, pdf_pages_map[pdf_idx], pdf_dir))
-                
-        if len(pdf_tasks) > 0:
-            max_workers = os.cpu_count() or 4
-            print(f"[*] Launching {max_workers} parallel workers for PDF Compilation...")
-            with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
-                futures = {executor.submit(compile_pdf_worker, task): task for task in pdf_tasks}
-                for future in tqdm(concurrent.futures.as_completed(futures), total=len(pdf_tasks), desc="Compiling PDFs"):
-                    pass
-        else:
-            print("✅ All PDFs already compiled!")
+            p1.save(pdf_path, save_all=True, append_images=[p2, p3], format="PDF")
             
-        data_yaml_content = f"""path: {yolo_dir}
+        data_yaml_content = f"""path: {os.path.abspath(yolo_dir)}
 train: images/train
 val: images/val
 test: images/test
@@ -576,98 +538,7 @@ names:
             
         print("YOLO dataset generation complete!")
 
-# Top-level function to avoid multiprocessing pickling issues
-def process_page_worker(task):
-    idx, bg_path, split_name, pdf_idx, page_in_pdf, y_dir = task
-    # Initialize local generator
-    generator = SyntheticDataGenerator()
-    page_img, labels = generator.generate_full_page(bg_path, num_annotations=15)
-    width, height = page_img.size
-    
-    img_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.png"
-    img_path = os.path.join(y_dir, "images", split_name, img_name)
-    page_img.save(img_path)
-    
-    label_name = f"blueprint_{pdf_idx}_page_{page_in_pdf}.txt"
-    label_path = os.path.join(y_dir, "labels", split_name, label_name)
-    
-    absolute_gt = []
-    with open(label_path, "w", encoding="utf-8") as f:
-        for class_idx, pts in labels:
-            pts_str = " ".join([f"{p:.6f}" for p in pts])
-            f.write(f"{class_idx} {pts_str}\n")
-            
-            abs_corners = [
-                [pts[0] * width, pts[1] * height],
-                [pts[2] * width, pts[3] * height],
-                [pts[4] * width, pts[5] * height],
-                [pts[6] * width, pts[7] * height]
-            ]
-            absolute_gt.append({
-                "class": class_idx,
-                "corners": abs_corners
-            })
-            
-    return img_name, absolute_gt, pdf_idx, page_in_pdf, img_path
-
-# Top-level function for multiprocessing PDF compilation
-def compile_pdf_worker(task):
-    pdf_idx, pages_map, pdf_dir = task
-    p1 = Image.open(pages_map[1])
-    p2 = Image.open(pages_map[2])
-    p3 = Image.open(pages_map[3])
-    p4 = Image.open(pages_map[4])
-    p5 = Image.open(pages_map[5])
-    pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
-    p1.save(pdf_path, save_all=True, append_images=[p2, p3, p4, p5], format="PDF")
-    return pdf_idx
-
-# Top-level function for multiprocessing classifier crop generation
-def process_classifier_crop_worker(task):
-    class_name, split_name, idx, output_dir = task
-    # Initialize local generator
-    generator = SyntheticDataGenerator()
-    img = generator.generate_single_char_image(class_name)
-    img_path = os.path.join(output_dir, split_name, class_name, f"img_{idx}.png")
-    img.save(img_path)
-
 if __name__ == "__main__":
-    import argparse
-    import shutil
-    
-    parser = argparse.ArgumentParser(description="Synthetic Blueprint Dataset Generator")
-    parser.add_argument("--force-classifier", action="store_true", help="Delete and regenerate the classifier dataset from scratch")
-    parser.add_argument("--force-yolo", action="store_true", help="Delete and regenerate the YOLO OBB dataset from scratch")
-    parser.add_argument("--train-count", type=int, default=150, help="Number of training images per class for classifier")
-    parser.add_argument("--val-count", type=int, default=40, help="Number of validation images per class for classifier")
-    args = parser.parse_args()
-    
-    # Handle force clean-up if requested
-    if args.force_classifier:
-        print("Cleaning up old classifier dataset...")
-        if os.path.exists("dataset_classifier"):
-            try:
-                shutil.rmtree("dataset_classifier")
-            except Exception as e:
-                print(f"Error removing dataset_classifier: {e}")
-            
-    if args.force_yolo:
-        print("Cleaning up old YOLO dataset, PDFs, and background cache...")
-        folders_to_clean = ["dataset_yolo", "pdfs", "temp_backgrounds"]
-        for folder in folders_to_clean:
-            if os.path.exists(folder):
-                try:
-                    shutil.rmtree(folder)
-                except Exception as e:
-                    print(f"Error removing {folder}: {e}")
-                    
-        # Remove data.yaml if exists to ensure complete clean start
-        if os.path.exists("data.yaml"):
-            try:
-                os.remove("data.yaml")
-            except Exception as e:
-                print(f"Error removing data.yaml: {e}")
-                
     generator = SyntheticDataGenerator()
-    generator.generate_classifier_dataset(train_count=args.train_count, val_count=args.val_count)
+    generator.generate_classifier_dataset()
     generator.save_dataset()

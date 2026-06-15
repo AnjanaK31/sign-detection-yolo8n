@@ -90,10 +90,8 @@ def rectify_crop(image, pts=None, bbox_metrics=None, buffer_percent=0.08, target
     # Center of rotation is now the center of the padded crop
     rot_center = (half_size, half_size)
     
-    # Get rotation matrix (use negative angle because OpenCV rotation is counter-clockwise)
-    # But wait, YOLO angle is counter-clockwise, getRotationMatrix2D angle is counter-clockwise.
-    # So we pass angle directly.
-    M = cv2.getRotationMatrix2D(rot_center, angle, 1.0)
+    # Get rotation matrix (use negative angle to undo/deskew the rotation)
+    M = cv2.getRotationMatrix2D(rot_center, -angle, 1.0)
     
     # Perform the warping
     warped = cv2.warpAffine(
