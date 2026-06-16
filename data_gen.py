@@ -290,7 +290,7 @@ class SyntheticDataGenerator:
         
         return self.apply_adaptive_threshold(final_img)
 
-    def generate_classifier_dataset(self, output_dir="dataset_classifier", train_count=150, val_count=40):
+    def generate_classifier_dataset(self, output_dir="dataset_classifier", train_count=500, val_count=100):
         """Generates synthetic character/symbol crops for training the MobileNetV3 model."""
         print(f"Generating classifier dataset ({train_count} train / {val_count} val samples per class)...")
         
@@ -540,5 +540,5 @@ names:
 
 if __name__ == "__main__":
     generator = SyntheticDataGenerator()
-    generator.generate_classifier_dataset()
+    generator.generate_classifier_dataset(train_count=500, val_count=100)
     generator.save_dataset()
