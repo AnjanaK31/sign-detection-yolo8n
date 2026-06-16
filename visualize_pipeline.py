@@ -279,7 +279,7 @@ def save_panel_b(panel_b_data: list, out_path: str, image_name: str,
         ax_rect.imshow(rect)
         char  = det["pred_char"]
         conf  = det["class_conf"]
-        col_c = "#00d4aa" if conf >= 0.9 else "#ff6b6b"
+        col_c = "#00d4aa" if conf >= 0.7 else "#ff6b6b"
         ax_rect.set_title(f"Rectified\n'{char}'  {conf:.2f}",
                           color=col_c, fontsize=8.5, pad=3, fontweight="bold")
 
@@ -415,7 +415,7 @@ def save_panel_c(annotated_pil: Image.Image, detections: list,
         ccnf = d.get("class_confidence", 0)
         ang  = d.get("rotation_degrees", 0)
 
-        clr  = "#3fb950" if ccnf >= 0.95 else ("#d29922" if ccnf >= 0.9 else "#f85149")
+        clr  = "#3fb950" if ccnf >= 0.9 else ("#d29922" if ccnf >= 0.7 else "#f85149")
 
         # Alternating row background
         row_bg = "#1c2128" if i % 2 == 0 else "#161b22"
@@ -459,7 +459,7 @@ def save_panel_c(annotated_pil: Image.Image, detections: list,
                     color="#8b949e", fontsize=7.5, ha="center", va="top")
 
     fig.suptitle(
-        f"Panel C — {image_name}  │  {len(detections)} detection(s)  │  ≥ 0.90 confidence",
+        f"Panel C — {image_name}  │  {len(detections)} detection(s)  │  ≥ 0.70 confidence",
         color="white", fontsize=13, fontweight="bold", y=1.005
     )
     plt.tight_layout(pad=0.8)
@@ -557,7 +557,7 @@ def run_visualization(image_path: str, yolo_path: str, classifier_path: str,
                 "yolo_conf":    yolo_conf,
             })
 
-            if class_conf >= 0.9:
+            if class_conf >= 0.7:
                 detections.append({
                     "yolo_conf":        yolo_conf,
                     "pred_class":       class_name,
@@ -616,7 +616,7 @@ def run_visualization(image_path: str, yolo_path: str, classifier_path: str,
         json.dump(json_report, f, indent=2, ensure_ascii=False)
     print(f"  [J] Saved: {json_path}")
 
-    print(f"\n  ✓ {len(detections)} high-confidence detections (≥0.90)")
+    print(f"  ✓ {len(detections)} detections (≥0.70 confidence)")
     print(f"  ✓ Panels saved to: {out_dir}/\n")
 
 

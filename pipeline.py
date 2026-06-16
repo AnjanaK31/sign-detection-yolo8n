@@ -106,7 +106,7 @@ def process_page(img_pil, yolo_model, classifier, conf_threshold=0.25):
             class_name, class_conf = classifier.predict(crop_pil)
             
             # Filtering: Apply a 0.9 confidence floor to exclude low-probability results
-            if class_conf >= 0.9:
+            if class_conf >= 0.7:
                 char_display = CLASS_TO_CHAR.get(class_name, class_name)
                 
                 detections.append({
