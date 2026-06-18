@@ -11,3 +11,5 @@ debug_crops_cleaned/
 output_cleaned_pipeline/
 runs/obb/runs/obb/trained_on_1000_pdfs/train_batch1.jpg
 output_pipeline/
+Nived-dataset/
+toTest/

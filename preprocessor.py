@@ -36,10 +36,19 @@ def apply_threshold(gray_np: np.ndarray,
                     c: int = 2) -> np.ndarray:
     """
     Adaptive Gaussian threshold → pure binary image.
+    Supports both light backgrounds and dark (classic blueprint) backgrounds.
+    If the background is dark (mean gray value < 127), we invert the image first
+    so that the output is always black text/lines on white background.
     Output: uint8 array, 0 = black (foreground), 255 = white (background).
     """
+    mean_val = np.mean(gray_np)
+    if mean_val < 127:
+        gray_input = cv2.bitwise_not(gray_np)
+    else:
+        gray_input = gray_np
+
     return cv2.adaptiveThreshold(
-        gray_np, 255,
+        gray_input, 255,
         cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
         cv2.THRESH_BINARY,
         block_size, c

@@ -64,9 +64,13 @@ MAX_PAGE_DIM = 4000   # pixels on longest side; originals are 6667×8334
 # ─────────────────────────────────────────────────────────────────────────────
 
 def load_font(size=18):
-    for p in ["C:\\Windows\\Fonts\\arial.ttf",
-               "C:\\Windows\\Fonts\\calibri.ttf",
-               "C:\\Windows\\Fonts\\segoeui.ttf"]:
+    for p in ["C:\\Windows\\Fonts\\seguisym.ttf",
+              "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+              "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
+              "DejaVuSans.ttf",
+              "C:\\Windows\\Fonts\\arial.ttf",
+              "C:\\Windows\\Fonts\\calibri.ttf",
+              "C:\\Windows\\Fonts\\segoeui.ttf"]:
         if os.path.exists(p):
             try:
                 return ImageFont.truetype(p, size)
@@ -318,10 +322,10 @@ def annotate_page(pil: Image.Image, detections: list) -> Image.Image:
     img  = pil.copy().convert("RGB")
     W, H = img.size
 
-    # Circle radius and font scale relative to image size
-    r        = max(18, W // 200)       # badge circle radius
-    outline_w = max(2,  W // 1200)     # OBB outline width
-    font     = load_font(max(14, r))   # font fits inside the circle
+    # Ultra-thin, uncluttered configuration
+    outline_w = 2  # Thin borders
+    r        = 10  # Tiny circle radius
+    font     = load_font(10)  # Small, clean font size
 
     draw = ImageDraw.Draw(img, "RGBA")
 
@@ -330,7 +334,7 @@ def annotate_page(pil: Image.Image, detections: list) -> Image.Image:
         poly    = [(float(c[0]), float(c[1])) for c in corners]
 
         # ── OBB outline (green) ────────────────────────────────────
-        draw.polygon(poly, outline=(0, 220, 110, 255), width=outline_w)
+        draw.polygon(poly, outline=(0, 220, 110, 200), width=outline_w)
 
         # ── Small numbered badge at topmost corner ────────────────────
         top = min(poly, key=lambda p: p[1])
@@ -338,24 +342,24 @@ def annotate_page(pil: Image.Image, detections: list) -> Image.Image:
         by = max(r, by)     # clamp inside image
         bx = max(r, min(W - r, bx))
 
-        # Filled green circle
+        # Filled green circle (semi-transparent for less clutter)
         draw.ellipse([bx - r, by - r, bx + r, by + r],
-                     fill=(0, 180, 100, 230), outline=(255, 255, 255, 200),
-                     width=max(1, r // 8))
+                     fill=(0, 180, 100, 180), outline=(255, 255, 255, 180),
+                     width=1)
 
         # Number text centred in circle
         num_str = str(i + 1)
         try:
             tw = font.getlength(num_str)
         except AttributeError:
-            tw = len(num_str) * (max(14, r) // 2)
+            tw = len(num_str) * (10 // 2)
         try:
             _, top_b, _, bot_b = font.getbbox(num_str)
             th = bot_b - top_b
         except AttributeError:
-            th = max(14, r)
+            th = 10
         draw.text((bx - tw / 2, by - th / 2 - 1), num_str,
-                  font=font, fill=(0, 0, 0, 255))
+                  font=font, fill=(255, 255, 255, 255))
 
     return img.convert("RGB")
 
@@ -537,9 +541,9 @@ def run_visualization(image_path: str, yolo_path: str, classifier_path: str,
                 buffer_percent=0.08
             )
 
-            # Raw tilted crop with OBB drawn (on the cleaned image)
+            # Raw tilted crop with OBB drawn (on the raw image)
             raw_obb_crop = draw_obb_on_crop(
-                get_padded_crop(np.array(clean_pil), cx, cy, w, h, pad_factor=2.0),
+                get_padded_crop(np.array(raw_pil), cx, cy, w, h, pad_factor=2.0),
                 cx, cy, w, h, angle_deg, pad_factor=2.0
             )
 
@@ -588,9 +592,14 @@ def run_visualization(image_path: str, yolo_path: str, classifier_path: str,
     save_panel_b(panel_b_data, panel_b_path, base)
 
     # ── Panel C ───────────────────────────────────────────────────────────────
-    annotated_pil = annotate_page(clean_pil, detections)
+    annotated_pil = annotate_page(raw_pil, detections)
     panel_c_path  = os.path.join(out_dir, f"{base}_panelC_annotated.png")
     save_panel_c(annotated_pil, detections, panel_c_path, base)
+
+    # Save the thin-bordered full page directly
+    thin_page_path = os.path.join(out_dir, f"{base}_thin_annotated.png")
+    annotated_pil.save(thin_page_path)
+    print(f"  [T] Saved thin page: {thin_page_path}")
 
     # ── JSON detections report ─────────────────────────────────────────────
     import json

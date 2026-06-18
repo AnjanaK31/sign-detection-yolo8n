@@ -62,6 +62,10 @@ def process_page(img_pil, yolo_model, classifier, conf_threshold=0.25):
     
     # Load unicode font
     font_choices = [
+        "C:\\Windows\\Fonts\\seguisym.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
+        "DejaVuSans.ttf",
         "C:\\Windows\\Fonts\\arial.ttf",
         "C:\\Windows\\Fonts\\calibri.ttf",
         "C:\\Windows\\Fonts\\segoeui.ttf"
