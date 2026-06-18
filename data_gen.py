@@ -4,6 +4,7 @@ import math
 import numpy as np
 import cv2
 import json
+import multiprocessing
 from PIL import Image, ImageDraw, ImageFont
 
 # 21 classes matching requirements
@@ -30,6 +31,39 @@ CLASS_TO_CHAR = {
     'Ra': 'Ra',
     'comma': ','
 }
+
+def get_split_name(page_idx, splits):
+    for split_name, (start, end) in splits.items():
+        if start <= page_idx < end:
+            return split_name
+    return "train"
+
+def worker_generate_and_save_page(task_args):
+    """
+    Worker task: generates a single page in a separate process and saves images/labels directly to disk.
+    This bypasses pickling issues and keeps RAM usage extremely low.
+    """
+    page_idx, bg_path, num_expr, font_path, yolo_dir, split_name, width, height = task_args
+    
+    # Initialize process-local generator
+    generator = SyntheticDataGenerator(font_path=font_path)
+    
+    page_img, labels, gt_details = generator.generate_full_page(bg_path, num_annotations=num_expr)
+    
+    # Save the page image
+    img_name = f"page_{page_idx}.png"
+    img_path = os.path.join(yolo_dir, "images", split_name, img_name)
+    page_img.save(img_path)
+    
+    # Save the label coordinates
+    label_name = f"page_{page_idx}.txt"
+    label_path = os.path.join(yolo_dir, "labels", split_name, label_name)
+    with open(label_path, "w", encoding="utf-8") as f:
+        for class_idx, pts in labels:
+            pts_str = " ".join([f"{p:.6f}" for p in pts])
+            f.write(f"{class_idx} {pts_str}\n")
+            
+    return img_name, gt_details
 
 class SyntheticDataGenerator:
     def __init__(self, base_dir=".", font_path=None):
@@ -634,8 +668,8 @@ class SyntheticDataGenerator:
         preprocessed_page = self.apply_blueprint_effects(page_img)
         return preprocessed_page, labels, gt_details
 
-    def save_dataset(self, num_pdfs=16, pages_per_pdf=5, min_expr=30, max_expr=50, pdf_dir="pdfs", yolo_dir="dataset_yolo"):
-        """Compiles the full YOLO OBB dataset and outputs ground_truth.json."""
+    def save_dataset(self, num_pdfs=16, pages_per_pdf=5, min_expr=30, max_expr=50, pdf_dir="pdfs", yolo_dir="dataset_yolo", cores=None):
+        """Compiles the full YOLO OBB dataset and outputs ground_truth.json using parallel processing."""
         bg_dir = "temp_backgrounds"
         self.generate_backgrounds(bg_dir, count=10)
         
@@ -667,38 +701,48 @@ class SyntheticDataGenerator:
             os.makedirs(os.path.join(yolo_dir, "images", name), exist_ok=True)
             os.makedirs(os.path.join(yolo_dir, "labels", name), exist_ok=True)
             
-        all_pages = []
         gt_database = {}
         backgrounds = [os.path.join(bg_dir, f"bg_{i}.png") for i in range(10)]
         
+        # Determine number of processes/cores
+        import multiprocessing
+        if cores is None:
+            cores = max(1, multiprocessing.cpu_count() - 1)
+        print(f"Parallel processing enabled using {cores} CPU core(s)...")
+        
+        # Prepare task arguments
+        task_args = []
         for page_idx in range(total_pages):
             bg_path = backgrounds[page_idx % len(backgrounds)]
             num_expr = random.randint(min_expr, max_expr)
-            page_img, labels, gt_details = self.generate_full_page(bg_path, num_annotations=num_expr)
+            split_name = get_split_name(page_idx, splits)
             
-            img_name = f"page_{page_idx}.png"
+            task_args.append((
+                page_idx, 
+                bg_path, 
+                num_expr, 
+                self.font_path, 
+                yolo_dir, 
+                split_name, 
+                2400, # width
+                3000  # height
+            ))
+            
+        # Run parallel tasks
+        with multiprocessing.Pool(processes=cores) as pool:
+            try:
+                from tqdm import tqdm
+                results = list(tqdm(pool.imap_unordered(worker_generate_and_save_page, task_args), total=len(task_args), desc="Generating Pages"))
+            except ImportError:
+                results = []
+                for idx, res in enumerate(pool.imap_unordered(worker_generate_and_save_page, task_args)):
+                    results.append(res)
+                    if (idx + 1) % 10 == 0 or idx == 0 or idx == len(task_args) - 1:
+                        print(f"Generated page {idx + 1}/{len(task_args)}")
+                        
+        # Gathers ground truth
+        for img_name, gt_details in results:
             gt_database[img_name] = gt_details
-            
-            all_pages.append((page_img, labels))
-            if (page_idx + 1) % 10 == 0 or page_idx == 0 or page_idx == total_pages - 1:
-                print(f"Generated page {page_idx + 1}/{total_pages} (with {num_expr} expressions)")
-                
-        for split_name, (start, end) in splits.items():
-            print(f"Saving splits for: {split_name}...")
-            for idx in range(start, end):
-                page_img, labels = all_pages[idx]
-                
-                img_name = f"page_{idx}.png"
-                img_path = os.path.join(yolo_dir, "images", split_name, img_name)
-                page_img.save(img_path)
-                
-                label_name = f"page_{idx}.txt"
-                label_path = os.path.join(yolo_dir, "labels", split_name, label_name)
-                
-                with open(label_path, "w", encoding="utf-8") as f:
-                    for class_idx, pts in labels:
-                        pts_str = " ".join([f"{p:.6f}" for p in pts])
-                        f.write(f"{class_idx} {pts_str}\n")
                         
         # Save ground truth JSON database
         gt_json_path = os.path.join(yolo_dir, "ground_truth.json")
@@ -708,10 +752,20 @@ class SyntheticDataGenerator:
         
         print(f"Compiling {num_pdfs} multi-page PDFs ({pages_per_pdf} pages each)...")
         for pdf_idx in range(num_pdfs):
-            pdf_pages = [all_pages[idx][0] for idx in range(pdf_idx * pages_per_pdf, (pdf_idx + 1) * pages_per_pdf)]
+            pdf_pages = []
+            for page_offset in range(pages_per_pdf):
+                page_idx = pdf_idx * pages_per_pdf + page_offset
+                split_name = get_split_name(page_idx, splits)
+                img_path = os.path.join(yolo_dir, "images", split_name, f"page_{page_idx}.png")
+                if os.path.exists(img_path):
+                    pdf_pages.append(Image.open(img_path).convert("RGB"))
+            
             pdf_path = os.path.join(pdf_dir, f"blueprint_{pdf_idx}.pdf")
             if pdf_pages:
                 pdf_pages[0].save(pdf_path, save_all=True, append_images=pdf_pages[1:], format="PDF")
+                # Explicitly close images to free resources
+                for img in pdf_pages:
+                    img.close()
             
         data_yaml_content = f"""path: {os.path.abspath(yolo_dir)}
 train: images/train
@@ -736,6 +790,7 @@ if __name__ == "__main__":
     parser.add_argument("--yolo-dir", default="dataset_yolo", help="Output directory for YOLO dataset")
     parser.add_argument("--pdf-dir", default="pdfs", help="Output directory for generated PDFs")
     parser.add_argument("--font-path", default=None, help="Path to a custom TrueType font (.ttf)")
+    parser.add_argument("--cores", type=int, default=None, help="Number of CPU cores to use for parallel generation")
     args = parser.parse_args()
     
     generator = SyntheticDataGenerator(font_path=args.font_path)
@@ -745,8 +800,6 @@ if __name__ == "__main__":
         min_expr=args.min_expr,
         max_expr=args.max_expr,
         pdf_dir=args.pdf_dir,
-        yolo_dir=args.yolo_dir
+        yolo_dir=args.yolo_dir,
+        cores=args.cores
     )
-    generator = SyntheticDataGenerator()
-    generator.generate_classifier_dataset(train_count=500, val_count=100)
-    generator.save_dataset()
