@@ -407,6 +407,77 @@ class SyntheticDataGenerator:
             lambda: f"⊕ ⌀ {random.choice(['0.05', '0.1', '0.2'])} A B C"
         ]
         return random.choice(templates)()
+        """Generates a preprocessed 64x64 crop of a single class for classifier training."""
+        img = Image.new("RGBA", (img_size * 2, img_size * 2), (255, 255, 255, 0))
+        draw = ImageDraw.Draw(img)
+        
+        # Draw random background grid/CAD lines and circles to simulate blueprint clutter
+        if random.random() < 0.5:
+            num_lines = random.randint(1, 3)
+            for _ in range(num_lines):
+                lx1 = random.randint(0, img_size * 2)
+                ly1 = random.randint(0, img_size * 2)
+                lx2 = random.randint(0, img_size * 2)
+                ly2 = random.randint(0, img_size * 2)
+                draw.line((lx1, ly1, lx2, ly2), fill=(160, 160, 160, 255), width=random.randint(1, 2))
+                
+        if random.random() < 0.3:
+            rx = random.randint(0, img_size * 2)
+            ry = random.randint(0, img_size * 2)
+            r = random.randint(10, 50)
+            draw.ellipse((rx - r, ry - r, rx + r, ry + r), outline=(160, 160, 160, 255), width=random.randint(1, 2))
+            
+        angle = random.uniform(-15, 15) if class_name != 'arrow' else random.uniform(0, 360)
+        ccx, ccy = img_size, img_size
+        
+        if class_name == 'arrow':
+            arrow_size = random.randint(24, 36)
+            self.draw_arrowhead(draw, ccx, ccy, arrow_size, angle, color=(0, 0, 0))
+        elif class_name in ['perpendicular', 'parallel', 'circularity', 'diameter', 'true_position', 'plus_minus']:
+            symbol_size = random.randint(28, 40)
+            thickness = max(2, symbol_size // 12)
+            draw_symbol_geometrically(draw, class_name, ccx, ccy, symbol_size, color=(0, 0, 0, 255), thickness=thickness)
+            img = img.rotate(angle, expand=False, resample=Image.BICUBIC)
+        else:
+            char_str = CLASS_TO_CHAR[class_name]
+            font_size = random.randint(28, 42)
+            font = self.get_font(font_size)
+            
+            try:
+                left, top, right, bottom = font.getbbox(char_str)
+                w = right - left
+                h = bottom - top
+            except AttributeError:
+                w = font_size // 2
+                h = font_size
+                
+            draw.text((ccx - w // 2, ccy - h // 2), char_str, font=font, fill=(0, 0, 0, 255))
+            img = img.rotate(angle, expand=False, resample=Image.BICUBIC)
+            
+        final_img = Image.new("RGB", (img_size, img_size), (255, 255, 255))
+        offset_x = random.randint(-4, 4)
+        offset_y = random.randint(-4, 4)
+        final_img.paste(img, (-img_size // 2 + offset_x, -img_size // 2 + offset_y), mask=img)
+        
+        return self.apply_adaptive_threshold(final_img)
+
+    def generate_classifier_dataset(self, output_dir="dataset_classifier", train_count=500, val_count=100):
+        """Generates synthetic character/symbol crops for training the MobileNetV3 model."""
+        print(f"Generating classifier dataset ({train_count} train / {val_count} val samples per class)...")
+        
+        for name in ["train", "val"]:
+            for c in CLASSES:
+                os.makedirs(os.path.join(output_dir, name, c), exist_ok=True)
+                
+        for c in CLASSES:
+            for i in range(train_count):
+                img = self.generate_single_char_image(c)
+                img.save(os.path.join(output_dir, "train", c, f"img_{i}.png"))
+            for i in range(val_count):
+                img = self.generate_single_char_image(c)
+                img.save(os.path.join(output_dir, "val", c, f"img_{i}.png"))
+                
+        print("Classifier dataset generation complete!")
 
     def generate_full_page(self, bg_image_path, num_annotations=15):
         """Generates a full page by rendering expressions dynamically with proper AABB offsets and fonts."""
@@ -676,3 +747,6 @@ if __name__ == "__main__":
         pdf_dir=args.pdf_dir,
         yolo_dir=args.yolo_dir
     )
+    generator = SyntheticDataGenerator()
+    generator.generate_classifier_dataset(train_count=500, val_count=100)
+    generator.save_dataset()
