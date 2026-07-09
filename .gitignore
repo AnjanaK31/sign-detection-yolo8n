@@ -13,7 +13,4 @@ runs/obb/runs/obb/trained_on_1000_pdfs/train_batch1.jpg
 output_pipeline/
 Nived-dataset/
 toTest/
-*.png
-*.jpg
-*.jpeg
-*.webp
+
