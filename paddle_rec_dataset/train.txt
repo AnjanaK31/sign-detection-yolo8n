@@ -1,0 +1,3780 @@
+images/train/plus_minus_0000.png	101 ± 1
+images/train/plus_minus_0001.png	±0.05
+images/train/plus_minus_0002.png	Ø13.6 ± 0.7
+images/train/plus_minus_0003.png	106 ± 0.5
+images/train/plus_minus_0004.png	502 ± 2
+images/train/plus_minus_0005.png	±30.2
+images/train/plus_minus_0006.png	±85.0
+images/train/plus_minus_0007.png	Ø6.0 ± 0.4
+images/train/plus_minus_0008.png	83.1 ± 49.7
+images/train/plus_minus_0009.png	524 ± 2
+images/train/plus_minus_0010.png	Ø6.9 ± 0.7
+images/train/plus_minus_0011.png	±0.05
+images/train/plus_minus_0012.png	99.4 ± 42.9
+images/train/plus_minus_0013.png	±51.3
+images/train/plus_minus_0014.png	Ø54.4 ± 0.6
+images/train/plus_minus_0015.png	±0.05
+images/train/plus_minus_0016.png	88.9 ± 88.8
+images/train/plus_minus_0017.png	192 ± 1
+images/train/plus_minus_0018.png	Ø68.6 ± 0.9
+images/train/plus_minus_0019.png	740 ± 1
+images/train/plus_minus_0020.png	±22.4
+images/train/plus_minus_0021.png	505 ± 2
+images/train/plus_minus_0022.png	±59.5
+images/train/plus_minus_0023.png	±0.02
+images/train/plus_minus_0024.png	±56.0
+images/train/plus_minus_0025.png	±0.05
+images/train/plus_minus_0026.png	±0.50
+images/train/plus_minus_0027.png	±0.01
+images/train/plus_minus_0028.png	49.5 ± 24.3
+images/train/plus_minus_0029.png	±0.05
+images/train/plus_minus_0030.png	924 ± 0.5
+images/train/plus_minus_0031.png	432 ± 0.5
+images/train/plus_minus_0032.png	80.5 ± 36.7
+images/train/plus_minus_0033.png	±83.0
+images/train/plus_minus_0034.png	Ø1.6 ± 0.3
+images/train/plus_minus_0035.png	±0.02
+images/train/plus_minus_0036.png	28.5 ± 77.5
+images/train/plus_minus_0037.png	±82.0
+images/train/plus_minus_0038.png	Ø23.0 ± 0.5
+images/train/plus_minus_0039.png	±0.01
+images/train/plus_minus_0040.png	76 ± 0.5
+images/train/plus_minus_0041.png	±25.9
+images/train/plus_minus_0042.png	77.9 ± 2.9
+images/train/plus_minus_0043.png	±12.0
+images/train/plus_minus_0044.png	±34.5
+images/train/plus_minus_0045.png	±13.8
+images/train/plus_minus_0046.png	±0.10
+images/train/plus_minus_0047.png	Ø5.4 ± 0.7
+images/train/plus_minus_0048.png	±85.6
+images/train/plus_minus_0049.png	919 ± 0.5
+images/train/plus_minus_0050.png	Ø75.5 ± 0.6
+images/train/plus_minus_0051.png	±0.50
+images/train/plus_minus_0052.png	177 ± 0.5
+images/train/plus_minus_0053.png	Ø27.0 ± 0.1
+images/train/plus_minus_0054.png	Ø64.4 ± 0.7
+images/train/plus_minus_0055.png	621 ± 2
+images/train/plus_minus_0056.png	±0.05
+images/train/plus_minus_0057.png	±0.50
+images/train/plus_minus_0058.png	±79.1
+images/train/plus_minus_0059.png	721 ± 0.5
+images/train/plus_minus_0060.png	±0.02
+images/train/plus_minus_0061.png	944 ± 1
+images/train/plus_minus_0062.png	30.8 ± 29.2
+images/train/plus_minus_0063.png	645 ± 0.5
+images/train/plus_minus_0064.png	74.6 ± 49.0
+images/train/plus_minus_0065.png	Ø75.4 ± 0.5
+images/train/plus_minus_0066.png	±24.5
+images/train/plus_minus_0067.png	561 ± 1
+images/train/plus_minus_0068.png	±10.8
+images/train/plus_minus_0069.png	659 ± 1
+images/train/plus_minus_0070.png	±0.10
+images/train/plus_minus_0071.png	±0.02
+images/train/plus_minus_0072.png	±0.50
+images/train/plus_minus_0073.png	Ø93.5 ± 0.9
+images/train/plus_minus_0074.png	±0.50
+images/train/plus_minus_0075.png	401 ± 0.5
+images/train/plus_minus_0076.png	Ø31.6 ± 0.5
+images/train/plus_minus_0077.png	±0.10
+images/train/plus_minus_0078.png	959 ± 2
+images/train/plus_minus_0079.png	Ø66.7 ± 0.8
+images/train/plus_minus_0080.png	896 ± 2
+images/train/plus_minus_0081.png	53.8 ± 50.6
+images/train/plus_minus_0082.png	Ø29.5 ± 0.3
+images/train/plus_minus_0083.png	Ø20.7 ± 0.2
+images/train/plus_minus_0084.png	±19.6
+images/train/plus_minus_0085.png	73.3 ± 56.8
+images/train/plus_minus_0086.png	Ø88.4 ± 0.1
+images/train/plus_minus_0087.png	22.2 ± 45.0
+images/train/plus_minus_0088.png	Ø15.2 ± 0.2
+images/train/plus_minus_0089.png	±0.01
+images/train/plus_minus_0090.png	901 ± 1
+images/train/plus_minus_0091.png	±0.50
+images/train/plus_minus_0092.png	808 ± 0.5
+images/train/plus_minus_0093.png	±24.0
+images/train/plus_minus_0094.png	7.3 ± 10.2
+images/train/plus_minus_0095.png	Ø20.5 ± 0.2
+images/train/plus_minus_0096.png	±33.4
+images/train/plus_minus_0097.png	Ø83.3 ± 0.6
+images/train/plus_minus_0098.png	±69.1
+images/train/plus_minus_0099.png	628 ± 2
+images/train/plus_minus_0100.png	±0.01
+images/train/plus_minus_0101.png	26.2 ± 71.9
+images/train/plus_minus_0102.png	±0.20
+images/train/plus_minus_0103.png	250 ± 2
+images/train/plus_minus_0104.png	368 ± 1
+images/train/plus_minus_0105.png	Ø14.0 ± 0.9
+images/train/plus_minus_0106.png	Ø82.2 ± 0.8
+images/train/plus_minus_0107.png	51 ± 2
+images/train/plus_minus_0108.png	±25.1
+images/train/plus_minus_0109.png	58.1 ± 17.6
+images/train/plus_minus_0110.png	44.6 ± 14.6
+images/train/plus_minus_0111.png	±28.4
+images/train/plus_minus_0112.png	77.7 ± 85.8
+images/train/plus_minus_0113.png	871 ± 1
+images/train/plus_minus_0114.png	Ø59.1 ± 0.1
+images/train/plus_minus_0115.png	±48.9
+images/train/plus_minus_0116.png	37.0 ± 99.8
+images/train/plus_minus_0117.png	886 ± 1
+images/train/plus_minus_0118.png	63.3 ± 56.3
+images/train/plus_minus_0119.png	18.6 ± 48.3
+images/train/plus_minus_0120.png	420 ± 0.5
+images/train/plus_minus_0121.png	±6.7
+images/train/plus_minus_0122.png	Ø77.6 ± 0.6
+images/train/plus_minus_0123.png	53.0 ± 6.5
+images/train/plus_minus_0124.png	523 ± 2
+images/train/plus_minus_0125.png	81.1 ± 71.6
+images/train/plus_minus_0126.png	±0.01
+images/train/plus_minus_0127.png	477 ± 2
+images/train/plus_minus_0128.png	Ø92.2 ± 0.6
+images/train/plus_minus_0129.png	±93.7
+images/train/plus_minus_0130.png	±42.9
+images/train/plus_minus_0131.png	372 ± 2
+images/train/plus_minus_0132.png	±57.0
+images/train/plus_minus_0133.png	±0.20
+images/train/plus_minus_0134.png	49.8 ± 1.7
+images/train/plus_minus_0135.png	Ø61.2 ± 0.8
+images/train/plus_minus_0136.png	Ø82.6 ± 0.2
+images/train/plus_minus_0137.png	45.8 ± 52.5
+images/train/plus_minus_0138.png	±0.10
+images/train/plus_minus_0139.png	Ø85.5 ± 0.9
+images/train/plus_minus_0140.png	±52.6
+images/train/plus_minus_0141.png	140 ± 2
+images/train/plus_minus_0142.png	561 ± 1
+images/train/plus_minus_0143.png	99.5 ± 17.5
+images/train/plus_minus_0144.png	±0.05
+images/train/plus_minus_0145.png	678 ± 0.5
+images/train/plus_minus_0146.png	±2.9
+images/train/plus_minus_0147.png	±64.6
+images/train/plus_minus_0148.png	205 ± 1
+images/train/plus_minus_0149.png	30.6 ± 10.9
+images/train/plus_minus_0150.png	±0.02
+images/train/plus_minus_0151.png	Ø95.0 ± 0.2
+images/train/plus_minus_0152.png	±0.05
+images/train/plus_minus_0153.png	±32.6
+images/train/plus_minus_0154.png	477 ± 2
+images/train/plus_minus_0155.png	±54.7
+images/train/plus_minus_0156.png	Ø63.7 ± 0.2
+images/train/plus_minus_0157.png	±0.20
+images/train/plus_minus_0158.png	41.0 ± 70.9
+images/train/plus_minus_0159.png	±79.4
+images/train/plus_minus_0160.png	±0.05
+images/train/plus_minus_0161.png	±82.3
+images/train/plus_minus_0162.png	±0.05
+images/train/plus_minus_0163.png	502 ± 2
+images/train/plus_minus_0164.png	±0.05
+images/train/plus_minus_0165.png	308 ± 2
+images/train/plus_minus_0166.png	91.7 ± 93.4
+images/train/plus_minus_0167.png	Ø2.7 ± 0.2
+images/train/plus_minus_0168.png	546 ± 2
+images/train/plus_minus_0169.png	46.0 ± 4.6
+images/train/plus_minus_0170.png	6.4 ± 96.4
+images/train/plus_minus_0171.png	±0.02
+images/train/plus_minus_0172.png	432 ± 2
+images/train/plus_minus_0173.png	909 ± 0.5
+images/train/plus_minus_0174.png	97.8 ± 15.7
+images/train/plus_minus_0175.png	922 ± 0.5
+images/train/plus_minus_0176.png	Ø94.8 ± 0.9
+images/train/plus_minus_0177.png	±0.50
+images/train/plus_minus_0178.png	Ø68.3 ± 0.1
+images/train/plus_minus_0179.png	Ø7.3 ± 0.9
+images/train/plus_minus_0180.png	±0.02
+images/train/plus_minus_0181.png	±0.01
+images/train/plus_minus_0182.png	63.9 ± 72.3
+images/train/plus_minus_0183.png	53 ± 0.5
+images/train/plus_minus_0184.png	Ø87.1 ± 0.6
+images/train/plus_minus_0185.png	±1.8
+images/train/plus_minus_0186.png	±64.0
+images/train/plus_minus_0187.png	250 ± 1
+images/train/plus_minus_0188.png	598 ± 0.5
+images/train/plus_minus_0189.png	605 ± 2
+images/train/plus_minus_0190.png	836 ± 1
+images/train/plus_minus_0191.png	±0.02
+images/train/plus_minus_0192.png	126 ± 1
+images/train/plus_minus_0193.png	±6.7
+images/train/plus_minus_0194.png	±36.6
+images/train/plus_minus_0195.png	±33.1
+images/train/plus_minus_0196.png	±6.0
+images/train/plus_minus_0197.png	±0.20
+images/train/plus_minus_0198.png	225 ± 1
+images/train/plus_minus_0199.png	Ø23.5 ± 0.6
+images/train/plus_minus_0200.png	±10.0
+images/train/plus_minus_0201.png	Ø99.6 ± 0.7
+images/train/plus_minus_0202.png	Ø96.5 ± 0.5
+images/train/plus_minus_0203.png	66.5 ± 28.6
+images/train/plus_minus_0204.png	Ø86.9 ± 0.6
+images/train/plus_minus_0205.png	46.8 ± 25.5
+images/train/plus_minus_0206.png	Ø60.1 ± 0.8
+images/train/plus_minus_0207.png	17.6 ± 11.5
+images/train/plus_minus_0208.png	±62.3
+images/train/plus_minus_0209.png	±71.3
+images/train/plus_minus_0210.png	±80.2
+images/train/plus_minus_0211.png	Ø41.6 ± 0.6
+images/train/plus_minus_0212.png	915 ± 1
+images/train/plus_minus_0213.png	±0.01
+images/train/plus_minus_0214.png	±63.6
+images/train/plus_minus_0215.png	754 ± 1
+images/train/plus_minus_0216.png	57.3 ± 75.9
+images/train/plus_minus_0217.png	±0.20
+images/train/plus_minus_0218.png	±0.20
+images/train/plus_minus_0219.png	±0.50
+images/train/plus_minus_0220.png	Ø58.9 ± 0.4
+images/train/plus_minus_0221.png	±0.02
+images/train/plus_minus_0222.png	673 ± 0.5
+images/train/plus_minus_0223.png	±0.20
+images/train/plus_minus_0224.png	114 ± 2
+images/train/plus_minus_0225.png	297 ± 1
+images/train/plus_minus_0226.png	±0.02
+images/train/plus_minus_0227.png	±0.02
+images/train/plus_minus_0228.png	50.1 ± 88.7
+images/train/plus_minus_0229.png	±0.50
+images/train/plus_minus_0230.png	Ø40.5 ± 0.5
+images/train/plus_minus_0231.png	499 ± 1
+images/train/plus_minus_0232.png	41.6 ± 57.3
+images/train/plus_minus_0233.png	Ø21.2 ± 0.9
+images/train/plus_minus_0234.png	±0.10
+images/train/plus_minus_0235.png	±3.7
+images/train/plus_minus_0236.png	Ø26.4 ± 0.3
+images/train/plus_minus_0237.png	70.2 ± 40.9
+images/train/plus_minus_0238.png	±0.01
+images/train/plus_minus_0239.png	63.2 ± 84.9
+images/train/plus_minus_0240.png	±68.2
+images/train/plus_minus_0241.png	Ø93.5 ± 0.8
+images/train/plus_minus_0242.png	151 ± 2
+images/train/plus_minus_0243.png	Ø95.2 ± 0.2
+images/train/plus_minus_0244.png	50.4 ± 61.2
+images/train/plus_minus_0245.png	±74.0
+images/train/plus_minus_0246.png	±60.5
+images/train/plus_minus_0247.png	±0.05
+images/train/plus_minus_0248.png	7.4 ± 27.9
+images/train/plus_minus_0249.png	85.4 ± 4.9
+images/train/plus_minus_0250.png	12.3 ± 61.7
+images/train/plus_minus_0251.png	Ø27.7 ± 0.2
+images/train/plus_minus_0252.png	69.2 ± 96.7
+images/train/plus_minus_0253.png	Ø38.7 ± 0.9
+images/train/plus_minus_0254.png	772 ± 2
+images/train/plus_minus_0255.png	±0.01
+images/train/plus_minus_0256.png	85.3 ± 55.7
+images/train/plus_minus_0257.png	±65.2
+images/train/plus_minus_0258.png	835 ± 2
+images/train/plus_minus_0259.png	Ø68.3 ± 0.9
+images/train/plus_minus_0260.png	±0.01
+images/train/plus_minus_0261.png	±0.50
+images/train/plus_minus_0262.png	±20.3
+images/train/plus_minus_0263.png	Ø32.7 ± 0.1
+images/train/plus_minus_0264.png	±0.02
+images/train/plus_minus_0265.png	±9.0
+images/train/plus_minus_0266.png	868 ± 0.5
+images/train/plus_minus_0267.png	293 ± 0.5
+images/train/plus_minus_0268.png	25.9 ± 84.4
+images/train/plus_minus_0269.png	±0.05
+images/train/diameter_0000.png	Ø566
+images/train/diameter_0001.png	Ø36.6
+images/train/diameter_0002.png	Ø300.1mm
+images/train/diameter_0003.png	Ø19.5 mm
+images/train/diameter_0004.png	Ø49.4 ± 0.4
+images/train/diameter_0005.png	Ø10.1
+images/train/diameter_0006.png	Ø97.6 ± 0.3
+images/train/diameter_0007.png	Ø151.8mm
+images/train/diameter_0008.png	Ø27.8 ± 0.1
+images/train/diameter_0009.png	Ø96.7 ± 0.5
+images/train/diameter_0010.png	Ø186.0mm
+images/train/diameter_0011.png	Ø53.7
+images/train/diameter_0012.png	Ø76.0 ± 0.2
+images/train/diameter_0013.png	Ø10.0mm
+images/train/diameter_0014.png	Ø34.9 ± 0.1
+images/train/diameter_0015.png	Ø67.1mm
+images/train/diameter_0016.png	Ø4.2
+images/train/diameter_0017.png	Ø24.9 mm
+images/train/diameter_0018.png	Ø24.6
+images/train/diameter_0019.png	Ø5.0
+images/train/diameter_0020.png	Ø458
+images/train/diameter_0021.png	Ø3.2 ± 0.4
+images/train/diameter_0022.png	Ø882
+images/train/diameter_0023.png	Ø89.0 mm
+images/train/diameter_0024.png	Ø534
+images/train/diameter_0025.png	Ø176.4mm
+images/train/diameter_0026.png	Ø52.4 ± 0.3
+images/train/diameter_0027.png	Ø78.3
+images/train/diameter_0028.png	Ø32.8mm
+images/train/diameter_0029.png	Ø66.1 mm
+images/train/diameter_0030.png	Ø266
+images/train/diameter_0031.png	Ø686
+images/train/diameter_0032.png	Ø151.6mm
+images/train/diameter_0033.png	Ø36.1
+images/train/diameter_0034.png	Ø77.6mm
+images/train/diameter_0035.png	Ø193
+images/train/diameter_0036.png	Ø29.6
+images/train/diameter_0037.png	Ø45.9mm
+images/train/diameter_0038.png	Ø93.6 mm
+images/train/diameter_0039.png	Ø74.5 mm
+images/train/diameter_0040.png	Ø83.3 ± 0.4
+images/train/diameter_0041.png	Ø18.0 ± 0.3
+images/train/diameter_0042.png	Ø3.5 ± 0.4
+images/train/diameter_0043.png	Ø171.7mm
+images/train/diameter_0044.png	Ø72.5 mm
+images/train/diameter_0045.png	Ø61.6 ± 0.1
+images/train/diameter_0046.png	Ø27.6 mm
+images/train/diameter_0047.png	Ø160.4mm
+images/train/diameter_0048.png	Ø42.0
+images/train/diameter_0049.png	Ø95.6 ± 0.3
+images/train/diameter_0050.png	Ø39.0 mm
+images/train/diameter_0051.png	Ø29.1 mm
+images/train/diameter_0052.png	Ø50.1 mm
+images/train/diameter_0053.png	Ø84.9
+images/train/diameter_0054.png	Ø202
+images/train/diameter_0055.png	Ø77.6 mm
+images/train/diameter_0056.png	Ø71.9
+images/train/diameter_0057.png	Ø21.7
+images/train/diameter_0058.png	Ø66.7
+images/train/diameter_0059.png	Ø132.0mm
+images/train/diameter_0060.png	Ø32.4
+images/train/diameter_0061.png	Ø90.8 mm
+images/train/diameter_0062.png	Ø58.7
+images/train/diameter_0063.png	Ø86.8 ± 0.3
+images/train/diameter_0064.png	Ø3.0 mm
+images/train/diameter_0065.png	Ø769
+images/train/diameter_0066.png	Ø282.6mm
+images/train/diameter_0067.png	Ø96.4
+images/train/diameter_0068.png	Ø66.1 mm
+images/train/diameter_0069.png	Ø41.5
+images/train/diameter_0070.png	Ø86.5
+images/train/diameter_0071.png	Ø92.3
+images/train/diameter_0072.png	Ø50.1
+images/train/diameter_0073.png	Ø6.0mm
+images/train/diameter_0074.png	Ø34.2 mm
+images/train/diameter_0075.png	Ø122
+images/train/diameter_0076.png	Ø26.3
+images/train/diameter_0077.png	Ø185.9mm
+images/train/diameter_0078.png	Ø298.6mm
+images/train/diameter_0079.png	Ø1.6 ± 0.5
+images/train/diameter_0080.png	Ø81.6 ± 0.3
+images/train/diameter_0081.png	Ø15.0 ± 0.5
+images/train/diameter_0082.png	Ø9.7 ± 0.5
+images/train/diameter_0083.png	Ø25.9 ± 0.5
+images/train/diameter_0084.png	Ø75.0 mm
+images/train/diameter_0085.png	Ø92.4
+images/train/diameter_0086.png	Ø11.0 ± 0.4
+images/train/diameter_0087.png	Ø74.3
+images/train/diameter_0088.png	Ø158
+images/train/diameter_0089.png	Ø67.3
+images/train/diameter_0090.png	Ø569
+images/train/diameter_0091.png	Ø35.6 mm
+images/train/diameter_0092.png	Ø90.2 ± 0.3
+images/train/diameter_0093.png	Ø217.6mm
+images/train/diameter_0094.png	Ø68.7 ± 0.5
+images/train/diameter_0095.png	Ø119.5mm
+images/train/diameter_0096.png	Ø98.9 ± 0.2
+images/train/diameter_0097.png	Ø48.8 ± 0.5
+images/train/diameter_0098.png	Ø131.0mm
+images/train/diameter_0099.png	Ø90.4 mm
+images/train/diameter_0100.png	Ø30.0 mm
+images/train/diameter_0101.png	Ø78.7mm
+images/train/diameter_0102.png	Ø18.1mm
+images/train/diameter_0103.png	Ø551
+images/train/diameter_0104.png	Ø617
+images/train/diameter_0105.png	Ø259.7mm
+images/train/diameter_0106.png	Ø1.7
+images/train/diameter_0107.png	Ø215.6mm
+images/train/diameter_0108.png	Ø20.6 mm
+images/train/diameter_0109.png	Ø60.7 ± 0.1
+images/train/diameter_0110.png	Ø52.6 mm
+images/train/diameter_0111.png	Ø64
+images/train/diameter_0112.png	Ø77.6 ± 0.4
+images/train/diameter_0113.png	Ø474
+images/train/diameter_0114.png	Ø280
+images/train/diameter_0115.png	Ø68.0mm
+images/train/diameter_0116.png	Ø113.8mm
+images/train/diameter_0117.png	Ø625
+images/train/diameter_0118.png	Ø36.7 mm
+images/train/diameter_0119.png	Ø89
+images/train/diameter_0120.png	Ø62.5
+images/train/diameter_0121.png	Ø21.8
+images/train/diameter_0122.png	Ø122.6mm
+images/train/diameter_0123.png	Ø70.1 mm
+images/train/diameter_0124.png	Ø30.5
+images/train/diameter_0125.png	Ø19.2 ± 0.1
+images/train/diameter_0126.png	Ø64.9 mm
+images/train/diameter_0127.png	Ø398
+images/train/diameter_0128.png	Ø21.2
+images/train/diameter_0129.png	Ø240.4mm
+images/train/diameter_0130.png	Ø636
+images/train/diameter_0131.png	Ø204.6mm
+images/train/diameter_0132.png	Ø85.4 ± 0.1
+images/train/diameter_0133.png	Ø288.9mm
+images/train/diameter_0134.png	Ø22.0 mm
+images/train/diameter_0135.png	Ø461
+images/train/diameter_0136.png	Ø102
+images/train/diameter_0137.png	Ø42.9
+images/train/diameter_0138.png	Ø21.4 mm
+images/train/diameter_0139.png	Ø51.7
+images/train/diameter_0140.png	Ø58.0
+images/train/diameter_0141.png	Ø285.0mm
+images/train/diameter_0142.png	Ø79.9
+images/train/diameter_0143.png	Ø79.0mm
+images/train/diameter_0144.png	Ø513
+images/train/diameter_0145.png	Ø794
+images/train/diameter_0146.png	Ø62.2
+images/train/diameter_0147.png	Ø876
+images/train/diameter_0148.png	Ø71
+images/train/diameter_0149.png	Ø66.0 mm
+images/train/diameter_0150.png	Ø25.1 ± 0.3
+images/train/diameter_0151.png	Ø884
+images/train/diameter_0152.png	Ø95.1mm
+images/train/diameter_0153.png	Ø86.5 mm
+images/train/diameter_0154.png	Ø80.9mm
+images/train/diameter_0155.png	Ø283.8mm
+images/train/diameter_0156.png	Ø78.7 mm
+images/train/diameter_0157.png	Ø21.1mm
+images/train/diameter_0158.png	Ø62.2 mm
+images/train/diameter_0159.png	Ø144.3mm
+images/train/diameter_0160.png	Ø38.0 mm
+images/train/diameter_0161.png	Ø56.4 mm
+images/train/diameter_0162.png	Ø94.8 mm
+images/train/diameter_0163.png	Ø988
+images/train/diameter_0164.png	Ø46.2 mm
+images/train/diameter_0165.png	Ø56.1
+images/train/diameter_0166.png	Ø43.1 ± 0.5
+images/train/diameter_0167.png	Ø84.9 ± 0.2
+images/train/diameter_0168.png	Ø206.5mm
+images/train/diameter_0169.png	Ø93.7 ± 0.2
+images/train/diameter_0170.png	Ø134.5mm
+images/train/diameter_0171.png	Ø912
+images/train/diameter_0172.png	Ø21.1mm
+images/train/diameter_0173.png	Ø562
+images/train/diameter_0174.png	Ø98.1 mm
+images/train/diameter_0175.png	Ø862
+images/train/diameter_0176.png	Ø56.4 ± 0.1
+images/train/diameter_0177.png	Ø109.2mm
+images/train/diameter_0178.png	Ø75.3mm
+images/train/diameter_0179.png	Ø59.4 ± 0.4
+images/train/diameter_0180.png	Ø173
+images/train/diameter_0181.png	Ø36.6 mm
+images/train/diameter_0182.png	Ø38.0
+images/train/diameter_0183.png	Ø117.6mm
+images/train/diameter_0184.png	Ø299
+images/train/diameter_0185.png	Ø93.7
+images/train/diameter_0186.png	Ø123.7mm
+images/train/diameter_0187.png	Ø135.0mm
+images/train/diameter_0188.png	Ø40.4 mm
+images/train/diameter_0189.png	Ø218.8mm
+images/train/diameter_0190.png	Ø97.1 ± 0.1
+images/train/diameter_0191.png	Ø77.6
+images/train/diameter_0192.png	Ø916
+images/train/diameter_0193.png	Ø52.7 ± 0.4
+images/train/diameter_0194.png	Ø735
+images/train/diameter_0195.png	Ø7.3
+images/train/diameter_0196.png	Ø138.5mm
+images/train/diameter_0197.png	Ø75.7
+images/train/diameter_0198.png	Ø112.5mm
+images/train/diameter_0199.png	Ø338
+images/train/diameter_0200.png	Ø36.6 ± 0.1
+images/train/diameter_0201.png	Ø32.0mm
+images/train/diameter_0202.png	Ø193
+images/train/diameter_0203.png	Ø58.4
+images/train/diameter_0204.png	Ø941
+images/train/diameter_0205.png	Ø36.8
+images/train/diameter_0206.png	Ø261
+images/train/diameter_0207.png	Ø58.5 ± 0.2
+images/train/diameter_0208.png	Ø93.8 ± 0.1
+images/train/diameter_0209.png	Ø62.8 ± 0.2
+images/train/diameter_0210.png	Ø44.2
+images/train/diameter_0211.png	Ø31.9
+images/train/diameter_0212.png	Ø744
+images/train/diameter_0213.png	Ø78.6 ± 0.1
+images/train/diameter_0214.png	Ø37.0
+images/train/diameter_0215.png	Ø13.7 mm
+images/train/diameter_0216.png	Ø78.8 ± 0.1
+images/train/diameter_0217.png	Ø984
+images/train/diameter_0218.png	Ø57.1 ± 0.2
+images/train/diameter_0219.png	Ø91.6 ± 0.1
+images/train/diameter_0220.png	Ø264
+images/train/diameter_0221.png	Ø46.7
+images/train/diameter_0222.png	Ø324
+images/train/diameter_0223.png	Ø774
+images/train/diameter_0224.png	Ø474
+images/train/diameter_0225.png	Ø62.6mm
+images/train/diameter_0226.png	Ø28.5 mm
+images/train/diameter_0227.png	Ø94.6 ± 0.1
+images/train/diameter_0228.png	Ø376
+images/train/diameter_0229.png	Ø22.1 ± 0.3
+images/train/diameter_0230.png	Ø75.4 ± 0.4
+images/train/diameter_0231.png	Ø85.0 ± 0.5
+images/train/diameter_0232.png	Ø64.8
+images/train/diameter_0233.png	Ø19.6 ± 0.1
+images/train/diameter_0234.png	Ø78.7
+images/train/diameter_0235.png	Ø85.9 ± 0.3
+images/train/diameter_0236.png	Ø50.5
+images/train/diameter_0237.png	Ø95.5 mm
+images/train/diameter_0238.png	Ø79.0 ± 0.5
+images/train/diameter_0239.png	Ø29.9 ± 0.2
+images/train/diameter_0240.png	Ø60.0 ± 0.3
+images/train/diameter_0241.png	Ø69.0 mm
+images/train/diameter_0242.png	Ø83.4
+images/train/diameter_0243.png	Ø812
+images/train/diameter_0244.png	Ø71.2 mm
+images/train/diameter_0245.png	Ø12.4 mm
+images/train/diameter_0246.png	Ø565
+images/train/diameter_0247.png	Ø50.8 mm
+images/train/diameter_0248.png	Ø232.6mm
+images/train/diameter_0249.png	Ø20.9 mm
+images/train/diameter_0250.png	Ø673
+images/train/diameter_0251.png	Ø144.2mm
+images/train/diameter_0252.png	Ø165.5mm
+images/train/diameter_0253.png	Ø78.3
+images/train/diameter_0254.png	Ø93.7 ± 0.1
+images/train/diameter_0255.png	Ø49.5 ± 0.1
+images/train/diameter_0256.png	Ø82.8
+images/train/diameter_0257.png	Ø421
+images/train/diameter_0258.png	Ø4.0 mm
+images/train/diameter_0259.png	Ø52.2 mm
+images/train/diameter_0260.png	Ø87.8
+images/train/diameter_0261.png	Ø27.7 mm
+images/train/diameter_0262.png	Ø74.7 mm
+images/train/diameter_0263.png	Ø34.0 ± 0.5
+images/train/diameter_0264.png	Ø133
+images/train/diameter_0265.png	Ø79.7mm
+images/train/diameter_0266.png	Ø53.7mm
+images/train/diameter_0267.png	Ø44.9 ± 0.5
+images/train/diameter_0268.png	Ø204.7mm
+images/train/diameter_0269.png	Ø55.4
+images/train/radius_0000.png	R695
+images/train/radius_0001.png	R7
+images/train/radius_0002.png	R17.5 mm
+images/train/radius_0003.png	R87.0 ± 0.1
+images/train/radius_0004.png	R129
+images/train/radius_0005.png	R906
+images/train/radius_0006.png	R31.1 mm
+images/train/radius_0007.png	R25.1
+images/train/radius_0008.png	R911
+images/train/radius_0009.png	R38.0 mm
+images/train/radius_0010.png	R12.7 mm
+images/train/radius_0011.png	R571
+images/train/radius_0012.png	R76.9 mm
+images/train/radius_0013.png	R870
+images/train/radius_0014.png	R91.5 mm
+images/train/radius_0015.png	R75
+images/train/radius_0016.png	R34.0 mm
+images/train/radius_0017.png	R2.2 mm
+images/train/radius_0018.png	R29.9
+images/train/radius_0019.png	R579
+images/train/radius_0020.png	R85.0
+images/train/radius_0021.png	R413
+images/train/radius_0022.png	R26.1 mm
+images/train/radius_0023.png	R89.7 mm
+images/train/radius_0024.png	R851
+images/train/radius_0025.png	R7.3 mm
+images/train/radius_0026.png	R51.8
+images/train/radius_0027.png	R93
+images/train/radius_0028.png	R77
+images/train/radius_0029.png	R24
+images/train/radius_0030.png	R458
+images/train/radius_0031.png	R46.5 mm
+images/train/radius_0032.png	R21.3 ± 0.1
+images/train/radius_0033.png	R822
+images/train/radius_0034.png	R81
+images/train/radius_0035.png	R33.2 mm
+images/train/radius_0036.png	R36.9 ± 0.2
+images/train/radius_0037.png	R18.5
+images/train/radius_0038.png	R79.2 ± 0.2
+images/train/radius_0039.png	R26.0 mm
+images/train/radius_0040.png	R51.4
+images/train/radius_0041.png	R30
+images/train/radius_0042.png	R90
+images/train/radius_0043.png	R18.7
+images/train/radius_0044.png	R965
+images/train/radius_0045.png	R69.6
+images/train/radius_0046.png	R40.6
+images/train/radius_0047.png	R83.6 mm
+images/train/radius_0048.png	R8.0
+images/train/radius_0049.png	R78.8 mm
+images/train/radius_0050.png	R4
+images/train/radius_0051.png	R97.6
+images/train/radius_0052.png	R77.5 mm
+images/train/radius_0053.png	R85.7 ± 0.1
+images/train/radius_0054.png	R945
+images/train/radius_0055.png	R89.7 mm
+images/train/radius_0056.png	R80.8 ± 0.1
+images/train/radius_0057.png	R235
+images/train/radius_0058.png	R57.6
+images/train/radius_0059.png	R79.4 ± 0.5
+images/train/radius_0060.png	R39
+images/train/radius_0061.png	R65.4 ± 0.2
+images/train/radius_0062.png	R62.8 mm
+images/train/radius_0063.png	R70.7 ± 0.1
+images/train/radius_0064.png	R49
+images/train/radius_0065.png	R98
+images/train/radius_0066.png	R22.0
+images/train/radius_0067.png	R4.1
+images/train/radius_0068.png	R25
+images/train/radius_0069.png	R85
+images/train/radius_0070.png	R75.8 mm
+images/train/radius_0071.png	R22.6 ± 0.2
+images/train/radius_0072.png	R252
+images/train/radius_0073.png	R18
+images/train/radius_0074.png	R794
+images/train/radius_0075.png	R33.2 mm
+images/train/radius_0076.png	R411
+images/train/radius_0077.png	R76.9 mm
+images/train/radius_0078.png	R35.8 mm
+images/train/radius_0079.png	R51.7 mm
+images/train/radius_0080.png	R17
+images/train/radius_0081.png	R76.2
+images/train/radius_0082.png	R33.0
+images/train/radius_0083.png	R148
+images/train/radius_0084.png	R79
+images/train/radius_0085.png	R55.0 ± 0.5
+images/train/radius_0086.png	R472
+images/train/radius_0087.png	R96
+images/train/radius_0088.png	R73.7
+images/train/radius_0089.png	R21.4
+images/train/radius_0090.png	R70.4 ± 0.2
+images/train/radius_0091.png	R48.9 ± 0.2
+images/train/radius_0092.png	R92
+images/train/radius_0093.png	R5.2
+images/train/radius_0094.png	R94.6
+images/train/radius_0095.png	R67.3 ± 0.5
+images/train/radius_0096.png	R84
+images/train/radius_0097.png	R84.1 ± 0.5
+images/train/radius_0098.png	R355
+images/train/radius_0099.png	R91.6 mm
+images/train/radius_0100.png	R37
+images/train/radius_0101.png	R97
+images/train/radius_0102.png	R85.0 mm
+images/train/radius_0103.png	R65
+images/train/radius_0104.png	R45.9 ± 0.1
+images/train/radius_0105.png	R163
+images/train/radius_0106.png	R87.5 mm
+images/train/radius_0107.png	R71.3 ± 0.2
+images/train/radius_0108.png	R67.9
+images/train/radius_0109.png	R75.1 ± 0.5
+images/train/radius_0110.png	R16.0 mm
+images/train/radius_0111.png	R19.2 ± 0.1
+images/train/radius_0112.png	R86
+images/train/radius_0113.png	R985
+images/train/radius_0114.png	R9.6 mm
+images/train/radius_0115.png	R97.0 mm
+images/train/radius_0116.png	R53.2 mm
+images/train/radius_0117.png	R20.9 mm
+images/train/radius_0118.png	R322
+images/train/radius_0119.png	R53.4
+images/train/radius_0120.png	R4.4 mm
+images/train/radius_0121.png	R45.4 mm
+images/train/radius_0122.png	R624
+images/train/radius_0123.png	R45.7
+images/train/radius_0124.png	R337
+images/train/radius_0125.png	R47
+images/train/radius_0126.png	R59.7 ± 0.1
+images/train/radius_0127.png	R44.3
+images/train/radius_0128.png	R221
+images/train/radius_0129.png	R327
+images/train/radius_0130.png	R61.8
+images/train/radius_0131.png	R15.1 ± 0.2
+images/train/radius_0132.png	R69.9 ± 0.1
+images/train/radius_0133.png	R786
+images/train/radius_0134.png	R48.6 mm
+images/train/radius_0135.png	R4.4
+images/train/radius_0136.png	R82.6 mm
+images/train/radius_0137.png	R59.7
+images/train/radius_0138.png	R60
+images/train/radius_0139.png	R30.9
+images/train/radius_0140.png	R95.0 mm
+images/train/radius_0141.png	R21.1 mm
+images/train/radius_0142.png	R74.4
+images/train/radius_0143.png	R47.6 mm
+images/train/radius_0144.png	R12
+images/train/radius_0145.png	R88.7 mm
+images/train/radius_0146.png	R22.8 mm
+images/train/radius_0147.png	R80
+images/train/radius_0148.png	R62.0 ± 0.5
+images/train/radius_0149.png	R50.1 ± 0.1
+images/train/radius_0150.png	R22.1
+images/train/radius_0151.png	R58.4 mm
+images/train/radius_0152.png	R287
+images/train/radius_0153.png	R20.0 ± 0.1
+images/train/radius_0154.png	R39.0
+images/train/radius_0155.png	R59.7
+images/train/radius_0156.png	R54.4 mm
+images/train/radius_0157.png	R55
+images/train/radius_0158.png	R2.0
+images/train/radius_0159.png	R13.6
+images/train/radius_0160.png	R24.8 mm
+images/train/radius_0161.png	R18
+images/train/radius_0162.png	R85.0
+images/train/radius_0163.png	R5.2 mm
+images/train/radius_0164.png	R31.1 mm
+images/train/radius_0165.png	R36.8 mm
+images/train/radius_0166.png	R713
+images/train/radius_0167.png	R13.7 mm
+images/train/radius_0168.png	R28.3
+images/train/radius_0169.png	R29
+images/train/radius_0170.png	R96.3 ± 0.5
+images/train/radius_0171.png	R765
+images/train/radius_0172.png	R97
+images/train/radius_0173.png	R771
+images/train/radius_0174.png	R21.0 ± 0.5
+images/train/radius_0175.png	R254
+images/train/radius_0176.png	R830
+images/train/radius_0177.png	R18.3 mm
+images/train/radius_0178.png	R60.0 ± 0.5
+images/train/radius_0179.png	R92
+images/train/radius_0180.png	R58.4
+images/train/radius_0181.png	R50.4 mm
+images/train/radius_0182.png	R15
+images/train/radius_0183.png	R17
+images/train/radius_0184.png	R90.6 ± 0.2
+images/train/radius_0185.png	R960
+images/train/radius_0186.png	R91.4 mm
+images/train/radius_0187.png	R572
+images/train/radius_0188.png	R14.3 ± 0.1
+images/train/radius_0189.png	R94.2 ± 0.1
+images/train/radius_0190.png	R46
+images/train/radius_0191.png	R17.6 mm
+images/train/radius_0192.png	R21.7 ± 0.1
+images/train/radius_0193.png	R51.1 mm
+images/train/radius_0194.png	R8.9 mm
+images/train/radius_0195.png	R13.6 mm
+images/train/radius_0196.png	R45
+images/train/radius_0197.png	R835
+images/train/radius_0198.png	R47.0 ± 0.5
+images/train/radius_0199.png	R93.4 ± 0.1
+images/train/radius_0200.png	R85.2 ± 0.1
+images/train/radius_0201.png	R290
+images/train/radius_0202.png	R61
+images/train/radius_0203.png	R27.7 ± 0.5
+images/train/radius_0204.png	R17.9 ± 0.1
+images/train/radius_0205.png	R150
+images/train/radius_0206.png	R69
+images/train/radius_0207.png	R6
+images/train/radius_0208.png	R18.6 ± 0.2
+images/train/radius_0209.png	R59.4 mm
+images/train/radius_0210.png	R89.2 mm
+images/train/radius_0211.png	R768
+images/train/radius_0212.png	R98.9 mm
+images/train/radius_0213.png	R50
+images/train/radius_0214.png	R25.2 mm
+images/train/radius_0215.png	R77
+images/train/radius_0216.png	R10.1
+images/train/radius_0217.png	R91
+images/train/radius_0218.png	R997
+images/train/radius_0219.png	R59
+images/train/radius_0220.png	R22.8 ± 0.5
+images/train/radius_0221.png	R827
+images/train/radius_0222.png	R12.2
+images/train/radius_0223.png	R61.1
+images/train/radius_0224.png	R59.0 ± 0.1
+images/train/radius_0225.png	R9
+images/train/radius_0226.png	R297
+images/train/radius_0227.png	R338
+images/train/radius_0228.png	R650
+images/train/radius_0229.png	R69.8
+images/train/radius_0230.png	R623
+images/train/radius_0231.png	R48.1 mm
+images/train/radius_0232.png	R563
+images/train/radius_0233.png	R58.1 ± 0.5
+images/train/radius_0234.png	R83.0 mm
+images/train/radius_0235.png	R64.9 ± 0.1
+images/train/radius_0236.png	R8.9
+images/train/radius_0237.png	R18
+images/train/radius_0238.png	R74.5 ± 0.1
+images/train/radius_0239.png	R64.8 mm
+images/train/radius_0240.png	R25.4 mm
+images/train/radius_0241.png	R9.1
+images/train/radius_0242.png	R3.1
+images/train/radius_0243.png	R44.1 ± 0.5
+images/train/radius_0244.png	R64.0 mm
+images/train/radius_0245.png	R18.2 ± 0.1
+images/train/radius_0246.png	R61
+images/train/radius_0247.png	R195
+images/train/radius_0248.png	R38.5 ± 0.1
+images/train/radius_0249.png	R56.2
+images/train/radius_0250.png	R24.2 mm
+images/train/radius_0251.png	R33.4 ± 0.1
+images/train/radius_0252.png	R32.8
+images/train/radius_0253.png	R21.5
+images/train/radius_0254.png	R65.9
+images/train/radius_0255.png	R60
+images/train/radius_0256.png	R50.3
+images/train/radius_0257.png	R14
+images/train/radius_0258.png	R27.4 ± 0.5
+images/train/radius_0259.png	R29.2 mm
+images/train/radius_0260.png	R34.3 mm
+images/train/radius_0261.png	R185
+images/train/radius_0262.png	R19
+images/train/radius_0263.png	R20.9 mm
+images/train/radius_0264.png	R51.3
+images/train/radius_0265.png	R18.7 ± 0.5
+images/train/radius_0266.png	R33.1
+images/train/radius_0267.png	R30.8 ± 0.2
+images/train/radius_0268.png	R13.7 ± 0.5
+images/train/radius_0269.png	R63.9 mm
+images/train/degree_0000.png	90°
+images/train/degree_0001.png	30°
+images/train/degree_0002.png	67° ± 0.4°
+images/train/degree_0003.png	8° ± 0.7°
+images/train/degree_0004.png	63.5°
+images/train/degree_0005.png	180°
+images/train/degree_0006.png	36°
+images/train/degree_0007.png	194°
+images/train/degree_0008.png	45°
+images/train/degree_0009.png	80° ± 0.9°
+images/train/degree_0010.png	60°
+images/train/degree_0011.png	38° ± 0.4°
+images/train/degree_0012.png	36°
+images/train/degree_0013.png	87° ± 0.4°
+images/train/degree_0014.png	90°
+images/train/degree_0015.png	36°
+images/train/degree_0016.png	36°
+images/train/degree_0017.png	26° ± 0.8°
+images/train/degree_0018.png	224°
+images/train/degree_0019.png	90°
+images/train/degree_0020.png	80° ± 0.7°
+images/train/degree_0021.png	90°
+images/train/degree_0022.png	120°
+images/train/degree_0023.png	34.2°
+images/train/degree_0024.png	16.8°
+images/train/degree_0025.png	18°
+images/train/degree_0026.png	50° ± 0.1°
+images/train/degree_0027.png	18°
+images/train/degree_0028.png	120°
+images/train/degree_0029.png	261°
+images/train/degree_0030.png	67.2°
+images/train/degree_0031.png	50.8°
+images/train/degree_0032.png	55° ± 0.1°
+images/train/degree_0033.png	278°
+images/train/degree_0034.png	180°
+images/train/degree_0035.png	147°
+images/train/degree_0036.png	30°
+images/train/degree_0037.png	21° ± 0.6°
+images/train/degree_0038.png	65° ± 0.9°
+images/train/degree_0039.png	71° ± 0.7°
+images/train/degree_0040.png	60°
+images/train/degree_0041.png	41° ± 0.3°
+images/train/degree_0042.png	39°
+images/train/degree_0043.png	196°
+images/train/degree_0044.png	96.9°
+images/train/degree_0045.png	45.6°
+images/train/degree_0046.png	90°
+images/train/degree_0047.png	88.9°
+images/train/degree_0048.png	60°
+images/train/degree_0049.png	60°
+images/train/degree_0050.png	40° ± 0.3°
+images/train/degree_0051.png	45°
+images/train/degree_0052.png	90°
+images/train/degree_0053.png	27° ± 0.6°
+images/train/degree_0054.png	180°
+images/train/degree_0055.png	347°
+images/train/degree_0056.png	55.5°
+images/train/degree_0057.png	90°
+images/train/degree_0058.png	18°
+images/train/degree_0059.png	90°
+images/train/degree_0060.png	3.6°
+images/train/degree_0061.png	30°
+images/train/degree_0062.png	47.5°
+images/train/degree_0063.png	90°
+images/train/degree_0064.png	219°
+images/train/degree_0065.png	120°
+images/train/degree_0066.png	15°
+images/train/degree_0067.png	90°
+images/train/degree_0068.png	45°
+images/train/degree_0069.png	56.3°
+images/train/degree_0070.png	339°
+images/train/degree_0071.png	285°
+images/train/degree_0072.png	36°
+images/train/degree_0073.png	26.9°
+images/train/degree_0074.png	18°
+images/train/degree_0075.png	30°
+images/train/degree_0076.png	120°
+images/train/degree_0077.png	86.8°
+images/train/degree_0078.png	180°
+images/train/degree_0079.png	15°
+images/train/degree_0080.png	64° ± 0.6°
+images/train/degree_0081.png	36°
+images/train/degree_0082.png	72.9°
+images/train/degree_0083.png	36°
+images/train/degree_0084.png	34°
+images/train/degree_0085.png	166°
+images/train/degree_0086.png	147°
+images/train/degree_0087.png	30°
+images/train/degree_0088.png	81.7°
+images/train/degree_0089.png	15°
+images/train/degree_0090.png	45°
+images/train/degree_0091.png	324°
+images/train/degree_0092.png	45°
+images/train/degree_0093.png	48.6°
+images/train/degree_0094.png	12° ± 0.8°
+images/train/degree_0095.png	9°
+images/train/degree_0096.png	120°
+images/train/degree_0097.png	30°
+images/train/degree_0098.png	15°
+images/train/degree_0099.png	77° ± 0.7°
+images/train/degree_0100.png	62.2°
+images/train/degree_0101.png	25° ± 0.1°
+images/train/degree_0102.png	80.2°
+images/train/degree_0103.png	20.4°
+images/train/degree_0104.png	36°
+images/train/degree_0105.png	7°
+images/train/degree_0106.png	36°
+images/train/degree_0107.png	213°
+images/train/degree_0108.png	75° ± 0.5°
+images/train/degree_0109.png	36°
+images/train/degree_0110.png	90°
+images/train/degree_0111.png	54.1°
+images/train/degree_0112.png	30°
+images/train/degree_0113.png	90°
+images/train/degree_0114.png	77.0°
+images/train/degree_0115.png	52.2°
+images/train/degree_0116.png	167°
+images/train/degree_0117.png	126°
+images/train/degree_0118.png	90°
+images/train/degree_0119.png	60°
+images/train/degree_0120.png	36°
+images/train/degree_0121.png	61° ± 0.8°
+images/train/degree_0122.png	180°
+images/train/degree_0123.png	180°
+images/train/degree_0124.png	15°
+images/train/degree_0125.png	180°
+images/train/degree_0126.png	11° ± 0.8°
+images/train/degree_0127.png	1° ± 0.4°
+images/train/degree_0128.png	15°
+images/train/degree_0129.png	18°
+images/train/degree_0130.png	178°
+images/train/degree_0131.png	18°
+images/train/degree_0132.png	75° ± 0.4°
+images/train/degree_0133.png	85° ± 0.9°
+images/train/degree_0134.png	73° ± 0.2°
+images/train/degree_0135.png	36°
+images/train/degree_0136.png	36°
+images/train/degree_0137.png	75°
+images/train/degree_0138.png	50.5°
+images/train/degree_0139.png	253°
+images/train/degree_0140.png	60°
+images/train/degree_0141.png	28° ± 0.6°
+images/train/degree_0142.png	90°
+images/train/degree_0143.png	180°
+images/train/degree_0144.png	45.4°
+images/train/degree_0145.png	56°
+images/train/degree_0146.png	86°
+images/train/degree_0147.png	67.5°
+images/train/degree_0148.png	36°
+images/train/degree_0149.png	60°
+images/train/degree_0150.png	11° ± 0.4°
+images/train/degree_0151.png	120°
+images/train/degree_0152.png	17.7°
+images/train/degree_0153.png	83° ± 0.7°
+images/train/degree_0154.png	61° ± 0.4°
+images/train/degree_0155.png	32.4°
+images/train/degree_0156.png	16.9°
+images/train/degree_0157.png	4.8°
+images/train/degree_0158.png	46° ± 0.6°
+images/train/degree_0159.png	56.8°
+images/train/degree_0160.png	45°
+images/train/degree_0161.png	271°
+images/train/degree_0162.png	199°
+images/train/degree_0163.png	50° ± 0.7°
+images/train/degree_0164.png	18°
+images/train/degree_0165.png	90°
+images/train/degree_0166.png	55°
+images/train/degree_0167.png	80.7°
+images/train/degree_0168.png	246°
+images/train/degree_0169.png	15°
+images/train/degree_0170.png	90°
+images/train/degree_0171.png	24° ± 0.5°
+images/train/degree_0172.png	18°
+images/train/degree_0173.png	18°
+images/train/degree_0174.png	66°
+images/train/degree_0175.png	117°
+images/train/degree_0176.png	45°
+images/train/degree_0177.png	18°
+images/train/degree_0178.png	32.8°
+images/train/degree_0179.png	167°
+images/train/degree_0180.png	90°
+images/train/degree_0181.png	30°
+images/train/degree_0182.png	94.2°
+images/train/degree_0183.png	45°
+images/train/degree_0184.png	46° ± 0.6°
+images/train/degree_0185.png	11° ± 0.6°
+images/train/degree_0186.png	60°
+images/train/degree_0187.png	27° ± 0.7°
+images/train/degree_0188.png	13° ± 0.2°
+images/train/degree_0189.png	60°
+images/train/degree_0190.png	59° ± 0.7°
+images/train/degree_0191.png	120°
+images/train/degree_0192.png	45°
+images/train/degree_0193.png	48.2°
+images/train/degree_0194.png	33° ± 0.9°
+images/train/degree_0195.png	180°
+images/train/degree_0196.png	207°
+images/train/degree_0197.png	96.1°
+images/train/degree_0198.png	9° ± 0.3°
+images/train/degree_0199.png	168°
+images/train/degree_0200.png	30°
+images/train/degree_0201.png	163°
+images/train/degree_0202.png	15°
+images/train/degree_0203.png	120°
+images/train/degree_0204.png	92.6°
+images/train/degree_0205.png	188°
+images/train/degree_0206.png	45°
+images/train/degree_0207.png	72° ± 0.5°
+images/train/degree_0208.png	110°
+images/train/degree_0209.png	15°
+images/train/degree_0210.png	346°
+images/train/degree_0211.png	54° ± 0.4°
+images/train/degree_0212.png	80° ± 0.4°
+images/train/degree_0213.png	15°
+images/train/degree_0214.png	90°
+images/train/degree_0215.png	36°
+images/train/degree_0216.png	78° ± 0.4°
+images/train/degree_0217.png	45°
+images/train/degree_0218.png	18°
+images/train/degree_0219.png	36°
+images/train/degree_0220.png	45°
+images/train/degree_0221.png	120°
+images/train/degree_0222.png	28° ± 0.7°
+images/train/degree_0223.png	322°
+images/train/degree_0224.png	180°
+images/train/degree_0225.png	85.2°
+images/train/degree_0226.png	20°
+images/train/degree_0227.png	17° ± 0.8°
+images/train/degree_0228.png	90°
+images/train/degree_0229.png	45°
+images/train/degree_0230.png	180°
+images/train/degree_0231.png	44.5°
+images/train/degree_0232.png	90°
+images/train/degree_0233.png	45°
+images/train/degree_0234.png	90°
+images/train/degree_0235.png	50° ± 0.4°
+images/train/degree_0236.png	60°
+images/train/degree_0237.png	8.1°
+images/train/degree_0238.png	90°
+images/train/degree_0239.png	104°
+images/train/degree_0240.png	60°
+images/train/degree_0241.png	45°
+images/train/degree_0242.png	27°
+images/train/degree_0243.png	289°
+images/train/degree_0244.png	90°
+images/train/degree_0245.png	91.4°
+images/train/degree_0246.png	330°
+images/train/degree_0247.png	180°
+images/train/degree_0248.png	86° ± 0.9°
+images/train/degree_0249.png	36°
+images/train/degree_0250.png	332°
+images/train/degree_0251.png	45°
+images/train/degree_0252.png	15°
+images/train/degree_0253.png	60°
+images/train/degree_0254.png	238°
+images/train/degree_0255.png	357°
+images/train/degree_0256.png	10° ± 0.8°
+images/train/degree_0257.png	71° ± 0.5°
+images/train/degree_0258.png	15° ± 0.2°
+images/train/degree_0259.png	90°
+images/train/degree_0260.png	28.6°
+images/train/degree_0261.png	80.5°
+images/train/degree_0262.png	90°
+images/train/degree_0263.png	45°
+images/train/degree_0264.png	36°
+images/train/degree_0265.png	36°
+images/train/degree_0266.png	6°
+images/train/degree_0267.png	35.6°
+images/train/degree_0268.png	30°
+images/train/degree_0269.png	45°
+images/train/greater_than_0000.png	>50 PPM
+images/train/greater_than_0001.png	>10
+images/train/greater_than_0002.png	>38
+images/train/greater_than_0003.png	>4.5
+images/train/greater_than_0004.png	>26.5
+images/train/greater_than_0005.png	> >98%
+images/train/greater_than_0006.png	>50 PPM
+images/train/greater_than_0007.png	>82
+images/train/greater_than_0008.png	> 40%
+images/train/greater_than_0009.png	> 1.33
+images/train/greater_than_0010.png	> 67.2 mm
+images/train/greater_than_0011.png	>30.6
+images/train/greater_than_0012.png	>39
+images/train/greater_than_0013.png	>100 PPM
+images/train/greater_than_0014.png	>25
+images/train/greater_than_0015.png	> >98%
+images/train/greater_than_0016.png	> 99.5 mm
+images/train/greater_than_0017.png	> 57.4 mm
+images/train/greater_than_0018.png	>100 PPM
+images/train/greater_than_0019.png	>7
+images/train/greater_than_0020.png	> 49.2 mm
+images/train/greater_than_0021.png	>25 PPM
+images/train/greater_than_0022.png	> 40%
+images/train/greater_than_0023.png	> 0.05
+images/train/greater_than_0024.png	>16
+images/train/greater_than_0025.png	>91
+images/train/greater_than_0026.png	> 0.05
+images/train/greater_than_0027.png	>100 PPM
+images/train/greater_than_0028.png	>25 PPM
+images/train/greater_than_0029.png	>88
+images/train/greater_than_0030.png	> 1.33
+images/train/greater_than_0031.png	>65.3
+images/train/greater_than_0032.png	>75 PPM
+images/train/greater_than_0033.png	>50 PPM
+images/train/greater_than_0034.png	> 1.33
+images/train/greater_than_0035.png	>82
+images/train/greater_than_0036.png	>82.7
+images/train/greater_than_0037.png	>25 PPM
+images/train/greater_than_0038.png	> >98%
+images/train/greater_than_0039.png	> 3.9 mm
+images/train/greater_than_0040.png	>7
+images/train/greater_than_0041.png	>50 PPM
+images/train/greater_than_0042.png	>41
+images/train/greater_than_0043.png	>49
+images/train/greater_than_0044.png	>91
+images/train/greater_than_0045.png	> 40%
+images/train/greater_than_0046.png	>8
+images/train/greater_than_0047.png	> 8.8 mm
+images/train/greater_than_0048.png	>45
+images/train/greater_than_0049.png	> >98%
+images/train/greater_than_0050.png	> 92.2 mm
+images/train/greater_than_0051.png	> 30.3 mm
+images/train/greater_than_0052.png	>50 PPM
+images/train/greater_than_0053.png	>14
+images/train/greater_than_0054.png	> >98%
+images/train/greater_than_0055.png	>75 PPM
+images/train/greater_than_0056.png	> 51.4 mm
+images/train/greater_than_0057.png	> 61.0 mm
+images/train/greater_than_0058.png	> 81.8 mm
+images/train/greater_than_0059.png	>49.6
+images/train/greater_than_0060.png	> 40%
+images/train/greater_than_0061.png	> 94.9 mm
+images/train/greater_than_0062.png	>25 PPM
+images/train/greater_than_0063.png	>89
+images/train/greater_than_0064.png	> 40%
+images/train/greater_than_0065.png	> 40%
+images/train/greater_than_0066.png	>16.7
+images/train/greater_than_0067.png	>61.8
+images/train/greater_than_0068.png	> 40%
+images/train/greater_than_0069.png	>85
+images/train/greater_than_0070.png	> 78.4 mm
+images/train/greater_than_0071.png	> 0.05
+images/train/greater_than_0072.png	>62
+images/train/greater_than_0073.png	>25 PPM
+images/train/greater_than_0074.png	> 40%
+images/train/greater_than_0075.png	> 44.3 mm
+images/train/greater_than_0076.png	>98
+images/train/greater_than_0077.png	>48
+images/train/greater_than_0078.png	>50 PPM
+images/train/greater_than_0079.png	> 1.33
+images/train/greater_than_0080.png	> >98%
+images/train/greater_than_0081.png	> >98%
+images/train/greater_than_0082.png	>57.1
+images/train/greater_than_0083.png	>50 PPM
+images/train/greater_than_0084.png	>76
+images/train/greater_than_0085.png	> 1.33
+images/train/greater_than_0086.png	> 1.33
+images/train/greater_than_0087.png	> 38.5 mm
+images/train/greater_than_0088.png	> 40%
+images/train/greater_than_0089.png	> 18.4 mm
+images/train/greater_than_0090.png	>50 PPM
+images/train/greater_than_0091.png	>50 PPM
+images/train/greater_than_0092.png	>24
+images/train/greater_than_0093.png	>13.9
+images/train/greater_than_0094.png	>3
+images/train/greater_than_0095.png	>25 PPM
+images/train/greater_than_0096.png	>20
+images/train/greater_than_0097.png	>55
+images/train/greater_than_0098.png	>20.5
+images/train/greater_than_0099.png	>93.1
+images/train/greater_than_0100.png	>78.9
+images/train/greater_than_0101.png	>50 PPM
+images/train/greater_than_0102.png	> 40%
+images/train/greater_than_0103.png	>46
+images/train/greater_than_0104.png	> >98%
+images/train/greater_than_0105.png	>76.9
+images/train/greater_than_0106.png	> 40%
+images/train/greater_than_0107.png	>95.7
+images/train/greater_than_0108.png	>25 PPM
+images/train/greater_than_0109.png	> 4.3 mm
+images/train/greater_than_0110.png	>25
+images/train/greater_than_0111.png	>12.6
+images/train/greater_than_0112.png	> 40%
+images/train/greater_than_0113.png	>50 PPM
+images/train/greater_than_0114.png	>26.5
+images/train/greater_than_0115.png	>100 PPM
+images/train/greater_than_0116.png	> 51.6 mm
+images/train/greater_than_0117.png	>50 PPM
+images/train/greater_than_0118.png	>47
+images/train/greater_than_0119.png	>50 PPM
+images/train/greater_than_0120.png	>46.2
+images/train/greater_than_0121.png	>13.4
+images/train/greater_than_0122.png	> >98%
+images/train/greater_than_0123.png	>6.7
+images/train/greater_than_0124.png	>30.3
+images/train/greater_than_0125.png	> 73.1 mm
+images/train/greater_than_0126.png	>100 PPM
+images/train/greater_than_0127.png	> 59.8 mm
+images/train/greater_than_0128.png	>75 PPM
+images/train/greater_than_0129.png	>50
+images/train/greater_than_0130.png	> 0.05
+images/train/greater_than_0131.png	> 7.1 mm
+images/train/greater_than_0132.png	> >98%
+images/train/greater_than_0133.png	> 20.2 mm
+images/train/greater_than_0134.png	>50 PPM
+images/train/greater_than_0135.png	> 67.5 mm
+images/train/greater_than_0136.png	> 0.05
+images/train/greater_than_0137.png	>41.1
+images/train/greater_than_0138.png	> 93.9 mm
+images/train/greater_than_0139.png	>6
+images/train/greater_than_0140.png	> 76.5 mm
+images/train/greater_than_0141.png	>70.3
+images/train/greater_than_0142.png	> 55.1 mm
+images/train/greater_than_0143.png	> 2.7 mm
+images/train/greater_than_0144.png	>34
+images/train/greater_than_0145.png	>60
+images/train/greater_than_0146.png	> 40%
+images/train/greater_than_0147.png	>38.1
+images/train/greater_than_0148.png	> 5.0 mm
+images/train/greater_than_0149.png	>100 PPM
+images/train/greater_than_0150.png	>87
+images/train/greater_than_0151.png	> 40%
+images/train/greater_than_0152.png	>78
+images/train/greater_than_0153.png	>42
+images/train/greater_than_0154.png	>6.3
+images/train/greater_than_0155.png	>59
+images/train/greater_than_0156.png	> 39.3 mm
+images/train/greater_than_0157.png	>13
+images/train/greater_than_0158.png	>10.2
+images/train/greater_than_0159.png	>71.5
+images/train/greater_than_0160.png	>100 PPM
+images/train/greater_than_0161.png	>13.8
+images/train/greater_than_0162.png	> 73.0 mm
+images/train/greater_than_0163.png	>25 PPM
+images/train/greater_than_0164.png	> 8.4 mm
+images/train/greater_than_0165.png	> 10.9 mm
+images/train/greater_than_0166.png	>54.9
+images/train/greater_than_0167.png	> 40%
+images/train/greater_than_0168.png	> 68.2 mm
+images/train/greater_than_0169.png	>98.7
+images/train/greater_than_0170.png	> 1.33
+images/train/greater_than_0171.png	>26.1
+images/train/greater_than_0172.png	> 1.33
+images/train/greater_than_0173.png	> 22.8 mm
+images/train/greater_than_0174.png	> 12.6 mm
+images/train/greater_than_0175.png	> 14.7 mm
+images/train/greater_than_0176.png	> 77.4 mm
+images/train/greater_than_0177.png	>11
+images/train/greater_than_0178.png	>80
+images/train/greater_than_0179.png	>81.0
+images/train/greater_than_0180.png	> 92.8 mm
+images/train/greater_than_0181.png	>18
+images/train/greater_than_0182.png	>10
+images/train/greater_than_0183.png	>53
+images/train/greater_than_0184.png	>78.7
+images/train/greater_than_0185.png	>89
+images/train/greater_than_0186.png	>25 PPM
+images/train/greater_than_0187.png	>75 PPM
+images/train/greater_than_0188.png	>25
+images/train/greater_than_0189.png	>100 PPM
+images/train/greater_than_0190.png	>25 PPM
+images/train/greater_than_0191.png	>98.4
+images/train/greater_than_0192.png	> 40%
+images/train/greater_than_0193.png	> 0.05
+images/train/greater_than_0194.png	>27.4
+images/train/greater_than_0195.png	>48
+images/train/greater_than_0196.png	>33
+images/train/greater_than_0197.png	>44
+images/train/greater_than_0198.png	>47.3
+images/train/greater_than_0199.png	>60.7
+images/train/greater_than_0200.png	>46.1
+images/train/greater_than_0201.png	> 37.0 mm
+images/train/greater_than_0202.png	> 0.05
+images/train/greater_than_0203.png	>75 PPM
+images/train/greater_than_0204.png	>3.3
+images/train/greater_than_0205.png	>25 PPM
+images/train/greater_than_0206.png	>50 PPM
+images/train/greater_than_0207.png	> 20.0 mm
+images/train/greater_than_0208.png	> 1.33
+images/train/greater_than_0209.png	>100 PPM
+images/train/greater_than_0210.png	> 0.05
+images/train/greater_than_0211.png	> 1.33
+images/train/greater_than_0212.png	>64.5
+images/train/greater_than_0213.png	> 75.9 mm
+images/train/greater_than_0214.png	>92.0
+images/train/greater_than_0215.png	> 40%
+images/train/greater_than_0216.png	>75 PPM
+images/train/greater_than_0217.png	> 81.7 mm
+images/train/greater_than_0218.png	> 76.0 mm
+images/train/greater_than_0219.png	> 1.33
+images/train/greater_than_0220.png	>37
+images/train/greater_than_0221.png	>84
+images/train/greater_than_0222.png	>71
+images/train/greater_than_0223.png	>25 PPM
+images/train/greater_than_0224.png	> >98%
+images/train/greater_than_0225.png	>85.3
+images/train/greater_than_0226.png	>53.6
+images/train/greater_than_0227.png	>13.1
+images/train/greater_than_0228.png	> 40%
+images/train/greater_than_0229.png	>100 PPM
+images/train/greater_than_0230.png	> 1.33
+images/train/greater_than_0231.png	> 40%
+images/train/greater_than_0232.png	>50.9
+images/train/greater_than_0233.png	> >98%
+images/train/greater_than_0234.png	>51.1
+images/train/greater_than_0235.png	>68
+images/train/greater_than_0236.png	>25 PPM
+images/train/greater_than_0237.png	>19.7
+images/train/greater_than_0238.png	>16
+images/train/greater_than_0239.png	> 1.33
+images/train/greater_than_0240.png	> 66.6 mm
+images/train/greater_than_0241.png	> 38.7 mm
+images/train/greater_than_0242.png	>11.2
+images/train/greater_than_0243.png	>95.2
+images/train/greater_than_0244.png	> 74.4 mm
+images/train/greater_than_0245.png	>53.1
+images/train/greater_than_0246.png	> 91.2 mm
+images/train/greater_than_0247.png	>70.3
+images/train/greater_than_0248.png	> 36.2 mm
+images/train/greater_than_0249.png	> 94.6 mm
+images/train/greater_than_0250.png	>31.9
+images/train/greater_than_0251.png	>52.0
+images/train/greater_than_0252.png	> 1.33
+images/train/greater_than_0253.png	> 1.33
+images/train/greater_than_0254.png	>54
+images/train/greater_than_0255.png	> 38.2 mm
+images/train/greater_than_0256.png	>62.7
+images/train/greater_than_0257.png	>22
+images/train/greater_than_0258.png	>25.7
+images/train/greater_than_0259.png	> >98%
+images/train/greater_than_0260.png	> >98%
+images/train/greater_than_0261.png	>25.5
+images/train/greater_than_0262.png	>75 PPM
+images/train/greater_than_0263.png	> >98%
+images/train/greater_than_0264.png	> 60.9 mm
+images/train/greater_than_0265.png	>94
+images/train/greater_than_0266.png	>53.8
+images/train/greater_than_0267.png	>75 PPM
+images/train/greater_than_0268.png	>31
+images/train/greater_than_0269.png	>80
+images/train/less_than_0000.png	< 80.9 mm
+images/train/less_than_0001.png	<4.5
+images/train/less_than_0002.png	<0.5
+images/train/less_than_0003.png	< 25 PPM
+images/train/less_than_0004.png	< 83.3 mm
+images/train/less_than_0005.png	< 500 μm
+images/train/less_than_0006.png	<45.2
+images/train/less_than_0007.png	<5.0
+images/train/less_than_0008.png	<56.3
+images/train/less_than_0009.png	<0.1
+images/train/less_than_0010.png	< 500 μm
+images/train/less_than_0011.png	<20
+images/train/less_than_0012.png	< 72.0 mm
+images/train/less_than_0013.png	< 72.1 mm
+images/train/less_than_0014.png	< 70.1 mm
+images/train/less_than_0015.png	< 500 μm
+images/train/less_than_0016.png	<55
+images/train/less_than_0017.png	<84
+images/train/less_than_0018.png	<34.8
+images/train/less_than_0019.png	<9
+images/train/less_than_0020.png	<29.4
+images/train/less_than_0021.png	<9
+images/train/less_than_0022.png	<29.2
+images/train/less_than_0023.png	< 25 PPM
+images/train/less_than_0024.png	<98.5
+images/train/less_than_0025.png	<60
+images/train/less_than_0026.png	<61
+images/train/less_than_0027.png	<0.5
+images/train/less_than_0028.png	< 43.0 mm
+images/train/less_than_0029.png	<70
+images/train/less_than_0030.png	<93.5
+images/train/less_than_0031.png	<96.0
+images/train/less_than_0032.png	< 13.2 mm
+images/train/less_than_0033.png	<88
+images/train/less_than_0034.png	< 30dB
+images/train/less_than_0035.png	<0.1
+images/train/less_than_0036.png	< 90.1 mm
+images/train/less_than_0037.png	<87.9
+images/train/less_than_0038.png	<5.0
+images/train/less_than_0039.png	<99.4
+images/train/less_than_0040.png	<0.1
+images/train/less_than_0041.png	<28
+images/train/less_than_0042.png	<27.8
+images/train/less_than_0043.png	< 25 PPM
+images/train/less_than_0044.png	<6.8
+images/train/less_than_0045.png	< 81.0 mm
+images/train/less_than_0046.png	< 80.0 mm
+images/train/less_than_0047.png	< 500 μm
+images/train/less_than_0048.png	<0.5
+images/train/less_than_0049.png	<9
+images/train/less_than_0050.png	<81
+images/train/less_than_0051.png	<77
+images/train/less_than_0052.png	<40.6
+images/train/less_than_0053.png	<94.7
+images/train/less_than_0054.png	<0.5
+images/train/less_than_0055.png	<1.4
+images/train/less_than_0056.png	<82
+images/train/less_than_0057.png	<15.2
+images/train/less_than_0058.png	< 500 μm
+images/train/less_than_0059.png	< 23.2 mm
+images/train/less_than_0060.png	< 30dB
+images/train/less_than_0061.png	<89
+images/train/less_than_0062.png	<5.0
+images/train/less_than_0063.png	<72.4
+images/train/less_than_0064.png	<93
+images/train/less_than_0065.png	<0.1
+images/train/less_than_0066.png	< 25 PPM
+images/train/less_than_0067.png	<1.0
+images/train/less_than_0068.png	<81
+images/train/less_than_0069.png	< 95.4 mm
+images/train/less_than_0070.png	<52.4
+images/train/less_than_0071.png	<4
+images/train/less_than_0072.png	< 21.7 mm
+images/train/less_than_0073.png	<18.2
+images/train/less_than_0074.png	< 8.8 mm
+images/train/less_than_0075.png	<67
+images/train/less_than_0076.png	<1.0
+images/train/less_than_0077.png	<1.0
+images/train/less_than_0078.png	<48
+images/train/less_than_0079.png	< 500 μm
+images/train/less_than_0080.png	<16
+images/train/less_than_0081.png	< 25 PPM
+images/train/less_than_0082.png	< 500 μm
+images/train/less_than_0083.png	<2
+images/train/less_than_0084.png	<27
+images/train/less_than_0085.png	< 25 PPM
+images/train/less_than_0086.png	<0.1
+images/train/less_than_0087.png	<94
+images/train/less_than_0088.png	<5.0
+images/train/less_than_0089.png	<26
+images/train/less_than_0090.png	<88.7
+images/train/less_than_0091.png	< 90.0 mm
+images/train/less_than_0092.png	<78
+images/train/less_than_0093.png	<36
+images/train/less_than_0094.png	< 48.3 mm
+images/train/less_than_0095.png	< 25 PPM
+images/train/less_than_0096.png	< 25.2 mm
+images/train/less_than_0097.png	<16.6
+images/train/less_than_0098.png	<0.5
+images/train/less_than_0099.png	<0.1
+images/train/less_than_0100.png	<40
+images/train/less_than_0101.png	< 90.3 mm
+images/train/less_than_0102.png	< 25 PPM
+images/train/less_than_0103.png	<0.5
+images/train/less_than_0104.png	<53.0
+images/train/less_than_0105.png	< 500 μm
+images/train/less_than_0106.png	<1.0
+images/train/less_than_0107.png	<0.1
+images/train/less_than_0108.png	<34.1
+images/train/less_than_0109.png	< 25 PPM
+images/train/less_than_0110.png	< 5.8 mm
+images/train/less_than_0111.png	<31.3
+images/train/less_than_0112.png	< 27.0 mm
+images/train/less_than_0113.png	<0.5
+images/train/less_than_0114.png	<63
+images/train/less_than_0115.png	<78
+images/train/less_than_0116.png	< 21.7 mm
+images/train/less_than_0117.png	<67.1
+images/train/less_than_0118.png	< 72.5 mm
+images/train/less_than_0119.png	<16.6
+images/train/less_than_0120.png	< 33.1 mm
+images/train/less_than_0121.png	< 25 PPM
+images/train/less_than_0122.png	<53
+images/train/less_than_0123.png	<86.4
+images/train/less_than_0124.png	<0.5
+images/train/less_than_0125.png	< 25 PPM
+images/train/less_than_0126.png	< 22.5 mm
+images/train/less_than_0127.png	<40.5
+images/train/less_than_0128.png	< 25 PPM
+images/train/less_than_0129.png	<0.5
+images/train/less_than_0130.png	<54.9
+images/train/less_than_0131.png	<5.0
+images/train/less_than_0132.png	<69.5
+images/train/less_than_0133.png	<5.0
+images/train/less_than_0134.png	<22.6
+images/train/less_than_0135.png	< 1.1 mm
+images/train/less_than_0136.png	<100
+images/train/less_than_0137.png	<0.1
+images/train/less_than_0138.png	<0.1
+images/train/less_than_0139.png	<0.1
+images/train/less_than_0140.png	< 25 PPM
+images/train/less_than_0141.png	<54.6
+images/train/less_than_0142.png	<20.9
+images/train/less_than_0143.png	<66
+images/train/less_than_0144.png	<36
+images/train/less_than_0145.png	< 46.6 mm
+images/train/less_than_0146.png	<67.3
+images/train/less_than_0147.png	<0.1
+images/train/less_than_0148.png	<4.1
+images/train/less_than_0149.png	<72
+images/train/less_than_0150.png	<53.0
+images/train/less_than_0151.png	<29.6
+images/train/less_than_0152.png	< 24.4 mm
+images/train/less_than_0153.png	<39
+images/train/less_than_0154.png	< 30dB
+images/train/less_than_0155.png	< 500 μm
+images/train/less_than_0156.png	<74.2
+images/train/less_than_0157.png	< 25.4 mm
+images/train/less_than_0158.png	< 500 μm
+images/train/less_than_0159.png	< 25 PPM
+images/train/less_than_0160.png	<74
+images/train/less_than_0161.png	<50
+images/train/less_than_0162.png	<52
+images/train/less_than_0163.png	< 500 μm
+images/train/less_than_0164.png	<0.5
+images/train/less_than_0165.png	<21
+images/train/less_than_0166.png	<43.9
+images/train/less_than_0167.png	< 93.4 mm
+images/train/less_than_0168.png	<10.6
+images/train/less_than_0169.png	<0.1
+images/train/less_than_0170.png	<0.1
+images/train/less_than_0171.png	< 30dB
+images/train/less_than_0172.png	<5.0
+images/train/less_than_0173.png	< 68.2 mm
+images/train/less_than_0174.png	<95.3
+images/train/less_than_0175.png	<93.1
+images/train/less_than_0176.png	<0.5
+images/train/less_than_0177.png	<1.0
+images/train/less_than_0178.png	<0.5
+images/train/less_than_0179.png	<5.0
+images/train/less_than_0180.png	<5.0
+images/train/less_than_0181.png	<0.5
+images/train/less_than_0182.png	<5.0
+images/train/less_than_0183.png	< 30dB
+images/train/less_than_0184.png	< 8.8 mm
+images/train/less_than_0185.png	<0.5
+images/train/less_than_0186.png	<12.0
+images/train/less_than_0187.png	<5.0
+images/train/less_than_0188.png	<5.0
+images/train/less_than_0189.png	< 32.3 mm
+images/train/less_than_0190.png	< 83.5 mm
+images/train/less_than_0191.png	<40.7
+images/train/less_than_0192.png	< 79.5 mm
+images/train/less_than_0193.png	< 500 μm
+images/train/less_than_0194.png	< 44.5 mm
+images/train/less_than_0195.png	<56.9
+images/train/less_than_0196.png	< 25 PPM
+images/train/less_than_0197.png	< 500 μm
+images/train/less_than_0198.png	< 44.1 mm
+images/train/less_than_0199.png	<41
+images/train/less_than_0200.png	<42.1
+images/train/less_than_0201.png	<7.9
+images/train/less_than_0202.png	< 56.0 mm
+images/train/less_than_0203.png	<51
+images/train/less_than_0204.png	< 500 μm
+images/train/less_than_0205.png	< 30dB
+images/train/less_than_0206.png	<0.5
+images/train/less_than_0207.png	<29.3
+images/train/less_than_0208.png	<38.5
+images/train/less_than_0209.png	<32
+images/train/less_than_0210.png	< 30dB
+images/train/less_than_0211.png	<47.8
+images/train/less_than_0212.png	<26.2
+images/train/less_than_0213.png	<86.8
+images/train/less_than_0214.png	< 500 μm
+images/train/less_than_0215.png	< 30dB
+images/train/less_than_0216.png	<0.5
+images/train/less_than_0217.png	< 45.0 mm
+images/train/less_than_0218.png	< 25 PPM
+images/train/less_than_0219.png	< 22.5 mm
+images/train/less_than_0220.png	< 500 μm
+images/train/less_than_0221.png	<68
+images/train/less_than_0222.png	<49
+images/train/less_than_0223.png	< 500 μm
+images/train/less_than_0224.png	<87.8
+images/train/less_than_0225.png	< 51.3 mm
+images/train/less_than_0226.png	<18
+images/train/less_than_0227.png	< 30dB
+images/train/less_than_0228.png	< 30dB
+images/train/less_than_0229.png	< 500 μm
+images/train/less_than_0230.png	<1.0
+images/train/less_than_0231.png	< 84.2 mm
+images/train/less_than_0232.png	< 25 PPM
+images/train/less_than_0233.png	< 70.7 mm
+images/train/less_than_0234.png	<19.1
+images/train/less_than_0235.png	< 25 PPM
+images/train/less_than_0236.png	<5.0
+images/train/less_than_0237.png	<74.6
+images/train/less_than_0238.png	< 30dB
+images/train/less_than_0239.png	<32
+images/train/less_than_0240.png	< 25 PPM
+images/train/less_than_0241.png	< 76.4 mm
+images/train/less_than_0242.png	<23
+images/train/less_than_0243.png	<55
+images/train/less_than_0244.png	<0.5
+images/train/less_than_0245.png	<1.0
+images/train/less_than_0246.png	<39.9
+images/train/less_than_0247.png	<4
+images/train/less_than_0248.png	< 48.2 mm
+images/train/less_than_0249.png	<73.2
+images/train/less_than_0250.png	<63
+images/train/less_than_0251.png	< 500 μm
+images/train/less_than_0252.png	< 25 PPM
+images/train/less_than_0253.png	< 88.2 mm
+images/train/less_than_0254.png	<34.9
+images/train/less_than_0255.png	<44
+images/train/less_than_0256.png	<1.0
+images/train/less_than_0257.png	<17.5
+images/train/less_than_0258.png	< 62.4 mm
+images/train/less_than_0259.png	< 25 PPM
+images/train/less_than_0260.png	< 10.0 mm
+images/train/less_than_0261.png	<75
+images/train/less_than_0262.png	<0.1
+images/train/less_than_0263.png	<19
+images/train/less_than_0264.png	< 30dB
+images/train/less_than_0265.png	<0.1
+images/train/less_than_0266.png	<14.0
+images/train/less_than_0267.png	< 25 PPM
+images/train/less_than_0268.png	< 30dB
+images/train/less_than_0269.png	<10.3
+images/train/gte_0000.png	>=7
+images/train/gte_0001.png	>=25
+images/train/gte_0002.png	>= 40%
+images/train/gte_0003.png	>=68.0
+images/train/gte_0004.png	>=20.8
+images/train/gte_0005.png	>= 77%
+images/train/gte_0006.png	>=47
+images/train/gte_0007.png	>= 5.4
+images/train/gte_0008.png	>= 24%
+images/train/gte_0009.png	>= 82%
+images/train/gte_0010.png	>= 31.8
+images/train/gte_0011.png	>= 16.2
+images/train/gte_0012.png	>= 1.67
+images/train/gte_0013.png	>=90.7
+images/train/gte_0014.png	>= 0.5
+images/train/gte_0015.png	>= 17.5
+images/train/gte_0016.png	>= 37%
+images/train/gte_0017.png	>= 89.6
+images/train/gte_0018.png	>= 69%
+images/train/gte_0019.png	>= 39%
+images/train/gte_0020.png	>= 1.0
+images/train/gte_0021.png	>= 1.0
+images/train/gte_0022.png	>=13.0
+images/train/gte_0023.png	>= 89.7
+images/train/gte_0024.png	>= 36.2
+images/train/gte_0025.png	>=22.7
+images/train/gte_0026.png	>= 32.7
+images/train/gte_0027.png	>= 1.7
+images/train/gte_0028.png	>=87
+images/train/gte_0029.png	>=67.5
+images/train/gte_0030.png	>= 0.5
+images/train/gte_0031.png	>= 91%
+images/train/gte_0032.png	>=6
+images/train/gte_0033.png	>= 63%
+images/train/gte_0034.png	>=100
+images/train/gte_0035.png	>=89
+images/train/gte_0036.png	>=34.7
+images/train/gte_0037.png	>= 74.5
+images/train/gte_0038.png	>= 1.0
+images/train/gte_0039.png	>= 0.5
+images/train/gte_0040.png	>= 0.5
+images/train/gte_0041.png	>=51.2
+images/train/gte_0042.png	>=44
+images/train/gte_0043.png	>=24.3
+images/train/gte_0044.png	>=53.7
+images/train/gte_0045.png	>= 5.9
+images/train/gte_0046.png	>=18.4
+images/train/gte_0047.png	>=1
+images/train/gte_0048.png	>= 89%
+images/train/gte_0049.png	>= 2.0
+images/train/gte_0050.png	>= 51.1
+images/train/gte_0051.png	>= 59%
+images/train/gte_0052.png	>=39
+images/train/gte_0053.png	>= 66.3
+images/train/gte_0054.png	>= 23.2
+images/train/gte_0055.png	>=62.5
+images/train/gte_0056.png	>= 15.3
+images/train/gte_0057.png	>= 56.0
+images/train/gte_0058.png	>= 30%
+images/train/gte_0059.png	>=41.8
+images/train/gte_0060.png	>= 52.3
+images/train/gte_0061.png	>=39
+images/train/gte_0062.png	>= 91.3
+images/train/gte_0063.png	>=45.1
+images/train/gte_0064.png	>= 15%
+images/train/gte_0065.png	>=84.3
+images/train/gte_0066.png	>=91.6
+images/train/gte_0067.png	>=85
+images/train/gte_0068.png	>=22
+images/train/gte_0069.png	>=7.4
+images/train/gte_0070.png	>=99.4
+images/train/gte_0071.png	>= 1.0
+images/train/gte_0072.png	>=82.1
+images/train/gte_0073.png	>= 3.1
+images/train/gte_0074.png	>= 57.2
+images/train/gte_0075.png	>= 49%
+images/train/gte_0076.png	>=47.7
+images/train/gte_0077.png	>= 53%
+images/train/gte_0078.png	>=6.4
+images/train/gte_0079.png	>= 20%
+images/train/gte_0080.png	>= 44.6
+images/train/gte_0081.png	>=11
+images/train/gte_0082.png	>= 3.9
+images/train/gte_0083.png	>= 37%
+images/train/gte_0084.png	>= 26.6
+images/train/gte_0085.png	>=75
+images/train/gte_0086.png	>= 2.0
+images/train/gte_0087.png	>=68
+images/train/gte_0088.png	>= 44%
+images/train/gte_0089.png	>=14.2
+images/train/gte_0090.png	>=99
+images/train/gte_0091.png	>= 56.9
+images/train/gte_0092.png	>= 1.67
+images/train/gte_0093.png	>=37
+images/train/gte_0094.png	>= 1.0
+images/train/gte_0095.png	>= 23%
+images/train/gte_0096.png	>= 1.0
+images/train/gte_0097.png	>= 88.7
+images/train/gte_0098.png	>=82
+images/train/gte_0099.png	>= 45.1
+images/train/gte_0100.png	>= 72%
+images/train/gte_0101.png	>=19
+images/train/gte_0102.png	>= 35%
+images/train/gte_0103.png	>=43.2
+images/train/gte_0104.png	>= 73%
+images/train/gte_0105.png	>=19
+images/train/gte_0106.png	>=63.9
+images/train/gte_0107.png	>=13.8
+images/train/gte_0108.png	>= 67%
+images/train/gte_0109.png	>= 22%
+images/train/gte_0110.png	>=20.5
+images/train/gte_0111.png	>=10.1
+images/train/gte_0112.png	>= 42.1
+images/train/gte_0113.png	>= 16.9
+images/train/gte_0114.png	>= 90.6
+images/train/gte_0115.png	>=17.0
+images/train/gte_0116.png	>= 56%
+images/train/gte_0117.png	>= 2.0
+images/train/gte_0118.png	>= 17%
+images/train/gte_0119.png	>=41.7
+images/train/gte_0120.png	>= 20%
+images/train/gte_0121.png	>= 1.0
+images/train/gte_0122.png	>= 20%
+images/train/gte_0123.png	>= 1.67
+images/train/gte_0124.png	>= 34%
+images/train/gte_0125.png	>=87
+images/train/gte_0126.png	>= 29.8
+images/train/gte_0127.png	>=59.2
+images/train/gte_0128.png	>= 73.1
+images/train/gte_0129.png	>=15
+images/train/gte_0130.png	>=9
+images/train/gte_0131.png	>=95.9
+images/train/gte_0132.png	>=50.4
+images/train/gte_0133.png	>=92.7
+images/train/gte_0134.png	>= 97%
+images/train/gte_0135.png	>=30
+images/train/gte_0136.png	>= 1.67
+images/train/gte_0137.png	>= 12%
+images/train/gte_0138.png	>= 51%
+images/train/gte_0139.png	>= 71%
+images/train/gte_0140.png	>= 0.5
+images/train/gte_0141.png	>= 10.8
+images/train/gte_0142.png	>=13.4
+images/train/gte_0143.png	>= 1.0
+images/train/gte_0144.png	>= 62%
+images/train/gte_0145.png	>= 48%
+images/train/gte_0146.png	>= 90.7
+images/train/gte_0147.png	>= 92.6
+images/train/gte_0148.png	>=7
+images/train/gte_0149.png	>= 1.67
+images/train/gte_0150.png	>= 0.5
+images/train/gte_0151.png	>= 34.3
+images/train/gte_0152.png	>= 57.6
+images/train/gte_0153.png	>=92.6
+images/train/gte_0154.png	>= 51.7
+images/train/gte_0155.png	>=24
+images/train/gte_0156.png	>= 88%
+images/train/gte_0157.png	>=10
+images/train/gte_0158.png	>= 1.67
+images/train/gte_0159.png	>=99.1
+images/train/gte_0160.png	>= 0.5
+images/train/gte_0161.png	>=61
+images/train/gte_0162.png	>= 88.2
+images/train/gte_0163.png	>=13
+images/train/gte_0164.png	>= 2.0
+images/train/gte_0165.png	>=77
+images/train/gte_0166.png	>=76
+images/train/gte_0167.png	>=7.1
+images/train/gte_0168.png	>= 28.9
+images/train/gte_0169.png	>= 24.1
+images/train/gte_0170.png	>=55
+images/train/gte_0171.png	>= 9.4
+images/train/gte_0172.png	>=12.1
+images/train/gte_0173.png	>= 70%
+images/train/gte_0174.png	>=92.9
+images/train/gte_0175.png	>=34.1
+images/train/gte_0176.png	>= 83.7
+images/train/gte_0177.png	>= 35.3
+images/train/gte_0178.png	>=64
+images/train/gte_0179.png	>=55.1
+images/train/gte_0180.png	>= 97.0
+images/train/gte_0181.png	>= 88%
+images/train/gte_0182.png	>= 49%
+images/train/gte_0183.png	>= 48%
+images/train/gte_0184.png	>=31
+images/train/gte_0185.png	>= 1.0
+images/train/gte_0186.png	>= 1.67
+images/train/gte_0187.png	>= 57.6
+images/train/gte_0188.png	>= 62.5
+images/train/gte_0189.png	>=20
+images/train/gte_0190.png	>= 74%
+images/train/gte_0191.png	>= 77.7
+images/train/gte_0192.png	>= 23%
+images/train/gte_0193.png	>= 40.0
+images/train/gte_0194.png	>= 17.5
+images/train/gte_0195.png	>=77
+images/train/gte_0196.png	>= 75.5
+images/train/gte_0197.png	>= 55%
+images/train/gte_0198.png	>= 78.2
+images/train/gte_0199.png	>=68.9
+images/train/gte_0200.png	>= 31.2
+images/train/gte_0201.png	>=62.9
+images/train/gte_0202.png	>= 44%
+images/train/gte_0203.png	>=58
+images/train/gte_0204.png	>= 2.6
+images/train/gte_0205.png	>=67.4
+images/train/gte_0206.png	>= 24%
+images/train/gte_0207.png	>= 2.0
+images/train/gte_0208.png	>=32
+images/train/gte_0209.png	>= 32.8
+images/train/gte_0210.png	>=21
+images/train/gte_0211.png	>=37.3
+images/train/gte_0212.png	>=6.1
+images/train/gte_0213.png	>= 6.1
+images/train/gte_0214.png	>=71.3
+images/train/gte_0215.png	>=38
+images/train/gte_0216.png	>=100
+images/train/gte_0217.png	>= 53.4
+images/train/gte_0218.png	>=52.4
+images/train/gte_0219.png	>= 2.0
+images/train/gte_0220.png	>= 49%
+images/train/gte_0221.png	>= 94%
+images/train/gte_0222.png	>= 2.0
+images/train/gte_0223.png	>=11.7
+images/train/gte_0224.png	>=4
+images/train/gte_0225.png	>= 1.0
+images/train/gte_0226.png	>=85
+images/train/gte_0227.png	>= 71.0
+images/train/gte_0228.png	>= 1.67
+images/train/gte_0229.png	>=14.3
+images/train/gte_0230.png	>= 2.0
+images/train/gte_0231.png	>= 27%
+images/train/gte_0232.png	>= 0.5
+images/train/gte_0233.png	>= 1.67
+images/train/gte_0234.png	>= 53.2
+images/train/gte_0235.png	>=30
+images/train/gte_0236.png	>= 39.8
+images/train/gte_0237.png	>= 33%
+images/train/gte_0238.png	>= 38%
+images/train/gte_0239.png	>= 46.8
+images/train/gte_0240.png	>=68.9
+images/train/gte_0241.png	>= 2.0
+images/train/gte_0242.png	>= 96%
+images/train/gte_0243.png	>=54
+images/train/gte_0244.png	>= 48.1
+images/train/gte_0245.png	>= 1.67
+images/train/gte_0246.png	>=23
+images/train/gte_0247.png	>= 82%
+images/train/gte_0248.png	>= 2.0
+images/train/gte_0249.png	>=22
+images/train/gte_0250.png	>= 0.5
+images/train/gte_0251.png	>=73
+images/train/gte_0252.png	>=17
+images/train/gte_0253.png	>= 5.1
+images/train/gte_0254.png	>=3.5
+images/train/gte_0255.png	>= 46%
+images/train/gte_0256.png	>=99.3
+images/train/gte_0257.png	>=49
+images/train/gte_0258.png	>=97
+images/train/gte_0259.png	>= 28.8
+images/train/gte_0260.png	>= 80%
+images/train/gte_0261.png	>= 2.0
+images/train/gte_0262.png	>=72.3
+images/train/gte_0263.png	>=67.5
+images/train/gte_0264.png	>=49
+images/train/gte_0265.png	>=59.2
+images/train/gte_0266.png	>= 52%
+images/train/gte_0267.png	>=55.8
+images/train/gte_0268.png	>=86.3
+images/train/gte_0269.png	>=88
+images/train/inch_0000.png	11" OD
+images/train/inch_0001.png	2.4"
+images/train/inch_0002.png	4.9"
+images/train/inch_0003.png	6" OD
+images/train/inch_0004.png	2" OD
+images/train/inch_0005.png	83.1"
+images/train/inch_0006.png	34.0" ID
+images/train/inch_0007.png	7" OD
+images/train/inch_0008.png	8"
+images/train/inch_0009.png	38.6" ID
+images/train/inch_0010.png	2.9"
+images/train/inch_0011.png	13"
+images/train/inch_0012.png	7" OD
+images/train/inch_0013.png	2" OD
+images/train/inch_0014.png	70.4"
+images/train/inch_0015.png	60.5"
+images/train/inch_0016.png	5.0"
+images/train/inch_0017.png	8" OD
+images/train/inch_0018.png	72.2" ID
+images/train/inch_0019.png	72.6"
+images/train/inch_0020.png	89.3" ID
+images/train/inch_0021.png	15"
+images/train/inch_0022.png	2" OD
+images/train/inch_0023.png	22"
+images/train/inch_0024.png	7" OD
+images/train/inch_0025.png	42.2"
+images/train/inch_0026.png	4" OD
+images/train/inch_0027.png	3.6"
+images/train/inch_0028.png	1" OD
+images/train/inch_0029.png	28.5" ID
+images/train/inch_0030.png	17"
+images/train/inch_0031.png	21"
+images/train/inch_0032.png	9.5"
+images/train/inch_0033.png	64.0"
+images/train/inch_0034.png	17"
+images/train/inch_0035.png	16"
+images/train/inch_0036.png	10" OD
+images/train/inch_0037.png	4.9"
+images/train/inch_0038.png	69.2"
+images/train/inch_0039.png	22"
+images/train/inch_0040.png	7.4"
+images/train/inch_0041.png	78.5" ID
+images/train/inch_0042.png	78.1"
+images/train/inch_0043.png	58.3" ID
+images/train/inch_0044.png	19"
+images/train/inch_0045.png	11"
+images/train/inch_0046.png	9.4"
+images/train/inch_0047.png	3.6" ID
+images/train/inch_0048.png	3" OD
+images/train/inch_0049.png	2" OD
+images/train/inch_0050.png	20"
+images/train/inch_0051.png	10.0"
+images/train/inch_0052.png	56.2"
+images/train/inch_0053.png	9"
+images/train/inch_0054.png	7"
+images/train/inch_0055.png	36.5"
+images/train/inch_0056.png	4.0"
+images/train/inch_0057.png	7.7"
+images/train/inch_0058.png	2.8"
+images/train/inch_0059.png	11" OD
+images/train/inch_0060.png	62.4" ID
+images/train/inch_0061.png	11" OD
+images/train/inch_0062.png	1"
+images/train/inch_0063.png	8"
+images/train/inch_0064.png	23"
+images/train/inch_0065.png	4" OD
+images/train/inch_0066.png	9.1" ID
+images/train/inch_0067.png	20"
+images/train/inch_0068.png	1.7"
+images/train/inch_0069.png	33.4"
+images/train/inch_0070.png	81.2"
+images/train/inch_0071.png	95.0"
+images/train/inch_0072.png	2" OD
+images/train/inch_0073.png	39.8" ID
+images/train/inch_0074.png	9" OD
+images/train/inch_0075.png	59.5" ID
+images/train/inch_0076.png	11" OD
+images/train/inch_0077.png	6.6"
+images/train/inch_0078.png	23"
+images/train/inch_0079.png	6" OD
+images/train/inch_0080.png	14"
+images/train/inch_0081.png	70.7"
+images/train/inch_0082.png	3"
+images/train/inch_0083.png	98.3"
+images/train/inch_0084.png	14.0" ID
+images/train/inch_0085.png	2" OD
+images/train/inch_0086.png	77.0" ID
+images/train/inch_0087.png	95.5"
+images/train/inch_0088.png	23"
+images/train/inch_0089.png	2"
+images/train/inch_0090.png	89.2"
+images/train/inch_0091.png	8.5"
+images/train/inch_0092.png	10.3"
+images/train/inch_0093.png	11" OD
+images/train/inch_0094.png	9"
+images/train/inch_0095.png	62.0"
+images/train/inch_0096.png	10" OD
+images/train/inch_0097.png	16"
+images/train/inch_0098.png	5"
+images/train/inch_0099.png	50.4" ID
+images/train/inch_0100.png	17"
+images/train/inch_0101.png	10" OD
+images/train/inch_0102.png	51.3" ID
+images/train/inch_0103.png	1"
+images/train/inch_0104.png	23"
+images/train/inch_0105.png	92.9"
+images/train/inch_0106.png	98.7" ID
+images/train/inch_0107.png	4.1"
+images/train/inch_0108.png	1" OD
+images/train/inch_0109.png	4.5" ID
+images/train/inch_0110.png	6.4"
+images/train/inch_0111.png	9.7"
+images/train/inch_0112.png	4"
+images/train/inch_0113.png	17.9" ID
+images/train/inch_0114.png	1" OD
+images/train/inch_0115.png	2.9"
+images/train/inch_0116.png	46.5" ID
+images/train/inch_0117.png	20"
+images/train/inch_0118.png	18"
+images/train/inch_0119.png	17"
+images/train/inch_0120.png	10" OD
+images/train/inch_0121.png	1.2"
+images/train/inch_0122.png	1" OD
+images/train/inch_0123.png	52.9"
+images/train/inch_0124.png	6.3"
+images/train/inch_0125.png	76.5" ID
+images/train/inch_0126.png	12" OD
+images/train/inch_0127.png	4.7"
+images/train/inch_0128.png	82.0"
+images/train/inch_0129.png	12" OD
+images/train/inch_0130.png	48.4"
+images/train/inch_0131.png	20.8" ID
+images/train/inch_0132.png	9" OD
+images/train/inch_0133.png	10"
+images/train/inch_0134.png	45.5"
+images/train/inch_0135.png	39.3" ID
+images/train/inch_0136.png	7.7"
+images/train/inch_0137.png	2.4" ID
+images/train/inch_0138.png	10.3"
+images/train/inch_0139.png	2.6"
+images/train/inch_0140.png	5" OD
+images/train/inch_0141.png	12" OD
+images/train/inch_0142.png	5.8"
+images/train/inch_0143.png	12" OD
+images/train/inch_0144.png	9.9" ID
+images/train/inch_0145.png	2" OD
+images/train/inch_0146.png	17"
+images/train/inch_0147.png	7"
+images/train/inch_0148.png	17"
+images/train/inch_0149.png	6" OD
+images/train/inch_0150.png	2.7"
+images/train/inch_0151.png	8"
+images/train/inch_0152.png	81.6" ID
+images/train/inch_0153.png	12" OD
+images/train/inch_0154.png	6" OD
+images/train/inch_0155.png	18.3" ID
+images/train/inch_0156.png	10" OD
+images/train/inch_0157.png	1.5"
+images/train/inch_0158.png	20.3" ID
+images/train/inch_0159.png	5.8"
+images/train/inch_0160.png	57.9" ID
+images/train/inch_0161.png	7.7"
+images/train/inch_0162.png	9" OD
+images/train/inch_0163.png	2"
+images/train/inch_0164.png	39.6" ID
+images/train/inch_0165.png	12" OD
+images/train/inch_0166.png	79.0" ID
+images/train/inch_0167.png	6"
+images/train/inch_0168.png	16.8" ID
+images/train/inch_0169.png	2.0"
+images/train/inch_0170.png	10.2"
+images/train/inch_0171.png	58.9" ID
+images/train/inch_0172.png	41.8" ID
+images/train/inch_0173.png	5.0"
+images/train/inch_0174.png	2.8"
+images/train/inch_0175.png	10"
+images/train/inch_0176.png	4" OD
+images/train/inch_0177.png	13.0" ID
+images/train/inch_0178.png	4" OD
+images/train/inch_0179.png	10.3"
+images/train/inch_0180.png	8.2"
+images/train/inch_0181.png	10.9"
+images/train/inch_0182.png	6"
+images/train/inch_0183.png	9" OD
+images/train/inch_0184.png	26.4" ID
+images/train/inch_0185.png	5.0"
+images/train/inch_0186.png	55.0" ID
+images/train/inch_0187.png	15.1" ID
+images/train/inch_0188.png	30.5" ID
+images/train/inch_0189.png	1" OD
+images/train/inch_0190.png	6.4"
+images/train/inch_0191.png	9.1" ID
+images/train/inch_0192.png	40.0" ID
+images/train/inch_0193.png	9.4"
+images/train/inch_0194.png	19"
+images/train/inch_0195.png	77.5"
+images/train/inch_0196.png	5.2"
+images/train/inch_0197.png	15.1" ID
+images/train/inch_0198.png	9"
+images/train/inch_0199.png	40.2"
+images/train/inch_0200.png	6" OD
+images/train/inch_0201.png	7.3"
+images/train/inch_0202.png	1.4"
+images/train/inch_0203.png	7.2"
+images/train/inch_0204.png	78.0" ID
+images/train/inch_0205.png	3"
+images/train/inch_0206.png	5"
+images/train/inch_0207.png	4"
+images/train/inch_0208.png	11"
+images/train/inch_0209.png	9.9"
+images/train/inch_0210.png	8.7"
+images/train/inch_0211.png	10" OD
+images/train/inch_0212.png	2" OD
+images/train/inch_0213.png	22"
+images/train/inch_0214.png	4" OD
+images/train/inch_0215.png	12" OD
+images/train/inch_0216.png	2" OD
+images/train/inch_0217.png	42.7"
+images/train/inch_0218.png	49.6" ID
+images/train/inch_0219.png	9" OD
+images/train/inch_0220.png	3.5"
+images/train/inch_0221.png	10.3"
+images/train/inch_0222.png	8.4"
+images/train/inch_0223.png	11.7"
+images/train/inch_0224.png	2"
+images/train/inch_0225.png	5" OD
+images/train/inch_0226.png	34.7"
+images/train/inch_0227.png	5" OD
+images/train/inch_0228.png	5.4"
+images/train/inch_0229.png	8.1"
+images/train/inch_0230.png	10" OD
+images/train/inch_0231.png	12"
+images/train/inch_0232.png	43.9" ID
+images/train/inch_0233.png	97.1" ID
+images/train/inch_0234.png	18.9"
+images/train/inch_0235.png	10" OD
+images/train/inch_0236.png	2.7"
+images/train/inch_0237.png	11" OD
+images/train/inch_0238.png	92.5" ID
+images/train/inch_0239.png	28.8" ID
+images/train/inch_0240.png	9.7"
+images/train/inch_0241.png	10.0" ID
+images/train/inch_0242.png	62.3" ID
+images/train/inch_0243.png	96.9" ID
+images/train/inch_0244.png	99.6"
+images/train/inch_0245.png	15"
+images/train/inch_0246.png	8.5"
+images/train/inch_0247.png	2.5"
+images/train/inch_0248.png	68.4" ID
+images/train/inch_0249.png	6"
+images/train/inch_0250.png	88.0" ID
+images/train/inch_0251.png	6" OD
+images/train/inch_0252.png	5" OD
+images/train/inch_0253.png	62.9"
+images/train/inch_0254.png	3"
+images/train/inch_0255.png	5.7"
+images/train/inch_0256.png	6" OD
+images/train/inch_0257.png	29.8" ID
+images/train/inch_0258.png	8.2"
+images/train/inch_0259.png	6.4"
+images/train/inch_0260.png	4.7"
+images/train/inch_0261.png	12"
+images/train/inch_0262.png	5" OD
+images/train/inch_0263.png	23"
+images/train/inch_0264.png	71.0"
+images/train/inch_0265.png	6.7"
+images/train/inch_0266.png	12"
+images/train/inch_0267.png	74.8"
+images/train/inch_0268.png	17"
+images/train/inch_0269.png	1.7"
+images/train/micrometre_0000.png	631 μm
+images/train/micrometre_0001.png	< 871 μm
+images/train/micrometre_0002.png	Rz 6.3 μm
+images/train/micrometre_0003.png	< 895 μm
+images/train/micrometre_0004.png	< 851 μm
+images/train/micrometre_0005.png	6 μm
+images/train/micrometre_0006.png	Ra 3.2 μm
+images/train/micrometre_0007.png	188 μm
+images/train/micrometre_0008.png	Rz 6.3 μm
+images/train/micrometre_0009.png	899 μm
+images/train/micrometre_0010.png	Rz 3.2 μm
+images/train/micrometre_0011.png	28.4 μm
+images/train/micrometre_0012.png	Rz 6.3 μm
+images/train/micrometre_0013.png	Ra 1.6 μm
+images/train/micrometre_0014.png	941 μm
+images/train/micrometre_0015.png	17.8 μm
+images/train/micrometre_0016.png	Rz 12.5 μm
+images/train/micrometre_0017.png	382 μm
+images/train/micrometre_0018.png	Rz 6.3 μm
+images/train/micrometre_0019.png	Ra 1.6 μm
+images/train/micrometre_0020.png	23.9 μm
+images/train/micrometre_0021.png	< 990 μm
+images/train/micrometre_0022.png	< 565 μm
+images/train/micrometre_0023.png	Ra 3.2 μm
+images/train/micrometre_0024.png	< 203 μm
+images/train/micrometre_0025.png	Rz 1.6 μm
+images/train/micrometre_0026.png	< 636 μm
+images/train/micrometre_0027.png	< 948 μm
+images/train/micrometre_0028.png	95 μm
+images/train/micrometre_0029.png	Ra 6.3 μm
+images/train/micrometre_0030.png	141 μm
+images/train/micrometre_0031.png	697 μm
+images/train/micrometre_0032.png	27 μm
+images/train/micrometre_0033.png	627 μm
+images/train/micrometre_0034.png	32.0 μm
+images/train/micrometre_0035.png	< 334 μm
+images/train/micrometre_0036.png	45.6 μm
+images/train/micrometre_0037.png	Ra 0.8 μm
+images/train/micrometre_0038.png	76.4 μm
+images/train/micrometre_0039.png	885 μm
+images/train/micrometre_0040.png	Ra 1.6 μm
+images/train/micrometre_0041.png	829 μm
+images/train/micrometre_0042.png	Rz 12.5 μm
+images/train/micrometre_0043.png	Rz 1.6 μm
+images/train/micrometre_0044.png	Rz 6.3 μm
+images/train/micrometre_0045.png	501 μm
+images/train/micrometre_0046.png	Ra 6.3 μm
+images/train/micrometre_0047.png	673 μm
+images/train/micrometre_0048.png	802 μm
+images/train/micrometre_0049.png	< 822 μm
+images/train/micrometre_0050.png	Rz 1.6 μm
+images/train/micrometre_0051.png	94.3 μm
+images/train/micrometre_0052.png	386 μm
+images/train/micrometre_0053.png	Ra 6.3 μm
+images/train/micrometre_0054.png	< 700 μm
+images/train/micrometre_0055.png	Rz 1.6 μm
+images/train/micrometre_0056.png	Ra 1.6 μm
+images/train/micrometre_0057.png	Ra 1.6 μm
+images/train/micrometre_0058.png	< 900 μm
+images/train/micrometre_0059.png	Ra 6.3 μm
+images/train/micrometre_0060.png	Rz 6.3 μm
+images/train/micrometre_0061.png	311 μm
+images/train/micrometre_0062.png	68.1 μm
+images/train/micrometre_0063.png	Ra 1.6 μm
+images/train/micrometre_0064.png	70.0 μm
+images/train/micrometre_0065.png	< 748 μm
+images/train/micrometre_0066.png	62.0 μm
+images/train/micrometre_0067.png	36.4 μm
+images/train/micrometre_0068.png	71.7 μm
+images/train/micrometre_0069.png	26.5 μm
+images/train/micrometre_0070.png	221 μm
+images/train/micrometre_0071.png	Ra 6.3 μm
+images/train/micrometre_0072.png	Ra 6.3 μm
+images/train/micrometre_0073.png	Ra 1.6 μm
+images/train/micrometre_0074.png	Rz 12.5 μm
+images/train/micrometre_0075.png	27.8 μm
+images/train/micrometre_0076.png	84.6 μm
+images/train/micrometre_0077.png	Ra 3.2 μm
+images/train/micrometre_0078.png	Rz 12.5 μm
+images/train/micrometre_0079.png	Ra 1.6 μm
+images/train/micrometre_0080.png	83.9 μm
+images/train/micrometre_0081.png	< 205 μm
+images/train/micrometre_0082.png	Ra 3.2 μm
+images/train/micrometre_0083.png	609 μm
+images/train/micrometre_0084.png	3.5 μm
+images/train/micrometre_0085.png	Ra 6.3 μm
+images/train/micrometre_0086.png	Ra 6.3 μm
+images/train/micrometre_0087.png	Ra 6.3 μm
+images/train/micrometre_0088.png	79.2 μm
+images/train/micrometre_0089.png	< 536 μm
+images/train/micrometre_0090.png	Rz 3.2 μm
+images/train/micrometre_0091.png	< 884 μm
+images/train/micrometre_0092.png	< 349 μm
+images/train/micrometre_0093.png	Rz 6.3 μm
+images/train/micrometre_0094.png	Rz 3.2 μm
+images/train/micrometre_0095.png	119 μm
+images/train/micrometre_0096.png	Rz 12.5 μm
+images/train/micrometre_0097.png	Rz 6.3 μm
+images/train/micrometre_0098.png	Rz 6.3 μm
+images/train/micrometre_0099.png	< 688 μm
+images/train/micrometre_0100.png	697 μm
+images/train/micrometre_0101.png	Rz 3.2 μm
+images/train/micrometre_0102.png	24.8 μm
+images/train/micrometre_0103.png	Ra 3.2 μm
+images/train/micrometre_0104.png	Rz 3.2 μm
+images/train/micrometre_0105.png	Ra 3.2 μm
+images/train/micrometre_0106.png	61.4 μm
+images/train/micrometre_0107.png	21 μm
+images/train/micrometre_0108.png	Rz 6.3 μm
+images/train/micrometre_0109.png	Rz 6.3 μm
+images/train/micrometre_0110.png	Ra 1.6 μm
+images/train/micrometre_0111.png	12.1 μm
+images/train/micrometre_0112.png	30.9 μm
+images/train/micrometre_0113.png	Ra 6.3 μm
+images/train/micrometre_0114.png	Rz 12.5 μm
+images/train/micrometre_0115.png	< 933 μm
+images/train/micrometre_0116.png	< 633 μm
+images/train/micrometre_0117.png	50.2 μm
+images/train/micrometre_0118.png	< 320 μm
+images/train/micrometre_0119.png	Rz 12.5 μm
+images/train/micrometre_0120.png	30.8 μm
+images/train/micrometre_0121.png	9 μm
+images/train/micrometre_0122.png	Ra 3.2 μm
+images/train/micrometre_0123.png	< 296 μm
+images/train/micrometre_0124.png	Ra 0.8 μm
+images/train/micrometre_0125.png	126 μm
+images/train/micrometre_0126.png	Rz 3.2 μm
+images/train/micrometre_0127.png	Ra 3.2 μm
+images/train/micrometre_0128.png	63.3 μm
+images/train/micrometre_0129.png	< 591 μm
+images/train/micrometre_0130.png	846 μm
+images/train/micrometre_0131.png	28.7 μm
+images/train/micrometre_0132.png	73.4 μm
+images/train/micrometre_0133.png	56 μm
+images/train/micrometre_0134.png	Ra 6.3 μm
+images/train/micrometre_0135.png	Rz 6.3 μm
+images/train/micrometre_0136.png	< 709 μm
+images/train/micrometre_0137.png	59.8 μm
+images/train/micrometre_0138.png	894 μm
+images/train/micrometre_0139.png	Rz 12.5 μm
+images/train/micrometre_0140.png	Rz 6.3 μm
+images/train/micrometre_0141.png	92 μm
+images/train/micrometre_0142.png	Rz 12.5 μm
+images/train/micrometre_0143.png	512 μm
+images/train/micrometre_0144.png	< 810 μm
+images/train/micrometre_0145.png	Ra 0.8 μm
+images/train/micrometre_0146.png	324 μm
+images/train/micrometre_0147.png	Ra 6.3 μm
+images/train/micrometre_0148.png	Rz 3.2 μm
+images/train/micrometre_0149.png	Rz 1.6 μm
+images/train/micrometre_0150.png	8.0 μm
+images/train/micrometre_0151.png	Rz 3.2 μm
+images/train/micrometre_0152.png	< 854 μm
+images/train/micrometre_0153.png	< 893 μm
+images/train/micrometre_0154.png	Ra 6.3 μm
+images/train/micrometre_0155.png	Ra 1.6 μm
+images/train/micrometre_0156.png	Ra 0.8 μm
+images/train/micrometre_0157.png	39.3 μm
+images/train/micrometre_0158.png	395 μm
+images/train/micrometre_0159.png	Rz 1.6 μm
+images/train/micrometre_0160.png	114 μm
+images/train/micrometre_0161.png	471 μm
+images/train/micrometre_0162.png	Ra 1.6 μm
+images/train/micrometre_0163.png	Rz 6.3 μm
+images/train/micrometre_0164.png	Ra 6.3 μm
+images/train/micrometre_0165.png	Ra 3.2 μm
+images/train/micrometre_0166.png	Ra 1.6 μm
+images/train/micrometre_0167.png	845 μm
+images/train/micrometre_0168.png	410 μm
+images/train/micrometre_0169.png	Ra 0.8 μm
+images/train/micrometre_0170.png	43.4 μm
+images/train/micrometre_0171.png	Ra 3.2 μm
+images/train/micrometre_0172.png	225 μm
+images/train/micrometre_0173.png	< 884 μm
+images/train/micrometre_0174.png	< 326 μm
+images/train/micrometre_0175.png	Ra 6.3 μm
+images/train/micrometre_0176.png	19.9 μm
+images/train/micrometre_0177.png	Rz 6.3 μm
+images/train/micrometre_0178.png	94.5 μm
+images/train/micrometre_0179.png	Rz 3.2 μm
+images/train/micrometre_0180.png	63.1 μm
+images/train/micrometre_0181.png	< 372 μm
+images/train/micrometre_0182.png	7.0 μm
+images/train/micrometre_0183.png	12.2 μm
+images/train/micrometre_0184.png	< 861 μm
+images/train/micrometre_0185.png	337 μm
+images/train/micrometre_0186.png	< 637 μm
+images/train/micrometre_0187.png	Rz 1.6 μm
+images/train/micrometre_0188.png	Ra 6.3 μm
+images/train/micrometre_0189.png	510 μm
+images/train/micrometre_0190.png	Ra 6.3 μm
+images/train/micrometre_0191.png	995 μm
+images/train/micrometre_0192.png	94.4 μm
+images/train/micrometre_0193.png	25.7 μm
+images/train/micrometre_0194.png	Ra 0.8 μm
+images/train/micrometre_0195.png	< 888 μm
+images/train/micrometre_0196.png	Rz 1.6 μm
+images/train/micrometre_0197.png	Rz 12.5 μm
+images/train/micrometre_0198.png	61.3 μm
+images/train/micrometre_0199.png	56.7 μm
+images/train/micrometre_0200.png	Ra 3.2 μm
+images/train/micrometre_0201.png	< 738 μm
+images/train/micrometre_0202.png	< 300 μm
+images/train/micrometre_0203.png	35.9 μm
+images/train/micrometre_0204.png	< 879 μm
+images/train/micrometre_0205.png	586 μm
+images/train/micrometre_0206.png	< 808 μm
+images/train/micrometre_0207.png	Ra 6.3 μm
+images/train/micrometre_0208.png	Ra 6.3 μm
+images/train/micrometre_0209.png	Rz 12.5 μm
+images/train/micrometre_0210.png	Ra 3.2 μm
+images/train/micrometre_0211.png	Rz 12.5 μm
+images/train/micrometre_0212.png	Ra 6.3 μm
+images/train/micrometre_0213.png	62.0 μm
+images/train/micrometre_0214.png	< 128 μm
+images/train/micrometre_0215.png	537 μm
+images/train/micrometre_0216.png	9.8 μm
+images/train/micrometre_0217.png	Rz 6.3 μm
+images/train/micrometre_0218.png	224 μm
+images/train/micrometre_0219.png	Ra 0.8 μm
+images/train/micrometre_0220.png	Ra 6.3 μm
+images/train/micrometre_0221.png	Ra 0.8 μm
+images/train/micrometre_0222.png	< 929 μm
+images/train/micrometre_0223.png	< 286 μm
+images/train/micrometre_0224.png	Ra 1.6 μm
+images/train/micrometre_0225.png	Ra 0.8 μm
+images/train/micrometre_0226.png	374 μm
+images/train/micrometre_0227.png	79.9 μm
+images/train/micrometre_0228.png	Rz 12.5 μm
+images/train/micrometre_0229.png	< 232 μm
+images/train/micrometre_0230.png	63.0 μm
+images/train/micrometre_0231.png	Ra 6.3 μm
+images/train/micrometre_0232.png	< 447 μm
+images/train/micrometre_0233.png	< 904 μm
+images/train/micrometre_0234.png	14.9 μm
+images/train/micrometre_0235.png	Ra 1.6 μm
+images/train/micrometre_0236.png	87.5 μm
+images/train/micrometre_0237.png	728 μm
+images/train/micrometre_0238.png	68.3 μm
+images/train/micrometre_0239.png	Ra 1.6 μm
+images/train/micrometre_0240.png	Ra 0.8 μm
+images/train/micrometre_0241.png	26.9 μm
+images/train/micrometre_0242.png	Ra 3.2 μm
+images/train/micrometre_0243.png	6.4 μm
+images/train/micrometre_0244.png	13.5 μm
+images/train/micrometre_0245.png	Rz 1.6 μm
+images/train/micrometre_0246.png	50.3 μm
+images/train/micrometre_0247.png	Rz 1.6 μm
+images/train/micrometre_0248.png	998 μm
+images/train/micrometre_0249.png	Rz 3.2 μm
+images/train/micrometre_0250.png	Ra 6.3 μm
+images/train/micrometre_0251.png	804 μm
+images/train/micrometre_0252.png	Ra 6.3 μm
+images/train/micrometre_0253.png	12.3 μm
+images/train/micrometre_0254.png	Rz 6.3 μm
+images/train/micrometre_0255.png	20.5 μm
+images/train/micrometre_0256.png	Rz 1.6 μm
+images/train/micrometre_0257.png	Rz 3.2 μm
+images/train/micrometre_0258.png	53.7 μm
+images/train/micrometre_0259.png	< 982 μm
+images/train/micrometre_0260.png	Rz 3.2 μm
+images/train/micrometre_0261.png	Ra 1.6 μm
+images/train/micrometre_0262.png	51.2 μm
+images/train/micrometre_0263.png	Ra 6.3 μm
+images/train/micrometre_0264.png	Ra 3.2 μm
+images/train/micrometre_0265.png	< 683 μm
+images/train/micrometre_0266.png	709 μm
+images/train/micrometre_0267.png	Ra 3.2 μm
+images/train/micrometre_0268.png	44.7 μm
+images/train/micrometre_0269.png	< 561 μm
+images/train/metric_thread_M_0000.png	M10x2.0-6g
+images/train/metric_thread_M_0001.png	M4 JASO
+images/train/metric_thread_M_0002.png	M12x2.0-6g
+images/train/metric_thread_M_0003.png	M8 JASO
+images/train/metric_thread_M_0004.png	M10x1.5-6g
+images/train/metric_thread_M_0005.png	M16x1.5-6g
+images/train/metric_thread_M_0006.png	M6x1.5
+images/train/metric_thread_M_0007.png	M16x2.0-6H
+images/train/metric_thread_M_0008.png	M10x1.0
+images/train/metric_thread_M_0009.png	M10x2.0-6g
+images/train/metric_thread_M_0010.png	M6x1.0
+images/train/metric_thread_M_0011.png	M5
+images/train/metric_thread_M_0012.png	M16x1.5-6g
+images/train/metric_thread_M_0013.png	M10x1.0
+images/train/metric_thread_M_0014.png	M4
+images/train/metric_thread_M_0015.png	M6 JASO
+images/train/metric_thread_M_0016.png	M10x2.0
+images/train/metric_thread_M_0017.png	M16x2.0-6g
+images/train/metric_thread_M_0018.png	M16x2.0-6g
+images/train/metric_thread_M_0019.png	M12x2.0-6g
+images/train/metric_thread_M_0020.png	M12x1.5-6g
+images/train/metric_thread_M_0021.png	M20
+images/train/metric_thread_M_0022.png	M12x1.0
+images/train/metric_thread_M_0023.png	M12x2.0
+images/train/metric_thread_M_0024.png	M8
+images/train/metric_thread_M_0025.png	M6x2.0
+images/train/metric_thread_M_0026.png	M8x1.5-6H
+images/train/metric_thread_M_0027.png	M6x1.0
+images/train/metric_thread_M_0028.png	M4 JASO
+images/train/metric_thread_M_0029.png	M10x1.25-6H
+images/train/metric_thread_M_0030.png	M6 JASO
+images/train/metric_thread_M_0031.png	M12
+images/train/metric_thread_M_0032.png	M4
+images/train/metric_thread_M_0033.png	M12x1.5-6g
+images/train/metric_thread_M_0034.png	M12
+images/train/metric_thread_M_0035.png	M10x1.25-6H
+images/train/metric_thread_M_0036.png	M6 JASO
+images/train/metric_thread_M_0037.png	M12x2.0
+images/train/metric_thread_M_0038.png	M20
+images/train/metric_thread_M_0039.png	M12
+images/train/metric_thread_M_0040.png	M10x2.0
+images/train/metric_thread_M_0041.png	M8
+images/train/metric_thread_M_0042.png	M8 JASO
+images/train/metric_thread_M_0043.png	M4 JASO
+images/train/metric_thread_M_0044.png	M3
+images/train/metric_thread_M_0045.png	M6 JASO
+images/train/metric_thread_M_0046.png	M24
+images/train/metric_thread_M_0047.png	M12x1.5
+images/train/metric_thread_M_0048.png	M8
+images/train/metric_thread_M_0049.png	M6 JASO
+images/train/metric_thread_M_0050.png	M4 JASO
+images/train/metric_thread_M_0051.png	M12x2.0-6g
+images/train/metric_thread_M_0052.png	M8 JASO
+images/train/metric_thread_M_0053.png	M4 JASO
+images/train/metric_thread_M_0054.png	M16x1.5-6H
+images/train/metric_thread_M_0055.png	M8 JASO
+images/train/metric_thread_M_0056.png	M12x1.5-6g
+images/train/metric_thread_M_0057.png	M12x1.5-6H
+images/train/metric_thread_M_0058.png	M8x1.5-6H
+images/train/metric_thread_M_0059.png	M8x1.5
+images/train/metric_thread_M_0060.png	M20
+images/train/metric_thread_M_0061.png	M12
+images/train/metric_thread_M_0062.png	M12x2.0-6g
+images/train/metric_thread_M_0063.png	M8x1.25-6H
+images/train/metric_thread_M_0064.png	M6x2.0
+images/train/metric_thread_M_0065.png	M6x1.5
+images/train/metric_thread_M_0066.png	M8 JASO
+images/train/metric_thread_M_0067.png	M6 JASO
+images/train/metric_thread_M_0068.png	M8 JASO
+images/train/metric_thread_M_0069.png	M4 JASO
+images/train/metric_thread_M_0070.png	M4
+images/train/metric_thread_M_0071.png	M16
+images/train/metric_thread_M_0072.png	M10x1.5-6g
+images/train/metric_thread_M_0073.png	M24
+images/train/metric_thread_M_0074.png	M10x2.0-6H
+images/train/metric_thread_M_0075.png	M12
+images/train/metric_thread_M_0076.png	M5 JASO
+images/train/metric_thread_M_0077.png	M8x1.5
+images/train/metric_thread_M_0078.png	M12x1.5-6H
+images/train/metric_thread_M_0079.png	M8x1.5
+images/train/metric_thread_M_0080.png	M12x2.0-6g
+images/train/metric_thread_M_0081.png	M6x2.0
+images/train/metric_thread_M_0082.png	M6 JASO
+images/train/metric_thread_M_0083.png	M12x2.0-6H
+images/train/metric_thread_M_0084.png	M16x1.5-6g
+images/train/metric_thread_M_0085.png	M6x2.0
+images/train/metric_thread_M_0086.png	M6 JASO
+images/train/metric_thread_M_0087.png	M8x2.0-6H
+images/train/metric_thread_M_0088.png	M5 JASO
+images/train/metric_thread_M_0089.png	M10x1.25-6H
+images/train/metric_thread_M_0090.png	M5 JASO
+images/train/metric_thread_M_0091.png	M8 JASO
+images/train/metric_thread_M_0092.png	M12x2.0-6g
+images/train/metric_thread_M_0093.png	M8
+images/train/metric_thread_M_0094.png	M16x1.5-6g
+images/train/metric_thread_M_0095.png	M6x2.0
+images/train/metric_thread_M_0096.png	M10x1.5-6g
+images/train/metric_thread_M_0097.png	M8 JASO
+images/train/metric_thread_M_0098.png	M12
+images/train/metric_thread_M_0099.png	M8x1.5-6H
+images/train/metric_thread_M_0100.png	M8 JASO
+images/train/metric_thread_M_0101.png	M6 JASO
+images/train/metric_thread_M_0102.png	M5
+images/train/metric_thread_M_0103.png	M12x2.0-6H
+images/train/metric_thread_M_0104.png	M12
+images/train/metric_thread_M_0105.png	M8x1.5
+images/train/metric_thread_M_0106.png	M10x2.0-6H
+images/train/metric_thread_M_0107.png	M12x1.25
+images/train/metric_thread_M_0108.png	M12x1.25-6H
+images/train/metric_thread_M_0109.png	M12x2.0-6g
+images/train/metric_thread_M_0110.png	M12x1.5-6g
+images/train/metric_thread_M_0111.png	M10x1.5
+images/train/metric_thread_M_0112.png	M8 JASO
+images/train/metric_thread_M_0113.png	M12x1.5-6g
+images/train/metric_thread_M_0114.png	M8 JASO
+images/train/metric_thread_M_0115.png	M5 JASO
+images/train/metric_thread_M_0116.png	M5
+images/train/metric_thread_M_0117.png	M8 JASO
+images/train/metric_thread_M_0118.png	M6
+images/train/metric_thread_M_0119.png	M16
+images/train/metric_thread_M_0120.png	M10x1.5-6H
+images/train/metric_thread_M_0121.png	M4
+images/train/metric_thread_M_0122.png	M12x2.0-6H
+images/train/metric_thread_M_0123.png	M4
+images/train/metric_thread_M_0124.png	M16x2.0-6g
+images/train/metric_thread_M_0125.png	M8
+images/train/metric_thread_M_0126.png	M12x1.5-6g
+images/train/metric_thread_M_0127.png	M10x1.25
+images/train/metric_thread_M_0128.png	M16x2.0-6H
+images/train/metric_thread_M_0129.png	M10x2.0-6H
+images/train/metric_thread_M_0130.png	M6
+images/train/metric_thread_M_0131.png	M8x1.0
+images/train/metric_thread_M_0132.png	M12x1.5
+images/train/metric_thread_M_0133.png	M4 JASO
+images/train/metric_thread_M_0134.png	M8 JASO
+images/train/metric_thread_M_0135.png	M10x1.5-6g
+images/train/metric_thread_M_0136.png	M12x1.5-6H
+images/train/metric_thread_M_0137.png	M12x1.25
+images/train/metric_thread_M_0138.png	M8x1.0
+images/train/metric_thread_M_0139.png	M10x2.0
+images/train/metric_thread_M_0140.png	M5 JASO
+images/train/metric_thread_M_0141.png	M4 JASO
+images/train/metric_thread_M_0142.png	M10x1.5-6g
+images/train/metric_thread_M_0143.png	M6 JASO
+images/train/metric_thread_M_0144.png	M6x1.5
+images/train/metric_thread_M_0145.png	M16x2.0-6g
+images/train/metric_thread_M_0146.png	M16
+images/train/metric_thread_M_0147.png	M3
+images/train/metric_thread_M_0148.png	M12x2.0
+images/train/metric_thread_M_0149.png	M8x2.0-6H
+images/train/metric_thread_M_0150.png	M24
+images/train/metric_thread_M_0151.png	M12x2.0-6H
+images/train/metric_thread_M_0152.png	M16
+images/train/metric_thread_M_0153.png	M10x1.5-6g
+images/train/metric_thread_M_0154.png	M10x1.5-6g
+images/train/metric_thread_M_0155.png	M6
+images/train/metric_thread_M_0156.png	M4 JASO
+images/train/metric_thread_M_0157.png	M12x2.0-6g
+images/train/metric_thread_M_0158.png	M8x1.5-6H
+images/train/metric_thread_M_0159.png	M12x1.0
+images/train/metric_thread_M_0160.png	M16x2.0-6g
+images/train/metric_thread_M_0161.png	M5
+images/train/metric_thread_M_0162.png	M4
+images/train/metric_thread_M_0163.png	M12x1.25-6H
+images/train/metric_thread_M_0164.png	M12x1.5
+images/train/metric_thread_M_0165.png	M12x1.5-6g
+images/train/metric_thread_M_0166.png	M5 JASO
+images/train/metric_thread_M_0167.png	M5 JASO
+images/train/metric_thread_M_0168.png	M8x1.25
+images/train/metric_thread_M_0169.png	M4 JASO
+images/train/metric_thread_M_0170.png	M10x1.25
+images/train/metric_thread_M_0171.png	M10x1.25
+images/train/metric_thread_M_0172.png	M8
+images/train/metric_thread_M_0173.png	M10x2.0-6g
+images/train/metric_thread_M_0174.png	M8 JASO
+images/train/metric_thread_M_0175.png	M8
+images/train/metric_thread_M_0176.png	M10x2.0-6H
+images/train/metric_thread_M_0177.png	M4 JASO
+images/train/metric_thread_M_0178.png	M4 JASO
+images/train/metric_thread_M_0179.png	M16x2.0-6g
+images/train/metric_thread_M_0180.png	M12x2.0-6H
+images/train/metric_thread_M_0181.png	M6x1.0
+images/train/metric_thread_M_0182.png	M4 JASO
+images/train/metric_thread_M_0183.png	M16x1.5-6g
+images/train/metric_thread_M_0184.png	M8x1.25-6H
+images/train/metric_thread_M_0185.png	M8 JASO
+images/train/metric_thread_M_0186.png	M5
+images/train/metric_thread_M_0187.png	M4 JASO
+images/train/metric_thread_M_0188.png	M5 JASO
+images/train/metric_thread_M_0189.png	M12x2.0
+images/train/metric_thread_M_0190.png	M8x1.5-6H
+images/train/metric_thread_M_0191.png	M10x1.5-6g
+images/train/metric_thread_M_0192.png	M5
+images/train/metric_thread_M_0193.png	M16x1.5-6g
+images/train/metric_thread_M_0194.png	M10x1.25
+images/train/metric_thread_M_0195.png	M10x1.25
+images/train/metric_thread_M_0196.png	M5 JASO
+images/train/metric_thread_M_0197.png	M10
+images/train/metric_thread_M_0198.png	M8x1.25
+images/train/metric_thread_M_0199.png	M12x1.25
+images/train/metric_thread_M_0200.png	M8x2.0-6H
+images/train/metric_thread_M_0201.png	M16x1.5-6g
+images/train/metric_thread_M_0202.png	M6x2.0
+images/train/metric_thread_M_0203.png	M10x2.0-6H
+images/train/metric_thread_M_0204.png	M3
+images/train/metric_thread_M_0205.png	M3
+images/train/metric_thread_M_0206.png	M10x2.0-6H
+images/train/metric_thread_M_0207.png	M10x2.0
+images/train/metric_thread_M_0208.png	M16x1.5-6g
+images/train/metric_thread_M_0209.png	M4 JASO
+images/train/metric_thread_M_0210.png	M10x1.25-6H
+images/train/metric_thread_M_0211.png	M10x1.5-6H
+images/train/metric_thread_M_0212.png	M16x2.0-6g
+images/train/metric_thread_M_0213.png	M12x2.0-6g
+images/train/metric_thread_M_0214.png	M8x2.0
+images/train/metric_thread_M_0215.png	M16
+images/train/metric_thread_M_0216.png	M10x1.5-6g
+images/train/metric_thread_M_0217.png	M6x1.5
+images/train/metric_thread_M_0218.png	M16x2.0-6g
+images/train/metric_thread_M_0219.png	M5 JASO
+images/train/metric_thread_M_0220.png	M6 JASO
+images/train/metric_thread_M_0221.png	M8x2.0
+images/train/metric_thread_M_0222.png	M12x2.0-6g
+images/train/metric_thread_M_0223.png	M12x1.5-6g
+images/train/metric_thread_M_0224.png	M12
+images/train/metric_thread_M_0225.png	M12x1.25
+images/train/metric_thread_M_0226.png	M10x1.25
+images/train/metric_thread_M_0227.png	M24
+images/train/metric_thread_M_0228.png	M8x2.0-6H
+images/train/metric_thread_M_0229.png	M8 JASO
+images/train/metric_thread_M_0230.png	M5
+images/train/metric_thread_M_0231.png	M12x2.0-6g
+images/train/metric_thread_M_0232.png	M12x1.25-6H
+images/train/metric_thread_M_0233.png	M8x1.5-6H
+images/train/metric_thread_M_0234.png	M12x1.5-6g
+images/train/metric_thread_M_0235.png	M10x2.0-6g
+images/train/metric_thread_M_0236.png	M5 JASO
+images/train/metric_thread_M_0237.png	M8 JASO
+images/train/metric_thread_M_0238.png	M12x2.0-6g
+images/train/metric_thread_M_0239.png	M5
+images/train/metric_thread_M_0240.png	M5 JASO
+images/train/metric_thread_M_0241.png	M6
+images/train/metric_thread_M_0242.png	M4 JASO
+images/train/metric_thread_M_0243.png	M4
+images/train/metric_thread_M_0244.png	M20
+images/train/metric_thread_M_0245.png	M10x2.0-6g
+images/train/metric_thread_M_0246.png	M4
+images/train/metric_thread_M_0247.png	M16x2.0-6g
+images/train/metric_thread_M_0248.png	M24
+images/train/metric_thread_M_0249.png	M8x1.25
+images/train/metric_thread_M_0250.png	M10x1.25-6H
+images/train/metric_thread_M_0251.png	M6 JASO
+images/train/metric_thread_M_0252.png	M12x2.0-6g
+images/train/metric_thread_M_0253.png	M4 JASO
+images/train/metric_thread_M_0254.png	M10x1.25-6H
+images/train/metric_thread_M_0255.png	M8x1.0
+images/train/metric_thread_M_0256.png	M16x1.5-6H
+images/train/metric_thread_M_0257.png	M12x1.25-6H
+images/train/metric_thread_M_0258.png	M16x2.0-6g
+images/train/metric_thread_M_0259.png	M10x1.25-6H
+images/train/metric_thread_M_0260.png	M16x1.25-6H
+images/train/metric_thread_M_0261.png	M10
+images/train/metric_thread_M_0262.png	M12x1.25
+images/train/metric_thread_M_0263.png	M12
+images/train/metric_thread_M_0264.png	M8x2.0-6H
+images/train/metric_thread_M_0265.png	M6x1.5
+images/train/metric_thread_M_0266.png	M8 JASO
+images/train/metric_thread_M_0267.png	M4
+images/train/metric_thread_M_0268.png	M12x1.5-6H
+images/train/metric_thread_M_0269.png	M8x1.5
+images/train/thread_pitch_sep_0000.png	M10x2.0-6H
+images/train/thread_pitch_sep_0001.png	6 x 23
+images/train/thread_pitch_sep_0002.png	M12x2.0-6H
+images/train/thread_pitch_sep_0003.png	56.7 x 97.7 mm
+images/train/thread_pitch_sep_0004.png	M8x1.25
+images/train/thread_pitch_sep_0005.png	M10x2.0-6H
+images/train/thread_pitch_sep_0006.png	12 x 41
+images/train/thread_pitch_sep_0007.png	10 x 23
+images/train/thread_pitch_sep_0008.png	36.4 x 94.6
+images/train/thread_pitch_sep_0009.png	M10x1.5
+images/train/thread_pitch_sep_0010.png	37.0 x 31.9
+images/train/thread_pitch_sep_0011.png	79.6 x 8.2 mm
+images/train/thread_pitch_sep_0012.png	M12x1.5-6H
+images/train/thread_pitch_sep_0013.png	54.5 x 41.7
+images/train/thread_pitch_sep_0014.png	61.4 x 81.7
+images/train/thread_pitch_sep_0015.png	13 x 11
+images/train/thread_pitch_sep_0016.png	24.2 x 82.7 mm
+images/train/thread_pitch_sep_0017.png	M12x1.5-6H
+images/train/thread_pitch_sep_0018.png	M10x1.5-6H
+images/train/thread_pitch_sep_0019.png	M8x1.25
+images/train/thread_pitch_sep_0020.png	14 x 15
+images/train/thread_pitch_sep_0021.png	M10x1.5-6H
+images/train/thread_pitch_sep_0022.png	M10x1.5-6H
+images/train/thread_pitch_sep_0023.png	12 x 29
+images/train/thread_pitch_sep_0024.png	82.1 x 38.3
+images/train/thread_pitch_sep_0025.png	46.4 x 62.3 mm
+images/train/thread_pitch_sep_0026.png	52.3 x 31.5
+images/train/thread_pitch_sep_0027.png	7 x 15
+images/train/thread_pitch_sep_0028.png	3 x 34
+images/train/thread_pitch_sep_0029.png	M8x1.5
+images/train/thread_pitch_sep_0030.png	2 x 16
+images/train/thread_pitch_sep_0031.png	M10x1.5
+images/train/thread_pitch_sep_0032.png	M6x1.0
+images/train/thread_pitch_sep_0033.png	16 x 50
+images/train/thread_pitch_sep_0034.png	M12x1.25
+images/train/thread_pitch_sep_0035.png	16 x 29
+images/train/thread_pitch_sep_0036.png	87.5 x 89.6
+images/train/thread_pitch_sep_0037.png	91.3 x 90.8 mm
+images/train/thread_pitch_sep_0038.png	M10x1.5
+images/train/thread_pitch_sep_0039.png	39.7 x 79.6
+images/train/thread_pitch_sep_0040.png	M8x1.0
+images/train/thread_pitch_sep_0041.png	M12x1.5-6H
+images/train/thread_pitch_sep_0042.png	60.5 x 42.6 mm
+images/train/thread_pitch_sep_0043.png	M12x1.5-6H
+images/train/thread_pitch_sep_0044.png	57.6 x 46.8 mm
+images/train/thread_pitch_sep_0045.png	M10x1.5-6H
+images/train/thread_pitch_sep_0046.png	92.2 x 2.2 mm
+images/train/thread_pitch_sep_0047.png	17 x 45
+images/train/thread_pitch_sep_0048.png	43.2 x 48.4 mm
+images/train/thread_pitch_sep_0049.png	38.3 x 51.2 mm
+images/train/thread_pitch_sep_0050.png	M10x1.25
+images/train/thread_pitch_sep_0051.png	61.1 x 26.5
+images/train/thread_pitch_sep_0052.png	72.2 x 2.9 mm
+images/train/thread_pitch_sep_0053.png	M12x2.0-6H
+images/train/thread_pitch_sep_0054.png	M12x1.5-6H
+images/train/thread_pitch_sep_0055.png	17 x 43
+images/train/thread_pitch_sep_0056.png	M10x1.0
+images/train/thread_pitch_sep_0057.png	M10x2.0-6H
+images/train/thread_pitch_sep_0058.png	2 x 10
+images/train/thread_pitch_sep_0059.png	25.5 x 69.1 mm
+images/train/thread_pitch_sep_0060.png	77.1 x 53.0 mm
+images/train/thread_pitch_sep_0061.png	7 x 50
+images/train/thread_pitch_sep_0062.png	4 x 19
+images/train/thread_pitch_sep_0063.png	M10x2.0-6H
+images/train/thread_pitch_sep_0064.png	M6x1.0
+images/train/thread_pitch_sep_0065.png	M12x2.0-6H
+images/train/thread_pitch_sep_0066.png	M10x1.0
+images/train/thread_pitch_sep_0067.png	38.6 x 98.3
+images/train/thread_pitch_sep_0068.png	M10x2.0-6H
+images/train/thread_pitch_sep_0069.png	47.2 x 91.4 mm
+images/train/thread_pitch_sep_0070.png	M10x1.5-6H
+images/train/thread_pitch_sep_0071.png	M10x1.5
+images/train/thread_pitch_sep_0072.png	11 x 36
+images/train/thread_pitch_sep_0073.png	8.7 x 11.4
+images/train/thread_pitch_sep_0074.png	17 x 16
+images/train/thread_pitch_sep_0075.png	2 x 45
+images/train/thread_pitch_sep_0076.png	48.2 x 65.2 mm
+images/train/thread_pitch_sep_0077.png	29.0 x 23.3 mm
+images/train/thread_pitch_sep_0078.png	81.4 x 95.3 mm
+images/train/thread_pitch_sep_0079.png	57.3 x 28.0 mm
+images/train/thread_pitch_sep_0080.png	M10x2.0-6H
+images/train/thread_pitch_sep_0081.png	9.6 x 72.7 mm
+images/train/thread_pitch_sep_0082.png	39.1 x 14.5
+images/train/thread_pitch_sep_0083.png	17.1 x 91.3 mm
+images/train/thread_pitch_sep_0084.png	3.3 x 2.3
+images/train/thread_pitch_sep_0085.png	M10x1.5-6H
+images/train/thread_pitch_sep_0086.png	99.8 x 54.1
+images/train/thread_pitch_sep_0087.png	M8x1.5
+images/train/thread_pitch_sep_0088.png	M10x1.5-6H
+images/train/thread_pitch_sep_0089.png	20 x 43
+images/train/thread_pitch_sep_0090.png	M12x2.0-6H
+images/train/thread_pitch_sep_0091.png	23.9 x 25.4
+images/train/thread_pitch_sep_0092.png	M12x1.5-6H
+images/train/thread_pitch_sep_0093.png	M10x1.25
+images/train/thread_pitch_sep_0094.png	M12x1.5-6H
+images/train/thread_pitch_sep_0095.png	18.7 x 42.0
+images/train/thread_pitch_sep_0096.png	M8x1.0
+images/train/thread_pitch_sep_0097.png	7 x 35
+images/train/thread_pitch_sep_0098.png	83.1 x 7.8 mm
+images/train/thread_pitch_sep_0099.png	M8x1.25
+images/train/thread_pitch_sep_0100.png	M10x1.5-6H
+images/train/thread_pitch_sep_0101.png	M10x1.5
+images/train/thread_pitch_sep_0102.png	51.0 x 22.7 mm
+images/train/thread_pitch_sep_0103.png	93.5 x 71.5
+images/train/thread_pitch_sep_0104.png	M10x2.0-6H
+images/train/thread_pitch_sep_0105.png	17 x 31
+images/train/thread_pitch_sep_0106.png	45.3 x 21.1
+images/train/thread_pitch_sep_0107.png	15.3 x 74.4 mm
+images/train/thread_pitch_sep_0108.png	M6x1.5
+images/train/thread_pitch_sep_0109.png	53.8 x 18.0 mm
+images/train/thread_pitch_sep_0110.png	M10x1.0
+images/train/thread_pitch_sep_0111.png	6 x 9
+images/train/thread_pitch_sep_0112.png	8.8 x 53.2 mm
+images/train/thread_pitch_sep_0113.png	16.4 x 67.2
+images/train/thread_pitch_sep_0114.png	M12x2.0-6H
+images/train/thread_pitch_sep_0115.png	21.6 x 45.0
+images/train/thread_pitch_sep_0116.png	55.5 x 11.3
+images/train/thread_pitch_sep_0117.png	M10x2.0-6H
+images/train/thread_pitch_sep_0118.png	M12x1.5
+images/train/thread_pitch_sep_0119.png	M8x1.0
+images/train/thread_pitch_sep_0120.png	88.8 x 67.5
+images/train/thread_pitch_sep_0121.png	45.1 x 52.4 mm
+images/train/thread_pitch_sep_0122.png	M10x1.5
+images/train/thread_pitch_sep_0123.png	17 x 7
+images/train/thread_pitch_sep_0124.png	M10x1.5-6H
+images/train/thread_pitch_sep_0125.png	15.5 x 25.2
+images/train/thread_pitch_sep_0126.png	M8x1.25
+images/train/thread_pitch_sep_0127.png	53.6 x 56.7 mm
+images/train/thread_pitch_sep_0128.png	33.2 x 79.4 mm
+images/train/thread_pitch_sep_0129.png	M6x1.25
+images/train/thread_pitch_sep_0130.png	M8x1.5
+images/train/thread_pitch_sep_0131.png	M12x2.0-6H
+images/train/thread_pitch_sep_0132.png	4.4 x 27.2
+images/train/thread_pitch_sep_0133.png	M10x1.0
+images/train/thread_pitch_sep_0134.png	97.0 x 44.2 mm
+images/train/thread_pitch_sep_0135.png	M6x1.25
+images/train/thread_pitch_sep_0136.png	16 x 24
+images/train/thread_pitch_sep_0137.png	M10x2.0-6H
+images/train/thread_pitch_sep_0138.png	14.5 x 2.4
+images/train/thread_pitch_sep_0139.png	77.7 x 19.1
+images/train/thread_pitch_sep_0140.png	M10x1.5-6H
+images/train/thread_pitch_sep_0141.png	M8x1.25
+images/train/thread_pitch_sep_0142.png	91.2 x 50.2 mm
+images/train/thread_pitch_sep_0143.png	M10x2.0-6H
+images/train/thread_pitch_sep_0144.png	10 x 12
+images/train/thread_pitch_sep_0145.png	M10x1.5-6H
+images/train/thread_pitch_sep_0146.png	M8x1.5
+images/train/thread_pitch_sep_0147.png	M6x1.0
+images/train/thread_pitch_sep_0148.png	3 x 24
+images/train/thread_pitch_sep_0149.png	30.7 x 95.1 mm
+images/train/thread_pitch_sep_0150.png	M6x1.0
+images/train/thread_pitch_sep_0151.png	M10x2.0-6H
+images/train/thread_pitch_sep_0152.png	20 x 26
+images/train/thread_pitch_sep_0153.png	11 x 17
+images/train/thread_pitch_sep_0154.png	M12x1.0
+images/train/thread_pitch_sep_0155.png	24.2 x 87.6 mm
+images/train/thread_pitch_sep_0156.png	3 x 32
+images/train/thread_pitch_sep_0157.png	M12x1.5-6H
+images/train/thread_pitch_sep_0158.png	14 x 46
+images/train/thread_pitch_sep_0159.png	19 x 50
+images/train/thread_pitch_sep_0160.png	M12x2.0-6H
+images/train/thread_pitch_sep_0161.png	7 x 11
+images/train/thread_pitch_sep_0162.png	59.1 x 11.6 mm
+images/train/thread_pitch_sep_0163.png	14 x 11
+images/train/thread_pitch_sep_0164.png	M10x1.5
+images/train/thread_pitch_sep_0165.png	M10x1.5-6H
+images/train/thread_pitch_sep_0166.png	82.0 x 48.6 mm
+images/train/thread_pitch_sep_0167.png	M12x1.5
+images/train/thread_pitch_sep_0168.png	23.5 x 55.1
+images/train/thread_pitch_sep_0169.png	M10x2.0-6H
+images/train/thread_pitch_sep_0170.png	M12x1.25
+images/train/thread_pitch_sep_0171.png	3.3 x 81.7
+images/train/thread_pitch_sep_0172.png	66.1 x 83.5
+images/train/thread_pitch_sep_0173.png	90.2 x 39.9 mm
+images/train/thread_pitch_sep_0174.png	65.7 x 81.8 mm
+images/train/thread_pitch_sep_0175.png	90.2 x 10.4
+images/train/thread_pitch_sep_0176.png	79.2 x 83.1
+images/train/thread_pitch_sep_0177.png	M10x2.0-6H
+images/train/thread_pitch_sep_0178.png	M12x1.25
+images/train/thread_pitch_sep_0179.png	M8x1.0
+images/train/thread_pitch_sep_0180.png	16 x 28
+images/train/thread_pitch_sep_0181.png	M10x1.0
+images/train/thread_pitch_sep_0182.png	87.2 x 12.1 mm
+images/train/thread_pitch_sep_0183.png	17 x 35
+images/train/thread_pitch_sep_0184.png	19 x 43
+images/train/thread_pitch_sep_0185.png	M10x1.5
+images/train/thread_pitch_sep_0186.png	96.6 x 52.3 mm
+images/train/thread_pitch_sep_0187.png	38.7 x 79.7
+images/train/thread_pitch_sep_0188.png	59.8 x 27.0 mm
+images/train/thread_pitch_sep_0189.png	M10x1.25
+images/train/thread_pitch_sep_0190.png	M12x1.5-6H
+images/train/thread_pitch_sep_0191.png	19 x 7
+images/train/thread_pitch_sep_0192.png	40.7 x 78.7 mm
+images/train/thread_pitch_sep_0193.png	47.6 x 60.4 mm
+images/train/thread_pitch_sep_0194.png	41.3 x 26.8
+images/train/thread_pitch_sep_0195.png	M10x2.0-6H
+images/train/thread_pitch_sep_0196.png	M10x2.0-6H
+images/train/thread_pitch_sep_0197.png	M10x1.25
+images/train/thread_pitch_sep_0198.png	M10x1.5-6H
+images/train/thread_pitch_sep_0199.png	5.8 x 6.4 mm
+images/train/thread_pitch_sep_0200.png	M12x2.0-6H
+images/train/thread_pitch_sep_0201.png	M8x1.5
+images/train/thread_pitch_sep_0202.png	M12x1.5-6H
+images/train/thread_pitch_sep_0203.png	M12x1.5-6H
+images/train/thread_pitch_sep_0204.png	40.4 x 39.9 mm
+images/train/thread_pitch_sep_0205.png	9 x 16
+images/train/thread_pitch_sep_0206.png	83.8 x 62.3 mm
+images/train/thread_pitch_sep_0207.png	20 x 20
+images/train/thread_pitch_sep_0208.png	M8x1.0
+images/train/thread_pitch_sep_0209.png	M12x1.5
+images/train/thread_pitch_sep_0210.png	74.2 x 20.9 mm
+images/train/thread_pitch_sep_0211.png	14 x 43
+images/train/thread_pitch_sep_0212.png	75.7 x 13.9 mm
+images/train/thread_pitch_sep_0213.png	37.1 x 26.3 mm
+images/train/thread_pitch_sep_0214.png	M6x1.0
+images/train/thread_pitch_sep_0215.png	76.6 x 74.2 mm
+images/train/thread_pitch_sep_0216.png	66.8 x 75.8 mm
+images/train/thread_pitch_sep_0217.png	M12x1.5-6H
+images/train/thread_pitch_sep_0218.png	96.6 x 36.1
+images/train/thread_pitch_sep_0219.png	32.0 x 18.3 mm
+images/train/thread_pitch_sep_0220.png	37.8 x 90.5
+images/train/thread_pitch_sep_0221.png	12 x 3
+images/train/thread_pitch_sep_0222.png	10.2 x 8.0 mm
+images/train/thread_pitch_sep_0223.png	50.6 x 75.1
+images/train/thread_pitch_sep_0224.png	41.9 x 64.6 mm
+images/train/thread_pitch_sep_0225.png	6 x 25
+images/train/thread_pitch_sep_0226.png	19.9 x 77.9
+images/train/thread_pitch_sep_0227.png	64.7 x 77.3 mm
+images/train/thread_pitch_sep_0228.png	95.2 x 34.3
+images/train/thread_pitch_sep_0229.png	62.0 x 24.2
+images/train/thread_pitch_sep_0230.png	51.4 x 92.2 mm
+images/train/thread_pitch_sep_0231.png	69.9 x 14.7
+images/train/thread_pitch_sep_0232.png	M12x2.0-6H
+images/train/thread_pitch_sep_0233.png	15 x 35
+images/train/thread_pitch_sep_0234.png	40.2 x 20.2 mm
+images/train/thread_pitch_sep_0235.png	M10x1.5-6H
+images/train/thread_pitch_sep_0236.png	62.6 x 34.9
+images/train/thread_pitch_sep_0237.png	M8x1.0
+images/train/thread_pitch_sep_0238.png	M10x1.25
+images/train/thread_pitch_sep_0239.png	M12x2.0-6H
+images/train/thread_pitch_sep_0240.png	10 x 36
+images/train/thread_pitch_sep_0241.png	46.4 x 32.3 mm
+images/train/thread_pitch_sep_0242.png	10 x 5
+images/train/thread_pitch_sep_0243.png	M6x1.0
+images/train/thread_pitch_sep_0244.png	4.2 x 60.0 mm
+images/train/thread_pitch_sep_0245.png	M8x1.5
+images/train/thread_pitch_sep_0246.png	42.7 x 42.7 mm
+images/train/thread_pitch_sep_0247.png	2.0 x 82.6
+images/train/thread_pitch_sep_0248.png	M12x1.5-6H
+images/train/thread_pitch_sep_0249.png	5 x 16
+images/train/thread_pitch_sep_0250.png	12 x 15
+images/train/thread_pitch_sep_0251.png	M10x1.5
+images/train/thread_pitch_sep_0252.png	11 x 27
+images/train/thread_pitch_sep_0253.png	5.6 x 8.3
+images/train/thread_pitch_sep_0254.png	M12x1.5-6H
+images/train/thread_pitch_sep_0255.png	M12x1.25
+images/train/thread_pitch_sep_0256.png	44.6 x 32.3 mm
+images/train/thread_pitch_sep_0257.png	1.1 x 82.3
+images/train/thread_pitch_sep_0258.png	M12x1.5-6H
+images/train/thread_pitch_sep_0259.png	17 x 35
+images/train/thread_pitch_sep_0260.png	M6x1.5
+images/train/thread_pitch_sep_0261.png	M10x2.0-6H
+images/train/thread_pitch_sep_0262.png	M6x1.0
+images/train/thread_pitch_sep_0263.png	14 x 7
+images/train/thread_pitch_sep_0264.png	6 x 21
+images/train/thread_pitch_sep_0265.png	M12x1.25
+images/train/thread_pitch_sep_0266.png	17.3 x 95.0 mm
+images/train/thread_pitch_sep_0267.png	M12x1.25
+images/train/thread_pitch_sep_0268.png	M10x1.5-6H
+images/train/thread_pitch_sep_0269.png	20 x 36
+images/train/thread_tol_sep_0000.png	M10x1.5-4H
+images/train/thread_tol_sep_0001.png	ISO 28-2
+images/train/thread_tol_sep_0002.png	ISO 88-5
+images/train/thread_tol_sep_0003.png	M10x1.25-6g
+images/train/thread_tol_sep_0004.png	59-71
+images/train/thread_tol_sep_0005.png	M10x2.0-6H
+images/train/thread_tol_sep_0006.png	M12x2.0-6g
+images/train/thread_tol_sep_0007.png	52-73
+images/train/thread_tol_sep_0008.png	M10x2.0-4H
+images/train/thread_tol_sep_0009.png	DIN 280-7
+images/train/thread_tol_sep_0010.png	DIN 494-2
+images/train/thread_tol_sep_0011.png	63-1
+images/train/thread_tol_sep_0012.png	ISO 81-7
+images/train/thread_tol_sep_0013.png	DIN 465-2
+images/train/thread_tol_sep_0014.png	ISO 52-1
+images/train/thread_tol_sep_0015.png	ISO 9-9
+images/train/thread_tol_sep_0016.png	M10x1.5-6H
+images/train/thread_tol_sep_0017.png	M12x1.5-4H
+images/train/thread_tol_sep_0018.png	DIN 506-7
+images/train/thread_tol_sep_0019.png	DIN 881-5
+images/train/thread_tol_sep_0020.png	ISO 20-9
+images/train/thread_tol_sep_0021.png	M16x1.5-6g
+images/train/thread_tol_sep_0022.png	M10x1.25-6H
+images/train/thread_tol_sep_0023.png	M10x1.5-6g
+images/train/thread_tol_sep_0024.png	M10x1.5-6H
+images/train/thread_tol_sep_0025.png	ISO 2-2
+images/train/thread_tol_sep_0026.png	ISO 88-9
+images/train/thread_tol_sep_0027.png	M12x1.5-6H
+images/train/thread_tol_sep_0028.png	DIN 341-4
+images/train/thread_tol_sep_0029.png	ISO 48-7
+images/train/thread_tol_sep_0030.png	81-95
+images/train/thread_tol_sep_0031.png	M16x2.0-6H
+images/train/thread_tol_sep_0032.png	M12x2.0-4H
+images/train/thread_tol_sep_0033.png	M10x1.25-6g
+images/train/thread_tol_sep_0034.png	M8x1.5-6H
+images/train/thread_tol_sep_0035.png	7-39
+images/train/thread_tol_sep_0036.png	ISO 53-2
+images/train/thread_tol_sep_0037.png	ISO 7-6
+images/train/thread_tol_sep_0038.png	M16x1.5-4H
+images/train/thread_tol_sep_0039.png	ISO 44-6
+images/train/thread_tol_sep_0040.png	37-66
+images/train/thread_tol_sep_0041.png	M10x1.25-6g
+images/train/thread_tol_sep_0042.png	DIN 402-9
+images/train/thread_tol_sep_0043.png	ISO 68-3
+images/train/thread_tol_sep_0044.png	M10x1.5-6H
+images/train/thread_tol_sep_0045.png	M12x1.5-6H
+images/train/thread_tol_sep_0046.png	M16x1.5-6g
+images/train/thread_tol_sep_0047.png	DIN 672-6
+images/train/thread_tol_sep_0048.png	M10x1.25-6g
+images/train/thread_tol_sep_0049.png	DIN 729-2
+images/train/thread_tol_sep_0050.png	M8x1.25-6H
+images/train/thread_tol_sep_0051.png	M10x2.0-6g
+images/train/thread_tol_sep_0052.png	77-76
+images/train/thread_tol_sep_0053.png	M16x1.5-6H
+images/train/thread_tol_sep_0054.png	16-31
+images/train/thread_tol_sep_0055.png	M12x1.25-6H
+images/train/thread_tol_sep_0056.png	77-77
+images/train/thread_tol_sep_0057.png	64-76
+images/train/thread_tol_sep_0058.png	ISO 61-2
+images/train/thread_tol_sep_0059.png	DIN 244-3
+images/train/thread_tol_sep_0060.png	ISO 57-2
+images/train/thread_tol_sep_0061.png	DIN 286-1
+images/train/thread_tol_sep_0062.png	ISO 98-5
+images/train/thread_tol_sep_0063.png	DIN 809-1
+images/train/thread_tol_sep_0064.png	57-28
+images/train/thread_tol_sep_0065.png	M12x2.0-6g
+images/train/thread_tol_sep_0066.png	M12x2.0-6g
+images/train/thread_tol_sep_0067.png	73-5
+images/train/thread_tol_sep_0068.png	M12x1.25-6H
+images/train/thread_tol_sep_0069.png	M16x2.0-4H
+images/train/thread_tol_sep_0070.png	ISO 69-4
+images/train/thread_tol_sep_0071.png	ISO 57-5
+images/train/thread_tol_sep_0072.png	DIN 384-6
+images/train/thread_tol_sep_0073.png	ISO 41-4
+images/train/thread_tol_sep_0074.png	ISO 13-3
+images/train/thread_tol_sep_0075.png	M10x1.25-6H
+images/train/thread_tol_sep_0076.png	ISO 77-3
+images/train/thread_tol_sep_0077.png	M16x2.0-6H
+images/train/thread_tol_sep_0078.png	4-38
+images/train/thread_tol_sep_0079.png	63-20
+images/train/thread_tol_sep_0080.png	M10x1.25-6H
+images/train/thread_tol_sep_0081.png	M8x1.25-6H
+images/train/thread_tol_sep_0082.png	31-85
+images/train/thread_tol_sep_0083.png	M12x1.5-6H
+images/train/thread_tol_sep_0084.png	M10x1.25-6H
+images/train/thread_tol_sep_0085.png	M16x2.0-4H
+images/train/thread_tol_sep_0086.png	M8x1.25-6H
+images/train/thread_tol_sep_0087.png	25-10
+images/train/thread_tol_sep_0088.png	ISO 15-3
+images/train/thread_tol_sep_0089.png	84-69
+images/train/thread_tol_sep_0090.png	ISO 66-4
+images/train/thread_tol_sep_0091.png	M12x1.5-6H
+images/train/thread_tol_sep_0092.png	15-88
+images/train/thread_tol_sep_0093.png	ISO 93-7
+images/train/thread_tol_sep_0094.png	51-25
+images/train/thread_tol_sep_0095.png	M16x1.5-6H
+images/train/thread_tol_sep_0096.png	DIN 677-2
+images/train/thread_tol_sep_0097.png	40-52
+images/train/thread_tol_sep_0098.png	DIN 779-7
+images/train/thread_tol_sep_0099.png	15-11
+images/train/thread_tol_sep_0100.png	ISO 39-2
+images/train/thread_tol_sep_0101.png	ISO 54-2
+images/train/thread_tol_sep_0102.png	81-85
+images/train/thread_tol_sep_0103.png	42-75
+images/train/thread_tol_sep_0104.png	M8x1.25-6H
+images/train/thread_tol_sep_0105.png	9-74
+images/train/thread_tol_sep_0106.png	48-78
+images/train/thread_tol_sep_0107.png	72-47
+images/train/thread_tol_sep_0108.png	M8x1.5-6g
+images/train/thread_tol_sep_0109.png	48-8
+images/train/thread_tol_sep_0110.png	M10x1.5-6H
+images/train/thread_tol_sep_0111.png	29-82
+images/train/thread_tol_sep_0112.png	ISO 12-1
+images/train/thread_tol_sep_0113.png	DIN 583-7
+images/train/thread_tol_sep_0114.png	M16x1.5-6H
+images/train/thread_tol_sep_0115.png	M10x1.25-6H
+images/train/thread_tol_sep_0116.png	ISO 90-9
+images/train/thread_tol_sep_0117.png	M10x1.5-6g
+images/train/thread_tol_sep_0118.png	DIN 629-9
+images/train/thread_tol_sep_0119.png	M10x1.5-6g
+images/train/thread_tol_sep_0120.png	M12x2.0-6H
+images/train/thread_tol_sep_0121.png	M12x1.5-6g
+images/train/thread_tol_sep_0122.png	ISO 33-3
+images/train/thread_tol_sep_0123.png	M12x1.5-4H
+images/train/thread_tol_sep_0124.png	M16x1.5-6H
+images/train/thread_tol_sep_0125.png	M12x1.5-4H
+images/train/thread_tol_sep_0126.png	DIN 542-8
+images/train/thread_tol_sep_0127.png	59-14
+images/train/thread_tol_sep_0128.png	69-36
+images/train/thread_tol_sep_0129.png	M10x1.5-6g
+images/train/thread_tol_sep_0130.png	ISO 56-1
+images/train/thread_tol_sep_0131.png	M16x2.0-6H
+images/train/thread_tol_sep_0132.png	ISO 87-6
+images/train/thread_tol_sep_0133.png	M12x1.25-6g
+images/train/thread_tol_sep_0134.png	83-97
+images/train/thread_tol_sep_0135.png	ISO 30-1
+images/train/thread_tol_sep_0136.png	M12x1.5-6H
+images/train/thread_tol_sep_0137.png	81-67
+images/train/thread_tol_sep_0138.png	M8x1.5-6g
+images/train/thread_tol_sep_0139.png	47-44
+images/train/thread_tol_sep_0140.png	78-76
+images/train/thread_tol_sep_0141.png	DIN 751-5
+images/train/thread_tol_sep_0142.png	M10x1.5-6H
+images/train/thread_tol_sep_0143.png	DIN 597-7
+images/train/thread_tol_sep_0144.png	DIN 114-4
+images/train/thread_tol_sep_0145.png	ISO 63-3
+images/train/thread_tol_sep_0146.png	ISO 65-7
+images/train/thread_tol_sep_0147.png	M8x1.25-6H
+images/train/thread_tol_sep_0148.png	68-29
+images/train/thread_tol_sep_0149.png	M12x2.0-4H
+images/train/thread_tol_sep_0150.png	ISO 58-9
+images/train/thread_tol_sep_0151.png	M12x1.5-6H
+images/train/thread_tol_sep_0152.png	47-36
+images/train/thread_tol_sep_0153.png	69-26
+images/train/thread_tol_sep_0154.png	63-60
+images/train/thread_tol_sep_0155.png	M12x1.25-6H
+images/train/thread_tol_sep_0156.png	DIN 848-5
+images/train/thread_tol_sep_0157.png	DIN 393-9
+images/train/thread_tol_sep_0158.png	ISO 75-6
+images/train/thread_tol_sep_0159.png	32-69
+images/train/thread_tol_sep_0160.png	M12x1.5-6H
+images/train/thread_tol_sep_0161.png	M16x1.5-6g
+images/train/thread_tol_sep_0162.png	M10x1.5-6H
+images/train/thread_tol_sep_0163.png	M8x1.5-6g
+images/train/thread_tol_sep_0164.png	M16x1.5-4H
+images/train/thread_tol_sep_0165.png	DIN 179-9
+images/train/thread_tol_sep_0166.png	M8x1.25-6g
+images/train/thread_tol_sep_0167.png	DIN 334-6
+images/train/thread_tol_sep_0168.png	M12x1.5-6g
+images/train/thread_tol_sep_0169.png	M12x1.5-6H
+images/train/thread_tol_sep_0170.png	DIN 839-4
+images/train/thread_tol_sep_0171.png	M16x2.0-4H
+images/train/thread_tol_sep_0172.png	DIN 456-9
+images/train/thread_tol_sep_0173.png	73-73
+images/train/thread_tol_sep_0174.png	60-97
+images/train/thread_tol_sep_0175.png	M10x1.25-6g
+images/train/thread_tol_sep_0176.png	8-77
+images/train/thread_tol_sep_0177.png	DIN 609-1
+images/train/thread_tol_sep_0178.png	M12x1.5-6g
+images/train/thread_tol_sep_0179.png	M8x1.25-6g
+images/train/thread_tol_sep_0180.png	DIN 959-3
+images/train/thread_tol_sep_0181.png	ISO 81-4
+images/train/thread_tol_sep_0182.png	M16x1.5-6g
+images/train/thread_tol_sep_0183.png	DIN 677-9
+images/train/thread_tol_sep_0184.png	14-34
+images/train/thread_tol_sep_0185.png	DIN 273-2
+images/train/thread_tol_sep_0186.png	M12x1.25-6H
+images/train/thread_tol_sep_0187.png	M16x1.5-4H
+images/train/thread_tol_sep_0188.png	ISO 53-5
+images/train/thread_tol_sep_0189.png	M16x1.5-6g
+images/train/thread_tol_sep_0190.png	DIN 689-3
+images/train/thread_tol_sep_0191.png	M8x1.5-6g
+images/train/thread_tol_sep_0192.png	19-60
+images/train/thread_tol_sep_0193.png	ISO 81-8
+images/train/thread_tol_sep_0194.png	M12x1.5-6g
+images/train/thread_tol_sep_0195.png	56-85
+images/train/thread_tol_sep_0196.png	M10x1.25-6g
+images/train/thread_tol_sep_0197.png	M8x1.5-6H
+images/train/thread_tol_sep_0198.png	DIN 562-3
+images/train/thread_tol_sep_0199.png	DIN 446-4
+images/train/thread_tol_sep_0200.png	ISO 70-2
+images/train/thread_tol_sep_0201.png	87-80
+images/train/thread_tol_sep_0202.png	DIN 390-9
+images/train/thread_tol_sep_0203.png	M10x2.0-6H
+images/train/thread_tol_sep_0204.png	M8x1.25-6H
+images/train/thread_tol_sep_0205.png	DIN 931-4
+images/train/thread_tol_sep_0206.png	M12x1.25-6g
+images/train/thread_tol_sep_0207.png	61-9
+images/train/thread_tol_sep_0208.png	DIN 769-1
+images/train/thread_tol_sep_0209.png	M10x2.0-6g
+images/train/thread_tol_sep_0210.png	ISO 13-2
+images/train/thread_tol_sep_0211.png	ISO 9-8
+images/train/thread_tol_sep_0212.png	ISO 76-5
+images/train/thread_tol_sep_0213.png	2-63
+images/train/thread_tol_sep_0214.png	M12x2.0-6g
+images/train/thread_tol_sep_0215.png	ISO 82-6
+images/train/thread_tol_sep_0216.png	3-77
+images/train/thread_tol_sep_0217.png	M10x1.25-6g
+images/train/thread_tol_sep_0218.png	17-10
+images/train/thread_tol_sep_0219.png	39-47
+images/train/thread_tol_sep_0220.png	M12x1.5-6g
+images/train/thread_tol_sep_0221.png	M12x1.5-6g
+images/train/thread_tol_sep_0222.png	DIN 115-3
+images/train/thread_tol_sep_0223.png	DIN 410-7
+images/train/thread_tol_sep_0224.png	2-63
+images/train/thread_tol_sep_0225.png	DIN 985-9
+images/train/thread_tol_sep_0226.png	M10x1.5-6g
+images/train/thread_tol_sep_0227.png	DIN 363-5
+images/train/thread_tol_sep_0228.png	49-73
+images/train/thread_tol_sep_0229.png	M8x1.5-6H
+images/train/thread_tol_sep_0230.png	ISO 86-6
+images/train/thread_tol_sep_0231.png	M8x1.5-6H
+images/train/thread_tol_sep_0232.png	M10x2.0-4H
+images/train/thread_tol_sep_0233.png	ISO 39-4
+images/train/thread_tol_sep_0234.png	M8x1.25-6g
+images/train/thread_tol_sep_0235.png	DIN 248-9
+images/train/thread_tol_sep_0236.png	M12x1.5-6g
+images/train/thread_tol_sep_0237.png	M16x1.5-6H
+images/train/thread_tol_sep_0238.png	11-35
+images/train/thread_tol_sep_0239.png	M12x1.5-6g
+images/train/thread_tol_sep_0240.png	7-22
+images/train/thread_tol_sep_0241.png	M12x1.5-4H
+images/train/thread_tol_sep_0242.png	83-91
+images/train/thread_tol_sep_0243.png	DIN 116-2
+images/train/thread_tol_sep_0244.png	M12x2.0-6H
+images/train/thread_tol_sep_0245.png	M8x1.25-6g
+images/train/thread_tol_sep_0246.png	M12x2.0-4H
+images/train/thread_tol_sep_0247.png	M10x1.5-6H
+images/train/thread_tol_sep_0248.png	M16x1.5-6g
+images/train/thread_tol_sep_0249.png	ISO 61-8
+images/train/thread_tol_sep_0250.png	46-77
+images/train/thread_tol_sep_0251.png	1-4
+images/train/thread_tol_sep_0252.png	DIN 933-3
+images/train/thread_tol_sep_0253.png	M10x1.5-6g
+images/train/thread_tol_sep_0254.png	DIN 145-6
+images/train/thread_tol_sep_0255.png	DIN 863-7
+images/train/thread_tol_sep_0256.png	ISO 25-8
+images/train/thread_tol_sep_0257.png	DIN 113-7
+images/train/thread_tol_sep_0258.png	M10x2.0-6g
+images/train/thread_tol_sep_0259.png	ISO 30-5
+images/train/thread_tol_sep_0260.png	DIN 928-8
+images/train/thread_tol_sep_0261.png	ISO 74-3
+images/train/thread_tol_sep_0262.png	ISO 4-8
+images/train/thread_tol_sep_0263.png	M12x2.0-4H
+images/train/thread_tol_sep_0264.png	M10x1.5-6H
+images/train/thread_tol_sep_0265.png	97-33
+images/train/thread_tol_sep_0266.png	DIN 561-6
+images/train/thread_tol_sep_0267.png	ISO 93-8
+images/train/thread_tol_sep_0268.png	ISO 15-5
+images/train/thread_tol_sep_0269.png	M12x1.25-6H
+images/train/plus_unilateral_0000.png	Ø65.1+0.05 mm
+images/train/plus_unilateral_0001.png	+3.3
+images/train/plus_unilateral_0002.png	+0.10
+images/train/plus_unilateral_0003.png	Ø36.9+0.05 mm
+images/train/plus_unilateral_0004.png	+2.8
+images/train/plus_unilateral_0005.png	+0.05
+images/train/plus_unilateral_0006.png	Ø4.1+0.05 mm
+images/train/plus_unilateral_0007.png	Ø91.6+0.1 mm
+images/train/plus_unilateral_0008.png	Ø38.4+0.1 mm
+images/train/plus_unilateral_0009.png	+81.0
+images/train/plus_unilateral_0010.png	+0.02
+images/train/plus_unilateral_0011.png	+0.02
+images/train/plus_unilateral_0012.png	+77.6
+images/train/plus_unilateral_0013.png	Ø31.7+0.05 mm
+images/train/plus_unilateral_0014.png	Ø20.4+0.4 mm
+images/train/plus_unilateral_0015.png	Ø18.5+0.2 mm
+images/train/plus_unilateral_0016.png	+0.20
+images/train/plus_unilateral_0017.png	+3.9
+images/train/plus_unilateral_0018.png	+2.4
+images/train/plus_unilateral_0019.png	Ø47.5+0.9 mm
+images/train/plus_unilateral_0020.png	Ø8.0+0.1 mm
+images/train/plus_unilateral_0021.png	+1.8
+images/train/plus_unilateral_0022.png	+77.8
+images/train/plus_unilateral_0023.png	+2.2
+images/train/plus_unilateral_0024.png	Ø11.8+0.8 mm
+images/train/plus_unilateral_0025.png	+7.5
+images/train/plus_unilateral_0026.png	+9.5
+images/train/plus_unilateral_0027.png	+63.7
+images/train/plus_unilateral_0028.png	+78.3
+images/train/plus_unilateral_0029.png	+30.5
+images/train/plus_unilateral_0030.png	Ø34.3+0.6 mm
+images/train/plus_unilateral_0031.png	Ø18.3+0.3 mm
+images/train/plus_unilateral_0032.png	+94.6
+images/train/plus_unilateral_0033.png	Ø65.5+0.1 mm
+images/train/plus_unilateral_0034.png	+66.8
+images/train/plus_unilateral_0035.png	Ø84.4+0.05 mm
+images/train/plus_unilateral_0036.png	Ø58.7+0.1 mm
+images/train/plus_unilateral_0037.png	+9.2
+images/train/plus_unilateral_0038.png	Ø29.0+0.6 mm
+images/train/plus_unilateral_0039.png	Ø58.2+0.1 mm
+images/train/plus_unilateral_0040.png	+20.1
+images/train/plus_unilateral_0041.png	+56.4
+images/train/plus_unilateral_0042.png	Ø69.8+0.1 mm
+images/train/plus_unilateral_0043.png	+0.05
+images/train/plus_unilateral_0044.png	+1.7
+images/train/plus_unilateral_0045.png	Ø77.7+0.05 mm
+images/train/plus_unilateral_0046.png	+0.20
+images/train/plus_unilateral_0047.png	+72.8
+images/train/plus_unilateral_0048.png	Ø1.1+0.05 mm
+images/train/plus_unilateral_0049.png	+0.05
+images/train/plus_unilateral_0050.png	+33.5
+images/train/plus_unilateral_0051.png	Ø78.8+0.1 mm
+images/train/plus_unilateral_0052.png	+6.9
+images/train/plus_unilateral_0053.png	Ø26.0+0.2 mm
+images/train/plus_unilateral_0054.png	+0.02
+images/train/plus_unilateral_0055.png	+4.7
+images/train/plus_unilateral_0056.png	+73.5
+images/train/plus_unilateral_0057.png	+13.7
+images/train/plus_unilateral_0058.png	+6.0
+images/train/plus_unilateral_0059.png	+0.01
+images/train/plus_unilateral_0060.png	+0.20
+images/train/plus_unilateral_0061.png	Ø56.1+0.05 mm
+images/train/plus_unilateral_0062.png	+0.10
+images/train/plus_unilateral_0063.png	Ø73.8+0.05 mm
+images/train/plus_unilateral_0064.png	+0.05
+images/train/plus_unilateral_0065.png	+3.2
+images/train/plus_unilateral_0066.png	+1.5
+images/train/plus_unilateral_0067.png	Ø48.1+0.1 mm
+images/train/plus_unilateral_0068.png	+0.02
+images/train/plus_unilateral_0069.png	Ø39.9+0.9 mm
+images/train/plus_unilateral_0070.png	+70.5
+images/train/plus_unilateral_0071.png	+59.6
+images/train/plus_unilateral_0072.png	Ø23.1+0.5 mm
+images/train/plus_unilateral_0073.png	+0.20
+images/train/plus_unilateral_0074.png	+6.4
+images/train/plus_unilateral_0075.png	+6.0
+images/train/plus_unilateral_0076.png	+14.4
+images/train/plus_unilateral_0077.png	+2.1
+images/train/plus_unilateral_0078.png	+43.3
+images/train/plus_unilateral_0079.png	+0.05
+images/train/plus_unilateral_0080.png	+5.6
+images/train/plus_unilateral_0081.png	Ø5.4+0.05 mm
+images/train/plus_unilateral_0082.png	+8.9
+images/train/plus_unilateral_0083.png	+8.8
+images/train/plus_unilateral_0084.png	+8.1
+images/train/plus_unilateral_0085.png	+98.8
+images/train/plus_unilateral_0086.png	Ø10.4+0.2 mm
+images/train/plus_unilateral_0087.png	+4.4
+images/train/plus_unilateral_0088.png	+0.02
+images/train/plus_unilateral_0089.png	+5.1
+images/train/plus_unilateral_0090.png	Ø82.4+0.1 mm
+images/train/plus_unilateral_0091.png	Ø18.8+0.8 mm
+images/train/plus_unilateral_0092.png	+0.01
+images/train/plus_unilateral_0093.png	+0.10
+images/train/plus_unilateral_0094.png	+3.2
+images/train/plus_unilateral_0095.png	+2.0
+images/train/plus_unilateral_0096.png	Ø36.8+0.05 mm
+images/train/plus_unilateral_0097.png	+3.2
+images/train/plus_unilateral_0098.png	Ø44.8+0.1 mm
+images/train/plus_unilateral_0099.png	+4.3
+images/train/plus_unilateral_0100.png	+2.3
+images/train/plus_unilateral_0101.png	+90.6
+images/train/plus_unilateral_0102.png	+1.7
+images/train/plus_unilateral_0103.png	Ø12.7+0.1 mm
+images/train/plus_unilateral_0104.png	Ø26.8+0.05 mm
+images/train/plus_unilateral_0105.png	Ø45.8+0.5 mm
+images/train/plus_unilateral_0106.png	Ø82.6+0.05 mm
+images/train/plus_unilateral_0107.png	Ø9.9+0.7 mm
+images/train/plus_unilateral_0108.png	Ø82.7+0.05 mm
+images/train/plus_unilateral_0109.png	Ø49.6+0.8 mm
+images/train/plus_unilateral_0110.png	Ø61.8+0.05 mm
+images/train/plus_unilateral_0111.png	+24.6
+images/train/plus_unilateral_0112.png	+4.2
+images/train/plus_unilateral_0113.png	Ø42.6+0.2 mm
+images/train/plus_unilateral_0114.png	+0.20
+images/train/plus_unilateral_0115.png	Ø52.8+0.1 mm
+images/train/plus_unilateral_0116.png	Ø14.0+0.9 mm
+images/train/plus_unilateral_0117.png	+0.10
+images/train/plus_unilateral_0118.png	Ø46.5+0.9 mm
+images/train/plus_unilateral_0119.png	+0.01
+images/train/plus_unilateral_0120.png	+0.05
+images/train/plus_unilateral_0121.png	+0.01
+images/train/plus_unilateral_0122.png	Ø10.6+0.05 mm
+images/train/plus_unilateral_0123.png	+0.20
+images/train/plus_unilateral_0124.png	+6.2
+images/train/plus_unilateral_0125.png	Ø46.7+0.05 mm
+images/train/plus_unilateral_0126.png	Ø25.5+0.05 mm
+images/train/plus_unilateral_0127.png	+0.20
+images/train/plus_unilateral_0128.png	+26.6
+images/train/plus_unilateral_0129.png	Ø33.5+0.1 mm
+images/train/plus_unilateral_0130.png	+0.05
+images/train/plus_unilateral_0131.png	Ø38.5+0.4 mm
+images/train/plus_unilateral_0132.png	+6.8
+images/train/plus_unilateral_0133.png	+0.01
+images/train/plus_unilateral_0134.png	+6.3
+images/train/plus_unilateral_0135.png	Ø57.0+0.05 mm
+images/train/plus_unilateral_0136.png	+0.01
+images/train/plus_unilateral_0137.png	Ø34.5+0.4 mm
+images/train/plus_unilateral_0138.png	Ø42.3+0.8 mm
+images/train/plus_unilateral_0139.png	+60.5
+images/train/plus_unilateral_0140.png	+34.8
+images/train/plus_unilateral_0141.png	+55.2
+images/train/plus_unilateral_0142.png	+7.9
+images/train/plus_unilateral_0143.png	+0.02
+images/train/plus_unilateral_0144.png	Ø37.7+0.1 mm
+images/train/plus_unilateral_0145.png	Ø11.5+0.1 mm
+images/train/plus_unilateral_0146.png	+0.05
+images/train/plus_unilateral_0147.png	+94.5
+images/train/plus_unilateral_0148.png	+75.3
+images/train/plus_unilateral_0149.png	+0.05
+images/train/plus_unilateral_0150.png	+2.5
+images/train/plus_unilateral_0151.png	+9.4
+images/train/plus_unilateral_0152.png	+1.1
+images/train/plus_unilateral_0153.png	Ø11.1+0.4 mm
+images/train/plus_unilateral_0154.png	Ø59.5+0.1 mm
+images/train/plus_unilateral_0155.png	+20.9
+images/train/plus_unilateral_0156.png	+0.10
+images/train/plus_unilateral_0157.png	+7.2
+images/train/plus_unilateral_0158.png	+2.5
+images/train/plus_unilateral_0159.png	+65.5
+images/train/plus_unilateral_0160.png	Ø45.7+0.1 mm
+images/train/plus_unilateral_0161.png	Ø43.8+0.5 mm
+images/train/plus_unilateral_0162.png	+8.3
+images/train/plus_unilateral_0163.png	+89.3
+images/train/plus_unilateral_0164.png	Ø54.6+0.1 mm
+images/train/plus_unilateral_0165.png	+11.6
+images/train/plus_unilateral_0166.png	+0.01
+images/train/plus_unilateral_0167.png	+84.3
+images/train/plus_unilateral_0168.png	Ø79.2+0.1 mm
+images/train/plus_unilateral_0169.png	+6.2
+images/train/plus_unilateral_0170.png	Ø30.0+0.2 mm
+images/train/plus_unilateral_0171.png	Ø32.3+0.4 mm
+images/train/plus_unilateral_0172.png	Ø11.5+0.4 mm
+images/train/plus_unilateral_0173.png	Ø15.5+0.5 mm
+images/train/plus_unilateral_0174.png	+4.9
+images/train/plus_unilateral_0175.png	Ø30.4+0.9 mm
+images/train/plus_unilateral_0176.png	+9.6
+images/train/plus_unilateral_0177.png	+0.02
+images/train/plus_unilateral_0178.png	+0.05
+images/train/plus_unilateral_0179.png	+2.2
+images/train/plus_unilateral_0180.png	+17.0
+images/train/plus_unilateral_0181.png	Ø64.2+0.1 mm
+images/train/plus_unilateral_0182.png	+0.01
+images/train/plus_unilateral_0183.png	+0.05
+images/train/plus_unilateral_0184.png	+8.4
+images/train/plus_unilateral_0185.png	+31.3
+images/train/plus_unilateral_0186.png	Ø84.5+0.05 mm
+images/train/plus_unilateral_0187.png	+0.01
+images/train/plus_unilateral_0188.png	Ø8.9+0.4 mm
+images/train/plus_unilateral_0189.png	Ø8.9+0.5 mm
+images/train/plus_unilateral_0190.png	+3.3
+images/train/plus_unilateral_0191.png	Ø16.3+0.1 mm
+images/train/plus_unilateral_0192.png	Ø12.0+0.5 mm
+images/train/plus_unilateral_0193.png	+95.6
+images/train/plus_unilateral_0194.png	+36.3
+images/train/plus_unilateral_0195.png	+0.10
+images/train/plus_unilateral_0196.png	+91.3
+images/train/plus_unilateral_0197.png	+69.8
+images/train/plus_unilateral_0198.png	Ø5.4+0.1 mm
+images/train/plus_unilateral_0199.png	Ø69.4+0.1 mm
+images/train/plus_unilateral_0200.png	+0.20
+images/train/plus_unilateral_0201.png	+0.20
+images/train/plus_unilateral_0202.png	+63.1
+images/train/plus_unilateral_0203.png	+1.4
+images/train/plus_unilateral_0204.png	Ø41.7+0.2 mm
+images/train/plus_unilateral_0205.png	Ø40.1+0.05 mm
+images/train/plus_unilateral_0206.png	+0.01
+images/train/plus_unilateral_0207.png	+60.4
+images/train/plus_unilateral_0208.png	+9.0
+images/train/plus_unilateral_0209.png	+49.4
+images/train/plus_unilateral_0210.png	+33.4
+images/train/plus_unilateral_0211.png	+5.0
+images/train/plus_unilateral_0212.png	Ø57.0+0.05 mm
+images/train/plus_unilateral_0213.png	Ø48.9+0.1 mm
+images/train/plus_unilateral_0214.png	+8.0
+images/train/plus_unilateral_0215.png	+32.0
+images/train/plus_unilateral_0216.png	+3.2
+images/train/plus_unilateral_0217.png	+38.1
+images/train/plus_unilateral_0218.png	Ø10.2+0.6 mm
+images/train/plus_unilateral_0219.png	Ø19.6+0.6 mm
+images/train/plus_unilateral_0220.png	Ø6.6+0.7 mm
+images/train/plus_unilateral_0221.png	+0.02
+images/train/plus_unilateral_0222.png	+86.7
+images/train/plus_unilateral_0223.png	+0.10
+images/train/plus_unilateral_0224.png	+0.10
+images/train/plus_unilateral_0225.png	+3.2
+images/train/plus_unilateral_0226.png	+0.01
+images/train/plus_unilateral_0227.png	+2.2
+images/train/plus_unilateral_0228.png	Ø31.5+0.6 mm
+images/train/plus_unilateral_0229.png	Ø27.6+0.9 mm
+images/train/plus_unilateral_0230.png	+6.8
+images/train/plus_unilateral_0231.png	+0.10
+images/train/plus_unilateral_0232.png	+10.8
+images/train/plus_unilateral_0233.png	Ø6.1+0.1 mm
+images/train/plus_unilateral_0234.png	Ø21.3+0.5 mm
+images/train/plus_unilateral_0235.png	+90.5
+images/train/plus_unilateral_0236.png	+8.6
+images/train/plus_unilateral_0237.png	+94.0
+images/train/plus_unilateral_0238.png	Ø36.4+0.3 mm
+images/train/plus_unilateral_0239.png	+24.5
+images/train/plus_unilateral_0240.png	+96.2
+images/train/plus_unilateral_0241.png	+5.4
+images/train/plus_unilateral_0242.png	+83.3
+images/train/plus_unilateral_0243.png	+0.02
+images/train/plus_unilateral_0244.png	Ø43.5+0.3 mm
+images/train/plus_unilateral_0245.png	Ø91.7+0.05 mm
+images/train/plus_unilateral_0246.png	Ø8.3+0.2 mm
+images/train/plus_unilateral_0247.png	+85.0
+images/train/plus_unilateral_0248.png	Ø35.1+0.4 mm
+images/train/plus_unilateral_0249.png	+0.01
+images/train/plus_unilateral_0250.png	Ø6.5+0.5 mm
+images/train/plus_unilateral_0251.png	+28.7
+images/train/plus_unilateral_0252.png	+3.2
+images/train/plus_unilateral_0253.png	+27.8
+images/train/plus_unilateral_0254.png	Ø51.9+0.1 mm
+images/train/plus_unilateral_0255.png	+91.0
+images/train/plus_unilateral_0256.png	+0.02
+images/train/plus_unilateral_0257.png	Ø57.3+0.1 mm
+images/train/plus_unilateral_0258.png	+0.05
+images/train/plus_unilateral_0259.png	Ø43.6+0.1 mm
+images/train/plus_unilateral_0260.png	Ø24.5+0.1 mm
+images/train/plus_unilateral_0261.png	Ø45.7+0.9 mm
+images/train/plus_unilateral_0262.png	+0.02
+images/train/plus_unilateral_0263.png	+4.0
+images/train/plus_unilateral_0264.png	Ø21.0+0.9 mm
+images/train/plus_unilateral_0265.png	+67.6
+images/train/plus_unilateral_0266.png	+6.6
+images/train/plus_unilateral_0267.png	+68.2
+images/train/plus_unilateral_0268.png	+0.05
+images/train/plus_unilateral_0269.png	+0.05
+images/train/dims_sep_0000.png	80 × 60 mm
+images/train/dims_sep_0001.png	195 × 104 × 3 mm
+images/train/dims_sep_0002.png	13 × 17
+images/train/dims_sep_0003.png	121 × 90 × 43 mm
+images/train/dims_sep_0004.png	80 × 60 mm
+images/train/dims_sep_0005.png	88.2 × 83.1
+images/train/dims_sep_0006.png	16.0 × 40.7
+images/train/dims_sep_0007.png	246 × 191 mm
+images/train/dims_sep_0008.png	16 × 12
+images/train/dims_sep_0009.png	20 × 1
+images/train/dims_sep_0010.png	59.6 × 97.9
+images/train/dims_sep_0011.png	5 × 1
+images/train/dims_sep_0012.png	80 × 60 mm
+images/train/dims_sep_0013.png	377 × 220 mm
+images/train/dims_sep_0014.png	178 × 90 × 45 mm
+images/train/dims_sep_0015.png	80 × 60 mm
+images/train/dims_sep_0016.png	94.7 × 59.7
+images/train/dims_sep_0017.png	80 × 60 mm
+images/train/dims_sep_0018.png	34.2 × 17.2
+images/train/dims_sep_0019.png	1 × 8
+images/train/dims_sep_0020.png	125 × 206 mm
+images/train/dims_sep_0021.png	22.6 × 50.1
+images/train/dims_sep_0022.png	80 × 60 mm
+images/train/dims_sep_0023.png	398 × 269 mm
+images/train/dims_sep_0024.png	80 × 60 mm
+images/train/dims_sep_0025.png	145 × 189 × 4 mm
+images/train/dims_sep_0026.png	16 × 10
+images/train/dims_sep_0027.png	18 × 9
+images/train/dims_sep_0028.png	2 × 18
+images/train/dims_sep_0029.png	15 × 19
+images/train/dims_sep_0030.png	89.5 × 40.0
+images/train/dims_sep_0031.png	97.7 × 81.9
+images/train/dims_sep_0032.png	41.0 × 46.6
+images/train/dims_sep_0033.png	359 × 261 mm
+images/train/dims_sep_0034.png	80 × 60 mm
+images/train/dims_sep_0035.png	96.4 × 57.2
+images/train/dims_sep_0036.png	2 × 6
+images/train/dims_sep_0037.png	49 × 187 × 4 mm
+images/train/dims_sep_0038.png	42.6 × 77.5
+images/train/dims_sep_0039.png	27.0 × 5.4
+images/train/dims_sep_0040.png	41.1 × 71.6
+images/train/dims_sep_0041.png	80 × 60 mm
+images/train/dims_sep_0042.png	171 × 77 × 26 mm
+images/train/dims_sep_0043.png	80 × 60 mm
+images/train/dims_sep_0044.png	15 × 1
+images/train/dims_sep_0045.png	183 × 78 × 37 mm
+images/train/dims_sep_0046.png	80 × 60 mm
+images/train/dims_sep_0047.png	8 × 3
+images/train/dims_sep_0048.png	80 × 60 mm
+images/train/dims_sep_0049.png	44.6 × 69.1
+images/train/dims_sep_0050.png	58.9 × 55.4
+images/train/dims_sep_0051.png	14 × 4
+images/train/dims_sep_0052.png	179 × 310 mm
+images/train/dims_sep_0053.png	13 × 18
+images/train/dims_sep_0054.png	143 × 276 mm
+images/train/dims_sep_0055.png	80 × 60 mm
+images/train/dims_sep_0056.png	7 × 1
+images/train/dims_sep_0057.png	9.0 × 59.3
+images/train/dims_sep_0058.png	19 × 12
+images/train/dims_sep_0059.png	96 × 167 × 40 mm
+images/train/dims_sep_0060.png	80 × 60 mm
+images/train/dims_sep_0061.png	89 × 60 × 33 mm
+images/train/dims_sep_0062.png	80 × 60 mm
+images/train/dims_sep_0063.png	169 × 33 × 43 mm
+images/train/dims_sep_0064.png	39.2 × 6.3
+images/train/dims_sep_0065.png	182 × 77 × 13 mm
+images/train/dims_sep_0066.png	80 × 60 mm
+images/train/dims_sep_0067.png	117 × 160 × 4 mm
+images/train/dims_sep_0068.png	258 × 228 mm
+images/train/dims_sep_0069.png	2 × 13
+images/train/dims_sep_0070.png	25 × 164 × 50 mm
+images/train/dims_sep_0071.png	80 × 60 mm
+images/train/dims_sep_0072.png	6 × 14
+images/train/dims_sep_0073.png	5 × 4
+images/train/dims_sep_0074.png	27 × 128 × 3 mm
+images/train/dims_sep_0075.png	215 × 260 mm
+images/train/dims_sep_0076.png	34.7 × 10.5
+images/train/dims_sep_0077.png	140 × 122 × 6 mm
+images/train/dims_sep_0078.png	29.7 × 76.1
+images/train/dims_sep_0079.png	118 × 50 mm
+images/train/dims_sep_0080.png	1 × 1
+images/train/dims_sep_0081.png	496 × 285 mm
+images/train/dims_sep_0082.png	57.5 × 50.7
+images/train/dims_sep_0083.png	80 × 60 mm
+images/train/dims_sep_0084.png	80 × 60 mm
+images/train/dims_sep_0085.png	80 × 60 mm
+images/train/dims_sep_0086.png	14 × 131 × 25 mm
+images/train/dims_sep_0087.png	80 × 60 mm
+images/train/dims_sep_0088.png	6 × 14
+images/train/dims_sep_0089.png	174 × 89 × 24 mm
+images/train/dims_sep_0090.png	19 × 10
+images/train/dims_sep_0091.png	80 × 60 mm
+images/train/dims_sep_0092.png	5.6 × 26.4
+images/train/dims_sep_0093.png	4 × 17
+images/train/dims_sep_0094.png	80 × 60 mm
+images/train/dims_sep_0095.png	3 × 16
+images/train/dims_sep_0096.png	135 × 182 × 28 mm
+images/train/dims_sep_0097.png	80 × 60 mm
+images/train/dims_sep_0098.png	6 × 18
+images/train/dims_sep_0099.png	44 × 190 × 2 mm
+images/train/dims_sep_0100.png	80 × 60 mm
+images/train/dims_sep_0101.png	53.9 × 14.0
+images/train/dims_sep_0102.png	70.9 × 41.2
+images/train/dims_sep_0103.png	130 × 163 mm
+images/train/dims_sep_0104.png	80 × 60 mm
+images/train/dims_sep_0105.png	19.0 × 89.3
+images/train/dims_sep_0106.png	114 × 50 mm
+images/train/dims_sep_0107.png	1 × 9
+images/train/dims_sep_0108.png	109 × 87 × 12 mm
+images/train/dims_sep_0109.png	73.2 × 28.2
+images/train/dims_sep_0110.png	80 × 60 mm
+images/train/dims_sep_0111.png	36.3 × 52.5
+images/train/dims_sep_0112.png	80 × 60 mm
+images/train/dims_sep_0113.png	80 × 60 mm
+images/train/dims_sep_0114.png	147 × 194 × 13 mm
+images/train/dims_sep_0115.png	87.3 × 64.2
+images/train/dims_sep_0116.png	91 × 159 mm
+images/train/dims_sep_0117.png	84 × 12 × 20 mm
+images/train/dims_sep_0118.png	80 × 60 mm
+images/train/dims_sep_0119.png	80 × 60 mm
+images/train/dims_sep_0120.png	198 × 65 × 8 mm
+images/train/dims_sep_0121.png	80 × 60 mm
+images/train/dims_sep_0122.png	2 × 8
+images/train/dims_sep_0123.png	80 × 60 mm
+images/train/dims_sep_0124.png	80 × 60 mm
+images/train/dims_sep_0125.png	80 × 60 mm
+images/train/dims_sep_0126.png	150 × 151 × 14 mm
+images/train/dims_sep_0127.png	80 × 60 mm
+images/train/dims_sep_0128.png	15 × 18
+images/train/dims_sep_0129.png	292 × 237 mm
+images/train/dims_sep_0130.png	80 × 60 mm
+images/train/dims_sep_0131.png	148 × 60 × 30 mm
+images/train/dims_sep_0132.png	63.1 × 53.8
+images/train/dims_sep_0133.png	228 × 312 mm
+images/train/dims_sep_0134.png	80 × 60 mm
+images/train/dims_sep_0135.png	80 × 60 mm
+images/train/dims_sep_0136.png	7.3 × 23.7
+images/train/dims_sep_0137.png	80 × 60 mm
+images/train/dims_sep_0138.png	55.5 × 58.3
+images/train/dims_sep_0139.png	80 × 60 mm
+images/train/dims_sep_0140.png	12.7 × 43.3
+images/train/dims_sep_0141.png	321 × 311 mm
+images/train/dims_sep_0142.png	80 × 60 mm
+images/train/dims_sep_0143.png	418 × 342 mm
+images/train/dims_sep_0144.png	80 × 60 mm
+images/train/dims_sep_0145.png	3.8 × 58.3
+images/train/dims_sep_0146.png	16 × 14
+images/train/dims_sep_0147.png	80 × 60 mm
+images/train/dims_sep_0148.png	80 × 60 mm
+images/train/dims_sep_0149.png	43.7 × 47.5
+images/train/dims_sep_0150.png	294 × 168 mm
+images/train/dims_sep_0151.png	403 × 269 mm
+images/train/dims_sep_0152.png	7.0 × 76.3
+images/train/dims_sep_0153.png	49.7 × 42.8
+images/train/dims_sep_0154.png	40 × 268 mm
+images/train/dims_sep_0155.png	18 × 10
+images/train/dims_sep_0156.png	80 × 60 mm
+images/train/dims_sep_0157.png	5 × 17
+images/train/dims_sep_0158.png	80 × 60 mm
+images/train/dims_sep_0159.png	448 × 48 mm
+images/train/dims_sep_0160.png	37 × 332 mm
+images/train/dims_sep_0161.png	195 × 59 mm
+images/train/dims_sep_0162.png	20 × 5
+images/train/dims_sep_0163.png	18 × 20
+images/train/dims_sep_0164.png	367 × 56 mm
+images/train/dims_sep_0165.png	103 × 346 mm
+images/train/dims_sep_0166.png	1 × 7
+images/train/dims_sep_0167.png	328 × 434 mm
+images/train/dims_sep_0168.png	80 × 60 mm
+images/train/dims_sep_0169.png	7.1 × 76.4
+images/train/dims_sep_0170.png	6.3 × 59.7
+images/train/dims_sep_0171.png	12 × 10
+images/train/dims_sep_0172.png	56.8 × 24.5
+images/train/dims_sep_0173.png	99.3 × 67.0
+images/train/dims_sep_0174.png	1.5 × 61.7
+images/train/dims_sep_0175.png	12.8 × 75.9
+images/train/dims_sep_0176.png	80 × 60 mm
+images/train/dims_sep_0177.png	80 × 60 mm
+images/train/dims_sep_0178.png	142 × 45 × 46 mm
+images/train/dims_sep_0179.png	53.6 × 73.8
+images/train/dims_sep_0180.png	215 × 58 mm
+images/train/dims_sep_0181.png	14 × 146 × 25 mm
+images/train/dims_sep_0182.png	17 × 180 × 23 mm
+images/train/dims_sep_0183.png	80 × 60 mm
+images/train/dims_sep_0184.png	76.4 × 83.0
+images/train/dims_sep_0185.png	76.0 × 17.5
+images/train/dims_sep_0186.png	6 × 3
+images/train/dims_sep_0187.png	11 × 4
+images/train/dims_sep_0188.png	155 × 103 × 6 mm
+images/train/dims_sep_0189.png	37 × 86 × 42 mm
+images/train/dims_sep_0190.png	3 × 14
+images/train/dims_sep_0191.png	80 × 60 mm
+images/train/dims_sep_0192.png	5 × 2
+images/train/dims_sep_0193.png	80 × 60 mm
+images/train/dims_sep_0194.png	80 × 60 mm
+images/train/dims_sep_0195.png	40.0 × 64.6
+images/train/dims_sep_0196.png	19 × 6
+images/train/dims_sep_0197.png	182 × 151 × 29 mm
+images/train/dims_sep_0198.png	309 × 31 mm
+images/train/dims_sep_0199.png	54.0 × 32.2
+images/train/dims_sep_0200.png	69 × 52 × 29 mm
+images/train/dims_sep_0201.png	297 × 328 mm
+images/train/dims_sep_0202.png	73.8 × 45.0
+images/train/dims_sep_0203.png	98.7 × 60.8
+images/train/dims_sep_0204.png	102 × 86 × 2 mm
+images/train/dims_sep_0205.png	80 × 60 mm
+images/train/dims_sep_0206.png	428 × 21 mm
+images/train/dims_sep_0207.png	20 × 8
+images/train/dims_sep_0208.png	193 × 192 × 33 mm
+images/train/dims_sep_0209.png	80 × 60 mm
+images/train/dims_sep_0210.png	84.3 × 80.5
+images/train/dims_sep_0211.png	3 × 19
+images/train/dims_sep_0212.png	80 × 60 mm
+images/train/dims_sep_0213.png	46.1 × 23.4
+images/train/dims_sep_0214.png	28.4 × 90.9
+images/train/dims_sep_0215.png	145 × 90 × 28 mm
+images/train/dims_sep_0216.png	38.9 × 20.2
+images/train/dims_sep_0217.png	184 × 463 mm
+images/train/dims_sep_0218.png	1 × 16
+images/train/dims_sep_0219.png	463 × 332 mm
+images/train/dims_sep_0220.png	55 × 134 mm
+images/train/dims_sep_0221.png	470 × 369 mm
+images/train/dims_sep_0222.png	2 × 11
+images/train/dims_sep_0223.png	80 × 60 mm
+images/train/dims_sep_0224.png	80 × 60 mm
+images/train/dims_sep_0225.png	289 × 200 mm
+images/train/dims_sep_0226.png	9 × 19
+images/train/dims_sep_0227.png	262 × 42 mm
+images/train/dims_sep_0228.png	155 × 146 × 26 mm
+images/train/dims_sep_0229.png	167 × 129 × 27 mm
+images/train/dims_sep_0230.png	80 × 60 mm
+images/train/dims_sep_0231.png	13.3 × 82.4
+images/train/dims_sep_0232.png	369 × 330 mm
+images/train/dims_sep_0233.png	80 × 60 mm
+images/train/dims_sep_0234.png	178 × 198 × 38 mm
+images/train/dims_sep_0235.png	80 × 60 mm
+images/train/dims_sep_0236.png	14 × 5
+images/train/dims_sep_0237.png	89.9 × 57.8
+images/train/dims_sep_0238.png	98 × 66 mm
+images/train/dims_sep_0239.png	17 × 6
+images/train/dims_sep_0240.png	74.7 × 6.4
+images/train/dims_sep_0241.png	80 × 60 mm
+images/train/dims_sep_0242.png	80 × 60 mm
+images/train/dims_sep_0243.png	101 × 55 × 39 mm
+images/train/dims_sep_0244.png	26 × 26 × 29 mm
+images/train/dims_sep_0245.png	108 × 54 × 22 mm
+images/train/dims_sep_0246.png	11 × 15
+images/train/dims_sep_0247.png	21 × 135 × 44 mm
+images/train/dims_sep_0248.png	38.4 × 41.3
+images/train/dims_sep_0249.png	187 × 136 × 25 mm
+images/train/dims_sep_0250.png	412 × 430 mm
+images/train/dims_sep_0251.png	7 × 6
+images/train/dims_sep_0252.png	73.9 × 53.9
+images/train/dims_sep_0253.png	189 × 154 × 28 mm
+images/train/dims_sep_0254.png	313 × 312 mm
+images/train/dims_sep_0255.png	80 × 60 mm
+images/train/dims_sep_0256.png	80 × 60 mm
+images/train/dims_sep_0257.png	191 × 109 × 14 mm
+images/train/dims_sep_0258.png	80 × 60 mm
+images/train/dims_sep_0259.png	163 × 61 × 17 mm
+images/train/dims_sep_0260.png	12 × 14
+images/train/dims_sep_0261.png	422 × 339 mm
+images/train/dims_sep_0262.png	3 × 11
+images/train/dims_sep_0263.png	394 × 369 mm
+images/train/dims_sep_0264.png	313 × 447 mm
+images/train/dims_sep_0265.png	95.1 × 80.2
+images/train/dims_sep_0266.png	3 × 8
+images/train/dims_sep_0267.png	274 × 307 mm
+images/train/dims_sep_0268.png	5 × 6
+images/train/dims_sep_0269.png	61 × 164 mm

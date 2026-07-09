@@ -1,0 +1,39 @@
+Global:
+  model: PP-OCRv6_medium_rec
+  mode: check_dataset # check_dataset/train/evaluate/predict
+  dataset_dir: "d:/Internship/OCR_PDF/sign-detection-yolo8n/paddle_rec_dataset"
+  device: cpu
+  output: "output"
+
+CheckDataset:
+  convert:
+    enable: False
+    src_dataset_type: null
+  split:
+    enable: False
+    train_percent: null
+    val_percent: null
+
+Train:
+  epochs_iters: 5
+  batch_size: 16
+  learning_rate: 0.0005
+  pretrain_weight_path: https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-OCRv6_medium_rec_pretrained.pdparams
+  resume_path: null
+  log_interval: 10
+  eval_interval: 1
+  save_interval: 1
+
+Evaluate:
+  weight_path: "output/best_accuracy/best_accuracy.pdparams"
+  log_interval: 1
+
+Export:
+  weight_path: "output/best_accuracy/best_accuracy.pdparams"
+
+Predict:
+  batch_size: 1
+  model_dir: "output/best_accuracy/inference"
+  input: "d:/Internship/OCR_PDF/sign-detection-yolo8n/paddle_rec_dataset/images/val/plus_minus_0000.png"
+  kernel_option:
+    run_mode: paddle

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>msil.png — Crop Cleaning Viewer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{
+  --bg:#0b0d12; --sidebar:#111318; --card:#161b26;
+  --border:#222840; --border2:#2a3050;
+  --accent:#5b8dee; --accent2:#2ecf8a; --warn:#f5a623; --danger:#ff5f5f;
+  --text:#dde3f5; --muted:#606880; --faint:#3a4060;
+  --star:#f5c518; --star-off:#3a3d50;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+
+/* ── Top bar ─────────────────────────────────── */
+.topbar{
+  display:flex;align-items:center;gap:16px;flex-shrink:0;
+  padding:0 20px;height:52px;
+  background:rgba(11,13,18,.95);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);z-index:50;
+}
+.topbar h1{
+  font-size:.95rem;font-weight:700;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  white-space:nowrap;
+}
+.topbar .sep{color:var(--faint);margin:0 4px}
+.pill{
+  font-size:.7rem;padding:3px 10px;border-radius:12px;
+  background:var(--card);border:1px solid var(--border);color:var(--muted);
+}
+.pill b{color:var(--accent)}
+.topbar-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+.tb-btn{
+  font-size:.72rem;padding:5px 12px;border-radius:7px;cursor:pointer;
+  border:1px solid var(--border);background:var(--card);color:var(--muted);
+  font-family:'Inter',sans-serif;transition:all .15s;
+}
+.tb-btn:hover{color:var(--text);border-color:var(--accent)}
+.tb-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.tb-btn.starred-filter.on{background:var(--star);border-color:var(--star);color:#111}
+
+/* ── Body layout ─────────────────────────────── */
+.layout{display:flex;flex:1;min-height:0}
+
+/* ── Sidebar ─────────────────────────────────── */
+.sidebar{
+  width:270px;flex-shrink:0;
+  display:flex;flex-direction:column;
+  border-right:1px solid var(--border);
+  background:var(--sidebar);
+}
+.sidebar-head{
+  padding:10px 12px 8px;border-bottom:1px solid var(--border);
+  display:flex;flex-direction:column;gap:7px;flex-shrink:0;
+}
+.search-wrap{position:relative}
+.search-wrap svg{
+  position:absolute;left:9px;top:50%;transform:translateY(-50%);
+  width:13px;height:13px;color:var(--muted);pointer-events:none
+}
+#sidebar-search{
+  width:100%;background:var(--card);border:1px solid var(--border);
+  color:var(--text);border-radius:7px;padding:6px 10px 6px 28px;
+  font-size:.77rem;font-family:'Inter',sans-serif;outline:none;
+  transition:border-color .2s;
+}
+#sidebar-search:focus{border-color:var(--accent)}
+#sidebar-search::placeholder{color:var(--muted)}
+.filter-row{display:flex;gap:5px}
+.filter-btn{
+  flex:1;font-size:.65rem;padding:4px 6px;border-radius:6px;cursor:pointer;
+  border:1px solid var(--border);background:var(--card);color:var(--muted);
+  font-family:'Inter',sans-serif;transition:all .15s;text-align:center;
+}
+.filter-btn:hover{color:var(--text);border-color:var(--border2)}
+.filter-btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.filter-btn.star-filter.on{background:var(--star);border-color:var(--star);color:#111}
+
+/* list */
+.crop-list{overflow-y:auto;flex:1}
+.crop-list::-webkit-scrollbar{width:4px}
+.crop-list::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+.crop-item{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;cursor:pointer;
+  border-bottom:1px solid var(--border);
+  transition:background .12s;
+  position:relative;
+}
+.crop-item:hover{background:var(--card)}
+.crop-item.active{background:#1a2240;border-left:3px solid var(--accent)}
+.crop-item.starred{background:#1a1a10}
+.crop-item.starred.active{background:#1e1e14;border-left:3px solid var(--star)}
+
+.crop-num{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  color:var(--muted);min-width:26px;flex-shrink:0;
+}
+.crop-name{
+  font-size:.78rem;color:var(--text);flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.crop-epx{
+  font-size:.62rem;border-radius:8px;padding:1px 6px;
+  flex-shrink:0;font-weight:600;
+}
+.ep-none{background:#122012;color:#4caf50}
+.ep-low{background:#261c08;color:var(--warn)}
+.ep-high{background:#261010;color:var(--danger)}
+.star-btn{
+  background:none;border:none;cursor:pointer;
+  font-size:1rem;line-height:1;padding:0 2px;
+  flex-shrink:0;color:var(--star-off);
+  transition:color .15s,transform .15s;
+}
+.star-btn:hover{transform:scale(1.3)}
+.star-btn.on{color:var(--star)}
+
+/* ── Detail pane ─────────────────────────────── */
+.detail{flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.detail-head{
+  display:flex;align-items:center;gap:14px;flex-shrink:0;
+  padding:10px 20px;border-bottom:1px solid var(--border);
+  background:var(--card);
+}
+.detail-label{font-size:1.1rem;font-weight:600;color:var(--accent2);font-family:'JetBrains Mono',monospace}
+.detail-meta{font-size:.72rem;color:var(--muted)}
+.detail-erased{font-size:.72rem;margin-left:auto}
+.mode-toggle{
+  font-size:.7rem;padding:4px 12px;border-radius:7px;cursor:pointer;
+  border:1px solid var(--border);background:var(--bg);color:var(--muted);
+  font-family:'Inter',sans-serif;transition:all .15s;
+}
+.mode-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.mode-toggle.slider-on{background:var(--accent);border-color:var(--accent);color:#fff}
+.star-detail-btn{
+  font-size:1.3rem;background:none;border:none;cursor:pointer;
+  color:var(--star-off);transition:color .15s,transform .15s;
+}
+.star-detail-btn:hover{transform:scale(1.2)}
+.star-detail-btn.on{color:var(--star)}
+
+.detail-body{flex:1;display:flex;align-items:center;justify-content:center;overflow:auto;padding:24px}
+
+/* side-by-side view */
+.compare-wrap{
+  display:flex;gap:20px;width:100%;max-width:900px;
+  align-items:flex-start;
+}
+.compare-half{
+  flex:1;background:var(--card);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.half-title{
+  font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 12px;border-bottom:1px solid var(--border);background:var(--sidebar);
+}
+.half-title.orig{color:var(--muted)}
+.half-title.clean{color:var(--accent2)}
+.img-panel{
+  background:#f5f5f5;display:flex;align-items:center;justify-content:center;
+  padding:12px;min-height:120px;
+}
+.img-panel img{
+  max-width:100%;max-height:400px;object-fit:contain;
+  image-rendering:pixelated;display:block;
+}
+
+/* slider view */
+.slider-wrap{
+  display:none;width:100%;max-width:860px;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;
+}
+.slider-wrap.active{display:block}
+.compare-wrap.hidden{display:none}
+.sl-stage{
+  position:relative;background:#f5f5f5;
+  overflow:hidden;cursor:col-resize;user-select:none;
+}
+.sl-stage img.sl-base{display:block;width:100%;max-height:460px;object-fit:contain;image-rendering:pixelated}
+.sl-overlay{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.sl-overlay img{
+  position:absolute;left:0;top:0;
+  width:100%;max-height:460px;object-fit:contain;image-rendering:pixelated;display:block;
+}
+.sl-divider{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);cursor:col-resize;z-index:5}
+.sl-divider::after{
+  content:'◀  ▶';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:var(--accent);color:#fff;font-size:.55rem;padding:3px 7px;
+  border-radius:8px;white-space:nowrap;
+}
+.sl-labels{
+  position:absolute;bottom:8px;width:100%;display:flex;justify-content:space-between;
+  padding:0 12px;pointer-events:none;
+}
+.sl-labels span{
+  font-size:.6rem;font-weight:700;background:rgba(0,0,0,.55);
+  color:#fff;padding:2px 7px;border-radius:4px;
+}
+.sl-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 14px;border-top:1px solid var(--border);
+  background:var(--sidebar);font-size:.7rem;color:var(--muted);
+}
+
+/* empty / placeholder */
+.placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;color:var(--muted);font-size:.88rem;height:100%;
+}
+.placeholder svg{width:48px;height:48px;opacity:.25}
+
+/* no results */
+#no-results{display:none;padding:18px 12px;text-align:center;font-size:.75rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <h1>msil.png — Crop Viewer</h1>
+  <span class="sep">|</span>
+  <div class="pill">Total <b id="stat-total">0</b></div>
+  <div class="pill">Showing <b id="stat-shown">0</b></div>
+  <div class="pill">Starred <b id="stat-starred">0</b></div>
+  <div class="topbar-right">
+    <button class="tb-btn starred-filter" id="top-star-filter">⭐ Starred only</button>
+    <button class="tb-btn" id="export-starred">⬇ Export starred list</button>
+  </div>
+</div>
+
+<!-- Main layout -->
+<div class="layout">
+
+  <!-- Left sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-head">
+      <div class="search-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input id="sidebar-search" type="text" placeholder="Search label…" autocomplete="off"/>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn on" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="erased">Has lines</button>
+        <button class="filter-btn" data-filter="clean">No lines</button>
+        <button class="filter-btn star-filter" data-filter="starred">⭐ Starred</button>
+      </div>
+    </div>
+    <div class="crop-list" id="crop-list"></div>
+    <div id="no-results">No crops match.</div>
+  </div>
+
+  <!-- Right detail pane -->
+  <div class="detail">
+    <div class="detail-head" id="detail-head" style="display:none">
+      <button class="star-detail-btn" id="star-detail-btn" title="Star this crop">☆</button>
+      <div>
+        <div class="detail-label" id="detail-label">—</div>
+        <div class="detail-meta" id="detail-meta">—</div>
+      </div>
+      <div class="detail-erased" id="detail-erased"></div>
+      <button class="mode-toggle" id="mode-toggle">⇔ Slider mode</button>
+    </div>
+    <div class="detail-body" id="detail-body">
+      <div class="placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <span>Select a crop from the left panel</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const CROPS = __CROPS_JSON__;
+
+// ── State ────────────────────────────────────────────────────────────────────
+let starred   = JSON.parse(localStorage.getItem('msil_starred') || '[]');
+let filter    = 'all';
+let query     = '';
+let activeIdx = null;
+let sliderMode= false;
+
+function saveStarred(){ localStorage.setItem('msil_starred', JSON.stringify(starred)); }
+function isStarred(idx){ return starred.includes(idx); }
+function toggleStar(idx){
+  if(isStarred(idx)) starred = starred.filter(i=>i!==idx);
+  else starred.push(idx);
+  saveStarred();
+  renderSidebar();
+  updateStats();
+  if(activeIdx === idx) updateDetailStar();
+}
+
+// ── Stats ────────────────────────────────────────────────────────────────────
+function updateStats(){
+  document.getElementById('stat-total').textContent   = CROPS.length;
+  document.getElementById('stat-starred').textContent = starred.length;
+  const visible = document.querySelectorAll('.crop-item:not([style*="display:none"])').length;
+  document.getElementById('stat-shown').textContent   = visible;
+}
+
+// ── Sidebar ──────────────────────────────────────────────────────────────────
+function epClass(e){ return e===0?'ep-none':e<1000?'ep-low':'ep-high'; }
+function epText(e){ return e===0?'clean':`${e.toLocaleString()}px`; }
+
+function renderSidebar(){
+  const list = document.getElementById('crop-list');
+  list.innerHTML = '';
+  let count = 0;
+  CROPS.forEach(c => {
+    const q = query.toLowerCase();
+    if(q && !c.label.toLowerCase().includes(q)) return;
+    if(filter==='erased'  && c.erased===0)      return;
+    if(filter==='clean'   && c.erased>0)         return;
+    if(filter==='starred' && !isStarred(c.idx))  return;
+
+    const div = document.createElement('div');
+    div.className = 'crop-item' + (isStarred(c.idx)?' starred':'') + (activeIdx===c.idx?' active':'');
+    div.dataset.idx = c.idx;
+    div.innerHTML = `
+      <span class="crop-num">#${String(c.idx).padStart(3,'0')}</span>
+      <span class="crop-name">${c.label}</span>
+      <span class="crop-epx ${epClass(c.erased)}">${epText(c.erased)}</span>
+      <button class="star-btn ${isStarred(c.idx)?'on':''}" data-idx="${c.idx}" title="${isStarred(c.idx)?'Unstar':'Star'}">
+        ${isStarred(c.idx)?'★':'☆'}
+      </button>`;
+    div.addEventListener('click', e => {
+      if(e.target.closest('.star-btn')) return;
+      selectCrop(c.idx);
+    });
+    div.querySelector('.star-btn').addEventListener('click', e => {
+      e.stopPropagation(); toggleStar(c.idx);
+    });
+    list.appendChild(div);
+    count++;
+  });
+  document.getElementById('no-results').style.display = count===0?'block':'none';
+  document.getElementById('stat-shown').textContent = count;
+}
+
+// ── Detail pane ───────────────────────────────────────────────────────────────
+function selectCrop(idx){
+  activeIdx = idx;
+  sliderMode = false;
+  document.getElementById('mode-toggle').textContent = '⇔ Slider mode';
+  document.getElementById('mode-toggle').classList.remove('slider-on');
+  renderSidebar();
+  updateDetail();
+}
+
+function updateDetailStar(){
+  const btn = document.getElementById('star-detail-btn');
+  btn.textContent = isStarred(activeIdx) ? '★' : '☆';
+  btn.classList.toggle('on', isStarred(activeIdx));
+}
+
+function updateDetail(){
+  if(activeIdx === null) return;
+  const c = CROPS.find(x=>x.idx===activeIdx);
+  if(!c) return;
+
+  document.getElementById('detail-head').style.display = 'flex';
+  document.getElementById('detail-label').textContent  = c.label;
+  document.getElementById('detail-meta').textContent   = `#${String(c.idx).padStart(3,'0')}  ·  ${c.w}×${c.h} px`;
+  const ep = document.getElementById('detail-erased');
+  ep.innerHTML = c.erased===0
+    ? `<span style="color:#4caf50;font-weight:600">✓ No lines erased</span>`
+    : `<span style="color:${c.erased<1000?'var(--warn)':'var(--danger)'};font-weight:600">${c.erased.toLocaleString()} px erased</span>`;
+  updateDetailStar();
+
+  const body = document.getElementById('detail-body');
+  body.innerHTML = `
+    <!-- Side by side -->
+    <div class="compare-wrap ${sliderMode?'hidden':''}" id="sbs">
+      <div class="compare-half">
+        <div class="half-title orig">Original</div>
+        <div class="img-panel"><img src="${c.orig}" alt="original" /></div>
+      </div>
+      <div class="compare-half">
+        <div class="half-title clean">Cleaned</div>
+        <div class="img-panel"><img src="${c.clean}" alt="cleaned" /></div>
+      </div>
+    </div>
+    <!-- Slider -->
+    <div class="slider-wrap ${sliderMode?'active':''}" id="slw">
+      <div class="sl-stage" id="sl-stage">
+        <img class="sl-base" src="${c.orig}" alt="original" id="sl-base"/>
+        <div class="sl-overlay" id="sl-overlay" style="clip-path:inset(0 50% 0 0)">
+          <img src="${c.clean}" alt="cleaned" id="sl-clean"/>
+        </div>
+        <div class="sl-divider" id="sl-div" style="left:50%"></div>
+        <div class="sl-labels"><span>Original</span><span>Cleaned</span></div>
+      </div>
+      <div class="sl-bar">
+        <span>← Drag to compare →</span>
+        <span style="color:var(--accent)">${c.label}</span>
+      </div>
+    </div>`;
+
+  initSlider();
+}
+
+function initSlider(){
+  const stage   = document.getElementById('sl-stage'); if(!stage) return;
+  const overlay = document.getElementById('sl-overlay');
+  const divider = document.getElementById('sl-div');
+  let drag = false;
+
+  function move(x){
+    const r = stage.getBoundingClientRect();
+    let p = Math.max(0.01, Math.min(0.99, (x - r.left)/r.width));
+    divider.style.left  = `${p*100}%`;
+    // clip right side = original (base), left = cleaned (overlay)
+    overlay.style.clipPath = `inset(0 ${(1-p)*100}% 0 0)`;
+  }
+  stage.addEventListener('mousedown',  e=>{drag=true; move(e.clientX);});
+  window.addEventListener('mousemove', e=>{if(drag) move(e.clientX);});
+  window.addEventListener('mouseup',   ()=>{drag=false;});
+  stage.addEventListener('touchstart', e=>move(e.touches[0].clientX),{passive:true});
+  stage.addEventListener('touchmove',  e=>move(e.touches[0].clientX),{passive:true});
+}
+
+// ── Mode toggle ───────────────────────────────────────────────────────────────
+document.getElementById('mode-toggle').addEventListener('click', ()=>{
+  sliderMode = !sliderMode;
+  const btn = document.getElementById('mode-toggle');
+  btn.textContent = sliderMode ? '⊞ Side by side' : '⇔ Slider mode';
+  btn.classList.toggle('slider-on', sliderMode);
+  document.getElementById('sbs')?.classList.toggle('hidden', sliderMode);
+  document.getElementById('slw')?.classList.toggle('active', sliderMode);
+  if(sliderMode) initSlider();
+});
+
+// ── Star detail btn ───────────────────────────────────────────────────────────
+document.getElementById('star-detail-btn').addEventListener('click', ()=>{
+  if(activeIdx!==null){ toggleStar(activeIdx); updateDetail(); }
+});
+
+// ── Filters ───────────────────────────────────────────────────────────────────
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    filter = btn.dataset.filter;
+    renderSidebar();
+  });
+});
+
+document.getElementById('sidebar-search').addEventListener('input', e=>{
+  query = e.target.value.trim();
+  renderSidebar();
+});
+
+// ── Top starred filter ────────────────────────────────────────────────────────
+document.getElementById('top-star-filter').addEventListener('click', ()=>{
+  const isOn = filter==='starred';
+  filter = isOn ? 'all' : 'starred';
+  document.getElementById('top-star-filter').classList.toggle('on', !isOn);
+  document.querySelectorAll('.filter-btn').forEach(b=>{
+    b.classList.toggle('on', b.dataset.filter===filter);
+  });
+  renderSidebar();
+});
+
+// ── Export starred ────────────────────────────────────────────────────────────
+document.getElementById('export-starred').addEventListener('click', ()=>{
+  const lines = CROPS.filter(c=>isStarred(c.idx))
+    .map(c=>`#${String(c.idx).padStart(3,'0')}  ${c.label}  [erased: ${c.erased}px]`)
+    .join('\n');
+  const blob = new Blob([lines||'(none starred)'], {type:'text/plain'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='starred_crops.txt'; a.click();
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+document.getElementById('stat-total').textContent = CROPS.length;
+renderSidebar();
+updateStats();
+
+// Auto-select first crop
+if(CROPS.length) selectCrop(CROPS[0].idx);
+</script>
+</body>
+</html>

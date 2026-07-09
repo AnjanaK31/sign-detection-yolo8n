@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO-OBB Interactive Detection Hub</title>
+    <!-- Google Fonts: Inter and Fira Code for metrics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Navbar Header -->
+        <header class="app-header">
+            <div class="header-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="22" y1="12" x2="18" y2="12"></line>
+                        <line x1="6" y1="12" x2="2" y2="12"></line>
+                        <line x1="12" y1="6" x2="12" y2="2"></line>
+                        <line x1="12" y1="22" x2="12" y2="18"></line>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>YOLO-OBB Vision Hub</h1>
+                    <span class="logo-subtitle">Interactive Engineering Drawing Detection</span>
+                </div>
+            </div>
+            
+            <div class="folder-input-container">
+                <label for="folder-path" class="sr-only">Local Folder Path</label>
+                <div class="input-wrapper">
+                    <svg class="folder-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <input type="text" id="folder-path" placeholder="Enter absolute folder path (e.g. d:\Internship\OCR_PDF\sign-detection-yolo8n\toTest)" value="d:\Internship\OCR_PDF\sign-detection-yolo8n\toTest">
+                </div>
+                <button id="load-folder-btn" class="btn btn-primary">
+                    <span>Scan Directory</span>
+                    <svg class="arrow-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="app-body">
+            <!-- Sidebar Left: File Explorer -->
+            <aside class="sidebar-left">
+                <div class="sidebar-section-header">
+                    <h2>Image Files</h2>
+                    <span id="file-count-badge" class="count-badge">0</span>
+                </div>
+                
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search images...">
+                </div>
+
+                <div class="file-list-wrapper">
+                    <ul id="file-list" class="file-list">
+                        <!-- Populated via javascript -->
+                        <div class="empty-state">
+                            <p>No folder scanned yet. Please specify a directory path and click "Scan Directory".</p>
+                        </div>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Crops Sidebar -->
+            <aside id="crops-sidebar" class="crops-sidebar hidden">
+                <div class="sidebar-section-header">
+                    <h2>Crops Overview</h2>
+                    <span id="crops-count-badge" class="count-badge">0</span>
+                </div>
+                <div class="crops-list-wrapper">
+                    <div id="crops-list-container" class="crops-list-container">
+                        <div class="empty-state">
+                            <p>No active crops. Select an image and run predictions.</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Panel: Interactive Image Canvas -->
+            <section class="workspace">
+                <!-- Top Toolbar within Workspace -->
+                <div class="workspace-toolbar">
+                    <div class="toolbar-left">
+                        <span id="active-filename-display" class="filename-text">No image selected</span>
+                    </div>
+                    <div class="toolbar-right">
+                        <!-- Toggle Crops Overview Sidebar -->
+                        <button id="toggle-crops-sidebar" class="btn btn-secondary btn-sm" style="margin-right: 12px; height: 32px; padding: 0 12px; font-size: 11px; display: flex; align-items: center; gap: 6px; background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-secondary); cursor: pointer; border-radius: 8px;">
+                            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" style="vertical-align: middle;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                            <span>Show Crops</span>
+                        </button>
+                        <!-- Model Selection Toggle -->
+                        <div class="toggle-group" style="margin-right: 12px;">
+                            <button id="toggle-model-yolo" class="toggle-btn active">Custom YOLOv8</button>
+                            <button id="toggle-model-paddle" class="toggle-btn">PaddleOCR</button>
+                        </div>
+                        <!-- Toggle between Raw and Preprocessed (Cleaned) image -->
+                        <div class="toggle-group">
+                            <button id="toggle-raw" class="toggle-btn active">Raw Image</button>
+                            <button id="toggle-clean" class="toggle-btn">Cleaned</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canvas Viewport -->
+                <div id="canvas-viewport" class="canvas-viewport">
+                    <div id="canvas-wrapper" class="canvas-wrapper">
+                        <!-- Background image -->
+                        <img id="display-image" src="" alt="Workspace Image" class="workspace-image hidden">
+                        <!-- SVG overlay for YOLO bounding boxes -->
+                        <svg id="svg-overlay" class="svg-overlay hidden"></svg>
+                    </div>
+
+                    <!-- Canvas instructions/empty state -->
+                    <div id="canvas-empty-state" class="canvas-empty-state">
+                        <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        <p>Select an image from the list on the left to start detection visualization.</p>
+                    </div>
+
+                    <!-- Floating Loader Overlay -->
+                    <div id="inference-loader" class="inference-loader hidden">
+                        <div class="spinner-container">
+                            <div class="spinner"></div>
+                            <div class="spinner-core"></div>
+                        </div>
+                        <p class="loader-title">Running YOLOv8-OBB Inference</p>
+                        <p class="loader-subtitle">Preprocessing image and detecting oriented boxes...</p>
+                    </div>
+                </div>
+
+                <!-- Floating Canvas Zoom Controls -->
+                <div class="zoom-controls">
+                    <button id="zoom-in-btn" class="zoom-btn" title="Zoom In">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button id="zoom-out-btn" class="zoom-btn" title="Zoom Out">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button id="zoom-fit-btn" class="zoom-btn" title="Fit to Screen">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                    </button>
+                    <button id="zoom-reset-btn" class="zoom-btn" title="100% Zoom">
+                        <span class="reset-text">1:1</span>
+                    </button>
+                    <div class="zoom-indicator"><span id="zoom-percentage">100%</span></div>
+                </div>
+            </section>
+
+            <!-- Sidebar Right: Detailed Inspector -->
+            <aside class="sidebar-right">
+                <!-- Section Header -->
+                <div class="sidebar-section-header border-b">
+                    <h2>Inspector Panel</h2>
+                </div>
+
+                <!-- Content Container -->
+                <div class="inspector-content">
+                    
+                    <!-- Stats Card (displayed when no box is selected) -->
+                    <div id="inspector-image-summary" class="inspector-section">
+                        <h3 class="section-title">Image Analysis Summary</h3>
+                        
+                        <div class="summary-stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-label">Total Detections</span>
+                                <span id="summary-total-boxes" class="stat-value">-</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-label">Avg Confidence</span>
+                                <span id="summary-avg-conf" class="stat-value">-</span>
+                            </div>
+                            <div class="stat-card span-2">
+                                <span class="stat-label">Resolution</span>
+                                <span id="summary-resolution" class="stat-value">-</span>
+                            </div>
+                        </div>
+                        
+                        <!-- PaddleOCR Inference Performance Metrics -->
+                        <div id="inference-times-container" class="stat-card span-2 hidden mt-3" style="display: flex; flex-direction: column; gap: 6px; background: rgba(99, 102, 241, 0.05); border: 1px solid rgba(99, 102, 241, 0.2);">
+                            <span class="stat-label" style="color: var(--color-cyan); font-weight: 700;">PaddleOCR Performance</span>
+                            <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 4px;">
+                                <span>Detection time:</span>
+                                <span id="paddle-det-time" style="font-family: var(--font-mono); font-weight: 700; color: var(--text-primary);">-</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                                <span>Recognition time:</span>
+                                <span id="paddle-rec-time" style="font-family: var(--font-mono); font-weight: 700; color: var(--text-primary);">-</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 4px; margin-top: 2px;">
+                                <span>Total time:</span>
+                                <span id="paddle-total-time" style="font-family: var(--font-mono); font-weight: 700; color: var(--color-emerald);">-</span>
+                            </div>
+                        </div>
+
+                        <div class="cache-status-box mt-4">
+                            <div class="cache-status-header">
+                                <span class="cache-indicator-dot" id="cache-indicator"></span>
+                                <span class="cache-status-text" id="cache-status">Unpredicted</span>
+                            </div>
+                            <p class="cache-desc" id="cache-desc">Clicking this image runs YOLO inference and caches coordinates to disk.</p>
+                        </div>
+
+                        <!-- Clear Cache Button -->
+                        <div id="cache-action-container" class="mt-6 hidden">
+                            <button id="clear-cache-btn" class="btn btn-danger w-full">
+                                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" class="btn-icon">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                </svg>
+                                <span>Clear Cache & Re-Detect</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Box Detail Card (displayed when a box is selected) -->
+                    <div id="inspector-box-details" class="inspector-section hidden">
+                        <div class="back-to-summary-wrapper">
+                            <button id="back-to-summary-btn" class="btn-text">
+                                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                <span>Back to Image Summary</span>
+                            </button>
+                        </div>
+
+                        <h3 class="section-title mt-4">Symbol Detection #<span id="box-detail-id">1</span></h3>
+
+                        <!-- Rectified Crop Container -->
+                        <div class="crop-preview-container">
+                            <span class="crop-badge">Deskewed (Rectified) Crop</span>
+                            <div class="crop-img-wrapper">
+                                <img id="box-detail-crop" src="" alt="Rectified Crop" class="crop-image">
+                                <div id="crop-loader" class="crop-loader hidden">
+                                    <div class="spinner-small"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Preprocessing Pipeline Stack -->
+                        <div id="preprocessing-pipeline-section" class="mt-4">
+                            <h4 class="inspector-subtitle" style="margin-bottom: 8px;">Local Preprocessing Stack</h4>
+                            <div class="pipeline-stack">
+                                <!-- Stage 1: Raw Crop -->
+                                <div class="pipeline-stage-card">
+                                    <div class="stage-header">
+                                        <span class="stage-number">1</span>
+                                        <span class="stage-title">Raw Crop</span>
+                                    </div>
+                                    <div class="stage-img-container">
+                                        <img id="stage-img-raw" src="" alt="Raw Crop" class="stage-image">
+                                    </div>
+                                    <div class="stage-desc">Raw RGB crop from source image.</div>
+                                </div>
+                                <!-- Stage 2: Adaptive Threshold -->
+                                <div class="pipeline-stage-card">
+                                    <div class="stage-header">
+                                        <span class="stage-number">2</span>
+                                        <span class="stage-title">Thresholding</span>
+                                    </div>
+                                    <div class="stage-img-container">
+                                        <img id="stage-img-thresh" src="" alt="Thresholded Crop" class="stage-image">
+                                    </div>
+                                    <div class="stage-desc">Adaptive binarization.</div>
+                                </div>
+                                <!-- Stage 3: Noise Reduction -->
+                                <div class="pipeline-stage-card">
+                                    <div class="stage-header">
+                                        <span class="stage-number">3</span>
+                                        <span class="stage-title">Noise Barrier</span>
+                                    </div>
+                                    <div class="stage-img-container">
+                                        <img id="stage-img-denoised" src="" alt="Denoised Crop" class="stage-image">
+                                    </div>
+                                    <div class="stage-desc">Morphology open & size filtering.</div>
+                                </div>
+                                <!-- Stage 4: Line Detection -->
+                                <div class="pipeline-stage-card">
+                                    <div class="stage-header">
+                                        <span class="stage-number">4</span>
+                                        <span class="stage-title">Boundary Line Tracing</span>
+                                    </div>
+                                    <div class="stage-img-container">
+                                        <img id="stage-img-lines" src="" alt="Detected Lines Crop" class="stage-image">
+                                    </div>
+                                    <div class="stage-desc">Components crossing outer boundary highlighted in red.</div>
+                                </div>
+                                <!-- Stage 5: Final Clean Crop -->
+                                <div class="pipeline-stage-card">
+                                    <div class="stage-header">
+                                        <span class="stage-number">5</span>
+                                        <span class="stage-title">Clean Deskewed</span>
+                                    </div>
+                                    <div class="stage-img-container">
+                                        <img id="stage-img-clean" src="" alt="Clean Crop" class="stage-image">
+                                    </div>
+                                    <div class="stage-desc">Crossing lines subtracted with junctions protected.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Classification Metrics -->
+                        <div class="metrics-card mt-4">
+                            <div class="metric-row border-b pb-3">
+                                <div>
+                                    <span class="metric-label">Predicted Symbol</span>
+                                    <span id="box-detail-char" class="metric-valuehighlight">⌀</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="metric-label">Classifier Name</span>
+                                    <span id="box-detail-class" class="metric-value text-indigo">diameter</span>
+                                </div>
+                            </div>
+
+                            <div class="metric-row mt-3">
+                                <div class="w-full">
+                                    <div class="flex-space-between mb-1">
+                                        <span class="metric-label">Classifier Confidence</span>
+                                        <span id="box-detail-class-conf" class="metric-value-sm">98.5%</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div id="box-detail-class-bar" class="progress-bar bg-indigo" style="width: 98.5%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="metric-row mt-3">
+                                <div class="w-full">
+                                    <div class="flex-space-between mb-1">
+                                        <span class="metric-label">YOLO Location Confidence</span>
+                                        <span id="box-detail-yolo-conf" class="metric-value-sm">87.4%</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div id="box-detail-yolo-bar" class="progress-bar bg-emerald" style="width: 87.4%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Geometric Details -->
+                        <h4 class="inspector-subtitle mt-6">Geometric Parameters</h4>
+                        <div class="parameters-grid">
+                            <div class="param-card">
+                                <span class="param-label">Center X</span>
+                                <span id="box-detail-cx" class="param-value">145.2px</span>
+                            </div>
+                            <div class="param-card">
+                                <span class="param-label">Center Y</span>
+                                <span id="box-detail-cy" class="param-value">824.7px</span>
+                            </div>
+                            <div class="param-card">
+                                <span class="param-label">Width</span>
+                                <span id="box-detail-w" class="param-value">42.1px</span>
+                            </div>
+                            <div class="param-card">
+                                <span class="param-label">Height</span>
+                                <span id="box-detail-h" class="param-value">38.5px</span>
+                            </div>
+                            <div class="param-card span-2 highlight">
+                                <span class="param-label">Rotation Angle</span>
+                                <span id="box-detail-angle" class="param-value">+14.2°</span>
+                            </div>
+                        </div>
+
+                        <!-- Corners Table -->
+                        <h4 class="inspector-subtitle mt-6">Bounding Box Corners</h4>
+                        <div class="corners-table-wrapper">
+                            <table class="corners-table">
+                                <thead>
+                                    <tr>
+                                        <th>Corner</th>
+                                        <th>X (px)</th>
+                                        <th>Y (px)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="box-detail-corners-body">
+                                    <!-- Populated dynamically -->
+                                    <tr><td>Top-Left (TL)</td><td>-</td><td>-</td></tr>
+                                    <tr><td>Top-Right (TR)</td><td>-</td><td>-</td></tr>
+                                    <tr><td>Bottom-Right (BR)</td><td>-</td><td>-</td></tr>
+                                    <tr><td>Bottom-Left (BL)</td><td>-</td><td>-</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Tooltip Element -->
+    <div id="canvas-tooltip" class="canvas-tooltip hidden">
+        <span class="tooltip-index">#1</span>
+        <span class="tooltip-char">⌀</span>
+        <span class="tooltip-conf">Conf: 95.4%</span>
+        <span class="tooltip-angle">Angle: +12°</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

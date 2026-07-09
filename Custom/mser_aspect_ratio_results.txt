@@ -1,0 +1,38 @@
+=== MSER Aspect Ratio Analysis ===
+
+--- Individual Characters (MSER) (Count: 3988) ---
+Aspect Ratio (Width / Height):
+  Min:    0.0930
+  Max:    12.4000
+  Mean:   1.3563
+  Median: 1.1111
+Aspect Ratio (Height / Width):
+  Min:    0.0806
+  Max:    10.7500
+  Mean:   1.3406
+  Median: 0.9000
+
+--- Word-level Islands (Merged) (Count: 102) ---
+Aspect Ratio (Width / Height):
+  Min:    0.2466
+  Max:    5.7618
+  Mean:   2.0011
+  Median: 1.8701
+Aspect Ratio (Height / Width):
+  Min:    0.1736
+  Max:    4.0556
+  Mean:   0.8900
+  Median: 0.5348
+
+--- Line-level Islands (Merged) (Count: 60) ---
+Aspect Ratio (Width / Height):
+  Min:    0.6429
+  Max:    14.1667
+  Mean:   3.7598
+  Median: 3.0629
+Aspect Ratio (Height / Width):
+  Min:    0.0706
+  Max:    1.5556
+  Mean:   0.4191
+  Median: 0.3265
+

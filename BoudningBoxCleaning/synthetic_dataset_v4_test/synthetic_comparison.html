@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>U-Net Synthetic Model Evaluation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #090d16, #111827);
+            color: #f3f4f6;
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            font-weight: 800;
+            font-size: 2.6rem;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .crop-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            padding: 24px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .crop-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow: 0 20px 35px rgba(96, 165, 250, 0.12), 0 10px 15px rgba(0, 0, 0, 0.3);
+        }
+        .crop-info {
+            flex: 0.8;
+            min-width: 200px;
+        }
+        .crop-name {
+            font-weight: 600;
+            font-size: 1.35rem;
+            color: #f9fafb;
+            margin-bottom: 6px;
+        }
+        .crop-meta {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+        .panels {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            flex: 3;
+            justify-content: flex-end;
+        }
+        .panel {
+            text-align: center;
+        }
+        .panel-label {
+            font-size: 0.72rem;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600;
+        }
+        .img-wrapper {
+            background: #0b0f19;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+            min-height: 80px;
+        }
+        img {
+            max-height: 100px;
+            max-width: 260px;
+            object-fit: contain;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>U-Net Line Removal Evaluation</h1>
+        <div class="subtitle">Side-by-side comparison on synthetic test pairs using the model trained with the text-preserving loss function.</div>
+        
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000000.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYoAAAAnCAAAAAA04FBIAAAC+ElEQVRoBe3BAWLiRgAEMM3/Hz3dNRCcHPGmDXVzPaTUy8+QevkZUi8/Q+rlZ0i9/Aypl58hdZaYahNDvdylThIXNcRNbYKaUv8zUV+QOkdQQRE3NcRFCep/JeoLUqcINYQi1Ju4qVCfiJ36bUStxV79W0INoYh6ExShQn0iduoiaggV9QNFraViob4t1F2oN6GGUKEOxFVtQg2hQv08UWupx2Klvi7UXajUJtQmKtRKqE1QQ2hQKzHUiaLWUn9HrNQjoTHUFFdFqLuohVCbGGoIDbUQV3UTdRPUs0UtpZ4gjjXeFHFTQgU1pRZCTbGpIVTUsaAEdRHqIjZF7NT3RC2l/jVxqDFU3NSXhJpCQw2hoh5I3YQaQm2C2sRViZ36nqil1BlCTbFWh0JtUkJNUVEfBXUVago1xVBTUIS6SkN9U9RS6gyhplB3UUGJY3UR6i7UTeqDmOoq1CaK2NQUagh1E9R3pZZSZwi1iboLDTWF+igONdQnYlO/CkVoqCHUJuom1LelllJnCLWJugsNtYnai03txFeUmOqxUKSEGkJ9FOr7UkupM4SaQoWaQoXaRO3FpnZC7YTaxErdhLoKNYQK6k2oJ0gtpU4RaggVagoVagr1QVA7oXZCPRBDEWs1RGNTN6GeIbWSOkVQQgmKoERNoRZC7YV6JKZ6IL6gCPUUqZXUOeKqiJsiFKFWQu2Feiym+iioN6GGoHGs/pnUSuokMdUmLmqKq1oJtRfqUzHUO0HdhRpCTaGmUEMs1EpqJfWfiKGuYlNLUe+EOhBDvQlqL9QQago1hfpUrNRdaiH1Own1TqhDoW6CeifUEGoTNYX6m2KlHkv9TkK9E+rLgnov1BBqCjWEepJoHKnU7y3UlwX1Xqgh1BRqCPUsUb+IndQfJHbqItQUilBTqGeJOpb6g8ROXYSa4qaGUE8TdSz1Z0pdRV3FpqZQTxN1LPWyE+oi1PNEHUq9nCLqUOrlFFGHUi+niDqUejlH6lDq5RxRR1Iv54g68heWGEoRT/1KXgAAAABJRU5ErkJggg==" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYoAAAAnCAAAAAA04FBIAAACK0lEQVRoBe3BCXLciAFFMbz7H/qHpBZvlbFcyVDtUgPN02Nonh5D8/QYmqfH0Dw9hubpMTRPj6G5VebU/BfN19TcK0PMT2Jymi+ouUdriCHMj8KE+RPNqZH5azX3aA0xxLzLmpbR/JHMISbz12o+Qcy7MMTI/IGYQ0zM36r5BGHNi9acMjIfF+YQE/N7MQ+nuU3zIod505pTRubDsswpk/mdlsu8yjyA5hPEvMmcmlPzUbnMISbzz2It1ryIeQDNp2h+1XxE5pLLHGIy/yyGMJcwl+aU+QTNw8h8ROaSkTllMr9ozaswhxhNljnlMK35BM2tYr7JvAnze625NDSXJuZnWfMqrCEjL+YUhswnaG6RuWReNDJhCPN7zf+mEUMuc4j5RM0dYi6ZljnFYi6Zm8SIiTnEHJpvMjdp7hBziok5xcRcMjfIYsiQOYSF+SZzk+YezSkm5hQTc4q5QfOqOTQvmhzmXXOX5h4xYoQhjMwpc4fmB82p+UVzm+YmrQkTQw4jc4j5/2t+0nwv5tC8aS6Z2zS3aWHeNZeMHObfF+ZdmEPMIcwp5jbN52m+CfOvC/OdMIcYTcwp5jbNlxLmBzFNzCVzirlN85XkMD8Ia2JOMYeY+zRfSctoxJxiDjGnmEPMfZovJN+ZFzGHXBZzytyo+UJyWZZ5EXPKmznE3Kj5cmIxL2IueTWHmBs1X17zLuaQxdyoeXoMzdNjaJ4eQ/P0GJqnx9A8PYb/ANLTGxDJoeZWAAAAAElFTkSuQmCC" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYoAAAAnCAAAAAA04FBIAAACpUlEQVRoBe3BUUICNwAFwHn3P/RrElhYLYpfKVZmUm+vIfX2GlJvryH19hpSb68h9fYaUrvEVEsM9XaX2iQuaohDLUFNqb8ptUdQQRGHGuKiBPUXpbYINYQi1E0cKtQX4qT+Z1JbhBpCEXUTFKFCfSFO6iJqCBX1a6V2CHUX6ibUECrUN+KqllBDqFC/VWqHUHehUkuoJSrUM6GWoIbQoJ6JoV5OaofQGGqKqyLUXdQToZYYaggN9URc1SHqENR/IrVD3BRxKKGCmlJPhJpiqSFU1PeCEtRFqItYijipDVI7xFBCCYqg4lA/EmoKDTWEinogdQg1hFqCWuKqxEltkNohqCGUqClU3NQPhFpSQk1RUZ8FdRVqCjXFUFNQhLpKQ+2Q2iHUFOouKqgh1FOh7kIdUp/EVFehlihiqSnUEOoQ1A6pHUItUXehoaZQT4W6C/WFWOrfQhEaagi1RB1CbZHaIdQSdRcaaok6i6VOQp2EeiSWeigUKaGGUJ+F2iO1Q6gpVKgpVKgl6iyWOgl1EuqBGOoLoa5CDaGCugm1SWqLUEOoUFOoUFOoT4I6CXUS6oGgvhDUVaghGksdQm2S2iIooQRFUKKmUE+EOgv1SEz1QFCHUEPc1EWoXVJ7xFURhyIUoZ4JdRbqsZjqs6BuQg1BEdQSapfUJjHVEhc1xVU9E+os1JdiqA+Cugs1hJpCTaG2Sf0nYqirWOqpqA9CfSOGugnqLNQQago1hdom9ZuE+iDUt0Idgvog1BBqiZpCbZP6TUJ9EOrHgvoo1BBqCjWE2if1u4X6saA+CjWEmkINofZJ/SFxUhehplCEmkLtk/pD4qQuQk1xqCHURqm/KXUVdRVLTaE2Sr2dhLoItVHq7TWk3l5D6u01pN5eQ+rtNaTeXsM/AootEDG/hLgAAAAASUVORK5CYII=" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000001.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAawAAAAaCAAAAADORzesAAAD3UlEQVRoBe3BC2JcSYFFwTj7X/QlX32kkum2XAwwbSCi+UUxX8Q8xXyRyVxi7mIuucwlx1xijjzNkRfzXymX+V7MFzFPuZmnmJgj5i7mkslccswlhjCEIS/mv1L+2Pwo5ovMh3yaIyPmiLmJucRkLrnMESPmJoyYn4r5j5Y3zBeZD/k0xJA58mIuMTFHFnNkiLmLEfNTMT+RY35jzRd5yzxlXmWOGPJhbmLEHJkYMmK+iPmpmD+Xm7nJMb+X5jt5w9zlwxAjzF0MmSMTQ0bMF5m/l2MxOdb8sRgxR27mQ475S2t+WeYmbxmZS8xN5oghI0ZGzBcxP8rT8jCXmBcxR4wYMU855u9l/iKaXxaGMGSe8oaRD0OGjIyYL/JpHmKEERZzZMTcxRwxMkfmKfOHMn+u+fdpfl2ehpgPmU951xCTEfNFPs1dzBEjI4YYMXcxR0zMEfOQeV/mLsf8SzVvyN0c+TByMzeZh4wMece8yvwoc4mRIUMMzUPMERNzxDxkyMKQ+U7MTW7mq8w/T/MPy9PkxWIeYjJ3MWIu+XXzg8wlQ4YMmS9ijpjMJeYhIw/LZcjIxLzKMZcwMa9i7nLMQ+Z9zT9HPi3mISZzFyPzkJG55E1zZMgQE/NVjDCZS8xdjByTp4nJw3zKZS6ZI/MizE1u5pLLkGN+Qab5V8tkHmIxD7GYS44h5ibvmswP8jSZS8xdjBjCiInJ0zzFZC6ZI/Mpx1xixJC7IcwvyDT/ZrHMUyzmJswRhjBkPuUNc8llmcwl5i5GDDHExIQh8yrmkjkyT7mZI+bIECPmyPyCTPP/LZO5i7nkaYj5UQwx8o45Yu5ixBBDTEzMkXkVc4kR8xSLOWKOmJgjc2S+l9H8xTR3uZlLXsxDTBgyR4458pYRQwwxMTFH5lXMTW7mi5gjc4nRXDJH5nsNze8hn+YhD0PMEeYHmSPvmZiYI/Mq5pK7+SLmyFxiHmKOzPcamt9aWIYwxNxkHmKIEUNM3jKvYo4wYV7FHJlLzCXHXDLfa2h+f5kjhphLzFPu5ogJ8xAjRt4wR8yReRVzZC4xlzA3mW9laH57MZ8yd5kPucxNbuYpRgwxxMTyjvkQc2QuMZccc8l8qzma317Mh5hv5ZgPMWKIISYmc8k85C1ziXmIOTLfao7mtxfzkGPeFiNzxBATk7lkXmUuGXnDiCHzreZofnsxdznmfZlPzRETE0PMq5gjhpgXecf8qebS/EeJ+QdkfqK5ZF5lbvIwrzKXGGL5dfPQXJr/OWLelrnLzRBzl7mJCSOGGGL5Nc3/HDnm/6K5ibnL3ORuCBOGmB/lD/0NeZcEIVQpWq8AAAAASUVORK5CYII=" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAawAAAAaCAAAAADORzesAAAD7UlEQVRoBe3BAVYc1wFFwXr7X/TN7x5Agy3ZoCMnwUdVyz9mebOW2+RhLjnmiGVkGfnt2fLTJs+WJyMml+XFyGUycsyRyxDT8tuz5adN3gx5MjFyWR6GHCMjxxy5TI7JJy3/bstPmBzLm8lay23kWC4Lyxw5RkaOyeSyMPmkkX+15SdMjuXNYq3lNsLkMjJHbkNGjsUIEyafNPJjc8ttjnwty09YLsubEcvDECaXhSEPQ0aOxQgTIx81ZGjkNnk2YpqYW5avY/mE5TK5LG+GHMsxR0Yua2HkNsQIEyMmRv7ehDXf5DKyloeRYy1GmHwlyydMGHIsb5ZleZgja7ksx9xicowcyzExYfL3JqyFaY4cEyMPI8eIyTH5SpbPWMwRI2/WHLlNHibH8rAWJrflWC6LCZP3lj+aFkZMjDBi5GFyGTE5Jr/IXPKPWj5r+Y655TZ5MWF5GGF5WI7l1eSDJpcJEyaMGHkYOUZGjsl7yxAmy1+b3IYm701+neXXWJjcllcjk4cRlocJy6vloyaXCRMmjDwbYcjIMXm1mFsTo8VkyB/NkcuEkWcjD8vk1fJ5yy80uS2vRiYvJiYvJpZXy3vLD0wuEyZGTP5gyJCJaeTFwhqxHCMmQ/5gMrlMjsmTIbeRyWWxXIZ80PJPW0xeLZZXI5PLNDmWh2nyV5ZjYS2WPxnNkckxRx4WRovlMmGZlmN5M7FcJsfkmzlyGTLCkMknLf9ty5Mhy22OHEMYLZYfWo7l1fInozkyuU1eLIwcE0ZGhhzLm8VymxyTV6O1XCbHhMkx+Zzlf22yvBg55taIOfIDy7H8lckysdwmL5ZjwggjoznC5J3lYWLk1dxyWS4jI8fkc5b/M8uLZeSYS75vOZbb8mxyTKzJN8ur5RgxwsjIECZP1vIwD3mzDDmWy8jIMfmc5WtYfmjCHHmyMDkWhrBcJq+WY2SODBkxwuSdyWUe8mzIZbmMvBi5LB+0fHVrwhBGLiMvhpgcy2V5sxwjjAyZoxEm7yy3kSFPhhwTa8hljtyWD1q+vskxwuQ25MXQEEZGWC4LI4YYMkfLZfJdk8vyZMgxOYZchrBMPmj58kZuC5OHyZu55DYPeTFihBFGRiy35bsml+XZyDE5hlzmyDLyQcuXN/Jm5O/NkVcjRhhhZGRyW75n5LK8s1wmt8mLkcvyQcuXN8Jijnzf8kMjJscIIyOTy+R7JqbJO8uPTY7lg5Yvb+TFkM+bfLMcIyOjZeTZyDEyTd5ZfmjkU5Z/lcnPmPyF5bY8G3IMrck7y23yZrlMPmf57Rj5tMnDckyMPExuQx5GGPmc5bdjjvwKQ26T25CHIUOOyQf9BxJ5Vx8p0VIdAAAAAElFTkSuQmCC" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAawAAAAaCAAAAADORzesAAAENUlEQVRoBe3BC2JjSYFFwbj7X/Qhnz62bOhCxQDTBiKWN418MfI08sVkchm5G7nMJZc5chk55inHvMh/peVNI1+MPM1NnkZGjpG7kctkcpkjlxGGMIR5kf9Ky5tGvph8mE85JkaOkZuRy8jkMpccI0Zuhhj5pZH/aMubRr6YfJhPYYTJMS9yGRk5ppFjwsjdiJFfGvmFOfKDLe+aPC1MPkxeTY4R5kNuRowckxEmRr4Y+aWRPzY3uZkjP8vyrpG7EZMPkxfzIYwYcjfC5JiMMDHyxeSvzdHIHC1/24iRY27yYY78qS1vm9yNmHyYvJgPYXIMuZkcI0yMmBj5YuS7eWoechl5MXKMGDHyNEf+2uRPYnnbEIYw+TB5MTE3MbmMXOZDmDAxMfLFfMrDiCGGRo6JkbuRY8TkmDxN/qbJH1v+fZb3zVMY+TD5NHIzYnIzcsyHMGFkYuSL+ZS7kWPExAgjRu5GjpGRY+Rh8vsmd3PkX2r5DXOXYz7E3ORm8jAxuRlh5GbE5BhNjHwx+W5yGTFhwgjLw8gxMnKMPEyYhjD5e0Zu5iZfTf55ln/YPGVeNPIwMrkbMXIzYnLMJUweJky+m1wmTJgw+WLkGJlcRh4m5qG5hInJyKs5chky8mrkbo48TH7f8s8xnxp5GJncjZg8TEwuc4SRuxGT7yaXCRNGRr4aMWRyGbkbMUfmKSPzkE9zyWVyTF4MuZmbXOYS5sibln+1yeRhNPIwGrnMEUZuRph8N7lMmByTyTfzlMll5G7ECEOMjMxTnkYml8kx+TRHLiNGmLsw5E3Lv9lo8jQauRlyDGEIk+8mlwmTYzL5bh4yuYzcjRhhhJGRIUxejVwmx+RpbnKMHBNGjByTNy3/3yaTu5HLPIWR70YYYXJMkz8wMrmM3I0YYYSRkZFj8mrkMmLkaTRyjBwjI8fkmLxp+ZNZ7uYml3mRh5EhTI458gdGJpeRuxEjjDAyMnJMXo3czE2+GDkmlxHLZXJM3rT8DPMpD/MQRo4h30wuEyPH5GHECCOMjIwck1cjl7nLFyPH5DLyMHJM3rT8aEMThjByM3kYYcQIIw8jRhhhZGTkmLwaOYYMeTVyTC4jlzlymbxp+fkmxwgjl5GnucsxMuRhxAgjjIyMHJNXI8cII69Gjsll5DLkZvKm5ccb+TS5m3yYS27mJk8jRhhhZGTkmLwaOSaXkRcjx+Qycpkjl8mblh9v5MPI3zVHPowYYYSRkZFj8mrkmFxGXowck8vIw8gxedPy4408zJHfNmJyjDAyMrlMXo0ck8vIi5Fjchl5GjHypuXHG7mbI79v8mk5RkZGGHk1coww8mrkmFwmJpcRI29a/qOM/AMmv7BcJq8mN/OQVyPHCCMjlxEjb1r+5xj5bZO7uQkjd5ObkSFGGGHkTcv/HHPk/2K5Gbmb3MxdGDKEkTf9BUpESh/SYmLhAAAAAElFTkSuQmCC" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000002.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAU4AAAAlCAAAAAAIfF+YAAAC0klEQVRoBe3BC3YTRwAEwOr7H7qzX2lkKQ8bzRKIqUr9NU/qr3lSc0V9X6m5or6BeCk1V9QfKt7V1FRRv5F4W31Baqqoi8U76kqpqaK+Lt5SnxKDukJqqqhdvK1+LA51F9QHMaorpD4v3lZviFWN4lSnWNWjGNUV4n01SH1KqFVs6odiV4M41CmKqH8R6hLxWv2c1ClODfUgqEUc6gdCCeom1AdRRL0W6hqpqVKHGNWjoBahBPUg6kGoRdRNqA+ihLqJOgV1jdRUqV1Qq6AexaIItQj1IGoUahXqFOqjWJVQi1CHoC6Smiq1CWoX1ChWRahV1IOoUahVqFNUUKOgCEqoU6irpKZKbULtYlGjaKhB1IOoUahVqFMc6pVQQR1CXSY1VWoTahMa6i401F2oB1GjUJuoU5zqldBQh6Auk5optQm1CRXqJlSoU1A3cVeHUJuoQ1CLUK/Eog5BXSc1U2oTahVKqJsooQ6xqJsY1C7UJuoUtQr1SlCnUBdKzZTahFqEItQplFCHWNUp7uoQahP1JNQroQ6hrpSaKbUJtYhahDqEItRdUKOoUahN1JNQL8SiNkFdKTVTahOKqFWoQ9Qi1CDUKGoUahP1JNQLsapFUJdKzZTahBJqFWoXo7oJNQg1CLUKdQi1iXohNNQi1LVSE6UOoaE2oXYxqLtQg1CjqFWoQ6hVqGehhBLqYqmJUodY1SbUB6EItQo1CjUKRahFFKEI6lkoQsWDukBqotQpqF2oD0IR1CLUKOpR0KAIRZzqWahFPKsLpCZKnYJaBfVRqEUsGtQpBnWKXS1CLWJXz0JtQuNQl0lNlDrEqJ6EWsWubmJQd7GoTdQu6peLV1ITpXahcapnoXaxqLtY1S8Wb0vNkzqliFX9h+Jt9XmpeaKuF2+ri6Tmifo58bb6DaTmibqJt9WfJvUF8bb6P0vjXXWI+t7itfq6qG8uNU3UN/cPURw3E04JxKUAAAAASUVORK5CYII=" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAU4AAAAlCAAAAAAIfF+YAAACI0lEQVRoBe3B0UITCQJFwbr//9Fnuwk4CBh9SKszm6rl6XGWp8dZnh5neXqc5elxlqfHWZ4eZ3l6nOU/aMgfsPxpyy9afslk8vstf8bIaXJYfmbyC0aY/HbLHzHkMHJYfmLksLyzfDDC8vstf8S0HCanyX1DWN5ZPhhhclgOkzeTqyxXWX5oDmHIYXLXkMPkvjnF5DT5ZnKV5RqTH5pTGHKY3DXktPzEHGJajLyZXGa5xsiPzClMXiz3DTktPzVhiCE3I5dZrrHcTD4YreUfk/vW8mLyqyaTN0Mus1xjuVmMfDMy8o/JfSOnkV82Td4MucxyjeU0OUy+mRh5NYfcN/Ji8tHka2t5M3Kh5RKT03KavBkx8mpOuWvkZvlo5EtreTO50nKFkcNaTsurkcPy3uSukZvlk8mX1uTVcqnlCiNMDmvyanKYvDdyz5DT5JvJafKVaXIaudZyhRFDGHIzhMl3JvcMOYy8GnKafGEycphcbLnCmkZejNwMLSPvTb63vDNyGnk1chr5bISJydWWa0yTFyMfjBwmLybfW94bYoghRhjy2ZCb0XKp5RrLcjPywQhDDiP3DRliiNGc8tmQm3mRKy3XWBYLa/lgiDll5CfWNIQhzE0+G7lZRpMrLddYJmtNPhpympt8tnxnDjkNeTEtf4XlEpN5lc9Gvln+E5ZLLMyL/N9Ynh5n+Tst/0LL32ex/AstT4+zPD3O8vQ4y9Pj/A+OOAwQxLoH8AAAAABJRU5ErkJggg==" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAU4AAAAlCAAAAAAIfF+YAAACZElEQVRoBe3BWw7jNgAEMM79Dz2VHTtRHsX+WEAXNZm6XSd1u07qdp3U7Tqp23VSt+ukbtdJ/V/ErFZI/d3iUC9BfYhZrZD6e8SmZnGqU2zqXcxqhdRCQQ2pD6E2sas/ioeaxKFOUUT9i1BLpFaJU0O9CWqIQ/1BKEE9hfoQRdRvodZILRKzehfUEEpQb6LehBqinkJ9iBLqKeoU1BqpNYLaBPUuhiLUEOpN1CzUJtQp1KfYlFBDqENQi6SWCOohqFlsilCbqDdRs1CbUKeooGZBEZRQp1CrpJYI9RBDzaKhJlFvomahNqFOcahfQgV1CLVMaolQu9BQL6GhXkK9iZqF2kWd4lS/hIY6BLVMaoVQu1ChnkKFOgX1FC91CLWLOgQ1hPolhjoEtU5qhVCbUEI9RQl1iKGeYlIPoXZRp6hNqF+COoVaKLVCqCEUoU6hhDrEpk7xUodQu6gvoX4JdQi1UmqFUEPUEOoQilAvQc2iZqF2UV9C/RBD7YJaKbVCKKI2oQ5RQ6hJqFnULNQu6kuoH2JTQ1BLpVYIJdQm1EPM6inUJNQk1CbUIdQu6ofQUEOotVJLhIbahXqISb2EmoSaRW1CHUJtQn0LJZRQi6WWiE3tQn0IRahNqFmoWShCDVGEIqhvoQgVb2qB1BpBPYT6EIqghlCzqHdBgyIUcapvoYb4Vguk1ghqE9SnUEMMDeoUkzrFQw2hhniob6F2oXGoZVJLxKy+hNrEQz3FpF5iqF3UQ9R/RGqF0DjVt1APMdRLbOrvk1oiRWzq/yN1u07qdp3U7Tqp23VSt+ukbtdJ3a7zD7JcDBDICw3EAAAAAElFTkSuQmCC" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000003.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO8AAAAXCAAAAADG2kcRAAACdklEQVRYCc3BAVIbCQJFMb37H/pvt9smBkwgO5OqkZr/vFwmv0xuhsx7mReaf1PzT4V5krvJm5GRIfNe5oXmleava+5ymJvczJuc5kmGjIzMB5kXmr+qeWheioU55DJvMu/FkJGR+SjzWfPX5DCftOZNGDFiiHmIeSdzyMhkPmue5KZ5qfkjWRiZU+5G86WYQ0bMIXMXC/MQc8jIZN7LF5r/T+YmzyaG/DK/kTnFxBBzycPcZW5yWn6u+VYe5iHMKU9GRg5zitF8IXPKiCHmLoyYm/zQMpfm0nytOeTJXML8krlkiLnE3OXNvJchl7nLH5gnmU+a1xqtkdMQ5iaHeZO5ZMQ8ZO7yZp6FOeSn5pLJyDxrPmm+E3OJOcUyp4bMJSPmIeaueZIfW8wp8yyTkXnW3GQemu/EXGJOsRiaQ+aSEfMQc8gry0vzpjlkDjFPMmIyz5q75q75VkZDzCkj85C5xOQHlsuy5hBziLlkTjGHzLOMjMyz5pPmSfNCRiPmJiPm1ORPzZswp8xN5hJziDlknmSIxTxrPmm+lV/mlB8bMZe8mYcwGjGHmEsYMafMk8whh3mv+ah5r/kgf2BiYh5i7mIemkOYS8wh5i53c8r8krlkPoh5r/kgf2IumUtMzEPM12IecrcmhtzMpXmteS/zQf7InPLL3MTcxIi5xHwtb4bczCHmFGu+1/xevjIPmVOYQ04j5ibmJoaYU5iv5c2cYv6Jpnktl7lrPoo5xRwyl5hTzE3MIW/mN2L+Vc2Xmm/F3MSIucScYm5iTrnMd5q/rblpvhVzEybmEuYQcxNzCfOf0rzWPMQcmpiYu5hDzG80/wn/Aw3kPBNX1ZJ8AAAAAElFTkSuQmCC" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO8AAAAXCAAAAADG2kcRAAACIklEQVRYCdXBAXLbBgJFMfz7H/otSSmunaojuttOUmD5T1rMpWVyy/KbWWv5ZJlDPkxMTJjcsvx6c8ppYvJhGjktl4UJC8s9yy+2JiOHkWn5YVq+mDBhMbln+cVGGDFkTX6Y/GQ5TEwmNy3/lCEmp+WWkcPEyGHyNBryYXKYmExuWv6eyWdzyeQwuWVymhg5TB7m1Fp+No2s5Z7lbxnyycRkwpC/tjyNHCZDmPywRixPkx9Gk+WW5b7J05BPlqeFIX8yhwx5Wk6Tw2TyYS1GXhgtlluWO0YYucwhHyZPi5EXpsmafFiMnNY0+TAa+QvLxOSd5b3lYeQyhxwmTJ4WIy9MluWrNTktc8rDEGvyymRi8s7yDZOHtZbD8tVi5JUhQ15aDiMPa3KYnJYvFhOTd5Z7FiYPi+WVxZA/myZMWH6ynEYeRg4jp+UyOSyMTN5Z7lmYXCYmLywsryyWNfkweZhcJg8jh8ll+WTCyOSd5Z7FkNPI5IWF5ZU5ZA55Gi2nkdPkYYiR0+STCXPJO8s9iyGn0cgLC8tLQ76aPI2cltMyzSWnyR8mD2t5a7llwuSyGPKzOcRy08hPJowc5pLL8try1nLLhOVhMbR8NYTlnmlh5LBYTkNOc8j/b/mG5WGxjDwtl5FvmEOYHNZaTss/bfm+5WHIZXIZOQ15a1qY/PuWbxtyGblMLiOHye9n+bYhl2k5DDlNfl/Lt408jRxG/gP+B1KTPxDbPID4AAAAAElFTkSuQmCC" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO8AAAAXCAAAAADG2kcRAAACRklEQVRYCdXBC24chwFEwer7H/plPrskJUQcwbBjpWr5480t8ylzCZPfsvxhhnwxL5kPMTFh8luWf98ccplLPswpX0yYmJj8nuXfNrcc5pYPkx+NMDEx+T3LP2YOeTDEiBFG3iY/mhwmJpPftPwt5hKT07zkWyOHiZHD5GU05G3kMDGZ/Kblr5lc5qtMDvMp35icRkYYeZmXvEwuc2pi5NnyaN7yNuQ0X8SEIaeRb0xOEyOMvMyhIZeRyxwymUMeLU/mi9yGfJrcJozcRl7mQ340YW55GzmMnEa+mIxGnixP5hSGXOaQD5PbxMjb5GU+5Acjh7nkZyOnyVeTicmT5cnIbeQ0mnyY3CZG3kZuQ/6LkcO85Ccjh5GvJhOTJ8uTkdvIaTTyNrlNjLyNfG/kMHIY+cnkMPLFxMTkyfJochs5TUzeJreRkbeRbw05jBxGbpPTyGHy1cTE5MnyaHIZcpoYeZncRkbeRm7zKW9DTpPL5DZyGDlMvpgwGnmyPJpPOY0YeZncRkbeRm7zIW9DLiOHkdsQI6fJF5PDHPJoeTRvuU0OI7fJbWTkbeRl5EdDbiOHkZd5yWnyaXKbPFsezVtu85bbyGXE5G3k10be5iWMMJdcJn/d8mhyGHKaT7mMXEaM3EZ+bT6EueQwchr5WyyPJqchhznFyGXkMsLIacivzYecRv4py6OR08hhchs5jVxGDvMh3xj5n1kejVxGjNxGTiOXkdPc8gdZHo1chozchhxGLiO3IX+U5dHIbWTkZeQw8n/gP9fXHhBvBraxAAAAAElFTkSuQmCC" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000004.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAAAXCAAAAABM9d5QAAAB2UlEQVRYCd3BC3LbBgBEMez9D/1KUracpA01nv6cAMvXNPnWyOQ0eWH5IpbDECZ/NjlNXlj+H0M+jDBNTL63mJwmLyz/qRHmkndDTCaT741MTiP3ln/S5M4QJkYe5hCTyeQHk8lp5N7ydwyZHOaSn5pDmBi5TCZMk+VHk8lp5N7ySZPDvMuEEUP+2pzCxOTDhDk0mXxrMjmN3FvuzZtcRg5zyWFi5DR5mkPeLJPDHPKNyWFkGfKNyeQ0cm+5N+9yGvIwOU1MHiaXeZOnyWFO+TB5M00mHyYjh8kLy73JaYQ55GFympg8TC5DvjdhwuRp8maZTD5MTBh5Ybk3uUyYRi6T08TkYfJTEyZMniYPk8nkYTExD3lluTc5jTCZXEYOI5OHydMc8jRhwuRp8jCxTC4jk8Mc8tJyb3KaMDK5jBxGJg+Ty7zJ04QJk6fJZcKQN5PJJyz35k0OEyankdNk8jC5DPnehJERk9PkMvnBZPIJy715yGkecpmcJiOnkZ+aHOYUJq9MJp+w3JswwrzLaXKaGGHk5yaftox8wnJvchgxcpicJqcJ85B/weQzlnsjh5HJaeQwOU1Oc8hXsNwbOU0jl8lh8kUt90ZOc8ivYnlh+RUtv6fl9/QH6mz+AX/0/QcAAAAASUVORK5CYII=" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAAAXCAAAAABM9d5QAAABsElEQVRYCd3BC27cBgBEMb77H3oqaR1/UKfRok3gmmz+RzI3NV9EhjCH5u8yNzV/VnPKYd7E0GQ0n2luav6sDLnMD2FoNJrPNDc1f1LMISPmIcvQaDKfaW5q/o0wmVPzz5rmkCFzyWhoMs1nMjc1T8ocYmJNhphT8xMt5tDIvNOQwzKZD5rMTc1zYk5N5pSReWjetNZcMplDTnNoTplDWBPmvSZzU3NTcwpzaDKXRuYS80NG8ypzyGneZF5kmsybTOam5qYMOcxD5tLIXGIumeaD5tTQvNO8aDSaNxmZe5qbMmQxl8wpI/Oi+akMGTJvmhdNRvPQyIi5pbknjEzmoTllZM0pc2lamFfNIXNoXmUeMpnMqWU0T2juyRCTeYgRI/OQuTSZD5pDhsyrzCUjh3mR0Tyh+bUsc4iJucQcGpmHzCWH+aA5ZMiIOWQaMu80MpknNHdkThkxl+bSiDnF/EouI+bU/Ewm84TmluaQF3NpLhmZU+Y/1sg8obklRliTOWVOGZrfJ+YJzT0xmVPMIaPJ/GaZZzQ35TKnzCGj0XwxzV1hPmq+qOZ7ar6n5nv6C/l/+gF9HwtBAAAAAElFTkSuQmCC" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAAAXCAAAAABM9d5QAAAB2UlEQVRYCd3BC3LbBgBEMez9D/1KUracpA01nv6cAMvXNPnWyOQ0eWH5IpbDECZ/NjlNXlj+H0M+jDBNTL63mJwmLyz/qRHmkndDTCaT741MTiP3ln/S5M4QJkYe5hCTyeQHk8lp5N7ydwyZHOaSn5pDmBi5TCZMk+VHk8lp5N7ySZPDvMuEEUP+2pzCxOTDhDk0mXxrMjmN3FvuzZtcRg5zyWFi5DR5mkPeLJPDHPKNyWFkGfKNyeQ0cm+5N+9yGvIwOU1MHiaXeZOnyWFO+TB5M00mHyYjh8kLy73JaYQ55GFympg8TC5DvjdhwuRp8maZTD5MTBh5Ybk3uUyYRi6T08TkYfJTEyZMniYPk8nkYTExD3lluTc5jTCZXEYOI5OHydMc8jRhwuRp8jCxTC4jk8Mc8tJyb3KaMDK5jBxGJg+Ty7zJ04QJk6fJZcKQN5PJJyz35k0OEyankdNk8jC5DPnehJERk9PkMvnBZPIJy715yGkecpmcJiOnkZ+aHOYUJq9MJp+w3JswwrzLaXKaGGHk5yaftox8wnJvchgxcpicJqcJ85B/weQzlnsjh5HJaeQwOU1Oc8hXsNwbOU0jl8lh8kUt90ZOc8ivYnlh+RUtv6fl9/QH6mz+AX/0/QcAAAAASUVORK5CYII=" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000005.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcIAAAAhCAAAAABv1PQBAAAFO0lEQVRoBe3BC3bcBoJFMbz9L/oOWayi5FiOP7I76TkNLL9q+XHLH7F8yvIDJm/mnXxh5GliwvIwOYycRj5p+Z8PjTyN3IZ8aA65TEa+MvIwOS1Py2X5IcvvsPx3G1puQ14mt5GPTEMuk5EhL3PIZeRzlj9j+RebQ17WXPI0h1xGbiMfWWvkYWRuucwpDyM/YPmW5SctP2z5V5kc5pLLHGLIZQ65jNxGPrIYOQ2ZU4Y8LENOI79kuSy/3+TnLb9s+cBkuU2YU3PIYchpyGk08jByG/nC8jLyMDGHMPJmchr5ynJZvmt5s/xJk89bDsvHRp5G3owwshg5jFxGTqORwxq5jXzLyMPEHHIYuY2cJp+zHJbfa/mzJk8jtyHLYS1vJow8jDDyNHIaGTmN3OadfGnkYWLkYeQ2cpr8sOVheVhY/inLdy235TbkMnKbQx5GbiOMvDfyFyNGTiO3eSdfGjmNMHkYsTyMnCafs/xZy68beRp5GXIZuc0pp5HbCEPeGfmLEUYOI7chX1sOk9PkMHIaGTlNTiPftnzX8u8ypzwMuYy8zCEPI7c55TRym5zmlJeRvxhh5DDyZvJNk9PkMHKaGDmMnEbeW37S8lst7y3fNqcYeZiXHOaQh5GXOeU0chuNHEYuy+Q0LzmN/MXkNMLIm8k3TSyT0wgjzFMeRt4sh+UnLJ+3fGj5yHwhI4c1whDmkIeRl3nIYeQ2MsLIy8hlXsLIl+ZNDpM3k28Zcpichoac5iGXySctf87kaR6yzHsxchh5GGJOOY28jEYOI7eRIUZeRm5ziZEvzTth8mbkW0aYPM0pTyMvk09afrd5J6e55WnkYQgjTyPmIYeRh2VkhJE3IyNGXka+NGLkZcSQ0wiTNyPfMsLkS8tleZl81vJ585DTvJfDkMOQy8hlhMltZDSEkdvEiJE3E0ZGXkYs74wYeRoZuQwxeTPv5QvT8veWy+Szls+alxyGvDdyGbmMWBgxchsxGWFkuUwYGTEPmRxGJk9DDiNPI4Y8jBh5GjEvYd7Lr1iY/JTlK8vfWb5nDjHkMPnCyNPIw8hlxMhtxMSIkduEERPzkMlhaPIychh5mhyGHIYYeRoytxjyU5YPTL5h+UHLJ408jDD5wuRleRq5jBh5MzIxxOQ2OYxMzCkmpznlNjkNLYac5hYjt5GRX7U8Ld+yXJafs3zS5DLC5L2Rr41cRoy8GZkwZHKbnEaTNyOnOeQ2cpg3ucxTGHlYPmX589byKZMvjLwz8rWRy4iRNxMjDE1uI4c55TbkYcht5GGe8mbyocm/z/K0/ILlNvLe5DJh5Guj5TRi5DZi5DCHvBk5zSFvRh7mkNvkaU75ccvfWv4hyyfNJU/zTox8beQywuQ2YuQ0h9xGHuaQ28hlyG3kn7J8zvKx5bPmlsO8CSNfG7mMMPIyYuQ0p7yMLIcht5GPTf7/WS7Lw/LT5iWMvDNymzyMXIYwchlh5GEOeRm5DPkRI79s+cctX1lOy6cNYeS9kaeRy8jDyGHIaeQwchnyMvLDlofJdyz/ZZbfZ8TIeyNPI5eRhyGHueU08jT5QcvHJr/F8uctP2D5O8v3TJ5GjNwWIw9DLiOXkYe55LL8bsvvtPyzls8ZeRox8oU5xBzyNHIZ+cpyWn7Ncll+m+VfZvm25ftGLiNGLiOnecnLyJ+x/LDlP2z5nZZPmkMYwryXh3nIn7Z8bfnY8tss/xnLe8vDsvySueUw7+VfYN7kpyyfsnzfclt+zvJpc8ll+Y9a/mo+lNPyacs3LV9YPrT8pOVr/wck3qIfTDkQxAAAAABJRU5ErkJggg==" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcIAAAAhCAAAAABv1PQBAAADYklEQVRoBe3BAUITCQJFwfr3P/Tb7iQEQQcHiauOVC2ffpbF5LU1eZTl0zeNlpvl3SYjX5s8yvLpW+YiV8v3LYflajLy0hzyMMvfannDNLmZfN9yWC5GhrwwpzzK8hdZTkPW8mR5aQ5ZLpbvWw7LYQ7NIRfL3ciDLP9dI19aDnPIHHIY8sLc5L2Wi8mcwsizyYMs/y0jN2vybDlMTEYOQ16ai7zb5GLCEIbcjTzG8kcauRryZMjVmjxbDpOLaWH5ytDIxfJvTS4mjBzW5G7yIMvvbLlb7uaQ0xzyZJpcrOXZhLV8afLaaI1cLP/WcrUcJlcTk9PkQZbf2cjNyM2yXE3LkznFMuRuYojlyZCXRgz5Ucth5GJhcpo8yPIbm0NOc8jNHHIxcjennNbkbrmYLE+GvDQ5jPyo5TBymrBcTB5k+fVGXlhO0+Rq8mROOQ15MjQt1vK1OcTkYnllchr5QctphMlh8mDLrzfyysIccrXcTUYOa/JkZMiQb5iclm8buZj8oOVqMfJzLL/WYuQwcjVhTjkNebLW5DDkydAQI29YyysTlquRj5kY+TmWX2ZhGcKQqyHmlDXkbjTCkJeGmLxh5KUJk5vJ7235VSZXI0zuhoyGDLlbGDHy2sjIG0YOk5sJk5uR39ryYSNM3mNyMcTI3ZDRiCGvTUMsL0xM3rScJhcjTJ5MfmvLRw05TN5huRkxcjdkYsTIKyMjlhcmJm+ZnEZOIyZXa+S3tnzUcjV5h+VmxMizkYkhI3eTw4jla5PJWyanOYS1DPljLB+1XE3eYXI1ZOTZyIQhk7vJaWT5hjnkn41cDWFhyB9j+ajlhyw3Q0aeTQwxNHkyhCHLN8wh/2zyTcsfZPmoyY9YboaM3I0YwpxyN3KaJl9YLuaU/7rlw9byfpOrESOH5TBiyGEOuRu5GPKFyWkN+a9bPmzIYfn3Rq6GjNyNGDnNKU9GlsOQZ5O/yfI4y3dNLkauhjByNcTIYS7yZORqyN9reZQ55DsmVyMXQ5hDTpPDyGHNIXfLp4vlYYa8beRqyGnIxQiT08jN5NPXlg+a3Ez+yXIYuRm5GHK1psnV8ulty0ctT5Y3zSFXI1cjn37M8lHLzeRNQ25GPn3Y8lHL1chLy6efbHmUkVfW8umnWh5hMfn0//c/Lu/EEAOjQ0cAAAAASUVORK5CYII=" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcIAAAAhCAAAAABv1PQBAAAEW0lEQVRoBe3BCYLbiGFFwXr3P/QPQJDobi2xY8rOjKyq5o9/KPMhn8wXYS4ZmQ+ZQ8wp5k3NHz8U8xRzC/NDOcwlE/OdmIfMm5o/DjnNLcxTzC3mR/Iwl0xMmJcc5hLznua/UQ7zkpd5ymEuMbeYH4nFPMTkNpec5iHmPc1/kQx5mksOI8wlh7nE3GJ+pBHzEJPThHlowpxi3tP8vjKfZciHOYQ5hTnFYh5ibjE/E/OQEeYQc4s5xbyn+b3EPMV8iCHmFHOIucScYjEPMbeYn4l5yAhzirnFnDLvaf6WMk8xtzCXmA8ZYh5iiHmKOcXEnGJu+WS+innIiHmIucWcMu9p/i6aW5hLzC2HeYi5xRDzWcw3YsScYm75ZL6ROcWQeYjRPMScMu9p/sJinmJewlxibjnNKeYWQ5hPYr4RQ8wh5hbmZzKnzCHmFBNzypxi3tP8peRhHsJcYl5ymIeYW05zirllTjnNS8w3Yog5xHzI/FTmlDnEnDJiDjGnmPc0/29yGjEPeZlDDvMQ85LTnGJusZhDzC1zysucYr6ROcUQ8yHzU5lT5hRDDHmah5j3NP9x+WJiDjkMYchhHmJe8jCHmFtMDDEvMZe8DDFf5cMcMh8yPxVzyJzyNKc8zCXzpubfJ/OUhznksxFziHkII6c5xbzEYg4xt5gwYl5ibrmMmK/yyZD5EPMzMWSecpqnmJfMm5pfLZ/MKbd5irnEEPMUIw9ziHmJiSHmQ0aMmJeYr2LEvMQIc4oh8yHmZ2LI/GOZdzXvy8Oc8tkcwhzCXGIuMWRuMbEwxNwyYsR8yBAT8xLzjRgxTzExlzAyH/LZfJH5p2Xe1bwrL3MI81nMJeYSc4kRc4uRiSHmlhEmRh4mc4jJvMQcYp5ixFxixDzFyG3ks/mXZd7WvCmHEeaQ+SLmKeYh5hIj5hYjI0bMLUOMjDxM5hCWeYk5xDxlDmEOYcQ8hclthPkFMm9r3hTzEEPmi8xL8xRziRHzISZDjMwtc4jJyGlkTjnNLXMKcwhzym3E3GJi/qKaN2UuMWQ+i/lezCVGzIeYDGEyt8wplvkQc8phbjGHfJhLnoaYv4/mTZkvYj6J+V7MJUbMh4wYwjK3mENO8yHmIcwt5iFP8yHzt9S8KeazzCVDzPdiLjFibjFiDjnNLeaUw3yIechhbpmnHOa30Lwpl3nKJyPmezGXGDK3GDGnHOYW85DD3GIuYW4xv5/mXXmZUz4MMd+LucQQ8xIj5pTTvMRcwtxifizz+2nel5ch5pOYW+Yh5hJziLnEEPOQw7zEXML8M2J+O82vEoaYz2KeYi4xDzGHMKeYQ8wlzEvM/1nmt9P8OjFiPot5irnEPIQ55DanmKfMuzK/m+ZNmacYMV/EPIS5xFxiHnKZS/PH/655T8xTjJgvchg5zFPMJeaPf03zpphLjJhLzCkv8xLzx9uaN+UwhCGfzUMe5o9frXlXbnPIZ/PHv1fztlzm0vzxn/M/LJIhH4GKEpMAAAAASUVORK5CYII=" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000006.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQcAAAAZCAAAAAAZa7QkAAAC40lEQVRYCeXBW4LiiAFFMd39L/rENlTxmDTDb9LSclr+bstp+bstp+ULQ/4vLafl38yPTF6NXOaUT+aUF3PKw8jN5Nkc8mrIjyFfWk7Lv5gXeTHkNHf5o7nJk7nLj5GbycPc5Mnc5DQ3+cpymnw05DSHvBpyGGLkT4YM+TXEyN2Qm8nD0JBf8yOHucs3lsvy0cjNkBdzyGHkMPIHI4fJr5HDyGUOuYz8GmHk1wgjjDDyjeWyfDJyM4c8m1MOk9PIs5HLyGnkbuQ0cplDLpOHyWnkbuQ0YeQw8oXlsnwychmNPIxGDiOHkWcjl5HTyN3IaeQ0jVwmv0ZOI+9GTE4jX1guywcjl5GRh8nIYYSRFyOXkcvk3chhNHIa+TVyGnk3YeQw8oXlsnwwchox8mtk5DQ05MXIZeQyeTfCyMhp8jBymbwawggj31guywcjhxFGfowYucwlr0YuI5fJm5HDxMhp8jBymTybQ05zl28sl+WDEUYOIz8mjJzmLj/mSUYuk1dDGDFymjyMXCZP5pTT3OQry2X5YITJaeRuhJHDCEPu5klGLpMXQxhh5DDyMHKZPJtTmB/5xnJZPhgxuYzcjOYSRk4jz0YuI5fJsyGHyWHkMGEuGblM3o0MYcgXlsvyyWTkMnIzTzJymTwbuYycRp4MOcyTmDCXjFwm70ZGTiNfWC7LJ3PKZeRunmTkMnk2chk5jTyMXOZJRp6MnEb+YTJymXxhuUw+GXIZ8maEkdPIs5GbyWnk18irESbPRk4jdyOXychl8oXlZvlkyGnIuxGGHEaejdyMMPJr5M0Ikxcjh5G7kdPIyGnkC8vN8sE8yz+MHObQkD8ZMoQRQ96MMHkxxAgjhjBkCEO+sNwsfzaaH/mnkdPc5Y/mJocR85C7ESOv5iaHEeZHmB/5xnKzfLAwp/w3I5c55ZM55TRiHnI3YvJuTjmNHOYmp7nJV5ab5X/Vcjf5NeRLy83yN1tulr/ZfwCiCm4QvBXNkwAAAABJRU5ErkJggg==" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQcAAAAZCAAAAAAZa7QkAAACiklEQVRYCe3BUW4b0QFFMd79L/r0jWQnkmMHU6D9C7n8cyz/HMs/x/I/MeSu5Y6Rp+W/tPwXlpuWn82RY45MfjQ5lheTy+TDkIfJV8uroTU55tJyy3LP5GfTcoww8pMRQ34ZuSwf1sjD5N0a+W1iTY65NLljuWctPxktxwhDfjBiTX4ZYcjDNHma/LYcI7+MWBNGDLljuWXytHw1jRyTy+TN5GlajsmnIebIwxx5Wl4sx8gvk8uEEUbuWO4YeVq+mIwcI8fk1Ry5jDwsn4Zclodp5DvLZfKHCSPHyA3LHZOnyRcTE+aIkXfL05DL8svkYblMLE/Lq4Vl+cPEkGNyx3LLchk5ll8ma/IwGvJueRpymbxZJseEkcvyanmYfLUwl5jcsdyyHCPH5NPQGrnMU94tT5OnyRcjx4SRv1leDE0u85Q7llsWRi6TTxNGHhZD3i1PQy7LVyNMjuXvlhdDy2UuLbcsd0yYPCyfRpg8LJeRdwvLkMvki+UYYeSvljdz5JjmkjuWOyYmD5NPozVymTwt7xaTIZfJu+UyOSZ/t3w1YnIMuWG5ZRlymXyYS2vC5MPyZvIw5DJ5MeSYHHMJy7cmf5iMPC03LLcsk8XIp6G1lmPkYfJq5DLkYXkxR44hzBHL9yZ/mIw8TG5Y7loehvy2Fmsx5Bh5NfIwcpn8Ni1vhrB8b/JhyGWylofJDctdy2WOvJsjhhYjr0YehjByLMfIuzli+d7Ih5HLyJBj5Iblrok58ocR5pf8YIghDBnyxQiT74wwYghDRo4hNyx3TXPJnyYPE9bys4XlGGIe8mrIyHcmzJG5ZAjzKTcst81T/g/WtLya/GxymVxGDGE+5I7ln2P551j+Of4DjXFnEPEcT9oAAAAASUVORK5CYII=" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQcAAAAZCAAAAAAZa7QkAAACuElEQVRYCe3BS5LjiAEFMbz7HzpNUqrSZ9wT3NrRwPLXYfnrsNw35P/SctP8yOTTyGVO+Tdzyoc55WXkYfJuDvk05MeQm5Z75kM+DDnNU/5oHvJmnvJj5GHyMg95Mw85zUNuWW4ZcppDPg05DDHyJ0OG/Bpi5GnIw+RlaMiv+ZHDPOWO5ZaRhyEf5pDDyGHkD0YOk18jh5HLHHIZ+TXCyK8RRhhh5I7ljpGHOeTdnHKYnEbejVxGTiNPI6eRyxxymbxMTiNPI6cJI4eRG5Y7Ri6jkZfRyGHkMPJu5DJyGnkaOY2cppHL5NfIaeTbiMlp5IblhpHLyMjLZOQwwsiHkcvIZfJt5DAaOY38GjmNfJswchi5Yblh5DRi5NfIyGloyIeRy8hl8m2EkZHT5GXkMvk0hBFG7lhuGDmMMPJjxMhlLvk0chm5TL6MHCZGTpOXkcvk3Rxymqfcsdwwwshh5MeEkdM85ce8ychl8mkII0ZOk5eRy+TNnHKah9yy3DDC5DTyNMLIYYQhT/MmI5fJhyGMMHIYeRm5TN7NKcyP3LHcMGJyGXkYzSWMnEbejVxGLpN3Qw6Tw8hhwlwycpl8GxnCkBuWOyYjl5GHeZORy+TdyGXkNPJmyGHexIS5ZOQy+TYychq5YbljTrmMPM2bjFwm70YuI6eRl5HLvMnIm5HTyD9MRi6TG5ZbhlyGfBlh5DTybuRhchr5NfJphMm7kdPI08hlMnKZ3LDcMuQ05NsIQw4j70YeRhj5NfJlhMmHkcPI08hpZOQ0csNyx7zLP4wc5tCQPxkyhBFDvoww+TDECCOGMGQIQ25YbhjNj/zTyGme8kfzkMOIecnTiJFP85DDCPMjzI/csdyxMKf8NyOXOeXfzCmnEfOSpxGTb3PKaeQwDznNQ25Z/uctT5NfQ25a/josfx3+A0pdVRAkfageAAAAAElFTkSuQmCC" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000007.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ0AAAAYCAAAAADFFfdIAAACj0lEQVRYCdXBAXIbhwFFMbz7H/p3l+SqjkhJdCeNJ0DzrphLLnPI3RDzLO+ZP6d5U5hLDgtzyMMI85W8Z/6A5k0xlzCEESaMMF/JzdzkZuRH8//WvCnmEuYQI4YwMV/JwxxyN8TCXPKz+Ts1b8rdHGJOMWIOMTFfCCOMXEbu5jv50fzPmjflYYg5xQgjTMwXYg4xwoiRu/lBTnOXN8x7mjflMmJOYeRhvhNz0whziMndfC93c5PT3ORtC/NXze8JE4Yw5G6+FfMh5hQTi/leLnPI3ZxymUNu5pAfTfObYoTJYeQy38nDHGJOMbGYz8I8hCGGXOaQy5C7eSEvNL8pRj5MGGG+k8sQc4q5af4qN/MQcwgThhjCXHKZFzKfNb8phlwm5hDmGzlMGDGnmBdyN09iyBzCiLmEIcyzzGfNe2JOMR9iYk4xv8jd3IUhTBjCPMndPAvzIYaYS8wp5lnms+Y9MYcwl7Awp5hf5WbuYk4x8mE+y2leyGEuOQw5zENzE/Ms81nznjDCiDnEiDnFfJZ5iDnFkMt8lsO8kNPc5TTkYX4V86x50rwplxFGGGEI842YU8whD/Mkp3mW09zkNOQy/xXmSeZJ867czSEPQz7Md2JOMZcwz3IzL8Q85DDECHMJ8yzzpHlbDnOXmznlYb4VhjCZU8xLuZknYS5hLmHucphnzbPmb5HT/CBMGDGE+UJO8yTmEuZDzE0O8yzzrPlH5W7IZb4W5pI5hfkQ8yHmlMO8kHnW/LNymlPu5m0xhzAxhzCZm5hDmJcyz5o/KKd5XxhhxBzCwhzCEOa1zLPmXyUfRhhhxBxiCPNa5oXm3yV3c8rDkMNyGGG+kHmh+ZfJzZzyMIdcJof5QuaF/wCuOisRoWUyvwAAAABJRU5ErkJggg==" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ0AAAAYCAAAAADFFfdIAAACQ0lEQVRYCdXBC3Zj1QFFwdrzH/ThPvmX0LKQTBakq5ofyZs1l9wMYX5LzdOaTzkW5si7EeZbzf+t5idyjBwTI4ww38loPjU3OeZf1fxEGMJoDTFkvhMjDLGsIccy/57mBS2GmEuM1hwxMt+JyTHyYeRY5u9pfqx5QfMmcxOTy8jQfCcMMVpGmLCYv6f5seYFzZswR+YSI/NI5ksYwuTNvKT5L5kfa17TNGEIc7RG81CYD2GOmJjMX8hcMsTCXGLNjzWvCUOMliGLZR7JMe8ybxphzWNhiCE3yxyx5seaF8WIuWRk5JhHGg0NMZcMjeYXmU9hiCGGGMJ8ai7Ns5pnNZfMf8jEkGMeaDJktMyRuSdDzKfmEkPM0RwxH8IQ5jnNs5pL5ktMzBHmkTDCtAwx92Tui/mSOcJ8iDlintM8qzlivmTC3GQeiZFjjkzW/CrMXVnzKYYc8y7mEvOc5jUxYo4YMTfNQxlaDDFZ5hetuSvMh1hDjvmzmOc0r4mRY8QIc2QeiblkLhli/iyXuSPHvMsxLcwvMk9qXhJGjgkjN4t5JOaS+RJzRy5zR5ibXNZ8o3lS85rmS8wl7+aBHEOMzCXmrlzmjph3OeZD1rzJMU9q/mcyfyEfRkwLc18u86uYdznmQ5ibHPOs5h+VNyM3i3lW5hLmU8ynmEvWPK/5h7UwcizM05qbMDFHmMxN5hLziubf1rwuRswRFuaIOTKvaX5HMWQuMTKX1pB5UfM7ynyJ+dQ0tOY1ze8o5lPMp8wR5jV/AAACPRB9puPSAAAAAElFTkSuQmCC" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ0AAAAYCAAAAADFFfdIAAACWElEQVRYCdXBC5LbiAFEMbz7H7pD6heXPSNTVZt1DDRXxXIacjc3Oc0h5u/UXJV5CSPmkIcR83dqLop5CnPIEEOMmO/lME/N/4/mopinmFOMmENMzHfyMKec5hCT+YOai3I3h5hTjJhDTMw3woghD0MszJ/TXJSHIeYUI4YYMd+IOcSIIUYs5rfC/C80F4UJI+YUQ1gYmm/EvMScYmIxv5G7uclh/hnNZ8LEnGIOuZm3Yl5iTjGxmPfyNIfczSlPc4r5QPOhGDGEkYd5K5bDHGJOMTKZn4V5iiGGMGEOeRpyN1c1H4ohTxOGmHfyNMScYm6an+QwTzGnjJhDzCHzkqe5qPlQzCGHxcScYt4IQ4yYU8xXcjO/iBFzyhDzEkPMRc01MaeYl5jMTcyPcjN3MacMMYT5RW7mKzEvMcQ8xZxirmmuiTnFvGRkbmJ+lJu5iznFCJPD/CyH+UoO8xKGmJfmJuaa5powxIg5xIg5xbwRc4ohT/OzMF/JYR5ymkPu5kcx1zQX5WGIIYaYU8wbMaeYQ5iYX+QwX8hpbnIa8jQ/yFzUXJWbOeVhDjHCvBNzinmJ+UIO85WYpzBkDjEvMRc118U85DR3uZu3Yg4xMqeYr+UwX4h5ivmvzFPMVc0/Iof5nRhhxBxivpPD/CLmJeYl5ibMZc2/KndDmDBvxDxlbmJeYl5iTmGua/5dOc0pd/Ne8xRzysjcxGRuYg5hPtD8SWE+EHOIEXOICXOKIcwnmr9LHoYwwog5xBDmI81fJjdzysMQRhgxH2r+OjEPuZlTHkbu5gP/AU6yIBBvzHD1AAAAAElFTkSuQmCC" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000008.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAAgCAAAAADY7jt9AAACmUlEQVRoBe3BUW7bCgJFMZ79L/qOJNuBU0z/quYVMNl8/Ljm48c1Hz+u+fhxzcePaz5+XHObMJe8TPPUfJyam+RhyJfFXDJvchlymlPmS5aXIV8mL/PSyJDDnMIcMk+ZS+YXOcxtmnvksDAPmVPMIeZNLiMPc8i8ZPJl5GXkZZ4yMnIZcppD8xRziPkuD3OT5h6ZU8wlc8kQ8y7zkCEjp3loxJwyYl5ivstkyMiIkSHzFCPmuxhh7tHcIuaSuWQuMTLvYh4yh4yYp4yYU0zMS8x3mYwMMRliaF4yMt9lLpl7NLfIPGVOmYdY5hBzyWXIHDLCPGTEnDJiXmLe5MsyT5lDhsxTLHOJacQ8NPdobpF5ypwyTznMKXPJw8gQo2UuGWIOMWJeYt7kZbIwZA4ZMi85zCmXkblbc4vMU+aUeQrzXYaYGDHvMuRlyMvI0zxlZORhZIgh5iXmFBMjc7fmFpmnzCnzkvn/MvIw7zLkYU55GXmap0yGGBl5mkPmJeaUISNzyGlukf+IecjIYZl3GWLIHGJeYr7JZMgcMnJY5pB5ymEOGTIyh5zmFs0v8nGz+UVzjwxZ5pJ5yfwiQ0yGzDcZMqcYmS8xb/JlGWIy5L+juUeYMA+Zl8wvYmTExHyTIXPJyHyJeZeRIUNGhswpc4kRI0OGzCXmFs1N8jKXzEvmEvOQ0xxyml9kZC4x+TIx7zKZUy5DLnPIXGIOGXmYQ5gc5hbNbXJYzCnzknnIPIW5hPlVRuYhky8T8y6TueQwh5zmlDnFnGLkMqc8zE2a2zV/RuZPy1yah8whyzyEuU3zD8n8WZnfyvwVzT8k82dlfivzVzT/ksyflPm9zF/RfPxW81c0Hz+u+fhxzcePaz5+XPPx45qPH/c/axVXEdV4yk0AAAAASUVORK5CYII=" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAAgCAAAAADY7jt9AAACeUlEQVRoBe3BUXZb1wFFMZz5D3r3PlJWJNtykg+Kqy2B5eXplpenW16ebnl5uuXl6ZaXp1u+zfLyW8u3WS6Tm8kHcxPmksvk3ZojTP6BxcRcchlyTN5MbpbvtjzW5M1yGTkmH81NTHPkGHkzGXJMrOUPJiPmJswljNyNWJPvtjzWyM3kZsLIRxMWEyZG3i2GXBYjfzCZmDAxYXIsd0OMfLfl0Zab5W7E8tnkbnJMjLyZGHJMjPzBZGFyLCbHhOWHieX7LY82+Ww0OYbczE1MjokhdxNGjomRd8snQyaWy2JyTFh+mExuRpZvsTzG8mbyk2nkGLnMXUyOiTW5W5gjRoy8G/nLXBpapoXJMWHywzS5zNHC8mjLo01+MuRuuZkcExMjyw8jhtYQlrvFmnwwYmSOJiaMHMu7kcvEWkzeLI+xPMbyZvKL5WfLMTGXlo8mzA9hWo7Fmnw0sTBiwtyFybuRy+RYTI458hjLYyyTY/nF8mbkg+VuWb60XIZMjiGfLBYmx8Lc5bNpYk2OxeSYSx5ieYxlmiy/mNyMfLT8K8u7NfloMmFyLCzW5LNpmkyYsFjTyEMsD7Um/8LyN5YPlndDPlpMWC4LC5OfTIZMmNytafIYy2NMjpF/ZMLkWCa/M/nL5N3IJ4sJEyYsTH5jhDVNjuWYIw+xPNI0WX5vjtzMJZdl8juTv8wRC5NPJpPLxITFyGW5GTlGzE2OIYY8xPJIy8jXJj8sf2/ywXKz/GoyuZkjxzK5Wy5DjiFDk8tyDHmI5f/J8pXlbnJZk2+xvHxl8i2Wl69MvsXy8pXleywvT7e8PN3y8nTLf5Plf9Hy8nTLy9MtL0/3H3ooaBBsaedEAAAAAElFTkSuQmCC" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAAgCAAAAADY7jt9AAACzUlEQVRoBe3BUW7kBgJEMdb9D/1WUreM9mDzN4oRwOTy68ctv37c8uvHLb9+3PLrxy2/ftzymCGXuWV5W36dlofMS5gvjVwmH+YS5pTT5Ms0tzBfMrfcFhPmkNOQw+Rtcpn8YQ55zPKMOTTkZXIaOYx8mEvMSw6T22S+xNxibnmbmJhLmFMOy9vIYeS7eclDlmdMTiOXyWXCyKfJy4SJOeVlMXKaGLmNfDeZMDExYsLkbcTIdyOGPGN5xMhlcplcRkw+jbxMDhMjbxMjp5GR28h3k4kJIxNGWG4Tk+8ml8kzlkdM3ianyctochi5zCVMDhNDXiZGThMjt5EP86XJ2+QwYfI2mlxGFiMvyzOWR0zeJqfJ2xxymlzmJSaMWJPLhJHDiJHbyIe5ZRrC5DBhcptDTnOJydOWR0zeJqfJ25DvJoyMGPk0YW5hbjFveZuYmJeYMMLIbeQ0MmLytOURk7fJaXKb/H8T85JPE+Ylp7nFvOVtMmHExLzlMLmNnCZMTA5zyiOWR0zeJqfJbfL/TRiafJowOUwOI7eRbyYTJoeJOTQ5TN7mkMOEiclhTnnE8ojJYZlcJrfJH5bT5G3yacIII4zcRj7MlyaHydvkMHkZTRhhYvIy8ojlGRPmkMvkNvnDhJEJk28mjBxGjNxGPswtk8Nkwshh8jIZYcLEyMvkEcszhgx5mdwmfxgxMTLyzYTJZWLyZeTTxIQJIxMmp8llxIgJE0ZOI49YHjK3XCa3yWXkZU45zCl/mJhcRuZLRj5NJqe5hLnkMLmMHCbmJYchc8gjlsfMoZHT5DZ5mbwNuQz508TkZTJfMvJpMrnMIYc55TQ5jZxGzCWneclDlsctf8fkb5tclpfJYZq8DHnM8h8y+bsm/2jyr1j+QyZ/1+QfTf4Vy3/J5G+a/LPJv2L59Y+Wf8Xy68ctv37c8uvHLb9+3PLrxy2/ftz/ANVXeRBAFdHaAAAAAElFTkSuQmCC" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crop-card">
+                <div class="crop-info">
+                    <div class="crop-name">pair_000009.png</div>
+                    <div class="crop-meta">Synthetic Evaluation Crop</div>
+                </div>
+                <div class="panels">
+                    <div class="panel">
+                        <div class="panel-label">Dirty Input (CAD Lines)</div>
+                        <div class="img-wrapper">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANYAAAAhCAAAAACAHwpTAAACI0lEQVRYCc3BAXLbOAAEMOz/H70VZUmhM9MqdJzcAakvia+p/4XUsrhV/63UO8S9+j2pHxL36oekXhJDrYl79QapF8SpoiZBfV3cq1WpdfGsTvFQD7GpRXGv/iW1LDa1iaFOcapNPNS3xb26pFYFtYtNXYKKTYlT3QpqSfxValVQuxjqFIqgBCWoG7GrWTzUV8VDalFQu9jVKWoIJdQm1CzqWRzqQ5xqUWpRUEPQUJ+FuoSahZoFJahLnGpRalGoIaigngV1CmoWahZqE+oSiqhVqUWhNkEJahJDnYJ6EmoS1CbUKajXpBaFIihCzWKohxhqFtQk1BDUIdSLUotCCWoTahZD7WJXp/hQh1BDUIfY1QtSi4IGNYR6FpvaxVCnmNRDqCGoQxxqWWpRPNQQ1GehTkEd4kMdQg1BPcSlVqVWxVC7oD4LdQk1CWoSagjqITYVm1qUWhWb2gV1itqFuoSahJqFGkKdooZQi1KrYihiU5dQQ6ioXahJqFmoIdRnoRalFsWT+hAUQYUaQk1CzUINoT4Lak1qUVScahKXEpTY1CTULNQQ6rOg1qReEkM9i0Nt4lSzULNQm6AOUbtQi+JQbxFD7eKhTjGpQ1CCOgS1CWpR/F19V2zqQ0zqFKcilKAIalHqEvfqe+JDXeKhCEpcalXqX+JevUFsagiKONSy1Kq4V+8QQ61LvUHcq1+U+iFxr35I6vfEvXqH1O+Lr6lX/QGhyN0D/xf+5wAAAABJRU5ErkJggg==" alt="Input">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Cleaned (U-Net)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANYAAAAhCAAAAACAHwpTAAAB20lEQVRYCd3BC25bVwBEMc7+F3365K+ktGlv4CKByeU7Wr6j5TtavqPliy2/3/ILln80+e2Wc5MPkztzk99rOTbkxbLcmVe5jPwWy6m55GayfBgyhCH/0fKFllNzyc00+TDCCEMuy7+Z/L21nFoOzSU3o5F3k5sJQxj5udG0PFt+wXJoLrkZjTybfJo8GHkwYS55MnJoOTTkMpeGPJl8mjyYPBi5DHkyObUcGrkMmUvuTCMflieTe9NyGfkw+UXLqQkjDLkzl5ZXI0+G3BnCXPIFlkMjjNxMHswlr+Ym70ZD7gy5DPkCy6EhIzeTR3OTF3OTN/Mun6blMuTRcm45NGTkMvKDkXdD3sybLG+GrLnkwVxyaDm11uTFyI8m79bkweTOkLVG3kwu03JoObXW8mLIh+XV5NPkwXJvaJomr4ZcRg4tp9bIZcinkZuRyavl0XJvaBrybOTQcmrNp3wauQwZuVl+bmQa8oPJoeXQNB9yZ+QyZC4x8lMjlpFnk1PLoWmtIcuDNS9iCCM/NXIZeTdhmZxavtQacmfkzsLyaQhreTNkGTm1/N8m70bLkyFzCUOGFpNTy59gMnKZS4aWybHlT7G8mEsYMjm2/LHWYjm3fEfLd7R8R8t39BeSQPgBA6edDwAAAABJRU5ErkJggg==" alt="Cleaned">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-label">Target (Ground Truth)</div>
+                        <div class="img-wrapper" style="background: white;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANYAAAAhCAAAAACAHwpTAAAB4ElEQVRYCd3BQXLbOAAEwJ7/P3pCkAIF2YcUVFmvS92pT5T6RKlPlPpEqffEoX6p1DvioUItUv+/1L54VbcY6iGon5faFtQQh3qKhzrEpX5aaldQl6BuQQlFTPV3of6V1K5QlzjULdQhlFCE+ps41Sqod6R2hTqFhpqihlCihlCrqFfxUE8x1abUplCnUKG+CnULtQq1Ckqop5hqU2pTqCGUUF+Eegq1CrUKdQh1C/We1KZQh1CEWsVQt1AvQi1CDaGmUG9KbQpFqEOoVRzqIQ71KmoV6hQ1hXpTalMooYZQqxjqFEPdYqpbqFPUFCr1jtSmUKFOob4I6hRDTbGoS6hT1BQPtS21K4a6hPoq1BTUQzzVQ6hT1BRT7UrtikNdQn0T6hZqFbUKdYp6CIqgNqW2hboENUWdQt1CraJWoU5RU9QQalNqVxxqCOoWaggVdQq1ilqFGkJ9FWpTalO8qKdQh6BCDaFWUatQQ6hvojalNkXFVKuYSlAEtYpahRpCfRO1KfWeoL6KSx1iqhdRq1BDqIeoU6hNqX8qDnWJS02xqCkUoaZQQ6hNqf9SUE+xqCke6hBKUAS1KfWz4la3ONUQiphqV+p3CGoI6hCX2pb6veJQb0h9otQnSn2i1Cf6A83ezwE+8PUVAAAAAElFTkSuQmCC" alt="Target">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

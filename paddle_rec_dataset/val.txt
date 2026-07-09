@@ -1,0 +1,420 @@
+images/val/plus_minus_0000.png	Ø61.4 ± 0.7
+images/val/plus_minus_0001.png	60.4 ± 92.3
+images/val/plus_minus_0002.png	Ø70.4 ± 0.4
+images/val/plus_minus_0003.png	±25.6
+images/val/plus_minus_0004.png	283 ± 1
+images/val/plus_minus_0005.png	65.6 ± 93.1
+images/val/plus_minus_0006.png	854 ± 1
+images/val/plus_minus_0007.png	1.6 ± 47.3
+images/val/plus_minus_0008.png	Ø10.2 ± 0.9
+images/val/plus_minus_0009.png	±64.0
+images/val/plus_minus_0010.png	±0.05
+images/val/plus_minus_0011.png	±61.1
+images/val/plus_minus_0012.png	±0.05
+images/val/plus_minus_0013.png	±0.20
+images/val/plus_minus_0014.png	±64.2
+images/val/plus_minus_0015.png	±9.5
+images/val/plus_minus_0016.png	±56.6
+images/val/plus_minus_0017.png	Ø27.7 ± 0.7
+images/val/plus_minus_0018.png	±0.05
+images/val/plus_minus_0019.png	5.2 ± 36.4
+images/val/plus_minus_0020.png	Ø75.4 ± 0.1
+images/val/plus_minus_0021.png	Ø65.6 ± 0.5
+images/val/plus_minus_0022.png	33.1 ± 45.5
+images/val/plus_minus_0023.png	Ø19.3 ± 0.2
+images/val/plus_minus_0024.png	22.9 ± 50.0
+images/val/plus_minus_0025.png	898 ± 1
+images/val/plus_minus_0026.png	±0.05
+images/val/plus_minus_0027.png	35.6 ± 95.4
+images/val/plus_minus_0028.png	±82.4
+images/val/plus_minus_0029.png	Ø96.2 ± 0.2
+images/val/diameter_0000.png	Ø145.4mm
+images/val/diameter_0001.png	Ø22.1 ± 0.4
+images/val/diameter_0002.png	Ø73.1
+images/val/diameter_0003.png	Ø83.0
+images/val/diameter_0004.png	Ø209.4mm
+images/val/diameter_0005.png	Ø98.7 mm
+images/val/diameter_0006.png	Ø2.8 ± 0.1
+images/val/diameter_0007.png	Ø96.3 ± 0.5
+images/val/diameter_0008.png	Ø808
+images/val/diameter_0009.png	Ø57.6 ± 0.3
+images/val/diameter_0010.png	Ø83.7 ± 0.2
+images/val/diameter_0011.png	Ø84.9mm
+images/val/diameter_0012.png	Ø86.8 ± 0.2
+images/val/diameter_0013.png	Ø540
+images/val/diameter_0014.png	Ø36.4
+images/val/diameter_0015.png	Ø60.9 mm
+images/val/diameter_0016.png	Ø223.4mm
+images/val/diameter_0017.png	Ø56.3
+images/val/diameter_0018.png	Ø17.6
+images/val/diameter_0019.png	Ø206.9mm
+images/val/diameter_0020.png	Ø81.6 ± 0.2
+images/val/diameter_0021.png	Ø26.5 mm
+images/val/diameter_0022.png	Ø57.2 ± 0.1
+images/val/diameter_0023.png	Ø71.2
+images/val/diameter_0024.png	Ø251.4mm
+images/val/diameter_0025.png	Ø28.3 mm
+images/val/diameter_0026.png	Ø106.1mm
+images/val/diameter_0027.png	Ø62.7 mm
+images/val/diameter_0028.png	Ø213.4mm
+images/val/diameter_0029.png	Ø98.6 ± 0.1
+images/val/radius_0000.png	R74
+images/val/radius_0001.png	R8.1 mm
+images/val/radius_0002.png	R82.8 mm
+images/val/radius_0003.png	R613
+images/val/radius_0004.png	R47
+images/val/radius_0005.png	R95.5
+images/val/radius_0006.png	R27
+images/val/radius_0007.png	R42.6 ± 0.1
+images/val/radius_0008.png	R86.5
+images/val/radius_0009.png	R7.9
+images/val/radius_0010.png	R7.0
+images/val/radius_0011.png	R334
+images/val/radius_0012.png	R17.3 mm
+images/val/radius_0013.png	R44.1 mm
+images/val/radius_0014.png	R802
+images/val/radius_0015.png	R8
+images/val/radius_0016.png	R29.2 ± 0.5
+images/val/radius_0017.png	R267
+images/val/radius_0018.png	R81.9 mm
+images/val/radius_0019.png	R24.8 ± 0.1
+images/val/radius_0020.png	R75.6 ± 0.2
+images/val/radius_0021.png	R85.8
+images/val/radius_0022.png	R6
+images/val/radius_0023.png	R235
+images/val/radius_0024.png	R25
+images/val/radius_0025.png	R33.7 mm
+images/val/radius_0026.png	R174
+images/val/radius_0027.png	R18.3 mm
+images/val/radius_0028.png	R61
+images/val/radius_0029.png	R217
+images/val/degree_0000.png	27° ± 0.3°
+images/val/degree_0001.png	140°
+images/val/degree_0002.png	12.9°
+images/val/degree_0003.png	12.1°
+images/val/degree_0004.png	34.0°
+images/val/degree_0005.png	45°
+images/val/degree_0006.png	18°
+images/val/degree_0007.png	67° ± 0.1°
+images/val/degree_0008.png	45°
+images/val/degree_0009.png	30°
+images/val/degree_0010.png	21° ± 0.4°
+images/val/degree_0011.png	164°
+images/val/degree_0012.png	45.9°
+images/val/degree_0013.png	36.0°
+images/val/degree_0014.png	60°
+images/val/degree_0015.png	18°
+images/val/degree_0016.png	45°
+images/val/degree_0017.png	90°
+images/val/degree_0018.png	39° ± 0.6°
+images/val/degree_0019.png	72.5°
+images/val/degree_0020.png	90°
+images/val/degree_0021.png	45°
+images/val/degree_0022.png	30°
+images/val/degree_0023.png	90°
+images/val/degree_0024.png	60°
+images/val/degree_0025.png	39° ± 0.1°
+images/val/degree_0026.png	34.2°
+images/val/degree_0027.png	41.1°
+images/val/degree_0028.png	45°
+images/val/degree_0029.png	36°
+images/val/greater_than_0000.png	> 1.33
+images/val/greater_than_0001.png	> 74.8 mm
+images/val/greater_than_0002.png	>23
+images/val/greater_than_0003.png	>14
+images/val/greater_than_0004.png	>75 PPM
+images/val/greater_than_0005.png	>38
+images/val/greater_than_0006.png	>72.1
+images/val/greater_than_0007.png	> 10.9 mm
+images/val/greater_than_0008.png	>61
+images/val/greater_than_0009.png	> 52.3 mm
+images/val/greater_than_0010.png	> 36.6 mm
+images/val/greater_than_0011.png	>59.1
+images/val/greater_than_0012.png	>12
+images/val/greater_than_0013.png	> 27.5 mm
+images/val/greater_than_0014.png	>50 PPM
+images/val/greater_than_0015.png	> 70.8 mm
+images/val/greater_than_0016.png	> 0.05
+images/val/greater_than_0017.png	> 0.05
+images/val/greater_than_0018.png	> 9.1 mm
+images/val/greater_than_0019.png	>100 PPM
+images/val/greater_than_0020.png	>25 PPM
+images/val/greater_than_0021.png	> 32.9 mm
+images/val/greater_than_0022.png	> 40%
+images/val/greater_than_0023.png	>10
+images/val/greater_than_0024.png	> 47.5 mm
+images/val/greater_than_0025.png	> 36.1 mm
+images/val/greater_than_0026.png	>45.8
+images/val/greater_than_0027.png	> 80.0 mm
+images/val/greater_than_0028.png	>25 PPM
+images/val/greater_than_0029.png	> 78.5 mm
+images/val/less_than_0000.png	<0.1
+images/val/less_than_0001.png	<80.9
+images/val/less_than_0002.png	<0.1
+images/val/less_than_0003.png	<19.6
+images/val/less_than_0004.png	<70
+images/val/less_than_0005.png	<0.5
+images/val/less_than_0006.png	<5.0
+images/val/less_than_0007.png	<4
+images/val/less_than_0008.png	<0.1
+images/val/less_than_0009.png	< 30dB
+images/val/less_than_0010.png	< 30dB
+images/val/less_than_0011.png	<27
+images/val/less_than_0012.png	< 52.6 mm
+images/val/less_than_0013.png	<5.0
+images/val/less_than_0014.png	<56.8
+images/val/less_than_0015.png	<45
+images/val/less_than_0016.png	<14.2
+images/val/less_than_0017.png	< 30dB
+images/val/less_than_0018.png	<1.0
+images/val/less_than_0019.png	<27.9
+images/val/less_than_0020.png	< 14.3 mm
+images/val/less_than_0021.png	< 64.6 mm
+images/val/less_than_0022.png	<5.0
+images/val/less_than_0023.png	< 4.7 mm
+images/val/less_than_0024.png	<59
+images/val/less_than_0025.png	<0.5
+images/val/less_than_0026.png	<77
+images/val/less_than_0027.png	< 25 PPM
+images/val/less_than_0028.png	<13.8
+images/val/less_than_0029.png	<0.5
+images/val/gte_0000.png	>= 37%
+images/val/gte_0001.png	>=57.4
+images/val/gte_0002.png	>=95.3
+images/val/gte_0003.png	>= 89%
+images/val/gte_0004.png	>= 64.4
+images/val/gte_0005.png	>=32.7
+images/val/gte_0006.png	>= 0.5
+images/val/gte_0007.png	>= 1.9
+images/val/gte_0008.png	>= 43.3
+images/val/gte_0009.png	>=90.1
+images/val/gte_0010.png	>=66.2
+images/val/gte_0011.png	>=34.4
+images/val/gte_0012.png	>= 1.67
+images/val/gte_0013.png	>= 63%
+images/val/gte_0014.png	>=23.8
+images/val/gte_0015.png	>= 86.0
+images/val/gte_0016.png	>=16.2
+images/val/gte_0017.png	>= 47.9
+images/val/gte_0018.png	>= 58.6
+images/val/gte_0019.png	>= 75%
+images/val/gte_0020.png	>=47
+images/val/gte_0021.png	>= 26.7
+images/val/gte_0022.png	>=72
+images/val/gte_0023.png	>= 52.0
+images/val/gte_0024.png	>=67.6
+images/val/gte_0025.png	>=96.5
+images/val/gte_0026.png	>=59.9
+images/val/gte_0027.png	>= 1.67
+images/val/gte_0028.png	>= 1.4
+images/val/gte_0029.png	>=76
+images/val/inch_0000.png	18.2"
+images/val/inch_0001.png	8" OD
+images/val/inch_0002.png	2.3"
+images/val/inch_0003.png	5.5"
+images/val/inch_0004.png	65.4"
+images/val/inch_0005.png	1.6"
+images/val/inch_0006.png	10.5"
+images/val/inch_0007.png	5"
+images/val/inch_0008.png	6" OD
+images/val/inch_0009.png	27.0" ID
+images/val/inch_0010.png	10.7"
+images/val/inch_0011.png	12"
+images/val/inch_0012.png	15"
+images/val/inch_0013.png	47.4" ID
+images/val/inch_0014.png	68.3"
+images/val/inch_0015.png	19.0"
+images/val/inch_0016.png	45.7"
+images/val/inch_0017.png	7"
+images/val/inch_0018.png	1" OD
+images/val/inch_0019.png	64.1" ID
+images/val/inch_0020.png	8.5"
+images/val/inch_0021.png	62.6" ID
+images/val/inch_0022.png	69.6" ID
+images/val/inch_0023.png	8"
+images/val/inch_0024.png	17"
+images/val/inch_0025.png	38.3" ID
+images/val/inch_0026.png	59.8" ID
+images/val/inch_0027.png	7.0"
+images/val/inch_0028.png	71.8" ID
+images/val/inch_0029.png	78.8" ID
+images/val/micrometre_0000.png	Rz 3.2 μm
+images/val/micrometre_0001.png	16.1 μm
+images/val/micrometre_0002.png	Ra 3.2 μm
+images/val/micrometre_0003.png	Rz 6.3 μm
+images/val/micrometre_0004.png	Rz 12.5 μm
+images/val/micrometre_0005.png	91.9 μm
+images/val/micrometre_0006.png	467 μm
+images/val/micrometre_0007.png	Ra 1.6 μm
+images/val/micrometre_0008.png	Rz 3.2 μm
+images/val/micrometre_0009.png	Ra 6.3 μm
+images/val/micrometre_0010.png	Ra 6.3 μm
+images/val/micrometre_0011.png	494 μm
+images/val/micrometre_0012.png	850 μm
+images/val/micrometre_0013.png	72.6 μm
+images/val/micrometre_0014.png	Rz 6.3 μm
+images/val/micrometre_0015.png	< 898 μm
+images/val/micrometre_0016.png	Ra 6.3 μm
+images/val/micrometre_0017.png	12.9 μm
+images/val/micrometre_0018.png	45.6 μm
+images/val/micrometre_0019.png	95.2 μm
+images/val/micrometre_0020.png	Rz 6.3 μm
+images/val/micrometre_0021.png	62.0 μm
+images/val/micrometre_0022.png	Ra 3.2 μm
+images/val/micrometre_0023.png	118 μm
+images/val/micrometre_0024.png	< 362 μm
+images/val/micrometre_0025.png	72.2 μm
+images/val/micrometre_0026.png	< 694 μm
+images/val/micrometre_0027.png	959 μm
+images/val/micrometre_0028.png	986 μm
+images/val/micrometre_0029.png	< 700 μm
+images/val/metric_thread_M_0000.png	M16x1.5-6g
+images/val/metric_thread_M_0001.png	M4 JASO
+images/val/metric_thread_M_0002.png	M16x1.25-6H
+images/val/metric_thread_M_0003.png	M8
+images/val/metric_thread_M_0004.png	M12x1.0
+images/val/metric_thread_M_0005.png	M10x2.0-6H
+images/val/metric_thread_M_0006.png	M12x1.25
+images/val/metric_thread_M_0007.png	M8x1.25-6H
+images/val/metric_thread_M_0008.png	M16x2.0-6g
+images/val/metric_thread_M_0009.png	M12x2.0-6g
+images/val/metric_thread_M_0010.png	M12x1.0
+images/val/metric_thread_M_0011.png	M5 JASO
+images/val/metric_thread_M_0012.png	M8x1.25-6H
+images/val/metric_thread_M_0013.png	M3
+images/val/metric_thread_M_0014.png	M10x1.5-6H
+images/val/metric_thread_M_0015.png	M4 JASO
+images/val/metric_thread_M_0016.png	M12x1.5-6H
+images/val/metric_thread_M_0017.png	M10x1.25
+images/val/metric_thread_M_0018.png	M12x1.5
+images/val/metric_thread_M_0019.png	M3
+images/val/metric_thread_M_0020.png	M12x2.0-6H
+images/val/metric_thread_M_0021.png	M10x1.5-6g
+images/val/metric_thread_M_0022.png	M10x1.5
+images/val/metric_thread_M_0023.png	M8x2.0
+images/val/metric_thread_M_0024.png	M12x1.5
+images/val/metric_thread_M_0025.png	M4
+images/val/metric_thread_M_0026.png	M12
+images/val/metric_thread_M_0027.png	M4 JASO
+images/val/metric_thread_M_0028.png	M6 JASO
+images/val/metric_thread_M_0029.png	M4 JASO
+images/val/thread_pitch_sep_0000.png	M6x1.25
+images/val/thread_pitch_sep_0001.png	80.1 x 20.4
+images/val/thread_pitch_sep_0002.png	5.9 x 81.0 mm
+images/val/thread_pitch_sep_0003.png	80.3 x 34.4
+images/val/thread_pitch_sep_0004.png	2 x 6
+images/val/thread_pitch_sep_0005.png	M10x2.0-6H
+images/val/thread_pitch_sep_0006.png	10 x 26
+images/val/thread_pitch_sep_0007.png	3 x 35
+images/val/thread_pitch_sep_0008.png	7 x 25
+images/val/thread_pitch_sep_0009.png	M6x1.25
+images/val/thread_pitch_sep_0010.png	11 x 50
+images/val/thread_pitch_sep_0011.png	49.7 x 36.2
+images/val/thread_pitch_sep_0012.png	45.5 x 16.5 mm
+images/val/thread_pitch_sep_0013.png	46.4 x 54.7
+images/val/thread_pitch_sep_0014.png	M10x1.5-6H
+images/val/thread_pitch_sep_0015.png	48.7 x 5.2
+images/val/thread_pitch_sep_0016.png	82.3 x 2.3
+images/val/thread_pitch_sep_0017.png	50.4 x 20.3 mm
+images/val/thread_pitch_sep_0018.png	4 x 38
+images/val/thread_pitch_sep_0019.png	25.0 x 17.0
+images/val/thread_pitch_sep_0020.png	37.7 x 13.7
+images/val/thread_pitch_sep_0021.png	10 x 14
+images/val/thread_pitch_sep_0022.png	M10x1.5-6H
+images/val/thread_pitch_sep_0023.png	M12x1.0
+images/val/thread_pitch_sep_0024.png	M12x1.0
+images/val/thread_pitch_sep_0025.png	25.9 x 58.0
+images/val/thread_pitch_sep_0026.png	9 x 6
+images/val/thread_pitch_sep_0027.png	M12x1.25
+images/val/thread_pitch_sep_0028.png	25.6 x 61.4 mm
+images/val/thread_pitch_sep_0029.png	18 x 41
+images/val/thread_tol_sep_0000.png	DIN 831-7
+images/val/thread_tol_sep_0001.png	ISO 84-9
+images/val/thread_tol_sep_0002.png	M10x2.0-4H
+images/val/thread_tol_sep_0003.png	M12x1.5-4H
+images/val/thread_tol_sep_0004.png	ISO 31-4
+images/val/thread_tol_sep_0005.png	M10x1.5-4H
+images/val/thread_tol_sep_0006.png	M8x1.25-6g
+images/val/thread_tol_sep_0007.png	ISO 35-7
+images/val/thread_tol_sep_0008.png	ISO 36-2
+images/val/thread_tol_sep_0009.png	DIN 879-3
+images/val/thread_tol_sep_0010.png	93-17
+images/val/thread_tol_sep_0011.png	M10x2.0-4H
+images/val/thread_tol_sep_0012.png	ISO 89-1
+images/val/thread_tol_sep_0013.png	M12x1.5-6H
+images/val/thread_tol_sep_0014.png	70-95
+images/val/thread_tol_sep_0015.png	M16x2.0-6H
+images/val/thread_tol_sep_0016.png	M12x1.25-6g
+images/val/thread_tol_sep_0017.png	ISO 64-1
+images/val/thread_tol_sep_0018.png	DIN 571-3
+images/val/thread_tol_sep_0019.png	DIN 838-3
+images/val/thread_tol_sep_0020.png	ISO 38-4
+images/val/thread_tol_sep_0021.png	25-69
+images/val/thread_tol_sep_0022.png	DIN 642-9
+images/val/thread_tol_sep_0023.png	DIN 351-3
+images/val/thread_tol_sep_0024.png	ISO 8-6
+images/val/thread_tol_sep_0025.png	M12x2.0-6H
+images/val/thread_tol_sep_0026.png	DIN 443-3
+images/val/thread_tol_sep_0027.png	M12x2.0-6H
+images/val/thread_tol_sep_0028.png	M12x2.0-6H
+images/val/thread_tol_sep_0029.png	M10x1.25-6H
+images/val/plus_unilateral_0000.png	+9.7
+images/val/plus_unilateral_0001.png	+32.6
+images/val/plus_unilateral_0002.png	+75.9
+images/val/plus_unilateral_0003.png	Ø11.1+0.2 mm
+images/val/plus_unilateral_0004.png	+0.01
+images/val/plus_unilateral_0005.png	+0.01
+images/val/plus_unilateral_0006.png	+0.02
+images/val/plus_unilateral_0007.png	+2.0
+images/val/plus_unilateral_0008.png	+0.02
+images/val/plus_unilateral_0009.png	Ø86.6+0.05 mm
+images/val/plus_unilateral_0010.png	+0.20
+images/val/plus_unilateral_0011.png	Ø31.5+0.1 mm
+images/val/plus_unilateral_0012.png	Ø9.0+0.1 mm
+images/val/plus_unilateral_0013.png	+47.2
+images/val/plus_unilateral_0014.png	+4.7
+images/val/plus_unilateral_0015.png	+33.2
+images/val/plus_unilateral_0016.png	Ø49.5+0.1 mm
+images/val/plus_unilateral_0017.png	+13.6
+images/val/plus_unilateral_0018.png	Ø10.9+0.8 mm
+images/val/plus_unilateral_0019.png	+0.20
+images/val/plus_unilateral_0020.png	+0.02
+images/val/plus_unilateral_0021.png	Ø22.3+0.1 mm
+images/val/plus_unilateral_0022.png	+51.3
+images/val/plus_unilateral_0023.png	Ø79.8+0.1 mm
+images/val/plus_unilateral_0024.png	+3.1
+images/val/plus_unilateral_0025.png	Ø45.2+0.05 mm
+images/val/plus_unilateral_0026.png	Ø21.6+0.9 mm
+images/val/plus_unilateral_0027.png	+0.01
+images/val/plus_unilateral_0028.png	+0.05
+images/val/plus_unilateral_0029.png	Ø5.0+0.9 mm
+images/val/dims_sep_0000.png	87 × 191 × 3 mm
+images/val/dims_sep_0001.png	45 × 255 mm
+images/val/dims_sep_0002.png	5 × 14
+images/val/dims_sep_0003.png	80 × 60 mm
+images/val/dims_sep_0004.png	14.3 × 47.8
+images/val/dims_sep_0005.png	11 × 3
+images/val/dims_sep_0006.png	57 × 191 × 34 mm
+images/val/dims_sep_0007.png	35 × 151 × 15 mm
+images/val/dims_sep_0008.png	46.9 × 14.2
+images/val/dims_sep_0009.png	1 × 18
+images/val/dims_sep_0010.png	17 × 13
+images/val/dims_sep_0011.png	9 × 16
+images/val/dims_sep_0012.png	199 × 29 × 18 mm
+images/val/dims_sep_0013.png	420 × 284 mm
+images/val/dims_sep_0014.png	84 × 44 × 38 mm
+images/val/dims_sep_0015.png	351 × 483 mm
+images/val/dims_sep_0016.png	55.2 × 92.2
+images/val/dims_sep_0017.png	173 × 63 × 10 mm
+images/val/dims_sep_0018.png	14 × 13
+images/val/dims_sep_0019.png	17 × 2
+images/val/dims_sep_0020.png	89.9 × 57.9
+images/val/dims_sep_0021.png	38 × 170 × 17 mm
+images/val/dims_sep_0022.png	3 × 2
+images/val/dims_sep_0023.png	80 × 60 mm
+images/val/dims_sep_0024.png	6 × 6
+images/val/dims_sep_0025.png	1 × 9
+images/val/dims_sep_0026.png	45 × 141 × 44 mm
+images/val/dims_sep_0027.png	33 × 196 × 17 mm
+images/val/dims_sep_0028.png	80 × 60 mm
+images/val/dims_sep_0029.png	76.4 × 14.2

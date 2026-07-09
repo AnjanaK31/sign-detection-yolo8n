@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>msil.png — Crop Cleaning Viewer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --bg:        #0d0f14;
+      --surface:   #161920;
+      --card:      #1c2030;
+      --border:    #2a2f42;
+      --accent:    #4f8ef7;
+      --accent2:   #2ecc8a;
+      --warn:      #f7a23e;
+      --text:      #e4e8f5;
+      --muted:     #6b7394;
+      --tag-bg:    #1e2540;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ─────────────────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,15,20,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    header h1 {
+      font-size: 1.1rem; font-weight: 600;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+    }
+    header .subtitle { font-size:.75rem; color: var(--muted); }
+
+    .controls {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      margin-left: auto;
+    }
+    .search-wrap {
+      position: relative;
+    }
+    .search-wrap svg {
+      position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+      color: var(--muted); width:15px; height:15px;
+    }
+    #search {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px;
+      padding: 7px 12px 7px 32px; font-size: .82rem;
+      font-family: 'Inter', sans-serif;
+      width: 210px; outline: none;
+      transition: border-color .2s;
+    }
+    #search:focus { border-color: var(--accent); }
+    #search::placeholder { color: var(--muted); }
+
+    .btn-group { display: flex; gap: 4px; }
+    .view-btn {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted); border-radius: 7px;
+      padding: 6px 13px; font-size: .78rem; cursor: pointer;
+      font-family: 'Inter', sans-serif; transition: all .15s;
+    }
+    .view-btn:hover { color: var(--text); border-color: var(--accent); }
+    .view-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    .stat-pill {
+      background: var(--tag-bg); border: 1px solid var(--border);
+      border-radius: 20px; padding: 4px 12px;
+      font-size: .75rem; color: var(--muted);
+    }
+    .stat-pill span { color: var(--accent); font-weight: 600; }
+
+    /* ── Main grid ──────────────────────────────────────── */
+    main { padding: 24px 28px; }
+
+    #grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
+    #grid.large { grid-template-columns: repeat(auto-fill, minmax(520px, 1fr)); }
+    #grid.list  { grid-template-columns: 1fr; }
+
+    /* ── Card ───────────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.5);
+      border-color: var(--accent);
+    }
+
+    .card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .crop-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem; color: var(--muted);
+    }
+    .crop-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .88rem; font-weight: 500; color: var(--accent2);
+    }
+    .erase-badge {
+      font-size: .68rem; padding: 2px 8px; border-radius: 10px;
+      font-weight: 600;
+    }
+    .erase-badge.none { background: #1a2a1a; color: #4caf50; }
+    .erase-badge.low  { background: #2a2010; color: var(--warn); }
+    .erase-badge.high { background: #2a1510; color: #ff6b6b; }
+
+    /* ── Comparison area ────────────────────────────────── */
+    .compare {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .compare .half {
+      display: flex; flex-direction: column;
+    }
+    .compare .half + .half {
+      border-left: 1px solid var(--border);
+    }
+    .half-label {
+      font-size: .65rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted);
+      padding: 6px 10px; background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .half-label.orig { color: #888; }
+    .half-label.clean { color: var(--accent2); }
+
+    .img-wrap {
+      display: flex; align-items: center; justify-content: center;
+      background: #f8f8f8;
+      min-height: 80px; padding: 8px;
+      position: relative; overflow: hidden;
+    }
+    .img-wrap img {
+      max-width: 100%; max-height: 180px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      display: block;
+    }
+    .img-wrap.missing {
+      background: var(--surface);
+      color: var(--muted); font-size: .75rem;
+      justify-content: center; align-items: center;
+      height: 80px;
+    }
+
+    /* ── Slider mode ────────────────────────────────────── */
+    .card.slider-mode .compare { display: none; }
+    .slider-container {
+      display: none;
+      position: relative; overflow: hidden;
+      background: #f8f8f8;
+      cursor: col-resize;
+      user-select: none;
+      min-height: 100px;
+    }
+    .card.slider-mode .slider-container { display: block; }
+    .slider-container .sl-img {
+      width: 100%; display: block;
+      max-height: 260px; object-fit: contain;
+      image-rendering: pixelated;
+    }
+    .slider-container .sl-clean {
+      position: absolute; inset: 0;
+      overflow: hidden;
+      width: 50%;
+    }
+    .slider-container .sl-clean img {
+      width: 100%; display: block;
+      max-height: 260px; object-fit: contain;
+      image-rendering: pixelated;
+      position: absolute; left: 0; top: 0;
+    }
+    .slider-handle {
+      position: absolute; top: 0; bottom: 0;
+      width: 2px; background: var(--accent);
+      cursor: col-resize; z-index: 10;
+      left: 50%;
+    }
+    .slider-handle::after {
+      content: '◀ ▶';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      background: var(--accent); color: #fff;
+      font-size: .6rem; padding: 3px 6px; border-radius: 8px;
+      white-space: nowrap; pointer-events: none;
+    }
+    .slider-labels {
+      position: absolute; bottom: 6px;
+      display: flex; width: 100%;
+      justify-content: space-between;
+      padding: 0 10px; pointer-events: none;
+    }
+    .slider-labels span {
+      font-size: .6rem; font-weight: 700;
+      background: rgba(0,0,0,.55); color: #fff;
+      padding: 2px 6px; border-radius: 4px;
+    }
+
+    /* toggle button per card */
+    .card-footer {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .toggle-mode {
+      font-size: .7rem; padding: 3px 10px; border-radius: 6px;
+      background: var(--tag-bg); border: 1px solid var(--border);
+      color: var(--muted); cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all .15s;
+    }
+    .toggle-mode:hover { color: var(--accent); border-color: var(--accent); }
+    .dim-info {
+      font-size: .68rem; color: var(--muted); margin-left: auto;
+    }
+
+    /* ── Empty state ────────────────────────────────────── */
+    #empty {
+      display: none; text-align: center;
+      padding: 80px 20px; color: var(--muted); font-size: .9rem;
+    }
+
+    /* ── Scrollbar ──────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>msil.png — Crop Cleaning Viewer</h1>
+    <div class="subtitle">Original vs. Line-erased comparison</div>
+  </div>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input id="search" type="text" placeholder="Search label…" autocomplete="off" />
+    </div>
+    <div class="btn-group">
+      <button class="view-btn active" data-size="normal">Normal</button>
+      <button class="view-btn" data-size="large">Large</button>
+      <button class="view-btn" data-size="list">List</button>
+    </div>
+    <div class="stat-pill">Showing <span id="shown">0</span> / <span id="total">0</span></div>
+  </div>
+</header>
+
+<main>
+  <div id="grid"></div>
+  <div id="empty">No crops match your search.</div>
+</main>
+
+<script>
+// ── Crop data injected by Python ───────────────────────────────────────────────
+const CROPS = [{"idx": 0, "label": "R19.5", "orig": "msil_original_crops/crop_000_R19.5.png", "clean": "msil_cleaned_crops/crop_000_R19.5.png", "w": 84, "h": 273, "erased": 691}, {"idx": 1, "label": "R21.8", "orig": "msil_original_crops/crop_001_R21.8.png", "clean": "msil_cleaned_crops/crop_001_R21.8.png", "w": 78, "h": 266, "erased": 691}, {"idx": 2, "label": "Ø43 ±0.2", "orig": "msil_original_crops/crop_002_Ø43_+-0.2.png", "clean": "msil_cleaned_crops/crop_002_Ø43_+-0.2.png", "w": 0, "h": 0, "erased": 0}, {"idx": 3, "label": "Ø34", "orig": "msil_original_crops/crop_003_Ø34.png", "clean": "msil_cleaned_crops/crop_003_Ø34.png", "w": 0, "h": 0, "erased": 0}, {"idx": 4, "label": "+0.3", "orig": "msil_original_crops/crop_004_+0.3.png", "clean": "msil_cleaned_crops/crop_004_+0.3.png", "w": 65, "h": 162, "erased": 0}, {"idx": 5, "label": "-0.5", "orig": "msil_original_crops/crop_005_-0.5.png", "clean": "msil_cleaned_crops/crop_005_-0.5.png", "w": 58, "h": 182, "erased": 613}, {"idx": 6, "label": "313.2", "orig": "msil_original_crops/crop_006_313.2.png", "clean": "msil_cleaned_crops/crop_006_313.2.png", "w": 97, "h": 299, "erased": 897}, {"idx": 7, "label": "5", "orig": "msil_original_crops/crop_007_5.png", "clean": "msil_cleaned_crops/crop_007_5.png", "w": 78, "h": 84, "erased": 0}, {"idx": 8, "label": "2", "orig": "msil_original_crops/crop_008_2.png", "clean": "msil_cleaned_crops/crop_008_2.png", "w": 71, "h": 91, "erased": 172}, {"idx": 9, "label": "5", "orig": "msil_original_crops/crop_009_5.png", "clean": "msil_cleaned_crops/crop_009_5.png", "w": 71, "h": 84, "erased": 169}, {"idx": 10, "label": "3.3", "orig": "msil_original_crops/crop_010_3.3.png", "clean": "msil_cleaned_crops/crop_010_3.3.png", "w": 195, "h": 84, "erased": 463}, {"idx": 11, "label": "5", "orig": "msil_original_crops/crop_011_5.png", "clean": "msil_cleaned_crops/crop_011_5.png", "w": 78, "h": 84, "erased": 169}, {"idx": 12, "label": "6", "orig": "msil_original_crops/crop_012_6.png", "clean": "msil_cleaned_crops/crop_012_6.png", "w": 65, "h": 84, "erased": 0}, {"idx": 13, "label": "18", "orig": "msil_original_crops/crop_013_18.png", "clean": "msil_cleaned_crops/crop_013_18.png", "w": 130, "h": 84, "erased": 390}, {"idx": 14, "label": "60", "orig": "msil_original_crops/crop_014_60.png", "clean": "msil_cleaned_crops/crop_014_60.png", "w": 97, "h": 149, "erased": 0}, {"idx": 15, "label": "30", "orig": "msil_original_crops/crop_015_30.png", "clean": "msil_cleaned_crops/crop_015_30.png", "w": 136, "h": 98, "erased": 408}, {"idx": 16, "label": "2x120°", "orig": "msil_original_crops/crop_016_2x120deg.png", "clean": "msil_cleaned_crops/crop_016_2x120deg.png", "w": 121, "h": 372, "erased": 1340}, {"idx": 17, "label": "2x 4.3 ±0.2", "orig": "msil_original_crops/crop_017_2x_4.3_+-0.2.png", "clean": "msil_cleaned_crops/crop_017_2x_4.3_+-0.2.png", "w": 585, "h": 104, "erased": 1624}, {"idx": 18, "label": "2x 43° MIN", "orig": "msil_original_crops/crop_018_2x_43deg_MIN.png", "clean": "msil_cleaned_crops/crop_018_2x_43deg_MIN.png", "w": 544, "h": 125, "erased": 0}, {"idx": 19, "label": "2x 43° MIN", "orig": "msil_original_crops/crop_019_2x_43deg_MIN.png", "clean": "msil_cleaned_crops/crop_019_2x_43deg_MIN.png", "w": 112, "h": 563, "erased": 918}, {"idx": 20, "label": "Ø33.7", "orig": "msil_original_crops/crop_020_Ø33.7.png", "clean": "msil_cleaned_crops/crop_020_Ø33.7.png", "w": 0, "h": 0, "erased": 0}, {"idx": 21, "label": "Ø50", "orig": "msil_original_crops/crop_021_Ø50.png", "clean": "msil_cleaned_crops/crop_021_Ø50.png", "w": 0, "h": 0, "erased": 0}, {"idx": 22, "label": "2x 3 ±0.3", "orig": "msil_original_crops/crop_022_2x_3_+-0.3.png", "clean": "msil_cleaned_crops/crop_022_2x_3_+-0.3.png", "w": 488, "h": 98, "erased": 1697}, {"idx": 23, "label": "Ø38", "orig": "msil_original_crops/crop_023_Ø38.png", "clean": "msil_cleaned_crops/crop_023_Ø38.png", "w": 0, "h": 0, "erased": 0}, {"idx": 24, "label": "+0.3", "orig": "msil_original_crops/crop_024_+0.3.png", "clean": "msil_cleaned_crops/crop_024_+0.3.png", "w": 161, "h": 83, "erased": 165}, {"idx": 25, "label": "-0.5", "orig": "msil_original_crops/crop_025_-0.5.png", "clean": "msil_cleaned_crops/crop_025_-0.5.png", "w": 176, "h": 69, "erased": 365}, {"idx": 26, "label": "4xM8x1.25", "orig": "msil_original_crops/crop_026_4xM8x1.25.png", "clean": "msil_cleaned_crops/crop_026_4xM8x1.25.png", "w": 98, "h": 500, "erased": 3014}, {"idx": 27, "label": "12", "orig": "msil_original_crops/crop_027_12.png", "clean": "msil_cleaned_crops/crop_027_12.png", "w": 130, "h": 104, "erased": 752}, {"idx": 28, "label": "35", "orig": "msil_original_crops/crop_028_35.png", "clean": "msil_cleaned_crops/crop_028_35.png", "w": 149, "h": 91, "erased": 447}, {"idx": 29, "label": "11", "orig": "msil_original_crops/crop_029_11.png", "clean": "msil_cleaned_crops/crop_029_11.png", "w": 91, "h": 98, "erased": 0}, {"idx": 30, "label": "8", "orig": "msil_original_crops/crop_030_8.png", "clean": "msil_cleaned_crops/crop_030_8.png", "w": 91, "h": 71, "erased": 0}, {"idx": 31, "label": "-0.5", "orig": "msil_original_crops/crop_031_-0.5.png", "clean": "msil_cleaned_crops/crop_031_-0.5.png", "w": 52, "h": 188, "erased": 0}, {"idx": 32, "label": "+0.5", "orig": "msil_original_crops/crop_032_+0.5.png", "clean": "msil_cleaned_crops/crop_032_+0.5.png", "w": 58, "h": 169, "erased": 0}, {"idx": 33, "label": "0", "orig": "msil_original_crops/crop_033_0.png", "clean": "msil_cleaned_crops/crop_033_0.png", "w": 52, "h": 71, "erased": 0}, {"idx": 34, "label": "0", "orig": "msil_original_crops/crop_034_0.png", "clean": "msil_cleaned_crops/crop_034_0.png", "w": 52, "h": 58, "erased": 0}, {"idx": 35, "label": "3", "orig": "msil_original_crops/crop_035_3.png", "clean": "msil_cleaned_crops/crop_035_3.png", "w": 91, "h": 91, "erased": 199}, {"idx": 36, "label": "80", "orig": "msil_original_crops/crop_036_80.png", "clean": "msil_cleaned_crops/crop_036_80.png", "w": 143, "h": 78, "erased": 0}, {"idx": 37, "label": "30.4", "orig": "msil_original_crops/crop_037_30.4.png", "clean": "msil_cleaned_crops/crop_037_30.4.png", "w": 247, "h": 104, "erased": 741}, {"idx": 38, "label": "3.1", "orig": "msil_original_crops/crop_038_3.1.png", "clean": "msil_cleaned_crops/crop_038_3.1.png", "w": 195, "h": 104, "erased": 448}, {"idx": 39, "label": "9.5 ±0.2", "orig": "msil_original_crops/crop_039_9.5_+-0.2.png", "clean": "msil_cleaned_crops/crop_039_9.5_+-0.2.png", "w": 448, "h": 84, "erased": 1351}, {"idx": 40, "label": "15.9 ±0.5", "orig": "msil_original_crops/crop_040_15.9_+-0.5.png", "clean": "msil_cleaned_crops/crop_040_15.9_+-0.5.png", "w": 461, "h": 91, "erased": 1652}, {"idx": 41, "label": "18MIN", "orig": "msil_original_crops/crop_041_18MIN.png", "clean": "msil_cleaned_crops/crop_041_18MIN.png", "w": 91, "h": 338, "erased": 0}, {"idx": 42, "label": "3.2 MIN", "orig": "msil_original_crops/crop_042_3.2_MIN.png", "clean": "msil_cleaned_crops/crop_042_3.2_MIN.png", "w": 410, "h": 91, "erased": 1288}, {"idx": 43, "label": "Ø12.5", "orig": "msil_original_crops/crop_043_Ø12.5.png", "clean": "msil_cleaned_crops/crop_043_Ø12.5.png", "w": 0, "h": 0, "erased": 0}, {"idx": 44, "label": "37 MAX", "orig": "msil_original_crops/crop_044_37_MAX.png", "clean": "msil_cleaned_crops/crop_044_37_MAX.png", "w": 84, "h": 325, "erased": 975}, {"idx": 45, "label": "103.5°", "orig": "msil_original_crops/crop_045_103.5deg.png", "clean": "msil_cleaned_crops/crop_045_103.5deg.png", "w": 324, "h": 116, "erased": 1109}, {"idx": 46, "label": "Ø9.9 SPHER", "orig": "msil_original_crops/crop_046_Ø9.9_SPHER.png", "clean": "msil_cleaned_crops/crop_046_Ø9.9_SPHER.png", "w": 0, "h": 0, "erased": 0}, {"idx": 47, "label": "Ø4.9", "orig": "msil_original_crops/crop_047_Ø4.9.png", "clean": "msil_cleaned_crops/crop_047_Ø4.9.png", "w": 0, "h": 0, "erased": 0}, {"idx": 48, "label": "Ø8.9 ±0.1", "orig": "msil_original_crops/crop_048_Ø8.9_+-0.1.png", "clean": "msil_cleaned_crops/crop_048_Ø8.9_+-0.1.png", "w": 0, "h": 0, "erased": 0}, {"idx": 49, "label": "4", "orig": "msil_original_crops/crop_049_4.png", "clean": "msil_cleaned_crops/crop_049_4.png", "w": 71, "h": 71, "erased": 0}, {"idx": 50, "label": "6", "orig": "msil_original_crops/crop_050_6.png", "clean": "msil_cleaned_crops/crop_050_6.png", "w": 71, "h": 78, "erased": 0}, {"idx": 51, "label": "25", "orig": "msil_original_crops/crop_051_25.png", "clean": "msil_cleaned_crops/crop_051_25.png", "w": 136, "h": 84, "erased": 408}, {"idx": 52, "label": "0", "orig": "msil_original_crops/crop_052_0.png", "clean": "msil_cleaned_crops/crop_052_0.png", "w": 58, "h": 52, "erased": 0}, {"idx": 53, "label": "Ø6", "orig": "msil_original_crops/crop_053_Ø6.png", "clean": "msil_cleaned_crops/crop_053_Ø6.png", "w": 0, "h": 0, "erased": 0}, {"idx": 54, "label": "-0.3", "orig": "msil_original_crops/crop_054_-0.3.png", "clean": "msil_cleaned_crops/crop_054_-0.3.png", "w": 162, "h": 52, "erased": 0}, {"idx": 55, "label": "Ø0.5", "orig": "msil_original_crops/crop_055_Ø0.5.png", "clean": "msil_cleaned_crops/crop_055_Ø0.5.png", "w": 0, "h": 0, "erased": 0}, {"idx": 56, "label": "10°", "orig": "msil_original_crops/crop_056_10deg.png", "clean": "msil_cleaned_crops/crop_056_10deg.png", "w": 99, "h": 157, "erased": 663}, {"idx": 57, "label": "M12x1", "orig": "msil_original_crops/crop_057_M12x1.png", "clean": "msil_cleaned_crops/crop_057_M12x1.png", "w": 84, "h": 273, "erased": 0}, {"idx": 58, "label": "Ø6.3", "orig": "msil_original_crops/crop_058_Ø6.3.png", "clean": "msil_cleaned_crops/crop_058_Ø6.3.png", "w": 0, "h": 0, "erased": 0}, {"idx": 59, "label": "Ø7.4", "orig": "msil_original_crops/crop_059_Ø7.4.png", "clean": "msil_cleaned_crops/crop_059_Ø7.4.png", "w": 0, "h": 0, "erased": 0}, {"idx": 60, "label": "Ø60.3 MAX", "orig": "msil_original_crops/crop_060_Ø60.3_MAX.png", "clean": "msil_cleaned_crops/crop_060_Ø60.3_MAX.png", "w": 0, "h": 0, "erased": 0}, {"idx": 61, "label": "Ø0.05", "orig": "msil_original_crops/crop_061_Ø0.05.png", "clean": "msil_cleaned_crops/crop_061_Ø0.05.png", "w": 0, "h": 0, "erased": 0}, {"idx": 62, "label": "7.5 ±0.5", "orig": "msil_original_crops/crop_062_7.5_+-0.5.png", "clean": "msil_cleaned_crops/crop_062_7.5_+-0.5.png", "w": 436, "h": 91, "erased": 1544}, {"idx": 63, "label": "36 MAX", "orig": "msil_original_crops/crop_063_36_MAX.png", "clean": "msil_cleaned_crops/crop_063_36_MAX.png", "w": 338, "h": 84, "erased": 0}, {"idx": 64, "label": "0.5mm", "orig": "msil_original_crops/crop_064_0.5mm.png", "clean": "msil_cleaned_crops/crop_064_0.5mm.png", "w": 98, "h": 280, "erased": 0}, {"idx": 65, "label": "Ø9.9 ±0.1", "orig": "msil_original_crops/crop_065_Ø9.9_+-0.1.png", "clean": "msil_cleaned_crops/crop_065_Ø9.9_+-0.1.png", "w": 0, "h": 0, "erased": 0}, {"idx": 66, "label": "160.4", "orig": "msil_original_crops/crop_066_160.4.png", "clean": "msil_cleaned_crops/crop_066_160.4.png", "w": 91, "h": 292, "erased": 876}, {"idx": 67, "label": "9.5", "orig": "msil_original_crops/crop_067_9.5.png", "clean": "msil_cleaned_crops/crop_067_9.5.png", "w": 182, "h": 98, "erased": 442}, {"idx": 68, "label": "Ø9-10", "orig": "msil_original_crops/crop_068_Ø9-10.png", "clean": "msil_cleaned_crops/crop_068_Ø9-10.png", "w": 0, "h": 0, "erased": 0}, {"idx": 69, "label": "R13", "orig": "msil_original_crops/crop_069_R13.png", "clean": "msil_cleaned_crops/crop_069_R13.png", "w": 107, "h": 196, "erased": 542}, {"idx": 70, "label": "79.2", "orig": "msil_original_crops/crop_070_79.2.png", "clean": "msil_cleaned_crops/crop_070_79.2.png", "w": 104, "h": 254, "erased": 762}, {"idx": 71, "label": "281.4", "orig": "msil_original_crops/crop_071_281.4.png", "clean": "msil_cleaned_crops/crop_071_281.4.png", "w": 97, "h": 305, "erased": 915}, {"idx": 72, "label": "Ø4.6", "orig": "msil_original_crops/crop_072_Ø4.6.png", "clean": "msil_cleaned_crops/crop_072_Ø4.6.png", "w": 0, "h": 0, "erased": 0}, {"idx": 73, "label": "248.7", "orig": "msil_original_crops/crop_073_248.7.png", "clean": "msil_cleaned_crops/crop_073_248.7.png", "w": 98, "h": 273, "erased": 819}, {"idx": 74, "label": "25MAX", "orig": "msil_original_crops/crop_074_25MAX.png", "clean": "msil_cleaned_crops/crop_074_25MAX.png", "w": 84, "h": 332, "erased": 844}, {"idx": 75, "label": "Ø55", "orig": "msil_original_crops/crop_075_Ø55.png", "clean": "msil_cleaned_crops/crop_075_Ø55.png", "w": 0, "h": 0, "erased": 0}, {"idx": 76, "label": "Ø7 HOLE", "orig": "msil_original_crops/crop_076_Ø7_HOLE.png", "clean": "msil_cleaned_crops/crop_076_Ø7_HOLE.png", "w": 0, "h": 0, "erased": 0}, {"idx": 77, "label": "202.7", "orig": "msil_original_crops/crop_077_202.7.png", "clean": "msil_cleaned_crops/crop_077_202.7.png", "w": 98, "h": 280, "erased": 840}, {"idx": 78, "label": "194", "orig": "msil_original_crops/crop_078_194.png", "clean": "msil_cleaned_crops/crop_078_194.png", "w": 104, "h": 169, "erased": 507}, {"idx": 79, "label": "2°", "orig": "msil_original_crops/crop_079_2deg.png", "clean": "msil_cleaned_crops/crop_079_2deg.png", "w": 105, "h": 102, "erased": 0}, {"idx": 80, "label": "145", "orig": "msil_original_crops/crop_080_145.png", "clean": "msil_cleaned_crops/crop_080_145.png", "w": 98, "h": 188, "erased": 564}, {"idx": 81, "label": "133.7", "orig": "msil_original_crops/crop_081_133.7.png", "clean": "msil_cleaned_crops/crop_081_133.7.png", "w": 91, "h": 273, "erased": 819}, {"idx": 82, "label": "98.4", "orig": "msil_original_crops/crop_082_98.4.png", "clean": "msil_cleaned_crops/crop_082_98.4.png", "w": 91, "h": 228, "erased": 1368}, {"idx": 83, "label": "91 MIN", "orig": "msil_original_crops/crop_083_91_MIN.png", "clean": "msil_cleaned_crops/crop_083_91_MIN.png", "w": 91, "h": 325, "erased": 975}, {"idx": 84, "label": "90.4", "orig": "msil_original_crops/crop_084_90.4.png", "clean": "msil_cleaned_crops/crop_084_90.4.png", "w": 98, "h": 247, "erased": 741}, {"idx": 85, "label": "28.1", "orig": "msil_original_crops/crop_085_28.1.png", "clean": "msil_cleaned_crops/crop_085_28.1.png", "w": 234, "h": 98, "erased": 702}, {"idx": 86, "label": "90", "orig": "msil_original_crops/crop_086_90.png", "clean": "msil_cleaned_crops/crop_086_90.png", "w": 78, "h": 124, "erased": 372}, {"idx": 87, "label": "75", "orig": "msil_original_crops/crop_087_75.png", "clean": "msil_cleaned_crops/crop_087_75.png", "w": 84, "h": 124, "erased": 744}, {"idx": 88, "label": "71", "orig": "msil_original_crops/crop_088_71.png", "clean": "msil_cleaned_crops/crop_088_71.png", "w": 91, "h": 124, "erased": 372}, {"idx": 89, "label": "22", "orig": "msil_original_crops/crop_089_22.png", "clean": "msil_cleaned_crops/crop_089_22.png", "w": 78, "h": 130, "erased": 307}, {"idx": 90, "label": "4", "orig": "msil_original_crops/crop_090_4.png", "clean": "msil_cleaned_crops/crop_090_4.png", "w": 84, "h": 84, "erased": 181}, {"idx": 91, "label": "190.8", "orig": "msil_original_crops/crop_091_190.8.png", "clean": "msil_cleaned_crops/crop_091_190.8.png", "w": 286, "h": 91, "erased": 858}, {"idx": 92, "label": "126.8", "orig": "msil_original_crops/crop_092_126.8.png", "clean": "msil_cleaned_crops/crop_092_126.8.png", "w": 280, "h": 104, "erased": 840}, {"idx": 93, "label": "214.2", "orig": "msil_original_crops/crop_093_214.2.png", "clean": "msil_cleaned_crops/crop_093_214.2.png", "w": 98, "h": 292, "erased": 718}, {"idx": 94, "label": "190.7", "orig": "msil_original_crops/crop_094_190.7.png", "clean": "msil_cleaned_crops/crop_094_190.7.png", "w": 299, "h": 97, "erased": 897}, {"idx": 95, "label": "163.6", "orig": "msil_original_crops/crop_095_163.6.png", "clean": "msil_cleaned_crops/crop_095_163.6.png", "w": 292, "h": 84, "erased": 876}, {"idx": 96, "label": "53.1°", "orig": "msil_original_crops/crop_096_53.1deg.png", "clean": "msil_cleaned_crops/crop_096_53.1deg.png", "w": 131, "h": 288, "erased": 1155}, {"idx": 97, "label": "Ø160", "orig": "msil_original_crops/crop_097_Ø160.png", "clean": "msil_cleaned_crops/crop_097_Ø160.png", "w": 0, "h": 0, "erased": 0}, {"idx": 98, "label": "118.1", "orig": "msil_original_crops/crop_098_118.1.png", "clean": "msil_cleaned_crops/crop_098_118.1.png", "w": 286, "h": 91, "erased": 858}, {"idx": 99, "label": "Ø280", "orig": "msil_original_crops/crop_099_Ø280.png", "clean": "msil_cleaned_crops/crop_099_Ø280.png", "w": 0, "h": 0, "erased": 0}, {"idx": 100, "label": "101.1", "orig": "msil_original_crops/crop_100_101.1.png", "clean": "msil_cleaned_crops/crop_100_101.1.png", "w": 273, "h": 104, "erased": 819}, {"idx": 101, "label": "R90", "orig": "msil_original_crops/crop_101_R90.png", "clean": "msil_cleaned_crops/crop_101_R90.png", "w": 202, "h": 97, "erased": 864}, {"idx": 102, "label": "R7O MIN", "orig": "msil_original_crops/crop_102_R7O_MIN.png", "clean": "msil_cleaned_crops/crop_102_R7O_MIN.png", "w": 382, "h": 102, "erased": 1677}, {"idx": 103, "label": "75.2", "orig": "msil_original_crops/crop_103_75.2.png", "clean": "msil_cleaned_crops/crop_103_75.2.png", "w": 254, "h": 104, "erased": 762}, {"idx": 104, "label": "67", "orig": "msil_original_crops/crop_104_67.png", "clean": "msil_cleaned_crops/crop_104_67.png", "w": 130, "h": 104, "erased": 390}, {"idx": 105, "label": "65.4", "orig": "msil_original_crops/crop_105_65.4.png", "clean": "msil_cleaned_crops/crop_105_65.4.png", "w": 247, "h": 98, "erased": 741}, {"idx": 106, "label": "56.6", "orig": "msil_original_crops/crop_106_56.6.png", "clean": "msil_cleaned_crops/crop_106_56.6.png", "w": 247, "h": 117, "erased": 741}, {"idx": 107, "label": "2xØ8", "orig": "msil_original_crops/crop_107_2xØ8.png", "clean": "msil_cleaned_crops/crop_107_2xØ8.png", "w": 0, "h": 0, "erased": 0}, {"idx": 108, "label": "+0.1", "orig": "msil_original_crops/crop_108_+0.1.png", "clean": "msil_cleaned_crops/crop_108_+0.1.png", "w": 177, "h": 82, "erased": 0}, {"idx": 109, "label": "0", "orig": "msil_original_crops/crop_109_0.png", "clean": "msil_cleaned_crops/crop_109_0.png", "w": 79, "h": 70, "erased": 160}, {"idx": 110, "label": "60° MAX", "orig": "msil_original_crops/crop_110_60deg_MAX.png", "clean": "msil_cleaned_crops/crop_110_60deg_MAX.png", "w": 110, "h": 418, "erased": 1472}, {"idx": 111, "label": "R90", "orig": "msil_original_crops/crop_111_R90.png", "clean": "msil_cleaned_crops/crop_111_R90.png", "w": 200, "h": 106, "erased": 549}, {"idx": 112, "label": "16", "orig": "msil_original_crops/crop_112_16.png", "clean": "msil_cleaned_crops/crop_112_16.png", "w": 143, "h": 91, "erased": 325}, {"idx": 113, "label": "42°", "orig": "msil_original_crops/crop_113_42deg.png", "clean": "msil_cleaned_crops/crop_113_42deg.png", "w": 99, "h": 185, "erased": 676}, {"idx": 114, "label": "36.9°", "orig": "msil_original_crops/crop_114_36.9deg.png", "clean": "msil_cleaned_crops/crop_114_36.9deg.png", "w": 294, "h": 105, "erased": 1090}, {"idx": 115, "label": "80 ±0.15", "orig": "msil_original_crops/crop_115_80_+-0.15.png", "clean": "msil_cleaned_crops/crop_115_80_+-0.15.png", "w": 98, "h": 422, "erased": 1266}, {"idx": 116, "label": "R120.5 MAX", "orig": "msil_original_crops/crop_116_R120.5_MAX.png", "clean": "msil_cleaned_crops/crop_116_R120.5_MAX.png", "w": 115, "h": 525, "erased": 2190}, {"idx": 117, "label": "224.1", "orig": "msil_original_crops/crop_117_224.1.png", "clean": "msil_cleaned_crops/crop_117_224.1.png", "w": 98, "h": 273, "erased": 819}, {"idx": 118, "label": "25.6 ±1.5", "orig": "msil_original_crops/crop_118_25.6_+-1.5.png", "clean": "msil_cleaned_crops/crop_118_25.6_+-1.5.png", "w": 91, "h": 488, "erased": 1510}, {"idx": 119, "label": "35° ±3°", "orig": "msil_original_crops/crop_119_35deg_+-3deg.png", "clean": "msil_cleaned_crops/crop_119_35deg_+-3deg.png", "w": 383, "h": 125, "erased": 0}, {"idx": 120, "label": "302.1", "orig": "msil_original_crops/crop_120_302.1.png", "clean": "msil_cleaned_crops/crop_120_302.1.png", "w": 91, "h": 266, "erased": 798}, {"idx": 121, "label": "310.9", "orig": "msil_original_crops/crop_121_310.9.png", "clean": "msil_cleaned_crops/crop_121_310.9.png", "w": 84, "h": 286, "erased": 858}, {"idx": 122, "label": "77.5 MAX", "orig": "msil_original_crops/crop_122_77.5_MAX.png", "clean": "msil_cleaned_crops/crop_122_77.5_MAX.png", "w": 98, "h": 448, "erased": 1344}, {"idx": 123, "label": "115 ±0.5", "orig": "msil_original_crops/crop_123_115_+-0.5.png", "clean": "msil_cleaned_crops/crop_123_115_+-0.5.png", "w": 104, "h": 422, "erased": 1266}, {"idx": 124, "label": "7.15", "orig": "msil_original_crops/crop_124_7.15.png", "clean": "msil_cleaned_crops/crop_124_7.15.png", "w": 254, "h": 104, "erased": 616}, {"idx": 125, "label": "30°", "orig": "msil_original_crops/crop_125_30deg.png", "clean": "msil_cleaned_crops/crop_125_30deg.png", "w": 105, "h": 169, "erased": 618}, {"idx": 126, "label": "28.1  ±0.25", "orig": "msil_original_crops/crop_126_28.1__+-0.25.png", "clean": "msil_cleaned_crops/crop_126_28.1__+-0.25.png", "w": 559, "h": 102, "erased": 2250}, {"idx": 127, "label": "7.15", "orig": "msil_original_crops/crop_127_7.15.png", "clean": "msil_cleaned_crops/crop_127_7.15.png", "w": 254, "h": 98, "erased": 607}, {"idx": 128, "label": "30°", "orig": "msil_original_crops/crop_128_30deg.png", "clean": "msil_cleaned_crops/crop_128_30deg.png", "w": 75, "h": 162, "erased": 318}, {"idx": 129, "label": "30.9 ±0.25", "orig": "msil_original_crops/crop_129_30.9_+-0.25.png", "clean": "msil_cleaned_crops/crop_129_30.9_+-0.25.png", "w": 533, "h": 102, "erased": 2074}, {"idx": 130, "label": "32 MIN", "orig": "msil_original_crops/crop_130_32_MIN.png", "clean": "msil_cleaned_crops/crop_130_32_MIN.png", "w": 104, "h": 312, "erased": 1072}, {"idx": 131, "label": "23MIN", "orig": "msil_original_crops/crop_131_23MIN.png", "clean": "msil_cleaned_crops/crop_131_23MIN.png", "w": 91, "h": 338, "erased": 965}, {"idx": 132, "label": "83 ±1.25", "orig": "msil_original_crops/crop_132_83_+-1.25.png", "clean": "msil_cleaned_crops/crop_132_83_+-1.25.png", "w": 91, "h": 429, "erased": 1287}, {"idx": 133, "label": "90 ±1.5", "orig": "msil_original_crops/crop_133_90_+-1.5.png", "clean": "msil_cleaned_crops/crop_133_90_+-1.5.png", "w": 104, "h": 377, "erased": 1131}, {"idx": 134, "label": "119.25", "orig": "msil_original_crops/crop_134_119.25.png", "clean": "msil_cleaned_crops/crop_134_119.25.png", "w": 91, "h": 338, "erased": 1014}, {"idx": 135, "label": "160.25", "orig": "msil_original_crops/crop_135_160.25.png", "clean": "msil_cleaned_crops/crop_135_160.25.png", "w": 98, "h": 344, "erased": 1032}];
+
+// ── Render ─────────────────────────────────────────────────────────────────────
+const grid   = document.getElementById('grid');
+const search = document.getElementById('search');
+const shownEl= document.getElementById('shown');
+const totalEl= document.getElementById('total');
+totalEl.textContent = CROPS.length;
+
+function badge(erased) {
+  if (erased === 0) return `<span class="erase-badge none">no lines</span>`;
+  if (erased < 1000) return `<span class="erase-badge low">${erased.toLocaleString()} px</span>`;
+  return `<span class="erase-badge high">${erased.toLocaleString()} px</span>`;
+}
+
+function buildCard(c) {
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.dataset.label = c.label.toLowerCase();
+  div.innerHTML = `
+    <div class="card-header">
+      <span class="crop-id">#${String(c.idx).padStart(3,'0')}</span>
+      <span class="crop-label">${c.label}</span>
+      ${badge(c.erased)}
+    </div>
+    <div class="compare">
+      <div class="half">
+        <div class="half-label orig">Original</div>
+        <div class="img-wrap"><img src="${c.orig}" alt="original" loading="lazy" /></div>
+      </div>
+      <div class="half">
+        <div class="half-label clean">Cleaned</div>
+        <div class="img-wrap"><img src="${c.clean}" alt="cleaned" loading="lazy" /></div>
+      </div>
+    </div>
+    <div class="slider-container">
+      <img class="sl-img" src="${c.orig}" alt="original" />
+      <div class="sl-clean">
+        <img src="${c.clean}" alt="cleaned" />
+      </div>
+      <div class="slider-handle"></div>
+      <div class="slider-labels">
+        <span>Original</span><span>Cleaned</span>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="toggle-mode">⇔ Slider mode</button>
+      <span class="dim-info">${c.w}×${c.h} px · erased ${c.erased.toLocaleString()} px</span>
+    </div>
+  `;
+
+  // Toggle side-by-side ↔ slider
+  const btn = div.querySelector('.toggle-mode');
+  btn.addEventListener('click', () => {
+    div.classList.toggle('slider-mode');
+    btn.textContent = div.classList.contains('slider-mode') ? '⊞ Side by side' : '⇔ Slider mode';
+  });
+
+  // Slider drag
+  const sliderContainer = div.querySelector('.slider-container');
+  const handle          = div.querySelector('.slider-handle');
+  const cleanDiv        = div.querySelector('.sl-clean');
+  let dragging = false;
+
+  function setSlider(x) {
+    const rect = sliderContainer.getBoundingClientRect();
+    let pct = (x - rect.left) / rect.width;
+    pct = Math.max(0.02, Math.min(0.98, pct));
+    cleanDiv.style.width  = `${(1 - pct) * 100}%`;
+    cleanDiv.style.left   = `${pct * 100}%`;
+    cleanDiv.querySelector('img').style.marginLeft = `-${pct * rect.width}px`;
+    handle.style.left = `${pct * 100}%`;
+  }
+
+  sliderContainer.addEventListener('mousedown', e => { dragging = true; setSlider(e.clientX); });
+  window.addEventListener('mousemove', e => { if (dragging) setSlider(e.clientX); });
+  window.addEventListener('mouseup',   () => { dragging = false; });
+  sliderContainer.addEventListener('touchstart', e => setSlider(e.touches[0].clientX), {passive:true});
+  sliderContainer.addEventListener('touchmove',  e => setSlider(e.touches[0].clientX), {passive:true});
+
+  return div;
+}
+
+// Render all
+function render(filter = '') {
+  grid.innerHTML = '';
+  let count = 0;
+  CROPS.forEach(c => {
+    if (filter && !c.label.toLowerCase().includes(filter)) return;
+    grid.appendChild(buildCard(c));
+    count++;
+  });
+  shownEl.textContent = count;
+  document.getElementById('empty').style.display = count === 0 ? 'block' : 'none';
+}
+
+render();
+
+// Search
+search.addEventListener('input', () => render(search.value.trim().toLowerCase()));
+
+// View size toggle
+document.querySelectorAll('.view-btn[data-size]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.view-btn[data-size]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    grid.className = btn.dataset.size === 'normal' ? '' :
+                     btn.dataset.size === 'large'  ? 'large' : 'list';
+    grid.id = 'grid';
+  });
+});
+</script>
+</body>
+</html>
